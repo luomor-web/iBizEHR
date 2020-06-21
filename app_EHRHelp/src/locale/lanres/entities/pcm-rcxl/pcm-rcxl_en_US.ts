@@ -1,36 +1,36 @@
 
 export default {
   fields: {
-    createdate: '建立时间',
-    updateman: '更新人',
-    code: '序列号',
-    updatedate: '更新时间',
-    rcxlmc: '人才序列名称',
-    pcmrcxlid: '人才序列标识',
-    snumber: '排序编码',
-    rcxllx: '人才序列类型',
-    pcmrcxlname: '人才序列名称',
-    xldj: '序列等级',
-    createman: '建立人',
-    pcmrcxlname2: '上级',
-    pcmrcxlid2: '人才序列标识',
+    createdate: "建立时间",
+    updateman: "更新人",
+    code: "序列号",
+    updatedate: "更新时间",
+    rcxlmc: "人才序列名称",
+    pcmrcxlid: "人才序列标识",
+    snumber: "排序编码",
+    rcxllx: "人才序列类型",
+    pcmrcxlname: "人才序列名称",
+    xldj: "序列等级",
+    createman: "建立人",
+    pcmrcxlname2: "上级",
+    pcmrcxlid2: "人才序列标识",
   },
 	views: {
 		gridview: {
 			caption: "人才序列",
-      title: '人才序列表格视图',
+      		title: "人才序列表格视图",
 		},
 		editview: {
 			caption: "人才序列设置",
-      title: '人才序列设置',
+      		title: "人才序列设置",
 		},
 		pickupgridview: {
 			caption: "人才序列",
-      title: '人才序列选择表格视图',
+      		title: "人才序列选择表格视图",
 		},
 		pickupview: {
 			caption: "人才序列",
-      title: '人才序列数据选择视图',
+      		title: "人才序列数据选择视图",
 		},
 	},
 	main_form: {

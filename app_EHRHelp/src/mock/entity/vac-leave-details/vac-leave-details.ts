@@ -86,6 +86,44 @@ mock.onDelete(new RegExp(/^\/vacleavedetails\/batch$/)).reply((config: any) => {
     return [status, {}];
 });
 
+        
+// GetNianJia
+mock.onPost(new RegExp(/^\/vacleavedetails\/?([a-zA-Z0-9\-\;]{0,35})\/getnianjia$/)).reply((config: any) => {
+    console.groupCollapsed("实体:vacleavedetail 方法: GetNianJia");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['vacleavedetailid'];
+    const matchArray:any = new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})\/getnianjia$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    //let items = mockDatas ? mockDatas : [];
+    //let _items = items.find((item: any) => Object.is(item.vacleavedetailid, tempValue.vacleavedetailid));
+      let data = JSON.parse(config.data);
+    mockDatas.forEach((item)=>{
+        if(item['vacleavedetailid'] == tempValue['vacleavedetailid'] ){
+            for(let value in data){
+              if(item.hasOwnProperty(value)){
+                  item[value] = data[value];
+              }
+            }
+        }
+    })
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(data);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, data];
+});
 
 // Select
 mock.onGet(new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
@@ -371,34 +409,6 @@ mock.onDelete(new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})$/)).reply(
     }    
     const paramArray:Array<any> = ['vacleavedetailid'];
     const matchArray:any = new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
-    let tempValue: any = {};
-    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
-        paramArray.forEach((item: any, index: number) => {
-            Object.defineProperty(tempValue, item, {
-                enumerable: true,
-                value: matchArray[index + 1]
-            });
-        });
-    }
-    let items = mockDatas ? mockDatas : [];
-    let _items = items.find((item: any) => Object.is(item.vacleavedetailid, tempValue.vacleavedetailid));
-    console.groupCollapsed("response数据  status: "+status+" data: ");
-    console.table(_items?_items:{});
-    console.groupEnd();
-    console.groupEnd();
-    return [status, _items?_items:{}];
-});
-
-// GetNianJia
-mock.onGet(new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})\/getnianjia$/)).reply((config: any) => {
-    console.groupCollapsed("实体:vacleavedetail 方法: GetNianJia");
-    console.table({url:config.url, method: config.method, data:config.data});
-    let status = MockAdapter.mockStatus(config);
-    if (status !== 200) {
-        return [status, null];
-    }    
-    const paramArray:Array<any> = ['vacleavedetailid'];
-    const matchArray:any = new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})\/getnianjia$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

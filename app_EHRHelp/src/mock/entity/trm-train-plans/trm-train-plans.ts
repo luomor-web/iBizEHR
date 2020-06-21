@@ -87,6 +87,35 @@ mock.onDelete(new RegExp(/^\/trmtrainplans\/batch$/)).reply((config: any) => {
 });
 
 
+
+// Select
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Select");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/select$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items];
+});
+
 // Select
 mock.onGet(new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
     console.groupCollapsed("实体:trmtrainplan 方法: Select");
@@ -113,6 +142,34 @@ mock.onGet(new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).rep
     console.groupEnd();
     console.groupEnd();
     return [status, _items];
+});
+
+
+    
+// Save
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/save$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Save");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/save$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Save
@@ -153,6 +210,88 @@ mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/save$/)).rep
     return [status, data];
 });
 
+    
+// SetYfbZt
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setyfbzt$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetYfbZt");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setyfbzt$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+        
+// SetYfbZt
+mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/setyfbzt$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetYfbZt");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setyfbzt$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    //let items = mockDatas ? mockDatas : [];
+    //let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+      let data = JSON.parse(config.data);
+    mockDatas.forEach((item)=>{
+        if(item['trmtrainplanid'] == tempValue['trmtrainplanid'] ){
+            for(let value in data){
+              if(item.hasOwnProperty(value)){
+                  item[value] = data[value];
+              }
+            }
+        }
+    })
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(data);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, data];
+});
+
+
+// GetDraft
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/getdraft$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: GetDraft");
+    console.table({url:config.url, method: config.method, data:config.data});
+    // GetDraft
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
 // GetDraft
 mock.onGet(new RegExp(/^\/trmtrainplans\/getdraft$/)).reply((config: any) => {
     console.groupCollapsed("实体:trmtrainplan 方法: GetDraft");
@@ -161,6 +300,33 @@ mock.onGet(new RegExp(/^\/trmtrainplans\/getdraft$/)).reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     if (status !== 200) {
         return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
+    
+// CheckKey
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: CheckKey");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
     }
     console.groupCollapsed("response数据  status: "+status+" data: ");
     console.table({});
@@ -206,6 +372,164 @@ mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/checkkey$/))
     console.groupEnd();
     return [status, data];
 });
+
+    
+// SetDfbZt
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setdfbzt$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetDfbZt");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setdfbzt$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+        
+// SetDfbZt
+mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/setdfbzt$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetDfbZt");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setdfbzt$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    //let items = mockDatas ? mockDatas : [];
+    //let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+      let data = JSON.parse(config.data);
+    mockDatas.forEach((item)=>{
+        if(item['trmtrainplanid'] == tempValue['trmtrainplanid'] ){
+            for(let value in data){
+              if(item.hasOwnProperty(value)){
+                  item[value] = data[value];
+              }
+            }
+        }
+    })
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(data);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, data];
+});
+
+    
+// SetApprovalStatus
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setapprovalstatus$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetApprovalStatus");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setapprovalstatus$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+        
+// SetApprovalStatus
+mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/setapprovalstatus$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetApprovalStatus");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setapprovalstatus$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    //let items = mockDatas ? mockDatas : [];
+    //let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+      let data = JSON.parse(config.data);
+    mockDatas.forEach((item)=>{
+        if(item['trmtrainplanid'] == tempValue['trmtrainplanid'] ){
+            for(let value in data){
+              if(item.hasOwnProperty(value)){
+                  item[value] = data[value];
+              }
+            }
+        }
+    })
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(data);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, data];
+});
+
+
+    
+// Create
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Create");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // Create
 mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
@@ -231,6 +555,98 @@ mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((co
     console.groupEnd();
     console.groupEnd();
     return [status, mockDatas[0]];
+});
+
+    
+// SetRejectStatus
+mock.onPost(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setrejectstatus$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetRejectStatus");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setrejectstatus$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+        
+// SetRejectStatus
+mock.onPost(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})\/setrejectstatus$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: SetRejectStatus");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})\/setrejectstatus$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    //let items = mockDatas ? mockDatas : [];
+    //let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+      let data = JSON.parse(config.data);
+    mockDatas.forEach((item)=>{
+        if(item['trmtrainplanid'] == tempValue['trmtrainplanid'] ){
+            for(let value in data){
+              if(item.hasOwnProperty(value)){
+                  item[value] = data[value];
+              }
+            }
+        }
+    })
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(data);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, data];
+});
+
+    
+// Update
+mock.onPut(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Update");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Update
@@ -269,6 +685,51 @@ mock.onPut(new RegExp(/^\/trmtrainplans\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((con
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+
+// FetchDefault
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/fetchdefault$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: FetchDefault");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['pimpersonid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/fetchdefault$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDefault
@@ -314,14 +775,56 @@ mock.onGet(new RegExp(/^\/trmtrainplans\/fetchdefault(\?[\w-./?%&=,]*)*$/)).repl
     console.groupEnd();
     return [status, records ?  records : []];
 });
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
+
 // URI参数传递情况未实现
 // URI参数传递情况未实现
 
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+
+// Remove
+mock.onDelete(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Remove");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
 
 // Remove
 mock.onDelete(new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
@@ -333,6 +836,34 @@ mock.onDelete(new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((c
     }    
     const paramArray:Array<any> = ['trmtrainplanid'];
     const matchArray:any = new RegExp(/^\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.trmtrainplanid, tempValue.trmtrainplanid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Get
+mock.onGet(new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:trmtrainplan 方法: Get");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['pimpersonid','trmtrainplanid'];
+    const matchArray:any = new RegExp(/^\/pimpeople\/([a-zA-Z0-9\-\;]{1,35})\/trmtrainplans\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

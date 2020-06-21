@@ -99,11 +99,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimContractService from '@/service/pim-contract/pim-contract-service';
 import GRContractEditGridService from './grcontract-edit-grid-form-service';
 
@@ -122,7 +123,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 名称
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public name?: string;
 
@@ -130,7 +131,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -138,7 +139,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 应用上下文
      *
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public context: any;
 
@@ -146,7 +147,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 视图参数
      *
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public viewparams: any;
 
@@ -155,7 +156,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -163,7 +164,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -175,7 +176,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -183,7 +184,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 建构部件服务对象
      *
      * @type {GRContractEditGridService}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public service: GRContractEditGridService = new GRContractEditGridService({ $store: this.$store });
 
@@ -191,7 +192,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 实体服务对象
      *
      * @type {PimContractService}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public appEntityService: PimContractService = new PimContractService({ $store: this.$store });
     
@@ -201,7 +202,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 关闭视图
      *
      * @param {any} args
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -211,7 +212,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      *  计数器刷新
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -228,7 +229,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public srfwfmemo:string = "";
     
@@ -236,7 +237,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -246,7 +247,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 获取单项树
      *
      * @returns {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public getData(): any {
         return this.data;
@@ -256,7 +257,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -264,7 +265,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -272,7 +273,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -280,7 +281,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--start
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -288,7 +289,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--update
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public updateAction!: string;
     
@@ -296,7 +297,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public removeAction!: string;
     
@@ -304,7 +305,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -312,7 +313,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--load
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public loadAction!: string;
     
@@ -320,7 +321,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--create
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public createAction!: string;
 
@@ -328,7 +329,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件行为--create
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public searchAction!: string;
 
@@ -336,7 +337,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 视图标识
      *
      * @type {string}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Prop() public viewtag!: string;
 
@@ -344,7 +345,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -352,7 +353,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -361,7 +362,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @type {Subject<any>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -370,7 +371,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -379,7 +380,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public oldData: any = {};
 
@@ -387,7 +388,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 表单数据对象
      *
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -414,7 +415,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof GRContractEditGrid
+      * @memberof GRContractEditGridBase
       */
     public currentAction: string = "";
 
@@ -422,7 +423,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof GRContractEditGrid
+      * @memberof GRContractEditGridBase
       */
     public drcounter: number = 0;
 
@@ -430,7 +431,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof GRContractEditGrid
+      * @memberof GRContractEditGridBase
       */
     public drsaveopt: any = {};
 
@@ -438,7 +439,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof GRContractEditGrid
+      * @memberof GRContractEditGridBase
       */
     public saveState:any ;
 
@@ -446,7 +447,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 属性值规则
      *
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -557,7 +558,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 详情模型集合
      *
      * @type {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimcontract.grcontracteditgrid_form', extractMode: 'ITEM', details: [] } })
@@ -605,7 +606,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -617,7 +618,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -629,7 +630,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -641,7 +642,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -653,7 +654,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -665,7 +666,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -677,7 +678,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -689,7 +690,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -701,7 +702,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -713,7 +714,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.htbh')
     onHtbhChange(newVal: any, oldVal: any) {
@@ -725,7 +726,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.htlx')
     onHtlxChange(newVal: any, oldVal: any) {
@@ -737,7 +738,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.qsrq')
     onQsrqChange(newVal: any, oldVal: any) {
@@ -749,7 +750,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.jsrq')
     onJsrqChange(newVal: any, oldVal: any) {
@@ -761,7 +762,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.htzt')
     onHtztChange(newVal: any, oldVal: any) {
@@ -773,7 +774,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -785,7 +786,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.pimcontractid')
     onPimcontractidChange(newVal: any, oldVal: any) {
@@ -797,7 +798,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -810,7 +811,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -819,7 +820,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof GRContractEditGridBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -836,7 +837,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -867,7 +868,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -884,7 +885,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -905,7 +906,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -930,7 +931,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @param {*} data
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -946,7 +947,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 重置草稿表单状态
      *
      * @public
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -958,7 +959,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * 重置校验结果
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -974,7 +975,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -992,7 +993,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1007,7 +1008,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 获取全部值
      *
      * @returns {*}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public getValues(): any {
         return this.data;
@@ -1018,7 +1019,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1036,7 +1037,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1054,7 +1055,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1066,7 +1067,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public created(): void {
         this.afterCreated();
@@ -1075,7 +1076,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * 执行created后的逻辑
      *
-     *  @memberof GRContractEditGrid
+     *  @memberof GRContractEditGridBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1132,7 +1133,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * vue 生命周期
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1141,7 +1142,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1156,7 +1157,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof GRContractEditGrid
+     * @memberof @memberof GRContractEditGridBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1174,7 +1175,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
 
     /**
      *打印
-     *@memberof @memberof GRContractEditGrid
+     *@memberof @memberof GRContractEditGridBase
      */
     public print(){
         let _this:any = this;
@@ -1185,7 +1186,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1207,7 +1208,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1228,7 +1229,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1263,7 +1264,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1317,7 +1318,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1368,7 +1369,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1438,7 +1439,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof GRContractEditGridBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1472,7 +1473,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1528,7 +1529,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1604,7 +1605,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1649,7 +1650,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 回车事件
      *
      * @param {*} $event
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public onEnter($event: any): void {
     }
@@ -1658,7 +1659,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1683,7 +1684,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1706,7 +1707,7 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1730,38 +1731,37 @@ export default class GRContractEditGridBase extends Vue implements ControlInterf
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof GRContractEditGrid
+    * @memberof GRContractEditGridBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof GRContractEditGrid
+     * @memberof GRContractEditGridBase
      */
     public updateDefault(){                    
     }

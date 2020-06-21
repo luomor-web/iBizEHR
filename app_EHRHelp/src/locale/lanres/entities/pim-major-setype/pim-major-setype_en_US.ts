@@ -1,30 +1,30 @@
 
 export default {
   fields: {
-    updatedate: '更新时间',
-    pimmajorsetypeid: '专业序列类型标识',
-    createdate: '建立时间',
-    serialno: '排序号',
-    pimmajorsetypename: '专业序列类型',
-    updateman: '更新人',
-    createman: '建立人',
+    updatedate: "更新时间",
+    pimmajorsetypeid: "专业序列类型标识",
+    createdate: "建立时间",
+    serialno: "排序号",
+    pimmajorsetypename: "专业序列类型",
+    updateman: "更新人",
+    createman: "建立人",
   },
 	views: {
 		editview: {
 			caption: "专业序列类型",
-      title: '专业序列类型编辑视图',
+      		title: "专业序列类型编辑视图",
 		},
 		gridview: {
 			caption: "专业序列类型",
-      title: '专业序列类型表格视图',
+      		title: "专业序列类型表格视图",
 		},
 		pickupview: {
 			caption: "专业序列类型",
-      title: '专业序列类型数据选择视图',
+      		title: "专业序列类型数据选择视图",
 		},
 		pickupgridview: {
 			caption: "专业序列类型",
-      title: '专业序列类型选择表格视图',
+      		title: "专业序列类型选择表格视图",
 		},
 	},
 	main_form: {

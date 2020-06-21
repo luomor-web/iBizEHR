@@ -249,7 +249,7 @@ export default class PIMPERSONPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PIMPERSONPickupView
+     * @memberof PIMPERSONPickupViewBase
      */
     public selectedData: string = "";
 

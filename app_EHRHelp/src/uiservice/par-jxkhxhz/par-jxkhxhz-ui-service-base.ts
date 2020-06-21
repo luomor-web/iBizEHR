@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import ParJxkhxhzService from '@/service/par-jxkhxhz/par-jxkhxhz-service';
 
 /**
- * 考核内容评分汇总UI服务对象基类
+ * 考核方案UI服务对象基类
  *
  * @export
  * @class ParJxkhxhzUIServiceBase
