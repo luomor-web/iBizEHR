@@ -139,7 +139,7 @@
     <row>
         <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{}" style="height:160px;width:150px;overflow: auto;"></app-image-upload>
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" :uploadparams='{}' :exportparams='{}' style="height:160px;width:150px;overflow: auto;"></app-image-upload>
 </app-form-item>
 
 </i-col>
@@ -407,9 +407,7 @@
 </i-col>
 <i-col v-show="detailsModel.tjqk.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='tjqk' :itemRules="this.rules.tjqk" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.tjqk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tjqk.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.tjqk" :disabled="detailsModel.tjqk.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.tjqk"  :disabled="detailsModel.tjqk.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -423,9 +421,7 @@
     <row>
         <i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.bz" :disabled="detailsModel.bz.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.bz"  :disabled="detailsModel.bz.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -505,7 +501,7 @@
   name="isblacklist" 
   :localContext ='{ }' 
   :localParam ='{ }' 
-  tag='EhrCodeList0400' 
+  tag='EhrCodeList0401' 
   codelistType='STATIC' 
   style="">
 </app-radio-group>
@@ -514,9 +510,8 @@
 </i-col>
 <i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='isblacklistreason' :itemRules="this.rules.isblacklistreason" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.isblacklistreason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklistreason.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" :rows="10" v-model="data.isblacklistreason" :disabled="detailsModel.isblacklistreason.disabled" style="height:200px;"></textarea>
-</div>
+    <input-box v-model="data.isblacklistreason" :autoSize="{minRows: 10}"  :disabled="detailsModel.isblacklistreason.disabled" type='textarea' style="height:200px;" ></input-box>
+
 </app-form-item>
 
 </i-col>
@@ -530,19 +525,19 @@
     <row>
         <i-col v-show="detailsModel.sfz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfz' :itemRules="this.rules.sfz" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.sfz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='sfz' :value="data.sfz" :disabled="detailsModel.sfz.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='sfz' :value="data.sfz" :disabled="detailsModel.sfz.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zczs2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zczs2' :itemRules="this.rules.zczs2" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.zczs2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zczs2.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zczs2' :value="data.zczs2" :disabled="detailsModel.zczs2.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zczs2' :value="data.zczs2" :disabled="detailsModel.zczs2.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.otherfile.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='otherfile' :itemRules="this.rules.otherfile" class='' :caption="$t('entities.pcmprofile.rzsp_csrcyj_form.details.otherfile')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.otherfile.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
@@ -1021,11 +1016,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import RZSP_CSRCYJService from './rzsp-csrcyj-form-service';
 
@@ -1044,7 +1040,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public name?: string;
 
@@ -1052,7 +1048,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -1060,7 +1056,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public context: any;
 
@@ -1068,7 +1064,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public viewparams: any;
 
@@ -1077,7 +1073,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -1085,7 +1081,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -1097,7 +1093,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -1105,7 +1101,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {RZSP_CSRCYJService}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public service: RZSP_CSRCYJService = new RZSP_CSRCYJService({ $store: this.$store });
 
@@ -1113,7 +1109,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmProfileService}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
     
@@ -1123,7 +1119,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -1133,7 +1129,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -1150,7 +1146,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public srfwfmemo:string = "";
     
@@ -1158,7 +1154,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -1168,7 +1164,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public getData(): any {
         return this.data;
@@ -1178,7 +1174,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -1186,7 +1182,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -1194,7 +1190,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -1202,7 +1198,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -1210,7 +1206,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public updateAction!: string;
     
@@ -1218,7 +1214,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public removeAction!: string;
     
@@ -1226,7 +1222,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -1234,7 +1230,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public loadAction!: string;
     
@@ -1242,7 +1238,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public createAction!: string;
 
@@ -1250,7 +1246,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public searchAction!: string;
 
@@ -1258,7 +1254,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Prop() public viewtag!: string;
 
@@ -1266,7 +1262,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -1274,7 +1270,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -1283,7 +1279,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -1292,7 +1288,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -1301,7 +1297,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public oldData: any = {};
 
@@ -1309,7 +1305,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -1380,7 +1376,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof RZSP_CSRCYJ
+      * @memberof RZSP_CSRCYJBase
       */
     public currentAction: string = "";
 
@@ -1388,7 +1384,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof RZSP_CSRCYJ
+      * @memberof RZSP_CSRCYJBase
       */
     public drcounter: number = 0;
 
@@ -1396,7 +1392,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof RZSP_CSRCYJ
+      * @memberof RZSP_CSRCYJBase
       */
     public drsaveopt: any = {};
 
@@ -1404,7 +1400,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof RZSP_CSRCYJ
+      * @memberof RZSP_CSRCYJBase
       */
     public saveState:any ;
 
@@ -1412,7 +1408,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -1787,7 +1783,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public detailsModel: any = {
         grouppanel15: new FormGroupPanelModel({ caption: '选择内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.rzsp_csrcyj_form', extractMode: 'ITEM', details: [] } })
@@ -1997,7 +1993,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -2009,7 +2005,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -2021,7 +2017,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -2033,7 +2029,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -2045,7 +2041,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -2057,7 +2053,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -2069,7 +2065,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -2081,7 +2077,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -2093,7 +2089,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.sfxzbjnbry')
     onSfxzbjnbryChange(newVal: any, oldVal: any) {
@@ -2105,7 +2101,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -2117,7 +2113,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -2129,7 +2125,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.pcmprofileid')
     onPcmprofileidChange(newVal: any, oldVal: any) {
@@ -2141,7 +2137,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.cadidateid')
     onCadidateidChange(newVal: any, oldVal: any) {
@@ -2153,7 +2149,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.elinkurl')
     onElinkurlChange(newVal: any, oldVal: any) {
@@ -2165,7 +2161,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.pcmprofilename')
     onPcmprofilenameChange(newVal: any, oldVal: any) {
@@ -2177,7 +2173,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -2189,7 +2185,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.certificatetype')
     onCertificatetypeChange(newVal: any, oldVal: any) {
@@ -2201,7 +2197,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.certificatenumber')
     onCertificatenumberChange(newVal: any, oldVal: any) {
@@ -2213,7 +2209,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.birthday')
     onBirthdayChange(newVal: any, oldVal: any) {
@@ -2225,7 +2221,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.nl')
     onNlChange(newVal: any, oldVal: any) {
@@ -2237,7 +2233,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.gender')
     onGenderChange(newVal: any, oldVal: any) {
@@ -2249,7 +2245,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.zp')
     onZpChange(newVal: any, oldVal: any) {
@@ -2261,7 +2257,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.nation')
     onNationChange(newVal: any, oldVal: any) {
@@ -2273,7 +2269,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.wedstate')
     onWedstateChange(newVal: any, oldVal: any) {
@@ -2285,7 +2281,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.bloodtype')
     onBloodtypeChange(newVal: any, oldVal: any) {
@@ -2297,7 +2293,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.nativeplace')
     onNativeplaceChange(newVal: any, oldVal: any) {
@@ -2309,7 +2305,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.hklx')
     onHklxChange(newVal: any, oldVal: any) {
@@ -2321,7 +2317,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.rpr')
     onRprChange(newVal: any, oldVal: any) {
@@ -2333,7 +2329,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.hjdz')
     onHjdzChange(newVal: any, oldVal: any) {
@@ -2345,7 +2341,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.csd')
     onCsdChange(newVal: any, oldVal: any) {
@@ -2357,7 +2353,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.address')
     onAddressChange(newVal: any, oldVal: any) {
@@ -2369,7 +2365,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.mobile')
     onMobileChange(newVal: any, oldVal: any) {
@@ -2381,7 +2377,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.email')
     onEmailChange(newVal: any, oldVal: any) {
@@ -2393,7 +2389,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.xznf')
     onXznfChange(newVal: any, oldVal: any) {
@@ -2405,7 +2401,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.yydj')
     onYydjChange(newVal: any, oldVal: any) {
@@ -2417,7 +2413,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.yydjmc')
     onYydjmcChange(newVal: any, oldVal: any) {
@@ -2429,7 +2425,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.workbegindate')
     onWorkbegindateChange(newVal: any, oldVal: any) {
@@ -2441,7 +2437,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.xzc')
     onXzcChange(newVal: any, oldVal: any) {
@@ -2453,7 +2449,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.yzbm')
     onYzbmChange(newVal: any, oldVal: any) {
@@ -2465,7 +2461,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.jkzk')
     onJkzkChange(newVal: any, oldVal: any) {
@@ -2477,7 +2473,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.ywzdjbs')
     onYwzdjbsChange(newVal: any, oldVal: any) {
@@ -2489,7 +2485,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.tjqk')
     onTjqkChange(newVal: any, oldVal: any) {
@@ -2501,7 +2497,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.profiletype')
     onProfiletypeChange(newVal: any, oldVal: any) {
@@ -2513,7 +2509,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.r_initializeapplydate')
     onR_initializeapplydateChange(newVal: any, oldVal: any) {
@@ -2525,7 +2521,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.bz')
     onBzChange(newVal: any, oldVal: any) {
@@ -2537,7 +2533,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.rgjytg')
     onRgjytgChange(newVal: any, oldVal: any) {
@@ -2549,7 +2545,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.polity')
     onPolityChange(newVal: any, oldVal: any) {
@@ -2561,7 +2557,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.rdsj')
     onRdsjChange(newVal: any, oldVal: any) {
@@ -2573,7 +2569,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.isblacklist')
     onIsblacklistChange(newVal: any, oldVal: any) {
@@ -2585,7 +2581,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.isblacklistreason')
     onIsblacklistreasonChange(newVal: any, oldVal: any) {
@@ -2597,7 +2593,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.sfz')
     onSfzChange(newVal: any, oldVal: any) {
@@ -2609,7 +2605,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.zczs2')
     onZczs2Change(newVal: any, oldVal: any) {
@@ -2621,7 +2617,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.otherfile')
     onOtherfileChange(newVal: any, oldVal: any) {
@@ -2633,7 +2629,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -2645,7 +2641,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -2657,7 +2653,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.rzqd')
     onRzqdChange(newVal: any, oldVal: any) {
@@ -2669,7 +2665,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.gwlb')
     onGwlbChange(newVal: any, oldVal: any) {
@@ -2681,7 +2677,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.napxm')
     onNapxmChange(newVal: any, oldVal: any) {
@@ -2693,7 +2689,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.napxmjgwmc')
     onNapxmjgwmcChange(newVal: any, oldVal: any) {
@@ -2705,7 +2701,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.gzbt')
     onGzbtChange(newVal: any, oldVal: any) {
@@ -2717,7 +2713,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     @Watch('data.yglx')
     onYglxChange(newVal: any, oldVal: any) {
@@ -2730,7 +2726,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -2739,7 +2735,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof RZSP_CSRCYJBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -2756,7 +2752,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -3036,7 +3032,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -3053,7 +3049,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -3074,7 +3070,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -3099,7 +3095,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -3115,7 +3111,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -3127,7 +3123,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -3143,7 +3139,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -3161,7 +3157,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -3176,7 +3172,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public getValues(): any {
         return this.data;
@@ -3187,7 +3183,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -3205,7 +3201,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -3223,7 +3219,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -3235,7 +3231,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public created(): void {
         this.afterCreated();
@@ -3244,7 +3240,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof RZSP_CSRCYJ
+     *  @memberof RZSP_CSRCYJBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -3301,7 +3297,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -3310,7 +3306,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -3325,7 +3321,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof RZSP_CSRCYJ
+     * @memberof @memberof RZSP_CSRCYJBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -3343,7 +3339,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof RZSP_CSRCYJ
+     *@memberof @memberof RZSP_CSRCYJBase
      */
     public print(){
         let _this:any = this;
@@ -3354,7 +3350,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -3376,7 +3372,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -3397,7 +3393,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -3432,7 +3428,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -3486,7 +3482,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -3537,7 +3533,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3607,7 +3603,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof RZSP_CSRCYJBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3641,7 +3637,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3697,7 +3693,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3773,7 +3769,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -3818,7 +3814,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public onEnter($event: any): void {
     }
@@ -3827,7 +3823,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -3852,7 +3848,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -3875,7 +3871,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -3899,31 +3895,30 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof RZSP_CSRCYJ
+    * @memberof RZSP_CSRCYJBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('profiletype')) {
@@ -3942,7 +3937,7 @@ export default class RZSP_CSRCYJBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof RZSP_CSRCYJ
+     * @memberof RZSP_CSRCYJBase
      */
     public updateDefault(){                    
         if (this.data.hasOwnProperty('ormorgid') && !this.data.ormorgid) {

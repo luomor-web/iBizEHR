@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class PCMXKMLXKMLTreeExpViewBase extends TreeExpViewBase {
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof PCMXKMLXKMLTreeExpView
+     * @memberof PCMXKMLXKMLTreeExpViewBase
      */
     public viewUID: string = 'pcm-pcmxkmlxkmltree-exp-view';
 

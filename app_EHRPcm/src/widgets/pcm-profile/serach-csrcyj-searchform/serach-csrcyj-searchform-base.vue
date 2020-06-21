@@ -124,11 +124,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import Serach_CSRCYJService from './serach-csrcyj-searchform-service';
 
@@ -147,7 +148,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     @Prop() public name?: string;
 
@@ -155,7 +156,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -163,7 +164,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     @Prop() public context: any;
 
@@ -171,7 +172,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     @Prop() public viewparams: any;
 
@@ -180,7 +181,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -188,7 +189,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -200,7 +201,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -208,7 +209,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {Serach_CSRCYJService}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public service: Serach_CSRCYJService = new Serach_CSRCYJService({ $store: this.$store });
 
@@ -216,7 +217,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmProfileService}
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
     
@@ -226,7 +227,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -236,7 +237,7 @@ export default class Serach_CSRCYJBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Serach_CSRCYJ
+     * @memberof Serach_CSRCYJBase
      */
     public counterRefresh(){
         const _this:any =this;

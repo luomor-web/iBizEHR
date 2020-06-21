@@ -133,7 +133,7 @@
     <row>
         <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" uploadparams='' exportparams='' :customparams="{}" style="height:160px;width:150px;overflow: auto;"></app-image-upload>
+     <app-image-upload :multiple="true" :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zp' :value="data.zp" :disabled="detailsModel.zp.disabled" :uploadparams='{}' :exportparams='{}' style="height:160px;width:150px;overflow: auto;"></app-image-upload>
 </app-form-item>
 
 </i-col>
@@ -413,9 +413,7 @@
 </i-col>
 <i-col v-show="detailsModel.tjqk.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='tjqk' :itemRules="this.rules.tjqk" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.tjqk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tjqk.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.tjqk" :disabled="detailsModel.tjqk.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.tjqk"  :disabled="detailsModel.tjqk.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -429,9 +427,7 @@
     <row>
         <i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.bz" :disabled="detailsModel.bz.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.bz"  :disabled="detailsModel.bz.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -583,7 +579,7 @@
   name="isblacklist" 
   :localContext ='{ }' 
   :localParam ='{ }' 
-  tag='EhrCodeList0400' 
+  tag='EhrCodeList0401' 
   codelistType='STATIC' 
   style="">
 </app-radio-group>
@@ -592,9 +588,8 @@
 </i-col>
 <i-col v-show="detailsModel.isblacklistreason.visible" :style="{}"  :lg="{ span: 16, offset: 0 }">
     <app-form-item name='isblacklistreason' :itemRules="this.rules.isblacklistreason" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.isblacklistreason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isblacklistreason.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" :rows="10" v-model="data.isblacklistreason" :disabled="detailsModel.isblacklistreason.disabled" style="height:200px;"></textarea>
-</div>
+    <input-box v-model="data.isblacklistreason" :autoSize="{minRows: 10}"  :disabled="detailsModel.isblacklistreason.disabled" type='textarea' style="height:200px;" ></input-box>
+
 </app-form-item>
 
 </i-col>
@@ -608,19 +603,19 @@
     <row>
         <i-col v-show="detailsModel.sfz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfz' :itemRules="this.rules.sfz" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.sfz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='sfz' :value="data.sfz" :disabled="detailsModel.sfz.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='sfz' :value="data.sfz" :disabled="detailsModel.sfz.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zczs2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zczs2' :itemRules="this.rules.zczs2" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.zczs2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zczs2.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zczs2' :value="data.zczs2" :disabled="detailsModel.zczs2.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='zczs2' :value="data.zczs2" :disabled="detailsModel.zczs2.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.otherfile.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='otherfile' :itemRules="this.rules.otherfile" class='' :caption="$t('entities.pcmprofile.bhsp_form.details.otherfile')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.otherfile.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='otherfile' :value="data.otherfile" :disabled="detailsModel.otherfile.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
@@ -983,11 +978,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import BHSPService from './bhsp-form-service';
 
@@ -1006,7 +1002,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public name?: string;
 
@@ -1014,7 +1010,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -1022,7 +1018,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public context: any;
 
@@ -1030,7 +1026,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public viewparams: any;
 
@@ -1039,7 +1035,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -1047,7 +1043,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -1059,7 +1055,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -1067,7 +1063,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {BHSPService}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public service: BHSPService = new BHSPService({ $store: this.$store });
 
@@ -1075,7 +1071,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmProfileService}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
     
@@ -1085,7 +1081,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -1095,7 +1091,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -1112,7 +1108,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public srfwfmemo:string = "";
     
@@ -1120,7 +1116,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -1130,7 +1126,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public getData(): any {
         return this.data;
@@ -1140,7 +1136,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -1148,7 +1144,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -1156,7 +1152,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -1164,7 +1160,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -1172,7 +1168,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public updateAction!: string;
     
@@ -1180,7 +1176,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public removeAction!: string;
     
@@ -1188,7 +1184,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -1196,7 +1192,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public loadAction!: string;
     
@@ -1204,7 +1200,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public createAction!: string;
 
@@ -1212,7 +1208,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public searchAction!: string;
 
@@ -1220,7 +1216,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Prop() public viewtag!: string;
 
@@ -1228,7 +1224,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -1236,7 +1232,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -1245,7 +1241,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -1254,7 +1250,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -1263,7 +1259,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public oldData: any = {};
 
@@ -1271,7 +1267,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -1339,7 +1335,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof BHSP
+      * @memberof BHSPBase
       */
     public currentAction: string = "";
 
@@ -1347,7 +1343,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof BHSP
+      * @memberof BHSPBase
       */
     public drcounter: number = 0;
 
@@ -1355,7 +1351,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof BHSP
+      * @memberof BHSPBase
       */
     public drsaveopt: any = {};
 
@@ -1363,7 +1359,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof BHSP
+      * @memberof BHSPBase
       */
     public saveState:any ;
 
@@ -1371,7 +1367,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -1728,7 +1724,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public detailsModel: any = {
         grouppanel15: new FormGroupPanelModel({ caption: '选择内部人员', detailType: 'GROUPPANEL', name: 'grouppanel15', visible: false, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmprofile.bhsp_form', extractMode: 'ITEM', details: [] } })
@@ -1928,7 +1924,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -1940,7 +1936,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -1952,7 +1948,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -1964,7 +1960,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -1976,7 +1972,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -1988,7 +1984,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -2000,7 +1996,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -2012,7 +2008,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -2024,7 +2020,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.sfxzbjnbry')
     onSfxzbjnbryChange(newVal: any, oldVal: any) {
@@ -2036,7 +2032,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -2048,7 +2044,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -2060,7 +2056,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.pcmprofileid')
     onPcmprofileidChange(newVal: any, oldVal: any) {
@@ -2072,7 +2068,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.cadidateid')
     onCadidateidChange(newVal: any, oldVal: any) {
@@ -2084,7 +2080,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.elinkurl')
     onElinkurlChange(newVal: any, oldVal: any) {
@@ -2096,7 +2092,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.pcmprofilename')
     onPcmprofilenameChange(newVal: any, oldVal: any) {
@@ -2108,7 +2104,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.certificatetype')
     onCertificatetypeChange(newVal: any, oldVal: any) {
@@ -2120,7 +2116,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.certificatenumber')
     onCertificatenumberChange(newVal: any, oldVal: any) {
@@ -2132,7 +2128,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.birthday')
     onBirthdayChange(newVal: any, oldVal: any) {
@@ -2144,7 +2140,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.nl')
     onNlChange(newVal: any, oldVal: any) {
@@ -2156,7 +2152,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.gender')
     onGenderChange(newVal: any, oldVal: any) {
@@ -2168,7 +2164,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.zp')
     onZpChange(newVal: any, oldVal: any) {
@@ -2180,7 +2176,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.nation')
     onNationChange(newVal: any, oldVal: any) {
@@ -2192,7 +2188,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.wedstate')
     onWedstateChange(newVal: any, oldVal: any) {
@@ -2204,7 +2200,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.bloodtype')
     onBloodtypeChange(newVal: any, oldVal: any) {
@@ -2216,7 +2212,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.nativeplace')
     onNativeplaceChange(newVal: any, oldVal: any) {
@@ -2228,7 +2224,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.hklx')
     onHklxChange(newVal: any, oldVal: any) {
@@ -2240,7 +2236,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.rpr')
     onRprChange(newVal: any, oldVal: any) {
@@ -2252,7 +2248,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.hjdz')
     onHjdzChange(newVal: any, oldVal: any) {
@@ -2264,7 +2260,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.csd')
     onCsdChange(newVal: any, oldVal: any) {
@@ -2276,7 +2272,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.address')
     onAddressChange(newVal: any, oldVal: any) {
@@ -2288,7 +2284,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.mobile')
     onMobileChange(newVal: any, oldVal: any) {
@@ -2300,7 +2296,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.email')
     onEmailChange(newVal: any, oldVal: any) {
@@ -2312,7 +2308,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.xznf')
     onXznfChange(newVal: any, oldVal: any) {
@@ -2324,7 +2320,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.yydj')
     onYydjChange(newVal: any, oldVal: any) {
@@ -2336,7 +2332,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.yydjmc')
     onYydjmcChange(newVal: any, oldVal: any) {
@@ -2348,7 +2344,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.workbegindate')
     onWorkbegindateChange(newVal: any, oldVal: any) {
@@ -2360,7 +2356,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.xzc')
     onXzcChange(newVal: any, oldVal: any) {
@@ -2372,7 +2368,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.yzbm')
     onYzbmChange(newVal: any, oldVal: any) {
@@ -2384,7 +2380,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.jkzk')
     onJkzkChange(newVal: any, oldVal: any) {
@@ -2396,7 +2392,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.ywzdjbs')
     onYwzdjbsChange(newVal: any, oldVal: any) {
@@ -2408,7 +2404,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.tjqk')
     onTjqkChange(newVal: any, oldVal: any) {
@@ -2420,7 +2416,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.profiletype')
     onProfiletypeChange(newVal: any, oldVal: any) {
@@ -2432,7 +2428,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.r_initializeapplydate')
     onR_initializeapplydateChange(newVal: any, oldVal: any) {
@@ -2444,7 +2440,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.bz')
     onBzChange(newVal: any, oldVal: any) {
@@ -2456,7 +2452,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.polity')
     onPolityChange(newVal: any, oldVal: any) {
@@ -2468,7 +2464,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.rdsj')
     onRdsjChange(newVal: any, oldVal: any) {
@@ -2480,7 +2476,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.yglx')
     onYglxChange(newVal: any, oldVal: any) {
@@ -2492,7 +2488,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -2504,7 +2500,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -2516,7 +2512,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.rzqd')
     onRzqdChange(newVal: any, oldVal: any) {
@@ -2528,7 +2524,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.napxmjgwmc')
     onNapxmjgwmcChange(newVal: any, oldVal: any) {
@@ -2540,7 +2536,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.gzbt')
     onGzbtChange(newVal: any, oldVal: any) {
@@ -2552,7 +2548,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.isblacklist')
     onIsblacklistChange(newVal: any, oldVal: any) {
@@ -2564,7 +2560,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.isblacklistreason')
     onIsblacklistreasonChange(newVal: any, oldVal: any) {
@@ -2576,7 +2572,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.sfz')
     onSfzChange(newVal: any, oldVal: any) {
@@ -2588,7 +2584,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.zczs2')
     onZczs2Change(newVal: any, oldVal: any) {
@@ -2600,7 +2596,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.otherfile')
     onOtherfileChange(newVal: any, oldVal: any) {
@@ -2612,7 +2608,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     @Watch('data.qzsm')
     onQzsmChange(newVal: any, oldVal: any) {
@@ -2625,7 +2621,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -2634,7 +2630,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof BHSPBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -2651,7 +2647,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -2971,7 +2967,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -2988,7 +2984,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -3009,7 +3005,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -3034,7 +3030,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -3050,7 +3046,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -3062,7 +3058,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -3078,7 +3074,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -3096,7 +3092,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -3111,7 +3107,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public getValues(): any {
         return this.data;
@@ -3122,7 +3118,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -3140,7 +3136,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -3158,7 +3154,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -3170,7 +3166,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public created(): void {
         this.afterCreated();
@@ -3179,7 +3175,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof BHSP
+     *  @memberof BHSPBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -3236,7 +3232,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -3245,7 +3241,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -3260,7 +3256,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof BHSP
+     * @memberof @memberof BHSPBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -3278,7 +3274,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof BHSP
+     *@memberof @memberof BHSPBase
      */
     public print(){
         let _this:any = this;
@@ -3289,7 +3285,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -3311,7 +3307,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -3332,7 +3328,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -3367,7 +3363,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -3421,7 +3417,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -3472,7 +3468,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3542,7 +3538,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof BHSPBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3576,7 +3572,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3632,7 +3628,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -3708,7 +3704,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -3753,7 +3749,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public onEnter($event: any): void {
     }
@@ -3762,7 +3758,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -3787,7 +3783,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -3810,7 +3806,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -3834,31 +3830,30 @@ export default class BHSPBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof BHSP
+    * @memberof BHSPBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('profiletype')) {
@@ -3877,7 +3872,7 @@ export default class BHSPBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof BHSP
+     * @memberof BHSPBase
      */
     public updateDefault(){                    
         if (this.data.hasOwnProperty('ormorgid') && !this.data.ormorgid) {

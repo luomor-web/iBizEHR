@@ -1,38 +1,38 @@
 
 export default {
   fields: {
-    nd: '年度',
-    pcmgxmlid: '高校名录标识',
-    createman: '建立人',
-    xh: '排序号',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    xxxz: '学校性质',
-    createdate: '建立时间',
-    gxlb: '高校类型（停用）',
-    nationarea: '国家或地区',
-    pcmgxmlname: '高校名称',
+    nd: "年度",
+    pcmgxmlid: "高校名录标识",
+    createman: "建立人",
+    xh: "排序号",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    xxxz: "学校性质",
+    createdate: "建立时间",
+    gxlb: "高校类型（停用）",
+    nationarea: "国家或地区",
+    pcmgxmlname: "高校名称",
   },
 	views: {
 		curndgridview: {
 			caption: "高校名录",
-      title: '高校名录表格视图',
+      		title: "高校名录表格视图",
 		},
 		gxmltreeexpview: {
 			caption: "高校名录",
-      title: '高校名录树导航视图',
+      		title: "高校名录树导航视图",
 		},
 		pickupgridview: {
 			caption: "高校名录",
-      title: '高校名录选择表格视图',
+      		title: "高校名录选择表格视图",
 		},
 		editview: {
 			caption: "高校名录",
-      title: '高校名录编辑视图',
+      		title: "高校名录编辑视图",
 		},
 		mpickupview: {
 			caption: "高校名录",
-      title: '高校名录数据多项选择视图',
+      		title: "高校名录数据多项选择视图",
 		},
 	},
 	main_form: {
@@ -110,7 +110,7 @@ export default {
 	},
 	gxmltree_treeview: {
 		nodes: {
-			root: '默认根节点',
+			root: "默认根节点",
 		},
 		uiactions: {
 		},

@@ -117,11 +117,12 @@
     </layout>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import XD_XZService from './xd-xz-wizardpanel-service';
 
@@ -138,7 +139,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public name?: string;
 
@@ -146,7 +147,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -154,7 +155,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public context: any;
 
@@ -162,7 +163,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public viewparams: any;
 
@@ -171,7 +172,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -179,7 +180,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public getControlType(): string {
         return 'WIZARDPANEL'
@@ -191,7 +192,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -199,7 +200,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {XD_XZService}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public service: XD_XZService = new XD_XZService({ $store: this.$store });
 
@@ -207,7 +208,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmProfileService}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
 
@@ -216,7 +217,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard04_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard04', $event2);
@@ -227,7 +228,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard04_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard04', $event2);
@@ -238,7 +239,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard05_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard05', $event2);
@@ -249,7 +250,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard05_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard05', $event2);
@@ -260,7 +261,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard06_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard06', $event2);
@@ -271,7 +272,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard06_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard06', $event2);
@@ -282,7 +283,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard07_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard07', $event2);
@@ -293,7 +294,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard07_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard07', $event2);
@@ -304,7 +305,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard01_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard01', $event2);
@@ -315,7 +316,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard01_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard01', $event2);
@@ -326,7 +327,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard02_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard02', $event2);
@@ -337,7 +338,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard02_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard02', $event2);
@@ -348,7 +349,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard03_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard03', $event2);
@@ -359,7 +360,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_form_wizard03_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard03', $event2);
@@ -371,7 +372,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -381,7 +382,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -399,7 +400,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 部件行为--init
      *
      * @type {string}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public initAction!: string;
     
@@ -407,7 +408,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 部件行为--finish
      *
      * @type {string}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop() public finishAction!: string;
 
@@ -415,7 +416,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -423,7 +424,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
       * 获取多项数据
       *
       * @returns {any[]}
-      * @memberof XD_XZ
+      * @memberof XD_XZBase
       */
     public getDatas(): any[] {
         return [this.formParam];
@@ -433,7 +434,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
       * 获取单项数据
       *
       * @returns {*}
-      * @memberof XD_XZ
+      * @memberof XD_XZBase
       */
     public getData(): any {
         return this.formParam;
@@ -444,7 +445,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardState: Subject<ViewState> = new Subject();
 
@@ -452,7 +453,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 当前激活表单
      *
      * @type {string}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public activeForm: string = 'wizardpanel_form_wizard01';
 
@@ -460,7 +461,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 向导表单参数
      *
      * @type {*}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public formParam: any = {};
 
@@ -469,7 +470,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Array<string>}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public historyForms: Array<string> = [];
 
@@ -477,7 +478,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 步骤行为集合
      *
      * @type {*}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public stepActions: any = {};
 
@@ -485,21 +486,21 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 向导表单集合
      *
      * @type {Array<any>}
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardForms: Array<any> = [];
 
     /**
      * 当前状态
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public curState = '';
 
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public created(): void {
         this.regFormActions();
@@ -520,7 +521,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public destroyed() {
         if (this.viewStateEvent) {
@@ -531,7 +532,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 注册表单步骤行为
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public regFormActions() {
         this.regFormAction('wizardpanel_form_wizard01', ['NEXT','FINISH']);
@@ -546,7 +547,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 注册表单步骤行为
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public regFormAction(name: string, actions: Array<string>) {
         this.stepActions[name] = actions;
@@ -556,7 +557,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 初始化行为
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public doInit(opt: any = {}) {
         const arg: any = { ...opt };
@@ -581,7 +582,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 表单加载
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public formLoad() {
         if(this.activeForm) {
@@ -592,7 +593,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 完成行为
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public doFinish() {
         let arg: any = {};
@@ -617,7 +618,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} args
      * @param {string} name
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_formload(args: any, name: string, $event2?: any) {
         if(args) {
@@ -630,7 +631,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      *
      * @param {*} args
      * @param {string} name
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public wizardpanel_formsave(args: any, name: string, $event2?: any) {
         Object.assign(this.formParam, args);
@@ -652,7 +653,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 获取下一步向导表单
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public getNextForm() {
         let index = this.wizardForms.indexOf(this.activeForm);
@@ -668,7 +669,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 上一步
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public onClickPrev() {
         const length = this.historyForms.length;
@@ -685,7 +686,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 下一步
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public onClickNext() {
         if(this.activeForm) {
@@ -704,7 +705,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
     /**
      * 完成
      *
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public onClickFinish() {
         if(this.activeForm) {
@@ -724,7 +725,7 @@ export default class XD_XZBase extends Vue implements ControlInterface {
      * 是否禁用
      *
      * @param {string} type
-     * @memberof XD_XZ
+     * @memberof XD_XZBase
      */
     public isDisabled(type: string) {
         const actions: Array<string> = this.stepActions[this.activeForm]

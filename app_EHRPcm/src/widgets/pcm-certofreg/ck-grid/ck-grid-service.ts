@@ -90,6 +90,9 @@ export default class CKService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'PimQualMajorService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.pimqualmajorService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimqualmajorid', 'pimqualmajor');
+        }
 
         return Promise.reject([])
     }
@@ -276,23 +279,11 @@ export default class CKService extends ControlService {
                     response.data.pcmcertofregid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof CKService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-            Object.assign(response.data,{'pcmprofileid':'srfparentkey'});
-        }
     }
 
 

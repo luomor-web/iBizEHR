@@ -397,7 +397,8 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-        const batchAddPSAppViews=[
+        let batchAddPSAppViews:Array<any>=[];
+        batchAddPSAppViews=[
             {view:{viewname:'pcmgxmlmpickup-view',height: 0,width: 0,title: '高校名录数据多项选择视图'},
             res:['PcmGxml'],
             'resAppKey':'pcmgxmlid'},

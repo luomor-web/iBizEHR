@@ -162,6 +162,10 @@ export default class Login extends Vue {
      * @memberof Login
      */
     public handleSubmit(): void {
+        // 清除cookie
+        let leftTime = new Date();
+        leftTime.setTime(leftTime.getSeconds() - 1000);
+        document.cookie = "ibzuaa-token=;expires=" + leftTime.toUTCString();
         const form: any = this.$refs.loginForm;
         let validatestate: boolean = true;
         form.validate((valid: boolean) => {

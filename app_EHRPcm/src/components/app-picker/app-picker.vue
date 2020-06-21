@@ -242,7 +242,7 @@ export default class AppPicker extends Vue {
      * @param {*} oldVal
      * @memberof AppPicker
      */
-    @Watch('value')
+    @Watch('value',{immediate: true})
     public onValueChange(newVal: any, oldVal: any) {
         this.curvalue = newVal;
         if (Object.is(this.editortype, 'dropdown') && this.valueitem) {

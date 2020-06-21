@@ -124,11 +124,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import Serach_RLSB_CSRCYJService from './serach-rlsb-csrcyj-searchform-service';
 
@@ -147,7 +148,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 名称
      *
      * @type {string}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     @Prop() public name?: string;
 
@@ -155,7 +156,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -163,7 +164,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 应用上下文
      *
      * @type {*}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     @Prop() public context: any;
 
@@ -171,7 +172,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 视图参数
      *
      * @type {*}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     @Prop() public viewparams: any;
 
@@ -180,7 +181,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -188,7 +189,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -200,7 +201,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -208,7 +209,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 建构部件服务对象
      *
      * @type {Serach_RLSB_CSRCYJService}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public service: Serach_RLSB_CSRCYJService = new Serach_RLSB_CSRCYJService({ $store: this.$store });
 
@@ -216,7 +217,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 实体服务对象
      *
      * @type {PcmProfileService}
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
     
@@ -226,7 +227,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -236,7 +237,7 @@ export default class Serach_RLSB_CSRCYJBase extends Vue implements ControlInterf
     /**
      *  计数器刷新
      *
-     * @memberof Serach_RLSB_CSRCYJ
+     * @memberof Serach_RLSB_CSRCYJBase
      */
     public counterRefresh(){
         const _this:any =this;
