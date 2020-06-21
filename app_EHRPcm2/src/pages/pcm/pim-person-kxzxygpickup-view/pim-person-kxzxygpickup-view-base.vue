@@ -248,7 +248,7 @@ export default class PimPersonKXZXYGPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PimPersonKXZXYGPickupView
+     * @memberof PimPersonKXZXYGPickupViewBase
      */
     public selectedData: string = "";
 

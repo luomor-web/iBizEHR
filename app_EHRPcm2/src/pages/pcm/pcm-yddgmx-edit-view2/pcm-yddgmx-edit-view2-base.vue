@@ -716,7 +716,7 @@ export default class PcmYddgmxEditView2Base extends EditView2Base {
      * 选中数据
      *
      * @type {*}
-     * @memberof PcmYddgmxEditView2
+     * @memberof PcmYddgmxEditView2Base
      */
     public selection: any = {};
 

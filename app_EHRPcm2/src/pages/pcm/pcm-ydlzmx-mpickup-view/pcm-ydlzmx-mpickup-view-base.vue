@@ -292,7 +292,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
      * 是否显示按钮
      *
      * @type {boolean}
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     @Prop({default: true}) public isShowButton!: boolean;
     
@@ -300,7 +300,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public selectedData: string = "";
 
@@ -308,25 +308,23 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
      * 是否初始化已选中项
      *
      * @type {any[]}
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public isInitSelected:boolean = false;
     
     /**
      * 是否单选
      *
-     * @type {boolean}
-     * @memberof PcmYdlzmxMPickupView
+     * @type {any[]}
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public isSingleSelect: boolean = false;
 
     /**
      * 视图参数变更
      *
-     * @protected
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof PcmYdlzmxMPickupView
+     * @type {boolean}
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     protected viewParamChange(newVal: any, oldVal: any): void {
         if(this.viewparams.selectedData){
@@ -351,7 +349,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
      * 选中数据单击
      *
      * @param {*} item
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public selectionsClick(item:any):void {
         item._select = !item._select;
@@ -363,7 +361,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
      * 选中树双击
      *
      * @param {*} item
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public selectionsDBLClick(item:any):void {
         const index: number = this.viewSelections.findIndex((selection: any) => Object.is(selection.srfkey, item.srfkey));
@@ -378,7 +376,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 删除右侧全部选中数据
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onCLickLeft():void {
         const _selectiions = [...JSON.parse(JSON.stringify(this.viewSelections))];
@@ -399,7 +397,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 添加左侧选中数据
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onCLickRight():void {
         Object.values(this.containerModel).forEach((model: any) => {
@@ -425,7 +423,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 选中数据全部删除
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onCLickAllLeft():void {
         this.viewSelections = [];
@@ -437,7 +435,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 添加左侧面板所有数据到右侧
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onCLickAllRight():void {
         Object.values(this.containerModel).forEach((model: any) => {
@@ -464,7 +462,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 确定
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onClickOk(): void {
         this.$emit('viewdataschange', this.viewSelections);
@@ -474,7 +472,7 @@ export default class PcmYdlzmxMPickupViewBase extends MPickupViewBase {
     /**
      * 取消
      *
-     * @memberof PcmYdlzmxMPickupView
+     * @memberof PcmYdlzmxMPickupViewBase
      */
     public onClickCancel(): void {
         this.$emit('close', null);

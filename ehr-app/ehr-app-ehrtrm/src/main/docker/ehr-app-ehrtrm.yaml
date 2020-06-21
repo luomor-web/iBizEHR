@@ -3,12 +3,12 @@ services:
   ehr-app-ehrtrm:
     image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrtrm:latest
     ports:
-      - "6082:6082"
+      - "6094:6094"
     networks:
       - agent_network
     environment:
       - SPRING_CLOUD_NACOS_DISCOVERY_IP=172.16.240.110
-      - SERVER_PORT=6082
+      - SERVER_PORT=6094
       - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=172.16.240.110:8848
       - SPRING_REDIS_HOST=127.0.0.1
       - SPRING_REDIS_PORT=6379
@@ -18,7 +18,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://172.16.186.185:3306/a_LAB01_bd0ca3178?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.jdbc.Driver
       - SPRING_DATASOURCE_DEFAULTSCHEMA=a_LAB01_bd0ca3178
-      - DEVMODE=false
       - CAS=https://passport.ibizlab.cn
       - NACOS=172.16.240.110:8848
     deploy:

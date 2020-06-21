@@ -66,11 +66,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import YDRYInfoSearchFormService from './ydryinfo-search-form-searchform-service';
 
@@ -89,7 +90,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 名称
      *
      * @type {string}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     @Prop() public name?: string;
 
@@ -97,7 +98,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -105,7 +106,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 应用上下文
      *
      * @type {*}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     @Prop() public context: any;
 
@@ -113,7 +114,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 视图参数
      *
      * @type {*}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     @Prop() public viewparams: any;
 
@@ -122,7 +123,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -130,7 +131,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -142,7 +143,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -150,7 +151,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 建构部件服务对象
      *
      * @type {YDRYInfoSearchFormService}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public service: YDRYInfoSearchFormService = new YDRYInfoSearchFormService({ $store: this.$store });
 
@@ -158,7 +159,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -168,7 +169,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
      * 关闭视图
      *
      * @param {any} args
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -178,7 +179,7 @@ export default class YDRYInfoSearchFormBase extends Vue implements ControlInterf
     /**
      *  计数器刷新
      *
-     * @memberof YDRYInfoSearchForm
+     * @memberof YDRYInfoSearchFormBase
      */
     public counterRefresh(){
         const _this:any =this;

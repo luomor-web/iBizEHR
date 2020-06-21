@@ -122,7 +122,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'bxglgridview', parameterName: 'bxglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -140,7 +145,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'glgridview', parameterName: 'glgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -158,7 +168,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'jdglgridview', parameterName: 'jdglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -176,7 +191,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'dgglgridview', parameterName: 'dgglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -194,7 +214,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ddmgrgridview', parameterName: 'ddmgrgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -212,7 +237,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'txglgridview', parameterName: 'txglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -230,7 +260,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'approavlgridview', parameterName: 'approavlgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -248,7 +283,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'sqjxqzzgridview', parameterName: 'sqjxqzzgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -266,7 +306,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ntglgridview', parameterName: 'ntglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -284,7 +329,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'glgridview', parameterName: 'glgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -302,7 +352,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'approvalgridview', parameterName: 'approvalgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -320,7 +375,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'glgridview', parameterName: 'glgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -338,7 +398,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'sqsyqzzgridview', parameterName: 'sqsyqzzgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
 
     public render(): any {

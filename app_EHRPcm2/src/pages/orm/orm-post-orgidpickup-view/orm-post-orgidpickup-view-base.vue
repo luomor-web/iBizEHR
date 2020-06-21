@@ -248,7 +248,7 @@ export default class OrmPostORGIDPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof OrmPostORGIDPickupView
+     * @memberof OrmPostORGIDPickupViewBase
      */
     public selectedData: string = "";
 

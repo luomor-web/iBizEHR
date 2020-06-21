@@ -248,7 +248,7 @@ export default class PcmRecruitmentPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PcmRecruitmentPickupView
+     * @memberof PcmRecruitmentPickupViewBase
      */
     public selectedData: string = "";
 
