@@ -1,59 +1,59 @@
 
 export default {
   fields: {
-    orgcode: '组织编号',
-    ormsignorgid: '法人主体标识',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    zzjc: '简称',
-    createman: '建立人',
-    createdate: '建立时间',
-    ormsignorgname: '法人主体名称',
+    orgcode: "组织编号",
+    ormsignorgid: "法人主体标识",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    zzjc: "简称",
+    createman: "建立人",
+    createdate: "建立时间",
+    ormsignorgname: "法人主体名称",
   },
 	views: {
 		editview2: {
 			caption: "法人主体",
-      title: '法人主体编辑视图',
+      		title: "法人主体编辑视图",
 		},
 		htqddwpickupgridview: {
 			caption: "合同签订单位选择",
-      title: '合同签订单位选择',
+      		title: "合同签订单位选择",
 		},
 		htqddwwpickupview: {
 			caption: "合同签订单位选择",
-      title: '合同签订单位选择',
+      		title: "合同签订单位选择",
 		},
 		pickupgridview: {
 			caption: "法人主体",
-      title: '法人主体选择表格视图',
+      		title: "法人主体选择表格视图",
 		},
 		editview: {
 			caption: "法人主体",
-      title: '法人主体编辑视图',
+      		title: "法人主体编辑视图",
 		},
 		gridview: {
 			caption: "法人主体维护",
-      title: '法人主体维护',
+      		title: "法人主体维护",
 		},
 		bdwpickupgridview: {
 			caption: "注册单位选择",
-      title: '注册单位选择',
+      		title: "注册单位选择",
 		},
 		bdwpickupview: {
 			caption: "注册单位选择",
-      title: '注册单位选择',
+      		title: "注册单位选择",
 		},
 		redirectview: {
 			caption: "法人主体",
-      title: '法人主体数据重定向视图',
+      		title: "法人主体数据重定向视图",
 		},
 		mpickupview: {
 			caption: "法人主体",
-      title: '法人主体数据多项选择视图',
+      		title: "法人主体数据多项选择视图",
 		},
 		pickupview: {
 			caption: "法人主体",
-      title: '法人主体数据选择视图',
+      		title: "法人主体数据选择视图",
 		},
 	},
 	main_form: {

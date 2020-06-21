@@ -322,7 +322,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     @Prop() public selectedData?: string;
 
@@ -330,7 +330,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -338,7 +338,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     public query: string = '';
 
@@ -346,7 +346,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     public isExpandSearchForm: boolean = true;
 
@@ -357,7 +357,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -365,7 +365,7 @@ export default class ORMERPORGLegalPickupGridViewBase extends PickupViewBase {
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof ORMERPORGLegalPickupGridView
+     * @memberof ORMERPORGLegalPickupGridViewBase
      */
     public onSearch($event: any): void {
         const refs: any = this.$refs;

@@ -1,76 +1,76 @@
 
 export default {
   fields: {
-    ormdutyid: '职务标识',
-    fglx: '职务编码',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    xh: '排序号',
-    createman: '建立人',
-    zwjb: '职务级别',
-    createdate: '建立时间',
-    dyzj: '对应职级',
-    nx: '建议交流年限',
-    zwlb: '层级',
-    bxjlnx: '必须交流年限',
-    ormdutyname: '职务',
+    ormdutyid: "职务标识",
+    fglx: "职务编码",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    xh: "排序号",
+    createman: "建立人",
+    zwjb: "职务级别",
+    createdate: "建立时间",
+    dyzj: "对应职级",
+    nx: "建议交流年限",
+    zwlb: "层级",
+    bxjlnx: "必须交流年限",
+    ormdutyname: "职务",
   },
 	views: {
 		estmanpickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		gridview: {
 			caption: "职务设置",
-      title: '职务设置',
+      		title: "职务设置",
 		},
 		pickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		estmanpickupgridview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		orgsectorpickupgridview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		mpickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		orgsectorpickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		redirectview: {
 			caption: "职务管理",
-      title: '职务管理数据重定向视图',
+      		title: "职务管理数据重定向视图",
 		},
 		estmanmpickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		editview2: {
 			caption: "职务管理",
-      title: '职务管理编辑视图',
+      		title: "职务管理编辑视图",
 		},
 		ormorgsectorpickupview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		ormorgsectorpickupgridview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 		editview: {
 			caption: "职务设置",
-      title: '职务设置',
+      		title: "职务设置",
 		},
 		pickupgridview: {
 			caption: "职务库",
-      title: '职务库',
+      		title: "职务库",
 		},
 	},
 	main_form: {

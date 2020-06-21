@@ -1,47 +1,47 @@
 
 export default {
   fields: {
-    updateman: '更新人',
-    contractsignorgname: '签约主体单位名称',
-    contractsignorgid: '签约主体单位标识',
-    createman: '建立人',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    enable: '逻辑有效标志',
-    isdefaultsignorg: '默认签约主体',
-    ormsignorgname: '法人主体名称',
-    ormorgname: '管理单位名称',
-    ormsignorgid: '法人主体标识',
-    ormorgid: '管理单位标识',
+    updateman: "更新人",
+    contractsignorgname: "签约主体单位名称",
+    contractsignorgid: "签约主体单位标识",
+    createman: "建立人",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    enable: "逻辑有效标志",
+    isdefaultsignorg: "默认签约主体",
+    ormsignorgname: "法人主体名称",
+    ormorgname: "管理单位名称",
+    ormsignorgid: "法人主体标识",
+    ormorgid: "管理单位标识",
   },
 	views: {
 		redirectview: {
 			caption: "签约主体单位",
-      title: '签约主体单位数据重定向视图',
+      		title: "签约主体单位数据重定向视图",
 		},
 		gridview: {
 			caption: "法人主体设置",
-      title: '法人主体设置',
+      		title: "法人主体设置",
 		},
 		pickupview: {
 			caption: "签约主体单位",
-      title: '签约主体单位数据选择视图',
+      		title: "签约主体单位数据选择视图",
 		},
 		pickupgridview: {
 			caption: "签约主体单位",
-      title: '签约主体单位选择表格视图',
+      		title: "签约主体单位选择表格视图",
 		},
 		mpickupview: {
 			caption: "签约主体单位",
-      title: '签约主体单位数据多项选择视图',
+      		title: "签约主体单位数据多项选择视图",
 		},
 		editview: {
 			caption: "签约主体单位",
-      title: '法人主体设置编辑视图',
+      		title: "法人主体设置编辑视图",
 		},
 		editview2: {
 			caption: "签约主体单位",
-      title: '签约主体单位编辑视图',
+      		title: "签约主体单位编辑视图",
 		},
 	},
 	main_form: {

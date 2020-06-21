@@ -46,11 +46,12 @@
     </split>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrgTreeExpViewtreeexpbarService from './org-tree-exp-viewtreeexpbar-treeexpbar-service';
 
@@ -67,7 +68,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 名称
      *
      * @type {string}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     @Prop() public name?: string;
 
@@ -75,7 +76,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -83,7 +84,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     @Prop() public context: any;
 
@@ -91,7 +92,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     @Prop() public viewparams: any;
 
@@ -100,7 +101,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -108,7 +109,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public getControlType(): string {
         return 'TREEEXPBAR'
@@ -120,7 +121,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -128,7 +129,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 建构部件服务对象
      *
      * @type {OrgTreeExpViewtreeexpbarService}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public service: OrgTreeExpViewtreeexpbarService = new OrgTreeExpViewtreeexpbarService({ $store: this.$store });
 
@@ -136,7 +137,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 实体服务对象
      *
      * @type {OrmOrgService}
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public appEntityService: OrmOrgService = new OrmOrgService({ $store: this.$store });
 
@@ -145,7 +146,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public treeexpbar_tree_selectionchange($event: any, $event2?: any) {
         this.treeexpbar_selectionchange($event, 'treeexpbar_tree', $event2);
@@ -156,7 +157,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public treeexpbar_tree_load($event: any, $event2?: any) {
         this.treeexpbar_load($event, 'treeexpbar_tree', $event2);
@@ -168,7 +169,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -178,7 +179,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
     /**
      *  计数器刷新
      *
-     * @memberof OrgTreeExpViewtreeexpbar
+     * @memberof OrgTreeExpViewtreeexpbarBase
      */
     public counterRefresh(){
         const _this:any =this;

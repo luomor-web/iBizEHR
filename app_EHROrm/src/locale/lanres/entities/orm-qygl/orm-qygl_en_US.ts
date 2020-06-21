@@ -1,45 +1,45 @@
 
 export default {
   fields: {
-    ormqyglname: '区域名称',
-    updateman: '更新人',
-    createdate: '建立时间',
-    ormqyglid: '区域标识',
-    bzsm: '备注说明',
-    createman: '建立人',
-    updatedate: '更新时间',
-    xh: '排序号',
-    ormorgname: '组织',
-    ormorgid: '组织ID',
+    ormqyglname: "区域名称",
+    updateman: "更新人",
+    createdate: "建立时间",
+    ormqyglid: "区域标识",
+    bzsm: "备注说明",
+    createman: "建立人",
+    updatedate: "更新时间",
+    xh: "排序号",
+    ormorgname: "组织",
+    ormorgid: "组织ID",
   },
 	views: {
 		pickupview: {
 			caption: "区域补贴",
-      title: '区域补贴',
+      		title: "区域补贴",
 		},
 		mpickupview: {
 			caption: "补贴标准",
-      title: '区域管理数据多项选择视图',
+      		title: "区域管理数据多项选择视图",
 		},
 		editview2: {
 			caption: "补贴标准",
-      title: '区域管理编辑视图',
+      		title: "区域管理编辑视图",
 		},
 		gridview: {
 			caption: "区域补贴",
-      title: '区域补贴',
+      		title: "区域补贴",
 		},
 		pickupgridview: {
 			caption: "区域补贴",
-      title: '区域补贴',
+      		title: "区域补贴",
 		},
 		editview: {
 			caption: "区域补贴",
-      title: '区域补贴',
+      		title: "区域补贴",
 		},
 		redirectview: {
 			caption: "补贴标准",
-      title: '区域管理数据重定向视图',
+      		title: "区域管理数据重定向视图",
 		},
 	},
 	main_form: {

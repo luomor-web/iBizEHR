@@ -1,44 +1,44 @@
 
 export default {
   fields: {
-    ormorgrelationname: '组织名称',
-    updateman: '更新人',
-    createman: '建立人',
-    ormorgrelationid: '组织ID',
-    updatedate: '更新时间',
-    magunitid: '管理单位ID',
-    orgcode: '组织编码',
-    managementunits: '管理单位',
-    createdate: '建立时间',
+    ormorgrelationname: "组织名称",
+    updateman: "更新人",
+    createman: "建立人",
+    ormorgrelationid: "组织ID",
+    updatedate: "更新时间",
+    magunitid: "管理单位ID",
+    orgcode: "组织编码",
+    managementunits: "管理单位",
+    createdate: "建立时间",
   },
 	views: {
 		editview2: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表编辑视图',
+      		title: "组织管理关系表编辑视图",
 		},
 		pickupgridview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表选择表格视图',
+      		title: "组织管理关系表选择表格视图",
 		},
 		gridview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表表格视图',
+      		title: "组织管理关系表表格视图",
 		},
 		redirectview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表数据重定向视图',
+      		title: "组织管理关系表数据重定向视图",
 		},
 		editview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表编辑视图',
+      		title: "组织管理关系表编辑视图",
 		},
 		pickupview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表数据选择视图',
+      		title: "组织管理关系表数据选择视图",
 		},
 		mpickupview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表数据多项选择视图',
+      		title: "组织管理关系表数据多项选择视图",
 		},
 	},
 	main_form: {

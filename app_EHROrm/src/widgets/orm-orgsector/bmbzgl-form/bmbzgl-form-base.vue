@@ -172,11 +172,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import BMBZGLService from './bmbzgl-form-service';
 
@@ -195,7 +196,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public name?: string;
 
@@ -203,7 +204,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -211,7 +212,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public context: any;
 
@@ -219,7 +220,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public viewparams: any;
 
@@ -228,7 +229,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -236,7 +237,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -248,7 +249,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -256,7 +257,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {BMBZGLService}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public service: BMBZGLService = new BMBZGLService({ $store: this.$store });
 
@@ -264,7 +265,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {OrmOrgsectorService}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public appEntityService: OrmOrgsectorService = new OrmOrgsectorService({ $store: this.$store });
     
@@ -274,7 +275,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -284,7 +285,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -301,7 +302,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public srfwfmemo:string = "";
     
@@ -309,7 +310,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -319,7 +320,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public getData(): any {
         return this.data;
@@ -329,7 +330,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -337,7 +338,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -345,7 +346,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -353,7 +354,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -361,7 +362,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public updateAction!: string;
     
@@ -369,7 +370,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public removeAction!: string;
     
@@ -377,7 +378,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -385,7 +386,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public loadAction!: string;
     
@@ -393,7 +394,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public createAction!: string;
 
@@ -401,7 +402,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public searchAction!: string;
 
@@ -409,7 +410,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Prop() public viewtag!: string;
 
@@ -417,7 +418,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -425,7 +426,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -434,7 +435,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -443,7 +444,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -452,7 +453,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public oldData: any = {};
 
@@ -460,7 +461,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -495,7 +496,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof BMBZGL
+      * @memberof BMBZGLBase
       */
     public currentAction: string = "";
 
@@ -503,7 +504,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof BMBZGL
+      * @memberof BMBZGLBase
       */
     public drcounter: number = 0;
 
@@ -511,7 +512,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof BMBZGL
+      * @memberof BMBZGLBase
       */
     public drsaveopt: any = {};
 
@@ -519,7 +520,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof BMBZGL
+      * @memberof BMBZGLBase
       */
     public saveState:any ;
 
@@ -527,7 +528,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -686,7 +687,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '部门/项目部信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.ormorgsector.bmbzgl_form', extractMode: 'ITEM', details: [] } })
@@ -750,7 +751,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -762,7 +763,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -774,7 +775,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -786,7 +787,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -798,7 +799,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -810,7 +811,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -822,7 +823,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -834,7 +835,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -846,7 +847,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.ordervalue')
     onOrdervalueChange(newVal: any, oldVal: any) {
@@ -858,7 +859,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgsectorname')
     onOrgsectornameChange(newVal: any, oldVal: any) {
@@ -870,7 +871,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgcode')
     onOrgcodeChange(newVal: any, oldVal: any) {
@@ -882,7 +883,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.shortname')
     onShortnameChange(newVal: any, oldVal: any) {
@@ -894,7 +895,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.bmlx')
     onBmlxChange(newVal: any, oldVal: any) {
@@ -906,7 +907,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgname')
     onOrgnameChange(newVal: any, oldVal: any) {
@@ -918,7 +919,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.belongregion')
     onBelongregionChange(newVal: any, oldVal: any) {
@@ -930,7 +931,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.qy')
     onQyChange(newVal: any, oldVal: any) {
@@ -942,7 +943,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.gkjz')
     onGkjzChange(newVal: any, oldVal: any) {
@@ -954,7 +955,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.bmbzrs')
     onBmbzrsChange(newVal: any, oldVal: any) {
@@ -966,7 +967,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.sjbzrs')
     onSjbzrsChange(newVal: any, oldVal: any) {
@@ -978,7 +979,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.startstopsign')
     onStartstopsignChange(newVal: any, oldVal: any) {
@@ -990,7 +991,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.belongou')
     onBelongouChange(newVal: any, oldVal: any) {
@@ -1002,7 +1003,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgid')
     onOrgidChange(newVal: any, oldVal: any) {
@@ -1014,7 +1015,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.referjoblevel')
     onReferjoblevelChange(newVal: any, oldVal: any) {
@@ -1026,7 +1027,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgtype')
     onOrgtypeChange(newVal: any, oldVal: any) {
@@ -1038,7 +1039,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     @Watch('data.orgsectorid')
     onOrgsectoridChange(newVal: any, oldVal: any) {
@@ -1051,7 +1052,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1060,7 +1061,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof BMBZGLBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1077,7 +1078,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1142,7 +1143,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1159,7 +1160,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1180,7 +1181,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1205,7 +1206,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1221,7 +1222,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1233,7 +1234,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1249,7 +1250,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1267,7 +1268,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1282,7 +1283,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public getValues(): any {
         return this.data;
@@ -1293,7 +1294,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1311,7 +1312,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1329,7 +1330,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1341,7 +1342,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public created(): void {
         this.afterCreated();
@@ -1350,7 +1351,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof BMBZGL
+     *  @memberof BMBZGLBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1407,7 +1408,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1416,7 +1417,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1431,7 +1432,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof BMBZGL
+     * @memberof @memberof BMBZGLBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1449,7 +1450,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof BMBZGL
+     *@memberof @memberof BMBZGLBase
      */
     public print(){
         let _this:any = this;
@@ -1460,7 +1461,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1482,7 +1483,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1503,7 +1504,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1538,7 +1539,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1592,7 +1593,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1643,7 +1644,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1713,7 +1714,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof BMBZGLBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1747,7 +1748,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1803,7 +1804,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1879,7 +1880,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1924,7 +1925,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public onEnter($event: any): void {
     }
@@ -1933,7 +1934,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1958,7 +1959,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1981,7 +1982,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2005,31 +2006,30 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof BMBZGL
+    * @memberof BMBZGLBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('gkjz')) {
@@ -2042,7 +2042,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof BMBZGL
+     * @memberof BMBZGLBase
      */
     public updateDefault(){                    
     }

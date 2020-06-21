@@ -1,48 +1,48 @@
 
 export default {
   fields: {
-    gwzzsm: '岗位职责说明',
-    updateman: '更新人',
-    ormbmgwbzid: '部门岗位编制标识',
-    createdate: '建立时间',
-    createman: '建立人',
-    xh: '排序号',
-    updatedate: '更新时间',
-    numcompilation: '人数编制',
-    ormbmgwbzname: '部门岗位编制名称',
-    ormpostname: '岗位',
-    ormgwbzmc: '岗位编制',
-    ormpostid: '岗位ID',
-    ormgwbzid: '岗位编制ID',
+    gwzzsm: "岗位职责说明",
+    updateman: "更新人",
+    ormbmgwbzid: "部门岗位编制标识",
+    createdate: "建立时间",
+    createman: "建立人",
+    xh: "排序号",
+    updatedate: "更新时间",
+    numcompilation: "人数编制",
+    ormbmgwbzname: "部门岗位编制名称",
+    ormpostname: "岗位",
+    ormgwbzmc: "岗位编制",
+    ormpostid: "岗位ID",
+    ormgwbzid: "岗位编制ID",
   },
 	views: {
 		pickupgridview: {
 			caption: "部门岗位编制",
-      title: '部门岗位编制选择表格视图',
+      		title: "部门岗位编制选择表格视图",
 		},
 		redirectview: {
 			caption: "部门岗位编制",
-      title: '部门岗位编制数据重定向视图',
+      		title: "部门岗位编制数据重定向视图",
 		},
 		editview2: {
 			caption: "部门岗位编制",
-      title: '部门岗位编制编辑视图',
+      		title: "部门岗位编制编辑视图",
 		},
 		pickupview: {
 			caption: "部门岗位编制",
-      title: '部门岗位编制数据选择视图',
+      		title: "部门岗位编制数据选择视图",
 		},
 		editview: {
 			caption: "岗位编制明细",
-      title: '岗位编制明细',
+      		title: "岗位编制明细",
 		},
 		mpickupview: {
 			caption: "部门岗位编制",
-      title: '部门岗位编制数据多项选择视图',
+      		title: "部门岗位编制数据多项选择视图",
 		},
 		gridview: {
 			caption: "岗位编制明细",
-      title: '岗位编制明细',
+      		title: "岗位编制明细",
 		},
 	},
 	main_form: {
