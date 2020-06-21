@@ -72,7 +72,7 @@
   name="isdefaultsignorg" 
   :localContext ='{ }' 
   :localParam ='{ }' 
-  tag='EhrCodeList0401' 
+  tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">
 </app-radio-group>

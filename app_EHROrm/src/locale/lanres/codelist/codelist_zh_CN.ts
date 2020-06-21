@@ -127,4 +127,9 @@ export default {
         "20": "柔性",
         "empty": "",
     },
+    EhrCodeList0400: {
+        "1": "是",
+        "0": "否",
+        "empty": "",
+    },
 };

@@ -129,22 +129,22 @@
              <dropdown-list 
               v-model="row[column.property]" 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              style="width: 100px;" 
               :data="row" 
               :context="context"
               :viewparams="viewparams" 
               :localContext ='{ }' 
               :localParam ='{ }' 
-              tag='EhrCodeList0401' 
+              tag='EhrCodeList0400' 
               codelistType='STATIC'
               placeholder='请选择...' 
+              style="" 
               @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
              </dropdown-list>
             
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-            <codelist :value="row.isdefaultsignorg" tag='EhrCodeList0401' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.isdefaultsignorg" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1061,11 +1061,11 @@ export default class MainBase extends Vue implements ControlInterface {
         let codelistColumns:Array<any> = [
           {
             name: 'isdefaultsignorg',
-            srfkey: 'EhrCodeList0401',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
+            renderMode: 'number',
             textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
+            valueSeparator: ',',
           },
         ];
         let _this = this;
