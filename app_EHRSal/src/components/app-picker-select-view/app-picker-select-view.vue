@@ -324,10 +324,10 @@ export default class AppPickerSelectView extends Vue {
                         this.items.push({ srfmajortext : item.srfmajortext, srfkey: item.srfkey });
                     }
                 });
-                let _viewparam = JSON.parse(this.viewparam);
-                _viewparam.selectedData = this.selectItems;
-                this.viewparam = JSON.stringify(_viewparam);
             }
+            let _viewparam = JSON.parse(this.viewparam);
+            _viewparam.selectedData = this.selectItems;
+            this.viewparam = JSON.stringify(_viewparam);
         }
         this.$forceUpdate();
     }

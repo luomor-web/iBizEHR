@@ -548,7 +548,8 @@ export default class SalSchemeItemGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-        const batchAddPSAppViews=[
+        let batchAddPSAppViews:Array<any>=[];
+        batchAddPSAppViews=[
             {view:{viewname:'sal-scheme-mpickup-view',height: 0,width: 0,title: '薪酬方案数据多项选择视图'},
             res:['SalScheme'],
             'resAppKey':'salschemeid'},

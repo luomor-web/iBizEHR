@@ -1,37 +1,37 @@
 
 export default {
   fields: {
-    salrulename: '薪酬规则名称',
-    enable: '逻辑有效标志',
-    memo: '备注',
-    createdate: '建立时间',
-    salruleid: '薪酬规则标识',
-    createman: '建立人',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    salparamname: '薪酬计算指标名称',
-    salparamid: '薪酬计算指标标识',
+    salrulename: "薪酬规则名称",
+    enable: "逻辑有效标志",
+    memo: "备注",
+    createdate: "建立时间",
+    salruleid: "薪酬规则标识",
+    createman: "建立人",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    salparamname: "薪酬计算指标名称",
+    salparamid: "薪酬计算指标标识",
   },
 	views: {
 		mpickupview: {
 			caption: "薪酬规则",
-      title: '薪酬规则数据多项选择视图',
+      		title: "薪酬规则数据多项选择视图",
 		},
 		editview: {
 			caption: "薪酬规则",
-      title: '薪酬规则编辑视图',
+      		title: "薪酬规则编辑视图",
 		},
 		pickupview: {
 			caption: "薪酬规则",
-      title: '薪酬规则数据选择视图',
+      		title: "薪酬规则数据选择视图",
 		},
 		gridview: {
 			caption: "薪酬规则",
-      title: '薪酬规则表格视图',
+      		title: "薪酬规则表格视图",
 		},
 		pickupgridview: {
 			caption: "薪酬规则",
-      title: '薪酬规则选择表格视图',
+      		title: "薪酬规则选择表格视图",
 		},
 	},
 	main_form: {
