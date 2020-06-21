@@ -56,7 +56,7 @@
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '600px !important',}"  :lg="{ span: 24, offset: 0 }">
+        <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '800px !important',}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
     
     :formState="formState"
@@ -78,7 +78,7 @@
     viewname='soc-archives-detail-grid-view' 
     :data="JSON.stringify(this.data)" 
     @drdatasaved="drdatasaved($event)"
-    style="height:600px;overflow: auto;">
+    style="height:800px;overflow: auto;">
 </app-form-druipart>
 
 </i-col>
