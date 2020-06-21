@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class AttEndenceSetupKQSZTreeExpViewBase extends TreeExpViewBase 
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof AttEndenceSetupKQSZTreeExpView
+     * @memberof AttEndenceSetupKQSZTreeExpViewBase
      */
     public viewUID: string = 'att-att-endence-setup-kqsztree-exp-view';
 

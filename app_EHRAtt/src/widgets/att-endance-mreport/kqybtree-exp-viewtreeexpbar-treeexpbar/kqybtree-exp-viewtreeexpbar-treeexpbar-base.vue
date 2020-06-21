@@ -43,11 +43,12 @@
     </split>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import AttEndanceMreportService from '@/service/att-endance-mreport/att-endance-mreport-service';
 import KQYBTreeExpViewtreeexpbarService from './kqybtree-exp-viewtreeexpbar-treeexpbar-service';
 
@@ -64,7 +65,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 名称
      *
      * @type {string}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     @Prop() public name?: string;
 
@@ -72,7 +73,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -80,7 +81,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 应用上下文
      *
      * @type {*}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     @Prop() public context: any;
 
@@ -88,7 +89,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 视图参数
      *
      * @type {*}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     @Prop() public viewparams: any;
 
@@ -97,7 +98,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -105,7 +106,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public getControlType(): string {
         return 'TREEEXPBAR'
@@ -117,7 +118,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -125,7 +126,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 建构部件服务对象
      *
      * @type {KQYBTreeExpViewtreeexpbarService}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public service: KQYBTreeExpViewtreeexpbarService = new KQYBTreeExpViewtreeexpbarService({ $store: this.$store });
 
@@ -133,7 +134,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 实体服务对象
      *
      * @type {AttEndanceMreportService}
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public appEntityService: AttEndanceMreportService = new AttEndanceMreportService({ $store: this.$store });
 
@@ -142,7 +143,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public treeexpbar_tree_selectionchange($event: any, $event2?: any) {
         this.treeexpbar_selectionchange($event, 'treeexpbar_tree', $event2);
@@ -153,7 +154,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public treeexpbar_tree_load($event: any, $event2?: any) {
         this.treeexpbar_load($event, 'treeexpbar_tree', $event2);
@@ -165,7 +166,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
      * 关闭视图
      *
      * @param {any} args
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -175,7 +176,7 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
     /**
      *  计数器刷新
      *
-     * @memberof KQYBTreeExpViewtreeexpbar
+     * @memberof KQYBTreeExpViewtreeexpbarBase
      */
     public counterRefresh(){
         const _this:any =this;

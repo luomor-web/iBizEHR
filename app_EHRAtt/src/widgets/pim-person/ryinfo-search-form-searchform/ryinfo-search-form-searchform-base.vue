@@ -82,11 +82,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import RYInfoSearchFormService from './ryinfo-search-form-searchform-service';
 
@@ -105,7 +106,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 名称
      *
      * @type {string}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     @Prop() public name?: string;
 
@@ -113,7 +114,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -121,7 +122,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 应用上下文
      *
      * @type {*}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     @Prop() public context: any;
 
@@ -129,7 +130,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 视图参数
      *
      * @type {*}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     @Prop() public viewparams: any;
 
@@ -138,7 +139,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -146,7 +147,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -158,7 +159,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -166,7 +167,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 建构部件服务对象
      *
      * @type {RYInfoSearchFormService}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public service: RYInfoSearchFormService = new RYInfoSearchFormService({ $store: this.$store });
 
@@ -174,7 +175,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -184,7 +185,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      * 关闭视图
      *
      * @param {any} args
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -194,7 +195,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
     /**
      *  计数器刷新
      *
-     * @memberof RYInfoSearchForm
+     * @memberof RYInfoSearchFormBase
      */
     public counterRefresh(){
         const _this:any =this;

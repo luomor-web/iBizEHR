@@ -132,13 +132,16 @@ export class Interceptors {
      * @memberof Interceptors
      */
     private doNoLogin(data: any = {}): void {
-        // 清除user和token
+        // 清除user、token和cookie
         if(localStorage.getItem('user')){
             localStorage.removeItem('user');
         }
         if(localStorage.getItem('token')){
             localStorage.removeItem('token');
         }
+        let leftTime = new Date();
+        leftTime.setTime(leftTime.getSeconds() - 1);
+        document.cookie = "ibzuaa-token=;expires=" + leftTime.toUTCString();
         if (data.loginurl && !Object.is(data.loginurl, '') && data.originurl && !Object.is(data.originurl, '')) {
             let _url = encodeURIComponent(encodeURIComponent(window.location.href));
             let loginurl: string = data.loginurl;
