@@ -1,5 +1,5 @@
 server:
-  port: 6099
+  port: 36099
 #Log配置
 logging:
   level:
