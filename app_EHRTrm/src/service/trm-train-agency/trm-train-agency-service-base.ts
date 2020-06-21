@@ -62,51 +62,6 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let trmcoursesystemsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
-            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
-            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
-                trmcoursesystemsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmcoursesystemid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmcoursesystems = trmcoursesystemsData;
-        let trmhmatsersData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
-            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
-            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
-                trmhmatsersData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmhmatserid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmhmatsers = trmhmatsersData;
-        let trmtrainagenciesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
-            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
-            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
-                trmtrainagenciesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainagencyid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainagencies = trmtrainagenciesData;
         let trmtrainteachersData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers'),'undefined')){
             trmtrainteachersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers') as any);
@@ -122,6 +77,21 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmtrainteachers = trmtrainteachersData;
+        let trmhmatsersData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
+            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
+            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
+                trmhmatsersData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmhmatserid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmhmatsers = trmhmatsersData;
         let trmcouarrangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges'),'undefined')){
             trmcouarrangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges') as any);
@@ -137,13 +107,43 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmcouarranges = trmcouarrangesData;
+        let trmtrainagenciesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
+            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
+            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
+                trmtrainagenciesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainagencyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainagencies = trmtrainagenciesData;
+        let trmcoursesystemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
+            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
+            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
+                trmcoursesystemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmcoursesystemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmcoursesystems = trmcoursesystemsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainteachers',JSON.stringify(res.data.trmtrainteachers));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
             this.tempStorage.setItem(context.srfsessionkey+'_trmcouarranges',JSON.stringify(res.data.trmcouarranges));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
             return res;
     }
 
@@ -172,11 +172,11 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/trmtrainagencies/getdraft`,isloading);
         res.data.trmtrainagency = data.trmtrainagency;
-            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainteachers',JSON.stringify(res.data.trmtrainteachers));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
             this.tempStorage.setItem(context.srfsessionkey+'_trmcouarranges',JSON.stringify(res.data.trmcouarranges));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
         return res;
     }
 
@@ -191,11 +191,11 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainteachers',JSON.stringify(res.data.trmtrainteachers));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
             this.tempStorage.setItem(context.srfsessionkey+'_trmcouarranges',JSON.stringify(res.data.trmcouarranges));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
             return res;
 
     }
@@ -211,51 +211,6 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let trmcoursesystemsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
-            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
-            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
-                trmcoursesystemsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmcoursesystemid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmcoursesystems = trmcoursesystemsData;
-        let trmhmatsersData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
-            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
-            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
-                trmhmatsersData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmhmatserid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmhmatsers = trmhmatsersData;
-        let trmtrainagenciesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
-            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
-            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
-                trmtrainagenciesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainagencyid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainagencies = trmtrainagenciesData;
         let trmtrainteachersData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers'),'undefined')){
             trmtrainteachersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers') as any);
@@ -271,6 +226,21 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmtrainteachers = trmtrainteachersData;
+        let trmhmatsersData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
+            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
+            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
+                trmhmatsersData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmhmatserid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmhmatsers = trmhmatsersData;
         let trmcouarrangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges'),'undefined')){
             trmcouarrangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges') as any);
@@ -286,13 +256,43 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmcouarranges = trmcouarrangesData;
+        let trmtrainagenciesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
+            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
+            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
+                trmtrainagenciesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainagencyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainagencies = trmtrainagenciesData;
+        let trmcoursesystemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
+            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
+            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
+                trmcoursesystemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmcoursesystemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmcoursesystems = trmcoursesystemsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainteachers',JSON.stringify(res.data.trmtrainteachers));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
             this.tempStorage.setItem(context.srfsessionkey+'_trmcouarranges',JSON.stringify(res.data.trmcouarranges));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
             return res;
     }
 
@@ -307,51 +307,6 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let trmcoursesystemsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
-            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
-            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
-                trmcoursesystemsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmcoursesystemid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmcoursesystems = trmcoursesystemsData;
-        let trmhmatsersData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
-            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
-            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
-                trmhmatsersData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmhmatserid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmhmatsers = trmhmatsersData;
-        let trmtrainagenciesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
-            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
-            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
-                trmtrainagenciesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainagencyid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainagencies = trmtrainagenciesData;
         let trmtrainteachersData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers'),'undefined')){
             trmtrainteachersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainteachers') as any);
@@ -367,6 +322,21 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmtrainteachers = trmtrainteachersData;
+        let trmhmatsersData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers'),'undefined')){
+            trmhmatsersData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmhmatsers') as any);
+            if(trmhmatsersData && trmhmatsersData.length && trmhmatsersData.length > 0){
+                trmhmatsersData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmhmatserid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmhmatsers = trmhmatsersData;
         let trmcouarrangesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges'),'undefined')){
             trmcouarrangesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcouarranges') as any);
@@ -382,6 +352,36 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
             }
         }
         masterData.trmcouarranges = trmcouarrangesData;
+        let trmtrainagenciesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies'),'undefined')){
+            trmtrainagenciesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainagencies') as any);
+            if(trmtrainagenciesData && trmtrainagenciesData.length && trmtrainagenciesData.length > 0){
+                trmtrainagenciesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainagencyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainagencies = trmtrainagenciesData;
+        let trmcoursesystemsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems'),'undefined')){
+            trmcoursesystemsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmcoursesystems') as any);
+            if(trmcoursesystemsData && trmcoursesystemsData.length && trmcoursesystemsData.length > 0){
+                trmcoursesystemsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmcoursesystemid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmcoursesystems = trmcoursesystemsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -391,11 +391,11 @@ export default class TrmTrainAgencyServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/trmtrainagencies`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainteachers',JSON.stringify(res.data.trmtrainteachers));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmhmatsers',JSON.stringify(res.data.trmhmatsers));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_trmcouarranges',JSON.stringify(res.data.trmcouarranges));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainagencies',JSON.stringify(res.data.trmtrainagencies));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmcoursesystems',JSON.stringify(res.data.trmcoursesystems));
         return res;
     }
 
