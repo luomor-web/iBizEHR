@@ -90,7 +90,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
      * 档案室管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "archivescenterid",type=IdType.UUID)
+    @TableId(value= "archivescenterid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "archivescenterid")
     @JsonProperty("archivescenterid")
     private String archivescenterid;

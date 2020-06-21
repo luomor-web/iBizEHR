@@ -69,7 +69,7 @@ public class PcmZjdyzw extends EntityMP implements Serializable {
      * 职级和职务对应关系标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmzjdyzwid",type=IdType.UUID)
+    @TableId(value= "pcmzjdyzwid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmzjdyzwid")
     @JsonProperty("pcmzjdyzwid")
     private String pcmzjdyzwid;

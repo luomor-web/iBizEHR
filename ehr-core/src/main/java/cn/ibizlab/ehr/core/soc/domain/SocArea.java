@@ -43,7 +43,7 @@ public class SocArea extends EntityMP implements Serializable {
      * 参保地标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "socareaid",type=IdType.UUID)
+    @TableId(value= "socareaid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "socareaid")
     @JsonProperty("socareaid")
     private String socareaid;

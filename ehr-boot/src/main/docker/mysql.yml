@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+    ehr-mysql:
+    image: mysql:5.7.20
+    volumes:
+      - $PWD/../../../../volumes/mysql/:/var/lib/mysql/
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=a_LAB01_fb710d59e
+    ports:
+      - 3306:3306
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+networks:
+  agent_network:
+    attachable: true

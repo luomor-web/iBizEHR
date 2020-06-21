@@ -98,7 +98,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
      * 注册证书标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmcertofregid",type=IdType.UUID)
+    @TableId(value= "pcmcertofregid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmcertofregid")
     @JsonProperty("pcmcertofregid")
     private String pcmcertofregid;

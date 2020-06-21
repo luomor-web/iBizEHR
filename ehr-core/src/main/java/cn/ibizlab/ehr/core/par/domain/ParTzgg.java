@@ -51,7 +51,7 @@ public class ParTzgg extends EntityMP implements Serializable {
      * 通知公告标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "partzggid",type=IdType.UUID)
+    @TableId(value= "partzggid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "partzggid")
     @JsonProperty("partzggid")
     private String partzggid;

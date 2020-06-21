@@ -60,7 +60,7 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
      * 培训需求汇总明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtraindemandsumid",type=IdType.UUID)
+    @TableId(value= "trmtraindemandsumid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtraindemandsumid")
     @JsonProperty("trmtraindemandsumid")
     private String trmtraindemandsumid;

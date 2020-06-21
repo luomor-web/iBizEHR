@@ -52,7 +52,7 @@ public class VacSystemHistory extends EntityMP implements Serializable {
      * 制度历史标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacsystemhistoryid",type=IdType.UUID)
+    @TableId(value= "vacsystemhistoryid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacsystemhistoryid")
     @JsonProperty("vacsystemhistoryid")
     private String vacsystemhistoryid;

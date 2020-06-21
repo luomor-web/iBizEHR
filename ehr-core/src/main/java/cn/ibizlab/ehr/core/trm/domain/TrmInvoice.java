@@ -104,7 +104,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
      * 开票信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trminvoiceid",type=IdType.UUID)
+    @TableId(value= "trminvoiceid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trminvoiceid")
     @JsonProperty("trminvoiceid")
     private String trminvoiceid;

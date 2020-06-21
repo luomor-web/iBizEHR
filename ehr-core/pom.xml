@@ -92,10 +92,10 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
-        <!--xxl-job定时服务 -->
+        <!--baomidou-jobs定时服务 -->
         <dependency>
-            <groupId>com.xuxueli</groupId>
-            <artifactId>xxl-job-core</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>jobs-spring-boot-starter</artifactId>
         </dependency>
 
 	</dependencies>

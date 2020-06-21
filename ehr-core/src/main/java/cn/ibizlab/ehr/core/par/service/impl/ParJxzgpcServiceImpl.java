@@ -158,6 +158,8 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

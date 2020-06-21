@@ -105,7 +105,7 @@ public class OrmRank extends EntityMP implements Serializable {
      * 职级标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormrankid",type=IdType.UUID)
+    @TableId(value= "ormrankid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormrankid")
     @JsonProperty("ormrankid")
     private String ormrankid;

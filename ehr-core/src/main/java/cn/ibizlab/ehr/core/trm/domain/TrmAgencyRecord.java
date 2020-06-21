@@ -52,7 +52,7 @@ public class TrmAgencyRecord extends EntityMP implements Serializable {
      * 机构培训记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmagencyrecordid",type=IdType.UUID)
+    @TableId(value= "trmagencyrecordid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmagencyrecordid")
     @JsonProperty("trmagencyrecordid")
     private String trmagencyrecordid;

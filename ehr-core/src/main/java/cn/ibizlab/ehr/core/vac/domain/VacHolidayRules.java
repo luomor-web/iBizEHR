@@ -97,7 +97,7 @@ public class VacHolidayRules extends EntityMP implements Serializable {
      * 考勤规则标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacholidayrulesid",type=IdType.UUID)
+    @TableId(value= "vacholidayrulesid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacholidayrulesid")
     @JsonProperty("vacholidayrulesid")
     private String vacholidayrulesid;

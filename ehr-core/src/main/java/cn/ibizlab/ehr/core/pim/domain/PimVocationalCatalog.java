@@ -83,7 +83,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
      * 职（执）业资格管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimvocationalcatalogid",type=IdType.UUID)
+    @TableId(value= "pimvocationalcatalogid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimvocationalcatalogid")
     @JsonProperty("pimvocationalcatalogid")
     private String pimvocationalcatalogid;

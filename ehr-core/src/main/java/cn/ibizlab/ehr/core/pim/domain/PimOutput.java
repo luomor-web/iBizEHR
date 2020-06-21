@@ -65,7 +65,7 @@ public class PimOutput extends EntityMP implements Serializable {
      * 产值标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimoutputid",type=IdType.UUID)
+    @TableId(value= "pimoutputid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimoutputid")
     @JsonProperty("pimoutputid")
     private String pimoutputid;

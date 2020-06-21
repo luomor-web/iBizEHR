@@ -161,6 +161,8 @@ public class ParAssessTemplateServiceImpl extends ServiceImpl<ParAssessTemplateM
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

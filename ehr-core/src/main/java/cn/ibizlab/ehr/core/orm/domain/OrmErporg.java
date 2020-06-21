@@ -125,7 +125,7 @@ public class OrmErporg extends EntityMP implements Serializable {
      * 组织ID
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormerporgid",type=IdType.UUID)
+    @TableId(value= "ormerporgid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormerporgid")
     @JsonProperty("ormerporgid")
     private String ormerporgid;

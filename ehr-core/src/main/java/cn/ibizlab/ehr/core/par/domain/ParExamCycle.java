@@ -43,7 +43,7 @@ public class ParExamCycle extends EntityMP implements Serializable {
      * 考核周期标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parexamcycleid",type=IdType.UUID)
+    @TableId(value= "parexamcycleid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parexamcycleid")
     @JsonProperty("parexamcycleid")
     private String parexamcycleid;

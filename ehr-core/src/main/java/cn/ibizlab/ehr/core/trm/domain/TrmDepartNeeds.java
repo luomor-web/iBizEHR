@@ -87,7 +87,7 @@ public class TrmDepartNeeds extends EntityMP implements Serializable {
      * 部门需求填报标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmdepartneedsid",type=IdType.UUID)
+    @TableId(value= "trmdepartneedsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmdepartneedsid")
     @JsonProperty("trmdepartneedsid")
     private String trmdepartneedsid;

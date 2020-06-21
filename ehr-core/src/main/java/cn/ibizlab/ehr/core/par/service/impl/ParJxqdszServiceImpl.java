@@ -191,6 +191,8 @@ public class ParJxqdszServiceImpl extends ServiceImpl<ParJxqdszMapper, ParJxqdsz
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

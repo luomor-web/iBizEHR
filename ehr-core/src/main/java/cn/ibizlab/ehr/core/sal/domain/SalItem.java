@@ -93,7 +93,7 @@ public class SalItem extends EntityMP implements Serializable {
      * 薪酬要素项标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salitemid",type=IdType.UUID)
+    @TableId(value= "salitemid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salitemid")
     @JsonProperty("salitemid")
     private String salitemid;

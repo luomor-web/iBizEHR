@@ -100,7 +100,7 @@ public class PimArchivesManage extends EntityMP implements Serializable {
      * 档案管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "archivesmanageid",type=IdType.UUID)
+    @TableId(value= "archivesmanageid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "archivesmanageid")
     @JsonProperty("archivesmanageid")
     private String archivesmanageid;

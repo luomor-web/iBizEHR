@@ -1,33 +1,33 @@
 
 export default {
   fields: {
-    socaccountid: '参保账户标识',
-    enable: '逻辑有效标志',
-    socaccountname: '参保账户名称',
-    createdate: '建立时间',
-    createman: '建立人',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    ormorgid: '组织标识',
-    ormorgname: '组织',
-    memo: '备注',
+    socaccountid: "参保账户标识",
+    enable: "逻辑有效标志",
+    socaccountname: "参保账户名称",
+    createdate: "建立时间",
+    createman: "建立人",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    ormorgid: "组织标识",
+    ormorgname: "组织",
+    memo: "备注",
   },
 	views: {
 		pickupgridview: {
 			caption: "参保账户",
-      title: '参保账户选择表格视图',
+      		title: "参保账户选择表格视图",
 		},
 		gridview: {
 			caption: "参保账户",
-      title: '参保账户表格视图',
+      		title: "参保账户表格视图",
 		},
 		pickupview: {
 			caption: "参保账户",
-      title: '参保账户数据选择视图',
+      		title: "参保账户数据选择视图",
 		},
 		editview: {
 			caption: "参保账户",
-      title: '参保账户编辑视图',
+      		title: "参保账户编辑视图",
 		},
 	},
 	main_form: {

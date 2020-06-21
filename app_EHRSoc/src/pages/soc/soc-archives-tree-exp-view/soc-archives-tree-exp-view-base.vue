@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class SocArchivesTreeExpViewBase extends TreeExpViewBase {
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof SocArchivesTreeExpView
+     * @memberof SocArchivesTreeExpViewBase
      */
     public viewUID: string = 'soc-soc-archives-tree-exp-view';
 

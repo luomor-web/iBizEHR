@@ -108,7 +108,7 @@ public class VacLeaveManage extends EntityMP implements Serializable {
      * 请假管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacleavemanageid",type=IdType.UUID)
+    @TableId(value= "vacleavemanageid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacleavemanageid")
     @JsonProperty("vacleavemanageid")
     private String vacleavemanageid;

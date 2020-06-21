@@ -184,7 +184,7 @@ public class PimQuestions extends EntityMP implements Serializable {
      * 问题收集标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "questionsid",type=IdType.UUID)
+    @TableId(value= "questionsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "questionsid")
     @JsonProperty("questionsid")
     private String questionsid;

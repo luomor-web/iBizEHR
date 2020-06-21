@@ -333,6 +333,8 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
         }
     }
 
+
+
     @Autowired
     cn.ibizlab.ehr.core.pcm.mapping.PcmYdjdmxInheritMapping pcmydjdmxInheritMapping;
     @Autowired

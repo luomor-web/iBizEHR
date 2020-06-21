@@ -50,7 +50,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
      * 工作日管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacworkdayid",type=IdType.UUID)
+    @TableId(value= "vacworkdayid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacworkdayid")
     @JsonProperty("vacworkdayid")
     private String vacworkdayid;

@@ -68,7 +68,7 @@ public class PimProvince extends EntityMP implements Serializable {
      * 省标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimprovinceid",type=IdType.UUID)
+    @TableId(value= "pimprovinceid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimprovinceid")
     @JsonProperty("pimprovinceid")
     private String pimprovinceid;

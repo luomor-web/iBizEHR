@@ -106,7 +106,7 @@ public class ParJxlhmb extends EntityMP implements Serializable {
      * 绩效量化目标标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parjxlhmbid",type=IdType.UUID)
+    @TableId(value= "parjxlhmbid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parjxlhmbid")
     @JsonProperty("parjxlhmbid")
     private String parjxlhmbid;

@@ -91,7 +91,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
      * 休假制度管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacleavesystemid",type=IdType.UUID)
+    @TableId(value= "vacleavesystemid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacleavesystemid")
     @JsonProperty("vacleavesystemid")
     private String vacleavesystemid;

@@ -43,7 +43,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
      * 项目人员需求标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormxmrypzxqid",type=IdType.UUID)
+    @TableId(value= "ormxmrypzxqid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormxmrypzxqid")
     @JsonProperty("ormxmrypzxqid")
     private String ormxmrypzxqid;

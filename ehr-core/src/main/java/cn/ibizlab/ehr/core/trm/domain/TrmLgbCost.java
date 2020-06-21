@@ -122,7 +122,7 @@ public class TrmLgbCost extends EntityMP implements Serializable {
      * 老干部费用标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmlgbcostid",type=IdType.UUID)
+    @TableId(value= "trmlgbcostid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmlgbcostid")
     @JsonProperty("trmlgbcostid")
     private String trmlgbcostid;

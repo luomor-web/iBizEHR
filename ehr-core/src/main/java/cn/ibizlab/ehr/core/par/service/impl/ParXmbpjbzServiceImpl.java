@@ -213,6 +213,8 @@ public class ParXmbpjbzServiceImpl extends ServiceImpl<ParXmbpjbzMapper, ParXmbp
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

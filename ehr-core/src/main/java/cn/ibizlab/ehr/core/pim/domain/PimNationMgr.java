@@ -65,7 +65,7 @@ public class PimNationMgr extends EntityMP implements Serializable {
      * 民族管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "nationmgrid",type=IdType.UUID)
+    @TableId(value= "nationmgrid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "nationmgrid")
     @JsonProperty("nationmgrid")
     private String nationmgrid;

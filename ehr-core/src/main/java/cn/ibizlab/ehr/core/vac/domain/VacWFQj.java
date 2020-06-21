@@ -50,7 +50,7 @@ public class VacWFQj extends EntityMP implements Serializable {
      * 请假（WF）标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "wfqjid",type=IdType.UUID)
+    @TableId(value= "wfqjid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "wfqjid")
     @JsonProperty("wfqjid")
     private String wfqjid;

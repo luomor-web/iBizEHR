@@ -248,7 +248,7 @@ export default class SocRulePickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof SocRulePickupView
+     * @memberof SocRulePickupViewBase
      */
     public selectedData: string = "";
 

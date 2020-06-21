@@ -10,7 +10,7 @@ spring:
     caffeine:
       spec: initialCapacity=5,maximumSize=500,expireAfterWrite=3600s
   redis:
-    host: 172.16.100.243
+    host: 127.0.0.1
     port: 6379
     password:
     database: 0
@@ -85,16 +85,10 @@ ibiz:
   enablePermissionValid: false
   cacheLevel: L1 #(L1)一级本地caffeine缓存;(L2)caffeine缓存+Redis缓存
 
-#xxl-job定时服务
-xxl:
-  job:
-    accessToken:
-    admin:
-      addresses: #127.0.0.1
-    executor:
-      appname: ehr
-      ip:
-      port: 9999
-      logpath: /app/joblog
-      logretentiondays: -1
+### jobs
+jobs:
+  #admin-address: http://127.0.0.1:40005
+  app-name: ehr
+  app-port: 9999
+  #app-ip: 127.0.0.1
 

@@ -74,7 +74,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
      * 社保信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimsocialsecurityid",type=IdType.UUID)
+    @TableId(value= "pimsocialsecurityid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimsocialsecurityid")
     @JsonProperty("pimsocialsecurityid")
     private String pimsocialsecurityid;

@@ -86,7 +86,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
      * 组合查询模版标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimsearchmodalid",type=IdType.UUID)
+    @TableId(value= "pimsearchmodalid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimsearchmodalid")
     @JsonProperty("pimsearchmodalid")
     private String pimsearchmodalid;

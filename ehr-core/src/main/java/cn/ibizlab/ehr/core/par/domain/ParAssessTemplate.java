@@ -43,7 +43,7 @@ public class ParAssessTemplate extends EntityMP implements Serializable {
      * 考核模板标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parassesstemplateid",type=IdType.UUID)
+    @TableId(value= "parassesstemplateid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parassesstemplateid")
     @JsonProperty("parassesstemplateid")
     private String parassesstemplateid;

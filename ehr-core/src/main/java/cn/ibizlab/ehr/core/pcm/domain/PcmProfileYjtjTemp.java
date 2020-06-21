@@ -52,7 +52,7 @@ public class PcmProfileYjtjTemp extends EntityMP implements Serializable {
      * 应聘者引进条件中间表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmprofileyjtjtempid",type=IdType.UUID)
+    @TableId(value= "pcmprofileyjtjtempid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmprofileyjtjtempid")
     @JsonProperty("pcmprofileyjtjtempid")
     private String pcmprofileyjtjtempid;

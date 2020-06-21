@@ -50,7 +50,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
      * 课程安排标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmcouarrangeid",type=IdType.UUID)
+    @TableId(value= "trmcouarrangeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmcouarrangeid")
     @JsonProperty("trmcouarrangeid")
     private String trmcouarrangeid;

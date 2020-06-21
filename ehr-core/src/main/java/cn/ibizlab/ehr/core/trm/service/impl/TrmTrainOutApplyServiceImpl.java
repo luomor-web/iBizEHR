@@ -193,6 +193,8 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

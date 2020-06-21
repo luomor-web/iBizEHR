@@ -43,7 +43,7 @@ public class SocRule extends EntityMP implements Serializable {
      * 社保规则标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "socruleid",type=IdType.UUID)
+    @TableId(value= "socruleid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "socruleid")
     @JsonProperty("socruleid")
     private String socruleid;

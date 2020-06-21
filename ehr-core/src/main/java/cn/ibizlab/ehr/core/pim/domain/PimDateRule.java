@@ -74,7 +74,7 @@ public class PimDateRule extends EntityMP implements Serializable {
      * 生效日期规则标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "dateruleid",type=IdType.UUID)
+    @TableId(value= "dateruleid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "dateruleid")
     @JsonProperty("dateruleid")
     private String dateruleid;

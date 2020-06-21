@@ -173,7 +173,7 @@ public class TrmTrainOutApply extends EntityMP implements Serializable {
      * 外部培训申请标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtrainoutapplyid",type=IdType.UUID)
+    @TableId(value= "trmtrainoutapplyid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtrainoutapplyid")
     @JsonProperty("trmtrainoutapplyid")
     private String trmtrainoutapplyid;

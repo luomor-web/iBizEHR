@@ -157,7 +157,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
      * 科研成果标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimresearchfindingsid",type=IdType.UUID)
+    @TableId(value= "pimresearchfindingsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimresearchfindingsid")
     @JsonProperty("pimresearchfindingsid")
     private String pimresearchfindingsid;

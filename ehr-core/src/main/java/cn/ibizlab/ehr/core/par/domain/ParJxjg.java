@@ -59,7 +59,7 @@ public class ParJxjg extends EntityMP implements Serializable {
      * 绩效结果标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parjxjgid",type=IdType.UUID)
+    @TableId(value= "parjxjgid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parjxjgid")
     @JsonProperty("parjxjgid")
     private String parjxjgid;

@@ -157,7 +157,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
      * 实习经验标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmpracticeexperienceid",type=IdType.UUID)
+    @TableId(value= "pcmpracticeexperienceid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmpracticeexperienceid")
     @JsonProperty("pcmpracticeexperienceid")
     private String pcmpracticeexperienceid;

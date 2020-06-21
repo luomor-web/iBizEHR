@@ -83,7 +83,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
      * 附件信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimenclosureid",type=IdType.UUID)
+    @TableId(value= "pimenclosureid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimenclosureid")
     @JsonProperty("pimenclosureid")
     private String pimenclosureid;

@@ -245,6 +245,8 @@ public class TrmDepartServiceImpl extends ServiceImpl<TrmDepartMapper, TrmDepart
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

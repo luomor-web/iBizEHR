@@ -64,7 +64,7 @@ public class VacSituation extends EntityMP implements Serializable {
      * 用户休假情况标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacsituationid",type=IdType.UUID)
+    @TableId(value= "vacsituationid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacsituationid")
     @JsonProperty("vacsituationid")
     private String vacsituationid;

@@ -50,7 +50,7 @@ public class PcmGxml extends EntityMP implements Serializable {
      * 高校名录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmgxmlid",type=IdType.UUID)
+    @TableId(value= "pcmgxmlid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmgxmlid")
     @JsonProperty("pcmgxmlid")
     private String pcmgxmlid;

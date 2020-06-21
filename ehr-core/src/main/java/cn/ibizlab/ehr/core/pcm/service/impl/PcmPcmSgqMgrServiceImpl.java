@@ -68,12 +68,14 @@ public class PcmPcmSgqMgrServiceImpl extends ServiceImpl<PcmPcmSgqMgrMapper, Pcm
 
     @Override
     public PcmPcmSgqMgr getDraft(PcmPcmSgqMgr et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean create(PcmPcmSgqMgr et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSgqmgrid()),et);
@@ -82,12 +84,14 @@ public class PcmPcmSgqMgrServiceImpl extends ServiceImpl<PcmPcmSgqMgrMapper, Pcm
 
     @Override
     public void createBatch(List<PcmPcmSgqMgr> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(PcmPcmSgqMgr et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("sgqmgrid",et.getSgqmgrid())))
             return false;
         CachedBeanCopier.copy(get(et.getSgqmgrid()),et);
@@ -96,6 +100,7 @@ public class PcmPcmSgqMgrServiceImpl extends ServiceImpl<PcmPcmSgqMgrMapper, Pcm
 
     @Override
     public void updateBatch(List<PcmPcmSgqMgr> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -137,12 +142,14 @@ public class PcmPcmSgqMgrServiceImpl extends ServiceImpl<PcmPcmSgqMgrMapper, Pcm
 
     @Override
     public boolean saveBatch(Collection<PcmPcmSgqMgr> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<PcmPcmSgqMgr> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -177,6 +184,25 @@ public class PcmPcmSgqMgrServiceImpl extends ServiceImpl<PcmPcmSgqMgrMapper, Pcm
         return new PageImpl<PcmPcmSgqMgr>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
+
+
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(PcmPcmSgqMgr et){
+        //实体关系[DER1N_SGQMGR_PIMPERSON_PIMPERSONID]
+        if(!ObjectUtils.isEmpty(et.getPimpersonid())){
+            cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson=et.getPimperson();
+            if(ObjectUtils.isEmpty(pimperson)){
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getPimpersonid());
+                et.setPimperson(majorEntity);
+                pimperson=majorEntity;
+            }
+            et.setPimpersonname(pimperson.getPimpersonname());
+            et.setYgbh(pimperson.getYgbh());
+        }
+    }
 
 
 

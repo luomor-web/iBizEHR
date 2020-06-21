@@ -112,7 +112,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
      * 费用台账标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimexpaccountid",type=IdType.UUID)
+    @TableId(value= "pimexpaccountid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimexpaccountid")
     @JsonProperty("pimexpaccountid")
     private String pimexpaccountid;

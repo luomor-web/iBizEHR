@@ -103,7 +103,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
      * 统一身份库标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "unitedpersonid",type=IdType.UUID)
+    @TableId(value= "unitedpersonid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "unitedpersonid")
     @JsonProperty("unitedpersonid")
     private String unitedpersonid;

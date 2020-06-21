@@ -95,7 +95,7 @@ public class CodeItem extends EntityMP implements Serializable {
      * 代码项标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "codeitemid",type=IdType.UUID)
+    @TableId(value= "codeitemid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "codeitemid")
     @JsonProperty("codeitemid")
     private String codeitemid;

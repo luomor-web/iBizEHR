@@ -71,7 +71,7 @@ public class PcmLog extends EntityMP implements Serializable {
      * 配置变动日志标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmlogid",type=IdType.UUID)
+    @TableId(value= "pcmlogid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmlogid")
     @JsonProperty("pcmlogid")
     private String pcmlogid;

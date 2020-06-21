@@ -1,37 +1,37 @@
 
 export default {
   fields: {
-    socareaid: '参保地标识',
-    socareaname: '参保地名称',
-    enable: '逻辑有效标志',
-    createman: '建立人',
-    updateman: '更新人',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    ormorgid: '组织标识',
-    ormorgname: '组织',
-    memo: '备注',
+    socareaid: "参保地标识",
+    socareaname: "参保地名称",
+    enable: "逻辑有效标志",
+    createman: "建立人",
+    updateman: "更新人",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    ormorgid: "组织标识",
+    ormorgname: "组织",
+    memo: "备注",
   },
 	views: {
 		gridview: {
 			caption: "参保地",
-      title: '参保地表格视图',
+      		title: "参保地表格视图",
 		},
 		editview: {
 			caption: "参保地",
-      title: '参保地编辑视图',
+      		title: "参保地编辑视图",
 		},
 		pickupgridview: {
 			caption: "参保地",
-      title: '参保地选择表格视图',
+      		title: "参保地选择表格视图",
 		},
 		roweditgridview: {
 			caption: "参保地",
-      title: '参保地表格视图',
+      		title: "参保地表格视图",
 		},
 		pickupview: {
 			caption: "参保地",
-      title: '参保地数据选择视图',
+      		title: "参保地数据选择视图",
 		},
 	},
 	main_form: {

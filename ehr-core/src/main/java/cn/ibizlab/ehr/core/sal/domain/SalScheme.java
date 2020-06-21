@@ -107,7 +107,7 @@ public class SalScheme extends EntityMP implements Serializable {
      * 工资单标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salschemeid",type=IdType.UUID)
+    @TableId(value= "salschemeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salschemeid")
     @JsonProperty("salschemeid")
     private String salschemeid;

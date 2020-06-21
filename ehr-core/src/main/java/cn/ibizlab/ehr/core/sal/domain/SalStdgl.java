@@ -96,7 +96,7 @@ public class SalStdgl extends EntityMP implements Serializable {
      * 工龄工资标准标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salstdglid",type=IdType.UUID)
+    @TableId(value= "salstdglid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salstdglid")
     @JsonProperty("salstdglid")
     private String salstdglid;

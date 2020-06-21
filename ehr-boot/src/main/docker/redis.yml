@@ -1,0 +1,17 @@
+version: "3.2"
+services:
+  ehr-redis:
+    image: redis
+    ports:
+      - 6379:6379
+    environment:
+      - TZ=Asia/Shanghai
+    logging:
+      driver: "json-file"
+    command: redis-server
+    networks:
+      - agent_network
+networks:
+  agent_network:
+    attachable: true
+

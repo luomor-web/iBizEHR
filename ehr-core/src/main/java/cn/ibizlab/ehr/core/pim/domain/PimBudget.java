@@ -84,7 +84,7 @@ public class PimBudget extends EntityMP implements Serializable {
      * 年度预算标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "budgetid",type=IdType.UUID)
+    @TableId(value= "budgetid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "budgetid")
     @JsonProperty("budgetid")
     private String budgetid;

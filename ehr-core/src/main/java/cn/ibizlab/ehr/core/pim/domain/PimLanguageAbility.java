@@ -50,7 +50,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
      * 语言能力标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimlanguageabilityid",type=IdType.UUID)
+    @TableId(value= "pimlanguageabilityid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimlanguageabilityid")
     @JsonProperty("pimlanguageabilityid")
     private String pimlanguageabilityid;

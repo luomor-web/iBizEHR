@@ -90,7 +90,7 @@ public class PimExaminationResults extends EntityMP implements Serializable {
      * B/Y员工转正考核结果记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimexaminationresultsid",type=IdType.UUID)
+    @TableId(value= "pimexaminationresultsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimexaminationresultsid")
     @JsonProperty("pimexaminationresultsid")
     private String pimexaminationresultsid;

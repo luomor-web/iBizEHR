@@ -215,7 +215,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
      * 考勤月报明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "attendancemreportmxid",type=IdType.UUID)
+    @TableId(value= "attendancemreportmxid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "attendancemreportmxid")
     @JsonProperty("attendancemreportmxid")
     private String attendancemreportmxid;

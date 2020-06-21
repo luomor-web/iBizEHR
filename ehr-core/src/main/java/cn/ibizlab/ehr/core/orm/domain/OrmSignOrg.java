@@ -50,7 +50,7 @@ public class OrmSignOrg extends EntityMP implements Serializable {
      * 法人主体标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormsignorgid",type=IdType.UUID)
+    @TableId(value= "ormsignorgid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormsignorgid")
     @JsonProperty("ormsignorgid")
     private String ormsignorgid;

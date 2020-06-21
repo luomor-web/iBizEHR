@@ -65,7 +65,7 @@ public class PimContract extends EntityMP implements Serializable {
      * 合同信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimcontractid",type=IdType.UUID)
+    @TableId(value= "pimcontractid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimcontractid")
     @JsonProperty("pimcontractid")
     private String pimcontractid;

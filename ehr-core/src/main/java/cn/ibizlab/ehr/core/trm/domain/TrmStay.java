@@ -58,7 +58,7 @@ public class TrmStay extends EntityMP implements Serializable {
      * 培训住宿标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmstayid",type=IdType.UUID)
+    @TableId(value= "trmstayid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmstayid")
     @JsonProperty("trmstayid")
     private String trmstayid;

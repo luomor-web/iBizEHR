@@ -112,7 +112,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
      * 档案归档地变更记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimarchiveschangeid",type=IdType.UUID)
+    @TableId(value= "pimarchiveschangeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimarchiveschangeid")
     @JsonProperty("pimarchiveschangeid")
     private String pimarchiveschangeid;

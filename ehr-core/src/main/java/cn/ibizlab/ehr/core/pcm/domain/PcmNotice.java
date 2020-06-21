@@ -127,7 +127,7 @@ public class PcmNotice extends EntityMP implements Serializable {
      * 提醒消息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmnoticeid",type=IdType.UUID)
+    @TableId(value= "pcmnoticeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmnoticeid")
     @JsonProperty("pcmnoticeid")
     private String pcmnoticeid;

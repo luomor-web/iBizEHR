@@ -59,7 +59,7 @@ public class PimPatent extends EntityMP implements Serializable {
      * 专利信息编码
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimpatentid",type=IdType.UUID)
+    @TableId(value= "pimpatentid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimpatentid")
     @JsonProperty("pimpatentid")
     private String pimpatentid;

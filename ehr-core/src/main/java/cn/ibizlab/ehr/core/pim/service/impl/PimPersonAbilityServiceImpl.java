@@ -201,6 +201,8 @@ public class PimPersonAbilityServiceImpl extends ServiceImpl<PimPersonAbilityMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

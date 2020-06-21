@@ -238,7 +238,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
      * 需求调查定义标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmdemdeftionid",type=IdType.UUID)
+    @TableId(value= "trmdemdeftionid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmdemdeftionid")
     @JsonProperty("trmdemdeftionid")
     private String trmdemdeftionid;

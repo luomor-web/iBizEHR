@@ -402,7 +402,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
      * 部门标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "orgsectorid",type=IdType.UUID)
+    @TableId(value= "orgsectorid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "orgsectorid")
     @JsonProperty("orgsectorid")
     private String orgsectorid;

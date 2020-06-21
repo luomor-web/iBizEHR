@@ -43,7 +43,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
      * B/Y类员工转正申请明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimcorrectionapplyid",type=IdType.UUID)
+    @TableId(value= "pimcorrectionapplyid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimcorrectionapplyid")
     @JsonProperty("pimcorrectionapplyid")
     private String pimcorrectionapplyid;

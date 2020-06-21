@@ -178,7 +178,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
      * 职务优秀青年干部管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmdutycadresid",type=IdType.UUID)
+    @TableId(value= "trmdutycadresid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmdutycadresid")
     @JsonProperty("trmdutycadresid")
     private String trmdutycadresid;

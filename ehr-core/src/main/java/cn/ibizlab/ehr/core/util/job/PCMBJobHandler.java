@@ -1,17 +1,16 @@
 package cn.ibizlab.ehr.core.util.job;
 
-import com.xxl.job.core.biz.model.ReturnT;
-import com.xxl.job.core.handler.IJobHandler;
-import com.xxl.job.core.handler.annotation.JobHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.jobs.api.JobsResponse;
+import com.baomidou.jobs.exception.JobsException;
+import com.baomidou.jobs.handler.IJobsHandler;
 import org.springframework.stereotype.Component;
 
-@JobHandler(value="PCMBJobHandler")
-@Component
-public class PCMBJobHandler extends IJobHandler {
+@Component("PCMBJobHandler")
+public class PCMBJobHandler implements  IJobsHandler {
 
     @Override
-    public ReturnT<String> execute(String params) throws Exception {
-        return new ReturnT(200, "服务调用成功");
+    public JobsResponse execute(String tenantId, String param) throws JobsException {
+        System.out.println("执行 DemoJobHandler tenantId=" + tenantId + ",param=" + param);
+        return JobsResponse.ok();
     }
 }

@@ -43,7 +43,7 @@ public class SocArchives extends EntityMP implements Serializable {
      * 社保档案标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "socarchivesid",type=IdType.UUID)
+    @TableId(value= "socarchivesid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "socarchivesid")
     @JsonProperty("socarchivesid")
     private String socarchivesid;

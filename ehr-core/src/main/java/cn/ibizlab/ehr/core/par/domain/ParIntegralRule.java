@@ -43,7 +43,7 @@ public class ParIntegralRule extends EntityMP implements Serializable {
      * 积分规则标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parintegralruleid",type=IdType.UUID)
+    @TableId(value= "parintegralruleid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parintegralruleid")
     @JsonProperty("parintegralruleid")
     private String parintegralruleid;

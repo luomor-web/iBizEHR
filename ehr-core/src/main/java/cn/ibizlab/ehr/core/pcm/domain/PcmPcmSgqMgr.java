@@ -50,7 +50,7 @@ public class PcmPcmSgqMgr extends EntityMP implements Serializable {
      * 试岗期管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "sgqmgrid",type=IdType.UUID)
+    @TableId(value= "sgqmgrid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "sgqmgrid")
     @JsonProperty("sgqmgrid")
     private String sgqmgrid;
