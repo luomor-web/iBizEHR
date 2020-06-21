@@ -248,7 +248,7 @@ export default class TrmTrainPlantermPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof TrmTrainPlantermPickupView
+     * @memberof TrmTrainPlantermPickupViewBase
      */
     public selectedData: string = "";
 

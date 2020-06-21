@@ -1,52 +1,52 @@
 
 export default {
   fields: {
-    dygx: '对应关系',
-    trmcoursesystemname: '名称',
-    trmcoursesystemid: '课程体系标识',
-    createman: '建立人',
-    jb: '级别',
-    nr: '内容',
-    updateman: '更新人',
-    createdate: '创建日期',
-    enable: '逻辑有效标志',
-    dm: '代码',
-    updatedate: '更新时间',
-    trmtrainagencyname: '培训机构',
-    trmtrainagencyid: '培训机构标识',
+    dygx: "对应关系",
+    trmcoursesystemname: "名称",
+    trmcoursesystemid: "课程体系标识",
+    createman: "建立人",
+    jb: "级别",
+    nr: "内容",
+    updateman: "更新人",
+    createdate: "创建日期",
+    enable: "逻辑有效标志",
+    dm: "代码",
+    updatedate: "更新时间",
+    trmtrainagencyname: "培训机构",
+    trmtrainagencyid: "培训机构标识",
   },
 	views: {
 		gridview: {
 			caption: "培训模块",
-      title: '培训模块',
+      		title: "培训模块",
 		},
 		wmxgridview: {
 			caption: "培训模块",
-      title: '课程体系表格视图',
+      		title: "课程体系表格视图",
 		},
 		wmxeditview: {
 			caption: "培训模块",
-      title: '培训模块编辑视图',
+      		title: "培训模块编辑视图",
 		},
 		pickupgridview: {
 			caption: "培训模块",
-      title: '课程体系选择表格视图',
+      		title: "课程体系选择表格视图",
 		},
 		editview9: {
 			caption: "培训模块",
-      title: '培训模块',
+      		title: "培训模块",
 		},
 		editview: {
 			caption: "培训模块",
-      title: '培训模块',
+      		title: "培训模块",
 		},
 		mpickupview: {
 			caption: "培训模块",
-      title: '课程体系数据多项选择视图',
+      		title: "课程体系数据多项选择视图",
 		},
 		pickupview: {
 			caption: "培训模块",
-      title: '课程体系数据选择视图',
+      		title: "课程体系数据选择视图",
 		},
 	},
 	main_form: {

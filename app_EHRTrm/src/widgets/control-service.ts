@@ -99,6 +99,9 @@ export default class ControlService {
         }
         let dataItems: any[] = model.getDataItems();
         let requestData:any = {};
+        if(isMerge && (data && data.viewparams)){
+            Object.assign(requestData,data.viewparams);
+        }
         dataItems.forEach((item:any) =>{
             if(item && item.dataType && Object.is(item.dataType,'FONTKEY')){
                 if(item && item.prop && item.name ){
@@ -110,9 +113,6 @@ export default class ControlService {
                 }
             }
         });
-        if(isMerge && (data && data.viewparams)){
-            Object.assign(requestData,data.viewparams);
-        }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         if(tempContext && tempContext.srfsessionid){
             tempContext.srfsessionkey = tempContext.srfsessionid;

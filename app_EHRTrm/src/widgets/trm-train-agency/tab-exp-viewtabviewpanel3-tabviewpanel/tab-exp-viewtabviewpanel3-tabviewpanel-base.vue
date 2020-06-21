@@ -10,11 +10,12 @@
   </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
 import TabExpViewtabviewpanel3Service from './tab-exp-viewtabviewpanel3-tabviewpanel-service';
 
@@ -31,7 +32,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 名称
      *
      * @type {string}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     @Prop() public name?: string;
 
@@ -39,7 +40,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -47,7 +48,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 应用上下文
      *
      * @type {*}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     @Prop() public context: any;
 
@@ -55,7 +56,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 视图参数
      *
      * @type {*}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     @Prop() public viewparams: any;
 
@@ -64,7 +65,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -72,7 +73,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public getControlType(): string {
         return 'TABVIEWPANEL'
@@ -84,7 +85,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 建构部件服务对象
      *
      * @type {TabExpViewtabviewpanel3Service}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public service: TabExpViewtabviewpanel3Service = new TabExpViewtabviewpanel3Service({ $store: this.$store });
 
@@ -92,7 +93,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 实体服务对象
      *
      * @type {TrmTrainAgencyService}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
     
@@ -102,7 +103,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 关闭视图
      *
      * @param {any} args
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -112,7 +113,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      *  计数器刷新
      *
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public counterRefresh(){
         const _this:any =this;
@@ -131,7 +132,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public getDatas(): any[] {
         return [];
@@ -141,7 +142,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 获取单项树
      *
      * @returns {*}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public getData(): any {
         return null;
@@ -151,7 +152,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 是否被激活
      *
      * @type {boolean}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public isActivied: boolean = true;
 
@@ -159,7 +160,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 局部上下文
      *
      * @type {*}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public localContext: any = null;
 
@@ -167,7 +168,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 局部视图参数
      *
      * @type {*}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public localViewParam: any = null;
 
@@ -175,7 +176,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 传入上下文
      *
      * @type {string}
-     * @memberof TabExpViewtabviewpanel
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public viewdata: string = JSON.stringify(this.context);
 
@@ -191,7 +192,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * 视图面板过滤项
      *
      * @type {string}
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public navfilter: string = "";
              
@@ -199,7 +200,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
      * vue 生命周期
      *
      * @returns
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public created() {
         this.afterCreated();
@@ -208,7 +209,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      * 执行created后的逻辑
      *
-     *  @memberof TabExpViewtabviewpanel3
+     *  @memberof TabExpViewtabviewpanel3Base
      */    
     public afterCreated(){
         this.initNavParam();
@@ -218,7 +219,9 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
                     return;
                 }
                 this.$forceUpdate();
-                this.initNavParam();
+                this.$nextTick(() => {
+                    this.initNavParam();
+                });
             });
         }
     }
@@ -226,7 +229,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      * 初始化导航参数
      *
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public initNavParam(){
         if(!Object.is(this.navfilter,"")){
@@ -247,7 +250,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      * 视图数据变化
      *
-     * @memberof  TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public viewDatasChange($event:any){
         this.$emit('viewpanelDatasChange',$event);
@@ -256,7 +259,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      * vue 生命周期
      *
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public destroyed() {
         this.afterDestroy();
@@ -265,7 +268,7 @@ export default class TabExpViewtabviewpanel3Base extends Vue implements ControlI
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof TabExpViewtabviewpanel3
+     * @memberof TabExpViewtabviewpanel3Base
      */
     public afterDestroy() {
         if (this.viewStateEvent) {

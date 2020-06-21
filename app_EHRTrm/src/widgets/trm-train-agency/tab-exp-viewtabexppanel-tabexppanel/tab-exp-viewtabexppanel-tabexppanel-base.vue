@@ -1,7 +1,7 @@
 
 <template>
   <div class='tabviewpanel' style="height:100%;">
-        <tabs :animated="false" class='tabexppanel' name='tabexpviewtabexppanel' @on-click="tabPanelClick">
+        <tabs :value="tabValue" :animated="false" class='tabexppanel' name='tabexpviewtabexppanel' @on-click="tabPanelClick">
         <tab-pane :index="0" name='tabviewpanel' tab='tabexpviewtabexppanel' class=''  
             :label="(h) =>{
                 return h('div', [
@@ -98,11 +98,12 @@
   </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
 import TabExpViewtabexppanelService from './tab-exp-viewtabexppanel-tabexppanel-service';
 
@@ -119,7 +120,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 名称
      *
      * @type {string}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     @Prop() public name?: string;
 
@@ -127,7 +128,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -135,7 +136,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 应用上下文
      *
      * @type {*}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     @Prop() public context: any;
 
@@ -143,7 +144,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 视图参数
      *
      * @type {*}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     @Prop() public viewparams: any;
 
@@ -152,7 +153,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -160,7 +161,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public getControlType(): string {
         return 'TABEXPPANEL'
@@ -172,7 +173,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -180,7 +181,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 建构部件服务对象
      *
      * @type {TabExpViewtabexppanelService}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public service: TabExpViewtabexppanelService = new TabExpViewtabexppanelService({ $store: this.$store });
 
@@ -188,7 +189,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 实体服务对象
      *
      * @type {TrmTrainAgencyService}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
     
@@ -198,7 +199,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 关闭视图
      *
      * @param {any} args
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -208,7 +209,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
     /**
      *  计数器刷新
      *
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -225,7 +226,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 是否初始化
      *
      * @returns {any}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public isInit: any = {
         tabviewpanel:  true ,
@@ -238,7 +239,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public getDatas(): any[] {
         return [];
@@ -248,10 +249,30 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 获取单项树
      *
      * @returns {*}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public getData(): any {
         return null;
+    }
+
+    /**
+     * 从父传入的当前分页面板panel值
+     *
+     * @type {string}
+     * @memberof TabExpViewtabexppanelBase
+     */
+    @Prop() public tabValue?: string;
+
+    /**
+     * 值变化
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof TabExpViewtabexppanelBase
+     */
+    @Watch('tabValue')
+    public onValueChange(newVal: any, oldVal: any) {
+        this.tabPanelClick(newVal);
     }
 
     /**
@@ -259,7 +280,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      *
      * @public
      * @type {*}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public action:any = '';
 
@@ -267,14 +288,14 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * 被激活的分页面板
      *
      * @type {string}
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public activiedTabViewPanel: string = 'tabviewpanel';
 
     /**
      * 分页视图面板数据变更
      *
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public tabViewPanelDatasChange(){
         this.counterRefresh();
@@ -284,7 +305,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * vue 生命周期
      *
      * @returns
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public created() {
         this.afterCreated();
@@ -293,7 +314,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
     /**
      * 执行created后的逻辑
      *
-     *  @memberof TabExpViewtabexppanel
+     *  @memberof TabExpViewtabexppanelBase
      */    
     public afterCreated(){
         //设置分页导航srfparentdename和srfparentkey
@@ -315,7 +336,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
     /**
      * vue 生命周期
      *
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -324,7 +345,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -337,7 +358,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      *
      * @param {*} $event
      * @returns
-     * @memberof TabExpViewtabexppanel
+     * @memberof TabExpViewtabexppanelBase
      */
     public tabPanelClick($event: any) {
         if (!$event) {

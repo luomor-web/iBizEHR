@@ -19,11 +19,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
 import PickupViewpickupviewpanelService from './pickup-viewpickupviewpanel-pickupviewpanel-service';
 
@@ -41,7 +42,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 名称
      *
      * @type {string}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     @Prop() public name?: string;
 
@@ -49,7 +50,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -57,7 +58,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 应用上下文
      *
      * @type {*}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     @Prop() public context: any;
 
@@ -65,7 +66,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 视图参数
      *
      * @type {*}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     @Prop() public viewparams: any;
 
@@ -74,7 +75,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -82,7 +83,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public getControlType(): string {
         return 'PICKUPVIEWPANEL'
@@ -94,7 +95,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 建构部件服务对象
      *
      * @type {PickupViewpickupviewpanelService}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public service: PickupViewpickupviewpanelService = new PickupViewpickupviewpanelService({ $store: this.$store });
 
@@ -102,7 +103,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 实体服务对象
      *
      * @type {TrmTrainAgencyService}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
     
@@ -112,7 +113,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 关闭视图
      *
      * @param {any} args
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -122,7 +123,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
     /**
      *  计数器刷新
      *
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -134,6 +135,8 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
             })
         }
     }
+
+
 
     /**
      * 视图打开模式
@@ -149,15 +152,15 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public getDatas(): any[] {
         return [];
@@ -167,7 +170,7 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 获取单项树
      *
      * @returns {*}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
     public getData(): any {
         return {};
@@ -177,20 +180,36 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 视图名称
      *
      * @type {*}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected view: any = {
+    public view: any = {
         viewname: 'trm-train-agency-pickup-grid-view',
         data: {},
     }
 
     /**
-     * 视图数据
+     * 局部上下文
+     *
+     * @type {*}
+     * @memberof PickupViewpickupviewpanelBase
+     */
+    public localContext: any = null;
+
+    /**
+     * 局部视图参数
      *
      * @type {*}
      * @memberof PickupViewpickupviewpanel
      */
-    protected viewdata: string  = JSON.stringify(this.context);
+    public localViewParam: any = null;
+
+    /**
+     * 视图数据
+     *
+     * @type {*}
+     * @memberof PickupViewpickupviewpanelBase
+     */
+    public viewdata: string  = JSON.stringify(this.context);
 
     /**
      * 视图参数
@@ -198,39 +217,39 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * @type {*}
      * @memberof PickupViewpickupviewpanel
      */
-    protected viewparam: string  = JSON.stringify(this.viewparams);
+    public viewparam: string  = JSON.stringify(this.viewparams);
 
     /**
      * 是否显示按钮
      *
      * @type {boolean}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    @Prop({default: true}) protected isShowButton!: boolean;
+    @Prop({default: true}) public isShowButton!: boolean;
 
     /**
      * 是否单选
      *
      * @type {boolean}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    @Prop() protected isSingleSelect?: boolean;
+    @Prop() public isSingleSelect?: boolean;
 
     /**
      * 初始化完成
      *
      * @type {boolean}
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected inited: boolean = false;
+    public inited: boolean = false;
 
     /**
      * 视图数据变化
      *
      * @param {*} $event
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected onViewDatasChange($event: any): void {
+    public onViewDatasChange($event: any): void {
         if($event.length>0){
           $event.forEach((item:any,index:any) => {
               let srfmajortext = item['trmtrainagencyname'];
@@ -246,9 +265,9 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 视图数据被激活
      *
      * @param {*} $event
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected viewDatasActivated($event: any): void {
+    public viewDatasActivated($event: any): void {
         this.$emit('activated', $event);
     }
 
@@ -256,27 +275,28 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
      * 视图加载完成
      *
      * @param {*} $event
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected onViewLoad($event: any): void {
+    public onViewLoad($event: any): void {
         this.$emit('load', $event);
     }
 
     /**
      * vue 生命周期
      *
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
     /**
      * 执行created后的逻辑
      *
-     *  @memberof PickupViewpickupviewpanel
+     *  @memberof PickupViewpickupviewpanelBase
      */    
-    protected afterCreated(){
+    public afterCreated(){
+        this.initNavParam();
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -292,20 +312,39 @@ export default class PickupViewpickupviewpanelBase extends Vue implements Contro
     }
 
     /**
+     * 初始化导航参数
+     *
+     *  @memberof PickupViewpickupviewpanelBase
+     */  
+    public initNavParam(){
+        if(this.localContext && Object.keys(this.localContext).length >0){
+            let _context:any = this.$util.computedNavData({},this.context,this.viewparams,this.localContext);
+            Object.assign(this.context,_context);
+        }
+        if(this.localViewParam && Object.keys(this.localViewParam).length >0){
+            let _param:any = this.$util.computedNavData({},this.context,this.viewparams,this.localViewParam);
+            Object.assign(this.viewparams,_param);
+        }
+        this.viewdata = JSON.stringify(this.context);
+        this.viewparam = JSON.stringify(this.viewparams);
+    }
+
+
+    /**
      * vue 生命周期
      *
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof PickupViewpickupviewpanel
+     * @memberof PickupViewpickupviewpanelBase
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

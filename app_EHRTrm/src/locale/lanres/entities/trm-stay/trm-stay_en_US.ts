@@ -1,40 +1,40 @@
 
 export default {
   fields: {
-    lxr: '联系人',
-    createman: '建立人',
-    trmstayid: '培训住宿标识',
-    enable: '逻辑有效标志',
-    trmstayname: '名称',
-    fjlx: '房间类型',
-    createdate: '建立时间',
-    updateman: '更新人',
-    fjsl: '房间数量',
-    lxdh: '联系电话',
-    updatedate: '更新时间',
-    trmtrainaddressname: '培训地点',
-    trmtrainaddressid: '培训地点标识',
+    lxr: "联系人",
+    createman: "建立人",
+    trmstayid: "培训住宿标识",
+    enable: "逻辑有效标志",
+    trmstayname: "名称",
+    fjlx: "房间类型",
+    createdate: "建立时间",
+    updateman: "更新人",
+    fjsl: "房间数量",
+    lxdh: "联系电话",
+    updatedate: "更新时间",
+    trmtrainaddressname: "培训地点",
+    trmtrainaddressid: "培训地点标识",
   },
 	views: {
 		gridview: {
 			caption: "培训住宿",
-      title: '培训住宿',
+      		title: "培训住宿",
 		},
 		editview: {
 			caption: "培训住宿",
-      title: '培训住宿',
+      		title: "培训住宿",
 		},
 		mpickupview: {
 			caption: "培训住宿",
-      title: '培训住宿数据多项选择视图',
+      		title: "培训住宿数据多项选择视图",
 		},
 		pickupview: {
 			caption: "培训住宿",
-      title: '培训住宿数据选择视图',
+      		title: "培训住宿数据选择视图",
 		},
 		pickupgridview: {
 			caption: "培训住宿",
-      title: '培训住宿选择表格视图',
+      		title: "培训住宿选择表格视图",
 		},
 	},
 	main_form: {

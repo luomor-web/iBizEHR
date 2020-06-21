@@ -909,4 +909,26 @@ export default class EntityService {
         return Http.getInstance().post(`/${this.APPDENAME}/${data[this.APPDEKEY]}/testuserexistworklist`,requestData,isloading);
     }
 
+    /**
+     * 获取所有应用数据
+     * 
+     * @param context 
+     * @param data 
+     * @param isloading 
+     */
+    public async getAllApp(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        return Http.getInstance().get(`uaa/access-center/app-switcher/default`,data,isloading);
+    }
+
+    /**
+     * 更新已选择的应用
+     * 
+     * @param context 
+     * @param data 
+     * @param isloading 
+     */
+    public async updateChooseApp(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        return Http.getInstance().put(`uaa/access-center/app-switcher/default`,data,isloading);
+    }
+
 }

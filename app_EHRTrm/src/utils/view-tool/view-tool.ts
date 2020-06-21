@@ -99,15 +99,17 @@ export class ViewTool {
         let routePath: string = '';
         let [arg] = args;
         arg = arg ? arg : {};
-        deResParameters.forEach(({ pathName, parameterName }: { pathName: string, parameterName: string }) => {
-            let value:any = null;
-            if (viewParam[parameterName] && !Object.is(viewParam[parameterName], '') && !Object.is(viewParam[parameterName], 'null')) {
-                value = viewParam[parameterName];
-            } else if (arg[parameterName] && !Object.is(arg[parameterName], '') && !Object.is(arg[parameterName], 'null')) {
-                value = arg[parameterName];
-            }
-            routePath = `${routePath}/${pathName}/${value}`;
-        });
+        if(deResParameters && deResParameters.length >0){
+            deResParameters.forEach(({ pathName, parameterName }: { pathName: string, parameterName: string }) => {
+                let value:any = null;
+                if (viewParam[parameterName] && !Object.is(viewParam[parameterName], '') && !Object.is(viewParam[parameterName], 'null')) {
+                    value = viewParam[parameterName];
+                } else if (arg[parameterName] && !Object.is(arg[parameterName], '') && !Object.is(arg[parameterName], 'null')) {
+                    value = arg[parameterName];
+                }
+                routePath = `${routePath}/${pathName}/${value}`;
+            });
+        }
         return routePath;
     }
 
@@ -124,21 +126,23 @@ export class ViewTool {
     public static getActiveRoutePath(parameters: any[], args: any[], data: any): string {
         let routePath: string = '';
         // 不存在应用实体
-        if (parameters.length === 1) {
-            const [{ pathName, parameterName }] = parameters;
-            routePath = `/${pathName}`;
-            if (Object.keys(data).length > 0) {
-                routePath = `${routePath}?${qs.stringify(data, { delimiter: ';' })}`;
-            }
-        } else if (parameters.length === 2) {
-            let [arg] = args;
-            arg = arg ? arg : {};
-            const [{ pathName: _pathName, parameterName: _parameterName }, { pathName: _pathName2, parameterName: _parameterName2 }] = parameters;
-            const _value: any = arg[_parameterName] && !Object.is(arg[_parameterName], '') ?
-                arg[_parameterName] : null;
-            routePath = `/${_pathName}/${_value}/${_pathName2}`;
-            if (Object.keys(data).length > 0) {
-                routePath = `${routePath}?${qs.stringify(data, { delimiter: ';' })}`;
+        if(parameters && parameters.length >0){
+            if (parameters.length === 1) {
+                const [{ pathName, parameterName }] = parameters;
+                routePath = `/${pathName}`;
+                if (Object.keys(data).length > 0) {
+                    routePath = `${routePath}?${qs.stringify(data, { delimiter: ';' })}`;
+                }
+            } else if (parameters.length === 2) {
+                let [arg] = args;
+                arg = arg ? arg : {};
+                const [{ pathName: _pathName, parameterName: _parameterName }, { pathName: _pathName2, parameterName: _parameterName2 }] = parameters;
+                const _value: any = arg[_parameterName] && !Object.is(arg[_parameterName], '') ?
+                    arg[_parameterName] : null;
+                routePath = `/${_pathName}/${_value}/${_pathName2}`;
+                if (Object.keys(data).length > 0) {
+                    routePath = `${routePath}?${qs.stringify(data, { delimiter: ';' })}`;
+                }
             }
         }
         return routePath;

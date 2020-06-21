@@ -292,7 +292,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
      * 是否显示按钮
      *
      * @type {boolean}
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     @Prop({default: true}) public isShowButton!: boolean;
     
@@ -300,7 +300,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public selectedData: string = "";
 
@@ -308,25 +308,23 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
      * 是否初始化已选中项
      *
      * @type {any[]}
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public isInitSelected:boolean = false;
     
     /**
      * 是否单选
      *
-     * @type {boolean}
-     * @memberof TrmHmatserMPickupView
+     * @type {any[]}
+     * @memberof TrmHmatserMPickupViewBase
      */
     public isSingleSelect: boolean = false;
 
     /**
      * 视图参数变更
      *
-     * @protected
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof TrmHmatserMPickupView
+     * @type {boolean}
+     * @memberof TrmHmatserMPickupViewBase
      */
     protected viewParamChange(newVal: any, oldVal: any): void {
         if(this.viewparams.selectedData){
@@ -351,7 +349,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
      * 选中数据单击
      *
      * @param {*} item
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public selectionsClick(item:any):void {
         item._select = !item._select;
@@ -363,7 +361,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
      * 选中树双击
      *
      * @param {*} item
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public selectionsDBLClick(item:any):void {
         const index: number = this.viewSelections.findIndex((selection: any) => Object.is(selection.srfkey, item.srfkey));
@@ -378,7 +376,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 删除右侧全部选中数据
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onCLickLeft():void {
         const _selectiions = [...JSON.parse(JSON.stringify(this.viewSelections))];
@@ -399,7 +397,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 添加左侧选中数据
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onCLickRight():void {
         Object.values(this.containerModel).forEach((model: any) => {
@@ -425,7 +423,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 选中数据全部删除
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onCLickAllLeft():void {
         this.viewSelections = [];
@@ -437,7 +435,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 添加左侧面板所有数据到右侧
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onCLickAllRight():void {
         Object.values(this.containerModel).forEach((model: any) => {
@@ -464,7 +462,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 确定
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onClickOk(): void {
         this.$emit('viewdataschange', this.viewSelections);
@@ -474,7 +472,7 @@ export default class TrmHmatserMPickupViewBase extends MPickupViewBase {
     /**
      * 取消
      *
-     * @memberof TrmHmatserMPickupView
+     * @memberof TrmHmatserMPickupViewBase
      */
     public onClickCancel(): void {
         this.$emit('close', null);

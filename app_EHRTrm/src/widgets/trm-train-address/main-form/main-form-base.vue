@@ -151,9 +151,7 @@
 </i-col>
 <i-col v-show="detailsModel.js.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='js' :itemRules="this.rules.js" class='' :caption="$t('entities.trmtrainaddress.main_form.details.js')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.js.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.js" :disabled="detailsModel.js.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.js"  :disabled="detailsModel.js.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -372,11 +370,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import TrmTrainAddressService from '@/service/trm-train-address/trm-train-address-service';
 import MainService from './main-form-service';
 
@@ -395,7 +394,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public name?: string;
 
@@ -403,7 +402,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -411,7 +410,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public context: any;
 
@@ -419,7 +418,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public viewparams: any;
 
@@ -428,7 +427,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof MainBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -436,7 +435,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -448,7 +447,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Main
+     * @memberof MainBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -456,7 +455,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {MainService}
-     * @memberof Main
+     * @memberof MainBase
      */
     public service: MainService = new MainService({ $store: this.$store });
 
@@ -464,7 +463,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {TrmTrainAddressService}
-     * @memberof Main
+     * @memberof MainBase
      */
     public appEntityService: TrmTrainAddressService = new TrmTrainAddressService({ $store: this.$store });
     
@@ -474,7 +473,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Main
+     * @memberof MainBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -484,7 +483,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -501,7 +500,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public srfwfmemo:string = "";
     
@@ -509,7 +508,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof Main
+     * @memberof MainBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -519,7 +518,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public getData(): any {
         return this.data;
@@ -529,7 +528,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -537,7 +536,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -545,7 +544,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -553,7 +552,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -561,7 +560,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public updateAction!: string;
     
@@ -569,7 +568,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public removeAction!: string;
     
@@ -577,7 +576,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -585,7 +584,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public loadAction!: string;
     
@@ -593,7 +592,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public createAction!: string;
 
@@ -601,7 +600,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public searchAction!: string;
 
@@ -609,7 +608,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof Main
+     * @memberof MainBase
      */
     @Prop() public viewtag!: string;
 
@@ -617,7 +616,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof MainBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -625,7 +624,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof MainBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -634,7 +633,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof MainBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -643,7 +642,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof MainBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -652,7 +651,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public oldData: any = {};
 
@@ -660,7 +659,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -695,7 +694,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof Main
+      * @memberof MainBase
       */
     public currentAction: string = "";
 
@@ -703,7 +702,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof Main
+      * @memberof MainBase
       */
     public drcounter: number = 0;
 
@@ -711,7 +710,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof Main
+      * @memberof MainBase
       */
     public drsaveopt: any = {};
 
@@ -719,7 +718,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof Main
+      * @memberof MainBase
       */
     public saveState:any ;
 
@@ -727,7 +726,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -886,7 +885,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '培训场地信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainaddress.main_form', extractMode: 'ITEM', details: [] } })
@@ -967,7 +966,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -979,7 +978,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -991,7 +990,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -1003,7 +1002,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -1015,7 +1014,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -1027,7 +1026,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -1039,7 +1038,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -1051,7 +1050,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -1063,7 +1062,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.trmtrainaddressname')
     onTrmtrainaddressnameChange(newVal: any, oldVal: any) {
@@ -1075,7 +1074,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.sf')
     onSfChange(newVal: any, oldVal: any) {
@@ -1087,7 +1086,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.s')
     onSChange(newVal: any, oldVal: any) {
@@ -1099,7 +1098,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.dz')
     onDzChange(newVal: any, oldVal: any) {
@@ -1111,7 +1110,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.lxr')
     onLxrChange(newVal: any, oldVal: any) {
@@ -1123,7 +1122,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.lxdh')
     onLxdhChange(newVal: any, oldVal: any) {
@@ -1135,7 +1134,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.email')
     onEmailChange(newVal: any, oldVal: any) {
@@ -1147,7 +1146,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.xz')
     onXzChange(newVal: any, oldVal: any) {
@@ -1159,7 +1158,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.xj')
     onXjChange(newVal: any, oldVal: any) {
@@ -1171,7 +1170,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.hjzk')
     onHjzkChange(newVal: any, oldVal: any) {
@@ -1183,7 +1182,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.pxlx')
     onPxlxChange(newVal: any, oldVal: any) {
@@ -1195,7 +1194,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.sfqy')
     onSfqyChange(newVal: any, oldVal: any) {
@@ -1207,7 +1206,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.js')
     onJsChange(newVal: any, oldVal: any) {
@@ -1219,7 +1218,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -1231,7 +1230,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.gxfw')
     onGxfwChange(newVal: any, oldVal: any) {
@@ -1243,7 +1242,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -1255,7 +1254,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof MainBase
      */
     @Watch('data.trmtrainaddressid')
     onTrmtrainaddressidChange(newVal: any, oldVal: any) {
@@ -1268,7 +1267,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof MainBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1277,7 +1276,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof MainBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1294,7 +1293,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof MainBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1341,7 +1340,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof Main
+     * @memberof MainBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1358,7 +1357,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof MainBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1379,7 +1378,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof MainBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1404,7 +1403,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof Main
+     * @memberof MainBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1420,7 +1419,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof Main
+     * @memberof MainBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1432,7 +1431,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1448,7 +1447,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof Main
+     * @memberof MainBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1466,7 +1465,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof Main
+     * @memberof MainBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1481,7 +1480,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof MainBase
      */
     public getValues(): any {
         return this.data;
@@ -1492,7 +1491,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof MainBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1510,7 +1509,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof Main
+     * @memberof MainBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1528,7 +1527,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof MainBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1540,7 +1539,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public created(): void {
         this.afterCreated();
@@ -1549,7 +1548,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof Main
+     *  @memberof MainBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1606,7 +1605,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1615,7 +1614,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof Main
+     * @memberof MainBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1630,7 +1629,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof Main
+     * @memberof @memberof MainBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1648,7 +1647,7 @@ export default class MainBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof Main
+     *@memberof @memberof MainBase
      */
     public print(){
         let _this:any = this;
@@ -1659,7 +1658,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof MainBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1681,7 +1680,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof Main
+     * @memberof MainBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1702,7 +1701,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof MainBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1737,7 +1736,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof MainBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1791,7 +1790,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof MainBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1842,7 +1841,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof MainBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1912,7 +1911,7 @@ export default class MainBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof MainBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1946,7 +1945,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof MainBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2002,7 +2001,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof MainBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2078,7 +2077,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof Main
+     * @memberof MainBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -2123,7 +2122,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof MainBase
      */
     public onEnter($event: any): void {
     }
@@ -2132,7 +2131,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof MainBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2157,7 +2156,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof MainBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2180,7 +2179,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof MainBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2204,38 +2203,37 @@ export default class MainBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof Main
+    * @memberof MainBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof Main
+     * @memberof MainBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof Main
+     * @memberof MainBase
      */
     public updateDefault(){                    
     }
