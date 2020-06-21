@@ -216,6 +216,11 @@ export default {
         "20": "因私",
         "empty": ""
     },
+    EhrCodeList0400: {
+        "1": "是",
+        "0": "否",
+        "empty": ""
+    },
     EhrCodeList0138: {
         "10": "正常",
         "20": "待新增审批",
