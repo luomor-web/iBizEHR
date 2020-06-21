@@ -75,7 +75,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
      * 档案借阅及归还记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimarchivesloanandreturnid",type=IdType.UUID)
+    @TableId(value= "pimarchivesloanandreturnid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimarchivesloanandreturnid")
     @JsonProperty("pimarchivesloanandreturnid")
     private String pimarchivesloanandreturnid;

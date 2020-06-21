@@ -1,34 +1,34 @@
 
 export default {
   fields: {
-    updateman: '更新人',
-    memo: '备注',
-    updatedate: '更新时间',
-    createman: '建立人',
-    enable: '逻辑有效标志',
-    param: '对应计算源属性',
-    salparamid: '薪酬计算指标标识',
-    salparamname: '薪酬计算指标名称',
-    createdate: '建立时间',
-    salsourcename: '薪酬计算源',
-    salsourceid: '薪酬计算源',
+    updateman: "更新人",
+    memo: "备注",
+    updatedate: "更新时间",
+    createman: "建立人",
+    enable: "逻辑有效标志",
+    param: "对应计算源属性",
+    salparamid: "薪酬计算指标标识",
+    salparamname: "薪酬计算指标名称",
+    createdate: "建立时间",
+    salsourcename: "薪酬计算源",
+    salsourceid: "薪酬计算源",
   },
 	views: {
 		editview: {
 			caption: "薪酬计算指标",
-      title: '薪酬计算指标编辑视图',
+      		title: "薪酬计算指标编辑视图",
 		},
 		pickupgridview: {
 			caption: "薪酬计算指标",
-      title: '薪酬计算指标选择表格视图',
+      		title: "薪酬计算指标选择表格视图",
 		},
 		gridview: {
 			caption: "薪酬计算指标",
-      title: '薪酬计算指标表格视图',
+      		title: "薪酬计算指标表格视图",
 		},
 		pickupview: {
 			caption: "薪酬计算指标",
-      title: '薪酬计算指标数据选择视图',
+      		title: "薪酬计算指标数据选择视图",
 		},
 	},
 	main_form: {

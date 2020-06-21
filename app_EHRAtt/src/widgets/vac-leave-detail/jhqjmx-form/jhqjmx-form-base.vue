@@ -183,15 +183,13 @@
 </i-col>
 <i-col v-show="detailsModel.fj.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='fj' :itemRules="this.rules.fj" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.fj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='fj' :value="data.fj" :disabled="detailsModel.fj.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='fj' :value="data.fj" :disabled="detailsModel.fj.disabled" :uploadparams='{}' :exportparams='{}'  style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.bz" :disabled="detailsModel.bz.disabled" style=""></textarea>
-</div>
+    <input-box v-model="data.bz"  :disabled="detailsModel.bz.disabled" type='textarea' style="" ></input-box>
 </app-form-item>
 
 </i-col>
@@ -207,11 +205,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import VacLeaveDetailService from '@/service/vac-leave-detail/vac-leave-detail-service';
 import JHQJMXService from './jhqjmx-form-service';
 
@@ -230,7 +229,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public name?: string;
 
@@ -238,7 +237,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -246,7 +245,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public context: any;
 
@@ -254,7 +253,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public viewparams: any;
 
@@ -263,7 +262,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -271,7 +270,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -283,7 +282,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -291,7 +290,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {JHQJMXService}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public service: JHQJMXService = new JHQJMXService({ $store: this.$store });
 
@@ -299,7 +298,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {VacLeaveDetailService}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public appEntityService: VacLeaveDetailService = new VacLeaveDetailService({ $store: this.$store });
     
@@ -309,7 +308,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -319,7 +318,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -336,7 +335,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public srfwfmemo:string = "";
     
@@ -344,7 +343,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -354,7 +353,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public getData(): any {
         return this.data;
@@ -364,7 +363,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -372,7 +371,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -380,7 +379,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -388,7 +387,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -396,7 +395,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public updateAction!: string;
     
@@ -404,7 +403,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public removeAction!: string;
     
@@ -412,7 +411,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -420,7 +419,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public loadAction!: string;
     
@@ -428,7 +427,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public createAction!: string;
 
@@ -436,7 +435,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public searchAction!: string;
 
@@ -444,7 +443,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Prop() public viewtag!: string;
 
@@ -452,7 +451,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -460,7 +459,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -469,7 +468,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -478,7 +477,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -487,7 +486,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public oldData: any = {};
 
@@ -495,7 +494,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -529,7 +528,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof JHQJMX
+      * @memberof JHQJMXBase
       */
     public currentAction: string = "";
 
@@ -537,7 +536,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof JHQJMX
+      * @memberof JHQJMXBase
       */
     public drcounter: number = 0;
 
@@ -545,7 +544,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof JHQJMX
+      * @memberof JHQJMXBase
       */
     public drsaveopt: any = {};
 
@@ -553,7 +552,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof JHQJMX
+      * @memberof JHQJMXBase
       */
     public saveState:any ;
 
@@ -561,7 +560,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -714,7 +713,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public detailsModel: any = {
         grouppanel1: new FormGroupPanelModel({ caption: '计划', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.vacleavedetail.jhqjmx_form', extractMode: 'ITEM', details: [] } })
@@ -778,7 +777,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -790,7 +789,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -802,7 +801,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -814,7 +813,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -826,7 +825,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -838,7 +837,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -850,7 +849,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -862,7 +861,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -874,7 +873,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -886,7 +885,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.qjzl')
     onQjzlChange(newVal: any, oldVal: any) {
@@ -898,7 +897,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.hyzk')
     onHyzkChange(newVal: any, oldVal: any) {
@@ -910,7 +909,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.tqlx')
     onTqlxChange(newVal: any, oldVal: any) {
@@ -922,7 +921,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.njsy')
     onNjsyChange(newVal: any, oldVal: any) {
@@ -934,7 +933,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.tips')
     onTipsChange(newVal: any, oldVal: any) {
@@ -946,7 +945,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.jhkssj')
     onJhkssjChange(newVal: any, oldVal: any) {
@@ -958,7 +957,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.jhkssxw')
     onJhkssxwChange(newVal: any, oldVal: any) {
@@ -970,7 +969,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.jhjssj')
     onJhjssjChange(newVal: any, oldVal: any) {
@@ -982,7 +981,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.jhjssxw')
     onJhjssxwChange(newVal: any, oldVal: any) {
@@ -994,7 +993,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.jhts')
     onJhtsChange(newVal: any, oldVal: any) {
@@ -1006,7 +1005,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.state')
     onStateChange(newVal: any, oldVal: any) {
@@ -1018,7 +1017,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.fj')
     onFjChange(newVal: any, oldVal: any) {
@@ -1030,7 +1029,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.bz')
     onBzChange(newVal: any, oldVal: any) {
@@ -1042,7 +1041,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -1054,7 +1053,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     @Watch('data.vacleavedetailid')
     onVacleavedetailidChange(newVal: any, oldVal: any) {
@@ -1067,7 +1066,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1076,7 +1075,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof JHQJMXBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1093,7 +1092,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1172,22 +1171,22 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
         if(Object.is(name, 'jhkssj')){
             const details: string[] = ['jhts'];
-            this.updateFormItems('CalcJHQJTS', this.data, details, true);
+            this.updateFormItems('CalcPlanDays', this.data, details, true);
         }
 
         if(Object.is(name, 'jhkssxw')){
             const details: string[] = ['jhts'];
-            this.updateFormItems('CalcJHQJTS', this.data, details, true);
+            this.updateFormItems('CalcPlanDays', this.data, details, true);
         }
 
         if(Object.is(name, 'jhjssj')){
             const details: string[] = ['jhts'];
-            this.updateFormItems('CalcJHQJTS', this.data, details, true);
+            this.updateFormItems('CalcPlanDays', this.data, details, true);
         }
 
         if(Object.is(name, 'jhjssxw')){
             const details: string[] = ['jhts'];
-            this.updateFormItems('CalcJHQJTS', this.data, details, true);
+            this.updateFormItems('CalcPlanDays', this.data, details, true);
         }
     }
 
@@ -1197,7 +1196,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1214,7 +1213,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1235,7 +1234,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1260,7 +1259,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1276,7 +1275,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1288,7 +1287,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1304,7 +1303,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1322,7 +1321,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1337,7 +1336,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public getValues(): any {
         return this.data;
@@ -1348,7 +1347,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1366,7 +1365,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1384,7 +1383,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1396,7 +1395,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public created(): void {
         this.afterCreated();
@@ -1405,7 +1404,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof JHQJMX
+     *  @memberof JHQJMXBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1462,7 +1461,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1471,7 +1470,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1486,7 +1485,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof JHQJMX
+     * @memberof @memberof JHQJMXBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1504,7 +1503,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof JHQJMX
+     *@memberof @memberof JHQJMXBase
      */
     public print(){
         let _this:any = this;
@@ -1515,7 +1514,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1537,7 +1536,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1558,7 +1557,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1593,7 +1592,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1647,7 +1646,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1698,7 +1697,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1768,7 +1767,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof JHQJMXBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1802,7 +1801,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1858,7 +1857,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1934,7 +1933,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1979,7 +1978,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public onEnter($event: any): void {
     }
@@ -1988,7 +1987,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2013,7 +2012,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2036,7 +2035,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2060,33 +2059,35 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof JHQJMX
+    * @memberof JHQJMXBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public createDefault(){                    
+        if (this.data.hasOwnProperty('jhkssj')) {
+          this.data['jhkssj'] = this.$util.dateFormat(new Date());
+        }
         if (this.data.hasOwnProperty('state')) {
             this.data['state'] = '10';
         }
@@ -2094,7 +2095,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof JHQJMX
+     * @memberof JHQJMXBase
      */
     public updateDefault(){                    
         if (this.data.hasOwnProperty('state') && !this.data.state) {

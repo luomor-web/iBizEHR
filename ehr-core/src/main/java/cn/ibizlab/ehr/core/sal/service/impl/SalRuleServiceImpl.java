@@ -157,7 +157,6 @@ public class SalRuleServiceImpl extends ServiceImpl<SalRuleMapper, SalRule> impl
         return (!ObjectUtils.isEmpty(et.getSalruleid()))&&(!Objects.isNull(this.getById(et.getSalruleid())));
     }
 
-
 	@Override
     public List<SalRule> selectBySalparamid(String salparamid) {
         return baseMapper.selectBySalparamid(salparamid);
@@ -196,6 +195,8 @@ public class SalRuleServiceImpl extends ServiceImpl<SalRuleMapper, SalRule> impl
             et.setSalparamname(salparam.getSalparamname());
         }
     }
+
+
 
 
     @Override
@@ -243,5 +244,6 @@ public class SalRuleServiceImpl extends ServiceImpl<SalRuleMapper, SalRule> impl
     }
 
 }
+
 
 

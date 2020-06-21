@@ -113,6 +113,14 @@ public class ParLdkhqzDTO extends DTOBase implements Serializable {
     @JsonProperty("parkhzcmxid")
     private String parkhzcmxid;
 
+    /**
+     * 属性 [KHOBJECT]
+     *
+     */
+    @JSONField(name = "khobject")
+    @JsonProperty("khobject")
+    private String khobject;
+
 
     /**
      * 设置 [QZZB]
@@ -144,6 +152,14 @@ public class ParLdkhqzDTO extends DTOBase implements Serializable {
     public void setParkhzcmxid(String  parkhzcmxid){
         this.parkhzcmxid = parkhzcmxid ;
         this.modify("parkhzcmxid",parkhzcmxid);
+    }
+
+    /**
+     * 设置 [KHOBJECT]
+     */
+    public void setKhobject(String  khobject){
+        this.khobject = khobject ;
+        this.modify("khobject",khobject);
     }
 
 

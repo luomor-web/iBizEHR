@@ -130,7 +130,7 @@ export default class DefaultService extends ControlService {
     @Errorlog
     public wfsubmit(action: string,context: any = {}, data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
         data = this.handleWFData(data,true);
-        context = this.handleRequestData(action,context,data).context;
+        context = this.handleRequestData(action,context,data,true).context;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -281,10 +281,6 @@ export default class DefaultService extends ControlService {
     @Errorlog
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
         const {data:Data,context:Context} = this.handleRequestData(action,context,data);
-        //仿真主键数据
-        const PrimaryKey = Util.createUUID();
-        Data.ormdutyid = PrimaryKey;
-        Data.ormduty = PrimaryKey;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -294,7 +290,6 @@ export default class DefaultService extends ControlService {
                 result = this.appEntityService.GetDraft(Context,Data, isloading);
             }
             result.then((response) => {
-                response.data.ormdutyid = PrimaryKey;
                 this.handleResponse(action, response, true);
                 resolve(response);
             }).catch(response => {
@@ -339,13 +334,16 @@ export default class DefaultService extends ControlService {
      * @param data 数据
      * @memberof DefaultService
      */
-    public handleRequestData(action: string,context:any, data: any = {}){
+    public handleRequestData(action: string,context:any, data: any = {},isMerge:boolean = false){
         let mode: any = this.getMode();
         if (!mode && mode.getDataItems instanceof Function) {
             return data;
         }
         let formItemItems: any[] = mode.getDataItems();
         let requestData:any = {};
+        if(isMerge && (data && data.viewparams)){
+            Object.assign(requestData,data.viewparams);
+        }
         formItemItems.forEach((item:any) =>{
             if(item && item.dataType && Object.is(item.dataType,'FONTKEY')){
                 if(item && item.prop){
@@ -357,9 +355,6 @@ export default class DefaultService extends ControlService {
                 }
             }
         });
-        if(data && data.viewparams){
-            Object.assign(requestData,data.viewparams);
-        }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         if(tempContext && tempContext.srfsessionid){
             tempContext.srfsessionkey = tempContext.srfsessionid;

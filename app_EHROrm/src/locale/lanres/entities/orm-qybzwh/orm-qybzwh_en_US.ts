@@ -1,45 +1,45 @@
 
 export default {
   fields: {
-    updateman: '更新人',
-    ormqybzwhid: '区域标准维护标识',
-    updatedate: '更新时间',
-    createman: '建立人',
-    xh: '排序号',
-    ms: '描述',
-    ormqybzwhname: '区域选择',
-    createdate: '建立时间',
-    ormorgname: '组织名称',
-    ormorgid: '组织ID',
+    updateman: "更新人",
+    ormqybzwhid: "区域标准维护标识",
+    updatedate: "更新时间",
+    createman: "建立人",
+    xh: "排序号",
+    ms: "描述",
+    ormqybzwhname: "区域选择",
+    createdate: "建立时间",
+    ormorgname: "组织名称",
+    ormorgid: "组织ID",
   },
 	views: {
 		mpickupview: {
 			caption: "区域标准维护",
-      title: '区域标准维护数据多项选择视图',
+      		title: "区域标准维护数据多项选择视图",
 		},
 		pickupgridview: {
 			caption: "区域标准维护",
-      title: '区域标准维护选择表格视图',
+      		title: "区域标准维护选择表格视图",
 		},
 		editview: {
 			caption: "区域标准维护",
-      title: '区域标准维护编辑视图',
+      		title: "区域标准维护编辑视图",
 		},
 		pickupview: {
 			caption: "区域标准维护",
-      title: '区域标准维护数据选择视图',
+      		title: "区域标准维护数据选择视图",
 		},
 		editview2: {
 			caption: "区域标准维护",
-      title: '区域标准维护编辑视图',
+      		title: "区域标准维护编辑视图",
 		},
 		gridview: {
 			caption: "区域标准维护",
-      title: '区域标准维护表格视图',
+      		title: "区域标准维护表格视图",
 		},
 		redirectview: {
 			caption: "区域标准维护",
-      title: '区域标准维护数据重定向视图',
+      		title: "区域标准维护数据重定向视图",
 		},
 	},
 	main_form: {

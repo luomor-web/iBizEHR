@@ -267,23 +267,11 @@ export default class CKService extends ControlService {
                     response.data.pcmeducationexperienceid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof CKService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-            Object.assign(response.data,{'pcmprofileid':'srfparentkey'});
-        }
     }
 
 

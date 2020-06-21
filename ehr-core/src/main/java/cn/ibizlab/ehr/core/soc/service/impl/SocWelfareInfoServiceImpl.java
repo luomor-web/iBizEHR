@@ -60,7 +60,6 @@ public class SocWelfareInfoServiceImpl extends ServiceImpl<SocWelfareInfoMapper,
     public boolean checkKey(SocWelfareInfo et) {
         return (!ObjectUtils.isEmpty(et.getSocwelfareinfoid()))&&(!Objects.isNull(this.getById(et.getSocwelfareinfoid())));
     }
-
     @Override
     @Transactional
     public SocWelfareInfo getFJSJofPerson(SocWelfareInfo et) {
@@ -283,5 +282,6 @@ public class SocWelfareInfoServiceImpl extends ServiceImpl<SocWelfareInfoMapper,
     }
 
 }
+
 
 

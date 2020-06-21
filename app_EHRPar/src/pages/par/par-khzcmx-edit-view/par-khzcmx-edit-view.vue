@@ -5,7 +5,7 @@ import ParKhzcmxEditViewBase from './par-khzcmx-edit-view-base.vue';
 import view_form from '@widgets/par-khzcmx/main-form/main-form.vue';
 
 /**
- * 考核组成明细编辑视图
+ * 考核模板明细
  *
  * @export
  * @class ParKhzcmxEditView

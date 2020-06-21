@@ -89,7 +89,6 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     public boolean checkKey(AttendRecordDetail et) {
         return (!ObjectUtils.isEmpty(et.getAttendrecorddetailid()))&&(!Objects.isNull(this.getById(et.getAttendrecorddetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(AttendRecordDetail et) {
@@ -192,6 +191,8 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     }
 
 }
+
 
 

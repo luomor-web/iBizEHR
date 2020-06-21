@@ -248,7 +248,7 @@ export default class ARCHIVESCENTERPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ARCHIVESCENTERPickupView
+     * @memberof ARCHIVESCENTERPickupViewBase
      */
     public selectedData: string = "";
 

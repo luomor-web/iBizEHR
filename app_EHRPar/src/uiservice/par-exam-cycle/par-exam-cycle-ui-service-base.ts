@@ -80,11 +80,11 @@ export default class ParExamCycleUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parexamcycles'});
-        this.allViewMap.set(':',{viewname:'editview2',srfappde:'parexamcycles'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parexamcycles'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parexamcycles'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'parexamcycles'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'parexamcycles'});
+        this.allViewMap.set(':',{viewname:'newgridview',srfappde:'parexamcycles'});
     }
 
     /**

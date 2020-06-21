@@ -51,7 +51,6 @@ public class OrmOrgInfoServiceImpl extends ServiceImpl<OrmOrgInfoMapper, OrmOrgI
     public boolean checkKey(OrmOrgInfo et) {
         return (!ObjectUtils.isEmpty(et.getOrmorginfoid()))&&(!Objects.isNull(this.getById(et.getOrmorginfoid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmOrgInfo et) {
@@ -219,6 +218,8 @@ public class OrmOrgInfoServiceImpl extends ServiceImpl<OrmOrgInfoMapper, OrmOrgI
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -264,5 +265,6 @@ public class OrmOrgInfoServiceImpl extends ServiceImpl<OrmOrgInfoMapper, OrmOrgI
     }
 
 }
+
 
 

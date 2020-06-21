@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  ehr-nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos-standalone
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+    ports:
+      - "8848:8848"
+    networks:
+      - agent_network
+networks:
+  agent_network:
+    attachable: true
+

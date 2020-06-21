@@ -112,7 +112,6 @@ public class PimGwTypeServiceImpl extends ServiceImpl<PimGwTypeMapper, PimGwType
     public boolean checkKey(PimGwType et) {
         return (!ObjectUtils.isEmpty(et.getPimgwtypeid()))&&(!Objects.isNull(this.getById(et.getPimgwtypeid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimGwType et) {
@@ -151,6 +150,8 @@ public class PimGwTypeServiceImpl extends ServiceImpl<PimGwTypeMapper, PimGwType
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimGwType> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimGwType>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class PimGwTypeServiceImpl extends ServiceImpl<PimGwTypeMapper, PimGwType
     }
 
 }
+
 
 

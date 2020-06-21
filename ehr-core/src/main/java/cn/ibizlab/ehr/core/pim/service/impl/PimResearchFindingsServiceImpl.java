@@ -101,7 +101,6 @@ public class PimResearchFindingsServiceImpl extends ServiceImpl<PimResearchFindi
     public boolean checkKey(PimResearchFindings et) {
         return (!ObjectUtils.isEmpty(et.getPimresearchfindingsid()))&&(!Objects.isNull(this.getById(et.getPimresearchfindingsid())));
     }
-
     @Override
     @Transactional
     public boolean save(PimResearchFindings et) {
@@ -212,6 +211,8 @@ public class PimResearchFindingsServiceImpl extends ServiceImpl<PimResearchFindi
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -257,5 +258,6 @@ public class PimResearchFindingsServiceImpl extends ServiceImpl<PimResearchFindi
     }
 
 }
+
 
 

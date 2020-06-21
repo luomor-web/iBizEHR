@@ -291,7 +291,7 @@ public class PimByzzjlmx extends EntityMP implements Serializable {
      * B/Y类员工转正记录引用明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimbyzzjlmxid",type=IdType.UUID)
+    @TableId(value= "pimbyzzjlmxid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimbyzzjlmxid")
     @JsonProperty("pimbyzzjlmxid")
     private String pimbyzzjlmxid;

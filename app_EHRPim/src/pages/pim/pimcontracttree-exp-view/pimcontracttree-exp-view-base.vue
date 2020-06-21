@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof PIMCONTRACTTreeExpView
+     * @memberof PIMCONTRACTTreeExpViewBase
      */
     public viewUID: string = 'pim-pimcontracttree-exp-view';
 

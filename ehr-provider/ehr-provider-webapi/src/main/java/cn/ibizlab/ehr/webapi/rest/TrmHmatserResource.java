@@ -158,5 +158,137 @@ public class TrmHmatserResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmhmatserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.trmhmatserService.get(#trmhmatser_id),'ehr-TrmHmatser-Remove')")
+    @ApiOperation(value = "根据培训机构删除班主任", tags = {"班主任" },  notes = "根据培训机构删除班主任")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/{trmhmatser_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmhmatser_id") String trmhmatser_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.remove(trmhmatser_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserService.getTrmhmatserByIds(#ids),'ehr-TrmHmatser-Remove')")
+    @ApiOperation(value = "根据培训机构批量删除班主任", tags = {"班主任" },  notes = "根据培训机构批量删除班主任")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/batch")
+    public ResponseEntity<Boolean> removeBatchByTrmTrainAgency(@RequestBody List<String> ids) {
+        trmhmatserService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdto),'ehr-TrmHmatser-Save')")
+    @ApiOperation(value = "根据培训机构保存班主任", tags = {"班主任" },  notes = "根据培训机构保存班主任")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/save")
+    public ResponseEntity<Boolean> saveByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmHmatserDTO trmhmatserdto) {
+        TrmHmatser domain = trmhmatserMapping.toDomain(trmhmatserdto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdtos),'ehr-TrmHmatser-Save')")
+    @ApiOperation(value = "根据培训机构批量保存班主任", tags = {"班主任" },  notes = "根据培训机构批量保存班主任")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/savebatch")
+    public ResponseEntity<Boolean> saveBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
+        List<TrmHmatser> domainlist=trmhmatserMapping.toDomain(trmhmatserdtos);
+        for(TrmHmatser domain:domainlist){
+             domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmhmatserService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserService.get(#trmhmatser_id),'ehr-TrmHmatser-Update')")
+    @ApiOperation(value = "根据培训机构更新班主任", tags = {"班主任" },  notes = "根据培训机构更新班主任")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/{trmhmatser_id}")
+    @Transactional
+    public ResponseEntity<TrmHmatserDTO> updateByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmhmatser_id") String trmhmatser_id, @RequestBody TrmHmatserDTO trmhmatserdto) {
+        TrmHmatser domain = trmhmatserMapping.toDomain(trmhmatserdto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        domain.setTrmhmatserid(trmhmatser_id);
+		trmhmatserService.update(domain);
+        TrmHmatserDTO dto = trmhmatserMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserService.getTrmhmatserByEntities(this.trmhmatserMapping.toDomain(#trmhmatserdtos)),'ehr-TrmHmatser-Update')")
+    @ApiOperation(value = "根据培训机构批量更新班主任", tags = {"班主任" },  notes = "根据培训机构批量更新班主任")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/batch")
+    public ResponseEntity<Boolean> updateBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
+        List<TrmHmatser> domainlist=trmhmatserMapping.toDomain(trmhmatserdtos);
+        for(TrmHmatser domain:domainlist){
+            domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmhmatserService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdto),'ehr-TrmHmatser-Create')")
+    @ApiOperation(value = "根据培训机构建立班主任", tags = {"班主任" },  notes = "根据培训机构建立班主任")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers")
+    @Transactional
+    public ResponseEntity<TrmHmatserDTO> createByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmHmatserDTO trmhmatserdto) {
+        TrmHmatser domain = trmhmatserMapping.toDomain(trmhmatserdto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+		trmhmatserService.create(domain);
+        TrmHmatserDTO dto = trmhmatserMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdtos),'ehr-TrmHmatser-Create')")
+    @ApiOperation(value = "根据培训机构批量建立班主任", tags = {"班主任" },  notes = "根据培训机构批量建立班主任")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/batch")
+    public ResponseEntity<Boolean> createBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
+        List<TrmHmatser> domainlist=trmhmatserMapping.toDomain(trmhmatserdtos);
+        for(TrmHmatser domain:domainlist){
+            domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmhmatserService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训机构检查班主任", tags = {"班主任" },  notes = "根据培训机构检查班主任")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/checkkey")
+    public ResponseEntity<Boolean> checkKeyByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmHmatserDTO trmhmatserdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.checkKey(trmhmatserMapping.toDomain(trmhmatserdto)));
+    }
+
+    @ApiOperation(value = "根据培训机构获取班主任草稿", tags = {"班主任" },  notes = "根据培训机构获取班主任草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/getdraft")
+    public ResponseEntity<TrmHmatserDTO> getDraftByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id) {
+        TrmHmatser domain = new TrmHmatser();
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmhmatserMapping.toDto(trmhmatserService.getDraft(domain)));
+    }
+
+    @PostAuthorize("hasPermission(this.trmhmatserMapping.toDomain(returnObject.body),'ehr-TrmHmatser-Get')")
+    @ApiOperation(value = "根据培训机构获取班主任", tags = {"班主任" },  notes = "根据培训机构获取班主任")
+	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/{trmhmatser_id}")
+    public ResponseEntity<TrmHmatserDTO> getByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmhmatser_id") String trmhmatser_id) {
+        TrmHmatser domain = trmhmatserService.get(trmhmatser_id);
+        TrmHmatserDTO dto = trmhmatserMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmHmatser-Default-all')")
+	@ApiOperation(value = "根据培训机构获取DEFAULT", tags = {"班主任" } ,notes = "根据培训机构获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/fetchdefault")
+	public ResponseEntity<List<TrmHmatserDTO>> fetchTrmHmatserDefaultByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id,TrmHmatserSearchContext context) {
+        context.setN_trmtrainagencyid_eq(trmtrainagency_id);
+        Page<TrmHmatser> domains = trmhmatserService.searchDefault(context) ;
+        List<TrmHmatserDTO> list = trmhmatserMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmHmatser-Default-all')")
+	@ApiOperation(value = "根据培训机构查询DEFAULT", tags = {"班主任" } ,notes = "根据培训机构查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainagencies/{trmtrainagency_id}/trmhmatsers/searchdefault")
+	public ResponseEntity<Page<TrmHmatserDTO>> searchTrmHmatserDefaultByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmHmatserSearchContext context) {
+        context.setN_trmtrainagencyid_eq(trmtrainagency_id);
+        Page<TrmHmatser> domains = trmhmatserService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmhmatserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

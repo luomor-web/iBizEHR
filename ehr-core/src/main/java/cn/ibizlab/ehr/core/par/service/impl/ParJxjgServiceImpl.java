@@ -56,7 +56,6 @@ public class ParJxjgServiceImpl extends ServiceImpl<ParJxjgMapper, ParJxjg> impl
     public boolean checkKey(ParJxjg et) {
         return (!ObjectUtils.isEmpty(et.getParjxjgid()))&&(!Objects.isNull(this.getById(et.getParjxjgid())));
     }
-
     @Override
     @Transactional
     public boolean create(ParJxjg et) {
@@ -156,6 +155,8 @@ public class ParJxjgServiceImpl extends ServiceImpl<ParJxjgMapper, ParJxjg> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class ParJxjgServiceImpl extends ServiceImpl<ParJxjgMapper, ParJxjg> impl
     }
 
 }
+
 
 

@@ -1,23 +1,23 @@
 
 export default {
   fields: {
-    yybm: '原因编码',
-    createman: '建立人',
-    pcmprofilespyyname: '应聘者审批原因名称',
-    updatedate: '更新时间',
-    pcmprofilespyyid: '应聘者审批原因标识',
-    createdate: '建立时间',
-    updateman: '更新人',
-    yymc: '原因名称',
+    yybm: "原因编码",
+    createman: "建立人",
+    pcmprofilespyyname: "应聘者审批原因名称",
+    updatedate: "更新时间",
+    pcmprofilespyyid: "应聘者审批原因标识",
+    createdate: "建立时间",
+    updateman: "更新人",
+    yymc: "原因名称",
   },
 	views: {
 		gridview: {
 			caption: "应聘者审批原因",
-      title: '应聘者审批原因表格视图',
+      		title: "应聘者审批原因表格视图",
 		},
 		editview: {
 			caption: "应聘者审批原因",
-      title: '应聘者审批原因编辑视图',
+      		title: "应聘者审批原因编辑视图",
 		},
 	},
 	main_form: {

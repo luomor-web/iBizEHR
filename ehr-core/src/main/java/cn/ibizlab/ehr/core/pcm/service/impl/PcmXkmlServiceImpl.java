@@ -138,7 +138,6 @@ public class PcmXkmlServiceImpl extends ServiceImpl<PcmXkmlMapper, PcmXkml> impl
     public boolean checkKey(PcmXkml et) {
         return (!ObjectUtils.isEmpty(et.getPcmxkmlid()))&&(!Objects.isNull(this.getById(et.getPcmxkmlid())));
     }
-
     @Override
     public PcmXkml getDraft(PcmXkml et) {
         return et;
@@ -163,6 +162,8 @@ public class PcmXkmlServiceImpl extends ServiceImpl<PcmXkmlMapper, PcmXkml> impl
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmXkml> pages=baseMapper.searchCurND(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmXkml>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -213,5 +214,6 @@ public class PcmXkmlServiceImpl extends ServiceImpl<PcmXkmlMapper, PcmXkml> impl
     }
 
 }
+
 
 

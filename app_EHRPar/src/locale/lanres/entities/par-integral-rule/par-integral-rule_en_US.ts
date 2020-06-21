@@ -1,44 +1,44 @@
 
 export default {
   fields: {
-    parintegralruleid: '积分规则标识',
-    parintegralrulename: '积分规则名称',
-    createman: '建立人',
-    createdate: '建立时间',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    nd: '年度',
-    integrals: '积分',
-    dj: '定级',
+    parintegralruleid: "积分规则标识",
+    parintegralrulename: "积分规则名称",
+    createman: "建立人",
+    createdate: "建立时间",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    nd: "年度",
+    integrals: "积分",
+    dj: "定级",
   },
 	views: {
 		editview: {
 			caption: "积分规则",
-      title: '积分规则',
+      		title: "积分规则",
 		},
 		gridview: {
 			caption: "积分规则",
-      title: '积分规则',
+      		title: "积分规则",
 		},
 		pickupview: {
 			caption: "积分规则",
-      title: '积分规则数据选择视图',
+      		title: "积分规则数据选择视图",
 		},
 		mpickupview: {
 			caption: "积分规则",
-      title: '积分规则数据多项选择视图',
+      		title: "积分规则数据多项选择视图",
 		},
 		editview9: {
 			caption: "积分规则",
-      title: '积分规则',
+      		title: "积分规则",
 		},
 		editview2: {
 			caption: "积分规则",
-      title: '积分规则编辑视图',
+      		title: "积分规则编辑视图",
 		},
 		pickupgridview: {
 			caption: "积分规则",
-      title: '积分规则选择表格视图',
+      		title: "积分规则选择表格视图",
 		},
 	},
 	main_form: {

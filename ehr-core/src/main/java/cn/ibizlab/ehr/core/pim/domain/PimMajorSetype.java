@@ -52,7 +52,7 @@ public class PimMajorSetype extends EntityMP implements Serializable {
      * 专业序列类型标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimmajorsetypeid",type=IdType.UUID)
+    @TableId(value= "pimmajorsetypeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimmajorsetypeid")
     @JsonProperty("pimmajorsetypeid")
     private String pimmajorsetypeid;

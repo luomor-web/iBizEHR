@@ -1,0 +1,2153 @@
+<template>
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='trmtrainagency_main2' style="">
+    <input style="display:none;" />
+    <row >
+            
+<i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <row>
+        <i-col v-show="detailsModel.trmtrainagencyname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='trmtrainagencyname' :itemRules="this.rules.trmtrainagencyname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.trmtrainagencyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='trmtrainagencyname' :value="data.trmtrainagencyname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jglx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jglx' :itemRules="this.rules.jglx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='jglx' :value="data.jglx" tag='EhrCodeList0111' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jgdj.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jgdj' :itemRules="this.rules.jgdj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jgdj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jgdj.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='jgdj' :value="data.jgdj" tag='EhrCodeList0145' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jglb.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jglb' :itemRules="this.rules.jglb" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jglb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglb.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='jglb' :value="data.jglb" tag='EhrCodeList0130' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.trmtrainagencyname2.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='trmtrainagencyname2' :itemRules="this.rules.trmtrainagencyname2" class='' :caption="$t('entities.trmtrainagency.main2_form.details.trmtrainagencyname2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname2.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='trmtrainagencyname2' :value="data.trmtrainagencyname2" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.sfgx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='sfgx' :itemRules="this.rules.sfgx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.sfgx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfgx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='sfgx' :value="data.sfgx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.lxdh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='lxdh' :value="data.lxdh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='ormorgname' :value="data.ormorgname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.zcxx.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
+    <app-form-item name='zcxx' :itemRules="this.rules.zcxx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.zcxx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zcxx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='zcxx' :value="data.zcxx" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
+    <row>
+        <i-col v-show="detailsModel.kpmc.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpmc' :itemRules="this.rules.kpmc" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpmc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpmc.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kpmc' :value="data.kpmc" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kplx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kplx' :itemRules="this.rules.kplx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kplx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kplx' :value="data.kplx" tag='EhrCodeList0039' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nsrsbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='nsrsbh' :itemRules="this.rules.nsrsbh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.nsrsbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nsrsbh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='nsrsbh' :value="data.nsrsbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.khh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khh' :itemRules="this.rules.khh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.khh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='khh' :value="data.khh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.khhzh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khhzh' :itemRules="this.rules.khhzh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.khhzh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khhzh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='khhzh' :value="data.khhzh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kpr.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpr' :itemRules="this.rules.kpr" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpr.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kpr' :value="data.kpr" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kprdh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kprdh' :itemRules="this.rules.kprdh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kprdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kprdh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kprdh' :value="data.kprdh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kpdz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpdz' :itemRules="this.rules.kpdz" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpdz.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kpdz' :value="data.kpdz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel3')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
+    <row>
+        <i-col v-show="detailsModel.jj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='jj' :itemRules="this.rules.jj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.jj.error" :isEmptyCaption="true" labelPos="LEFT">
+    
+<app-span name='jj' :value="data.jj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.grouppanel4.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel4')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
+    <row>
+        <i-col v-show="detailsModel.pj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='pj' :itemRules="this.rules.pj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.pj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.pj.error" :isEmptyCaption="true" labelPos="LEFT">
+    
+<app-span name='pj' :value="data.pj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
+
+</i-col>
+
+
+    </row>
+</i-form>
+</template>
+
+<script lang='tsx'>
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
+import { CreateElement } from 'vue';
+import { Subject, Subscription } from 'rxjs';
+import { ControlInterface } from '@/interface/control';
+import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
+import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
+import Main2Service from './main2-form-service';
+
+import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+
+@Component({
+    components: {
+      
+    }
+})
+export default class Main2Base extends Vue implements ControlInterface {
+
+    /**
+     * 名称
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public name?: string;
+
+    /**
+     * 视图通讯对象
+     *
+     * @type {Subject<ViewState>}
+     * @memberof Main2Base
+     */
+    @Prop() public viewState!: Subject<ViewState>;
+
+    /**
+     * 应用上下文
+     *
+     * @type {*}
+     * @memberof Main2Base
+     */
+    @Prop() public context: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof Main2Base
+     */
+    @Prop() public viewparams: any;
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof Main2Base
+     */
+    public viewStateEvent: Subscription | undefined;
+
+    /**
+     * 获取部件类型
+     *
+     * @returns {string}
+     * @memberof Main2Base
+     */
+    public getControlType(): string {
+        return 'FORM'
+    }
+
+
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof Main2Base
+     */    
+    public counterServiceArray:Array<any> = [];
+
+    /**
+     * 建构部件服务对象
+     *
+     * @type {Main2Service}
+     * @memberof Main2Base
+     */
+    public service: Main2Service = new Main2Service({ $store: this.$store });
+
+    /**
+     * 实体服务对象
+     *
+     * @type {TrmTrainAgencyService}
+     * @memberof Main2Base
+     */
+    public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
+    
+
+
+    /**
+     * 关闭视图
+     *
+     * @param {any} args
+     * @memberof Main2Base
+     */
+    public closeView(args: any): void {
+        let _this: any = this;
+        _this.$emit('closeview', [args]);
+    }
+
+    /**
+     *  计数器刷新
+     *
+     * @memberof Main2Base
+     */
+    public counterRefresh(){
+        const _this:any =this;
+        if(_this.counterServiceArray && _this.counterServiceArray.length >0){
+            _this.counterServiceArray.forEach((item:any) =>{
+                if(item.refreshData && item.refreshData instanceof Function){
+                    item.refreshData();
+                }
+            })
+        }
+    }
+
+
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main2Base
+     */
+    public srfwfmemo:string = "";
+    
+    /**
+     * 获取多项数据
+     *
+     * @returns {any[]}
+     * @memberof Main2Base
+     */
+    public getDatas(): any[] {
+        return [this.data];
+    }
+
+    /**
+     * 获取单项树
+     *
+     * @returns {*}
+     * @memberof Main2Base
+     */
+    public getData(): any {
+        return this.data;
+    }
+
+    /**
+     * 是否默认保存
+     *
+     * @type {boolean}
+     * @memberof Main2Base
+     */
+    @Prop({ default: false }) public autosave?: boolean;
+
+    /**
+     * 显示处理提示
+     *
+     * @type {boolean}
+     * @memberof Main2Base
+     */
+    @Prop({ default: true }) public showBusyIndicator?: boolean;
+
+    /**
+     * 部件行为--submit
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public WFSubmitAction!: string;
+    
+    /**
+     * 部件行为--start
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public WFStartAction!: string;
+    
+    /**
+     * 部件行为--update
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public updateAction!: string;
+    
+    /**
+     * 部件行为--remove
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public removeAction!: string;
+    
+    /**
+     * 部件行为--loaddraft
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public loaddraftAction!: string;
+    
+    /**
+     * 部件行为--load
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public loadAction!: string;
+    
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public createAction!: string;
+
+    /**
+     * 部件行为--create
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public searchAction!: string;
+
+    /**
+     * 视图标识
+     *
+     * @type {string}
+     * @memberof Main2Base
+     */
+    @Prop() public viewtag!: string;
+
+    /**
+     * 表单状态
+     *
+     * @type {Subject<any>}
+     * @memberof Main2Base
+     */
+    public formState: Subject<any> = new Subject();
+
+    /**
+     * 忽略表单项值变化
+     *
+     * @type {boolean}
+     * @memberof Main2Base
+     */
+    public ignorefieldvaluechange: boolean = false;
+
+    /**
+     * 数据变化
+     *
+     * @public
+     * @type {Subject<any>}
+     * @memberof Main2Base
+     */
+    public dataChang: Subject<any> = new Subject();
+
+    /**
+     * 视图状态事件
+     *
+     * @public
+     * @type {(Subscription | undefined)}
+     * @memberof Main2Base
+     */
+    public dataChangEvent: Subscription | undefined;
+
+    /**
+     * 原始数据
+     *
+     * @public
+     * @type {*}
+     * @memberof Main2Base
+     */
+    public oldData: any = {};
+
+    /**
+     * 表单数据对象
+     *
+     * @type {*}
+     * @memberof Main2Base
+     */
+    public data: any = {
+        srfupdatedate: null,
+        srforikey: null,
+        srfkey: null,
+        srfmajortext: null,
+        srftempmode: null,
+        srfuf: null,
+        srfdeid: null,
+        srfsourcekey: null,
+        trmtrainagencyname: null,
+        jglx: null,
+        jgdj: null,
+        jglb: null,
+        trmtrainagencyname2: null,
+        sfgx: null,
+        pimpersonname: null,
+        lxdh: null,
+        ormorgname: null,
+        zcxx: null,
+        kctxfw: null,
+        kpmc: null,
+        kplx: null,
+        nsrsbh: null,
+        khh: null,
+        khhzh: null,
+        kpr: null,
+        kprdh: null,
+        kpdz: null,
+        jj: null,
+        pj: null,
+        trmtrainagencyid: null,
+        trmtrainagency:null,
+    };
+
+    /**
+      * 当前执行的行为逻辑
+      *
+      * @type {string}
+      * @memberof Main2Base
+      */
+    public currentAction: string = "";
+
+    /**
+      * 关系界面计数器
+      *
+      * @type {number}
+      * @memberof Main2Base
+      */
+    public drcounter: number = 0;
+
+    /**
+      * 需要等待关系界面保存时，第一次调用save参数的备份
+      *
+      * @type {number}
+      * @memberof Main2Base
+      */
+    public drsaveopt: any = {};
+
+    /**
+      * 表单保存回调存储对象
+      *
+      * @type {any}
+      * @memberof Main2Base
+      */
+    public saveState:any ;
+
+    /**
+     * 属性值规则
+     *
+     * @type {*}
+     * @memberof Main2Base
+     */
+    public rules: any = {
+        srfupdatedate: [
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '更新时间 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '更新时间 值不能为空', trigger: 'blur' },
+        ],
+        srforikey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfkey: [
+            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'blur' },
+        ],
+        srfmajortext: [
+            { type: 'string', message: '培训机构名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训机构名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训机构名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训机构名称 值不能为空', trigger: 'blur' },
+        ],
+        srftempmode: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfuf: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfdeid: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        srfsourcekey: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        trmtrainagencyname: [
+            { type: 'string', message: '机构名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '机构名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构名称 值不能为空', trigger: 'blur' },
+        ],
+        jglx: [
+            { type: 'string', message: '机构类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '机构类型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构类型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构类型 值不能为空', trigger: 'blur' },
+        ],
+        jgdj: [
+            { type: 'string', message: '机构等级 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '机构等级 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构等级 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构等级 值不能为空', trigger: 'blur' },
+        ],
+        jglb: [
+            { type: 'string', message: '机构性质 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '机构性质 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构性质 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构性质 值不能为空', trigger: 'blur' },
+        ],
+        trmtrainagencyname2: [
+            { type: 'string', message: '上级机构 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '上级机构 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '上级机构 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '上级机构 值不能为空', trigger: 'blur' },
+        ],
+        sfgx: [
+            { type: 'string', message: '是否共享 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '是否共享 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '是否共享 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '是否共享 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonname: [
+            { type: 'string', message: '联系人 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '联系人 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '联系人 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '联系人 值不能为空', trigger: 'blur' },
+        ],
+        lxdh: [
+            { type: 'string', message: '联系电话 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '联系电话 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '联系电话 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '联系电话 值不能为空', trigger: 'blur' },
+        ],
+        ormorgname: [
+            { type: 'string', message: '所属单位 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '所属单位 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '所属单位 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '所属单位 值不能为空', trigger: 'blur' },
+        ],
+        zcxx: [
+            { type: 'string', message: '注册信息 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '注册信息 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '注册信息 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '注册信息 值不能为空', trigger: 'blur' },
+        ],
+        kctxfw: [
+            { type: 'string', message: '模块范围 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '模块范围 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '模块范围 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '模块范围 值不能为空', trigger: 'blur' },
+        ],
+        kpmc: [
+            { type: 'string', message: '开票名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开票名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开票名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开票名称 值不能为空', trigger: 'blur' },
+        ],
+        kplx: [
+            { type: 'string', message: '开票类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开票类型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开票类型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开票类型 值不能为空', trigger: 'blur' },
+        ],
+        nsrsbh: [
+            { type: 'string', message: '纳税人识别号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '纳税人识别号 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '纳税人识别号 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '纳税人识别号 值不能为空', trigger: 'blur' },
+        ],
+        khh: [
+            { type: 'string', message: '开户行 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开户行 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开户行 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开户行 值不能为空', trigger: 'blur' },
+        ],
+        khhzh: [
+            { type: 'string', message: '开户行账号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开户行账号 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开户行账号 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开户行账号 值不能为空', trigger: 'blur' },
+        ],
+        kpr: [
+            { type: 'string', message: '开票人 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '开票人 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '开票人 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '开票人 值不能为空', trigger: 'blur' },
+        ],
+        kprdh: [
+            { type: 'string', message: '电话 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '电话 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '电话 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '电话 值不能为空', trigger: 'blur' },
+        ],
+        kpdz: [
+            { type: 'string', message: '地址 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '地址 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '地址 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '地址 值不能为空', trigger: 'blur' },
+        ],
+        jj: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        pj: [
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
+        ],
+        trmtrainagencyid: [
+            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'blur' },
+        ],
+    }
+
+    /**
+     * 详情模型集合
+     *
+     * @type {*}
+     * @memberof Main2Base
+     */
+    public detailsModel: any = {
+        group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel1: new FormGroupPanelModel({ caption: '开票信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel3: new FormGroupPanelModel({ caption: '简介', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
+, 
+        grouppanel4: new FormGroupPanelModel({ caption: '评价', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
+, 
+        formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
+, 
+        srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfkey: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfmajortext: new FormItemModel({ caption: '培训机构名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfuf: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfuf', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfdeid: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfdeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        trmtrainagencyname: new FormItemModel({ caption: '机构名称', detailType: 'FORMITEM', name: 'trmtrainagencyname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jglx: new FormItemModel({ caption: '机构类型', detailType: 'FORMITEM', name: 'jglx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jgdj: new FormItemModel({ caption: '机构等级', detailType: 'FORMITEM', name: 'jgdj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jglb: new FormItemModel({ caption: '机构性质', detailType: 'FORMITEM', name: 'jglb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        trmtrainagencyname2: new FormItemModel({ caption: '上级机构', detailType: 'FORMITEM', name: 'trmtrainagencyname2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        sfgx: new FormItemModel({ caption: '是否共享', detailType: 'FORMITEM', name: 'sfgx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonname: new FormItemModel({ caption: '联系人', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        lxdh: new FormItemModel({ caption: '联系电话', detailType: 'FORMITEM', name: 'lxdh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        ormorgname: new FormItemModel({ caption: '所属单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        zcxx: new FormItemModel({ caption: '注册信息', detailType: 'FORMITEM', name: 'zcxx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kctxfw: new FormItemModel({ caption: '模块范围', detailType: 'FORMITEM', name: 'kctxfw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kpmc: new FormItemModel({ caption: '开票名称', detailType: 'FORMITEM', name: 'kpmc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kplx: new FormItemModel({ caption: '开票类型', detailType: 'FORMITEM', name: 'kplx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        nsrsbh: new FormItemModel({ caption: '纳税人识别号', detailType: 'FORMITEM', name: 'nsrsbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        khh: new FormItemModel({ caption: '开户行', detailType: 'FORMITEM', name: 'khh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        khhzh: new FormItemModel({ caption: '开户行账号', detailType: 'FORMITEM', name: 'khhzh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kpr: new FormItemModel({ caption: '开票人', detailType: 'FORMITEM', name: 'kpr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kprdh: new FormItemModel({ caption: '电话', detailType: 'FORMITEM', name: 'kprdh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        kpdz: new FormItemModel({ caption: '地址', detailType: 'FORMITEM', name: 'kpdz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jj: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'jj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pj: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'pj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        trmtrainagencyid: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+    };
+
+    /**
+     * 监控表单属性 srfupdatedate 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfupdatedate')
+    onSrfupdatedateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfupdatedate', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srforikey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srforikey')
+    onSrforikeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srforikey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfkey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfkey')
+    onSrfkeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfkey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfmajortext 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfmajortext')
+    onSrfmajortextChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfmajortext', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srftempmode 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srftempmode')
+    onSrftempmodeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srftempmode', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfuf 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfuf')
+    onSrfufChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfuf', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfdeid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfdeid')
+    onSrfdeidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfdeid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfsourcekey 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.srfsourcekey')
+    onSrfsourcekeyChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfsourcekey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 trmtrainagencyname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.trmtrainagencyname')
+    onTrmtrainagencynameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'trmtrainagencyname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jglx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.jglx')
+    onJglxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jglx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jgdj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.jgdj')
+    onJgdjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jgdj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jglb 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.jglb')
+    onJglbChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jglb', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 trmtrainagencyname2 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.trmtrainagencyname2')
+    onTrmtrainagencyname2Change(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'trmtrainagencyname2', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 sfgx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.sfgx')
+    onSfgxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'sfgx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.pimpersonname')
+    onPimpersonnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 lxdh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.lxdh')
+    onLxdhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'lxdh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.ormorgname')
+    onOrmorgnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zcxx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.zcxx')
+    onZcxxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zcxx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kctxfw 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kctxfw')
+    onKctxfwChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kctxfw', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kpmc 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kpmc')
+    onKpmcChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kpmc', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kplx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kplx')
+    onKplxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kplx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nsrsbh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.nsrsbh')
+    onNsrsbhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nsrsbh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 khh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.khh')
+    onKhhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'khh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 khhzh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.khhzh')
+    onKhhzhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'khhzh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kpr 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kpr')
+    onKprChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kpr', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kprdh 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kprdh')
+    onKprdhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kprdh', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 kpdz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.kpdz')
+    onKpdzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'kpdz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.jj')
+    onJjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.pj')
+    onPjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 trmtrainagencyid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2Base
+     */
+    @Watch('data.trmtrainagencyid')
+    onTrmtrainagencyidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'trmtrainagencyid', newVal: newVal, oldVal: oldVal });
+    }
+
+
+    /**
+     * 重置表单项值
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof Main2Base
+     */
+    public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+    }
+
+    /**
+      * 置空对象
+      *
+      * @param {any[]} args
+     * @memberof Main2Base
+      */
+    public ResetData(_datas:any){
+        if(Object.keys(_datas).length >0){
+            Object.keys(_datas).forEach((name: string) => {
+                if (this.data.hasOwnProperty(name)) {
+                    this.data[name] = null;
+                }
+            });
+        }
+    }
+
+    /**
+     * 表单逻辑
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @memberof Main2Base
+     */
+    public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    /**
+     * 表单值变化
+     *
+     * @public
+     * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
+     * @returns {void}
+     * @memberof Main2Base
+     */
+    public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (this.ignorefieldvaluechange) {
+            return;
+        }
+        this.resetFormData({ name: name, newVal: newVal, oldVal: oldVal });
+        this.formLogic({ name: name, newVal: newVal, oldVal: oldVal });
+        this.dataChang.next(JSON.stringify(this.data));
+    }
+
+    /**
+     * 表单加载完成
+     *
+     * @public
+     * @param {*} [data={}]
+     * @param {string} [action]
+     * @memberof Main2Base
+     */
+    public onFormLoad(data: any = {},action:string): void {
+        if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
+        // 更新context的实体主键
+        if(data.trmtrainagency){
+            Object.assign(this.context,{trmtrainagency:data.trmtrainagency})
+        }
+        this.setFormEnableCond(data);
+        this.fillForm(data,action);
+        this.oldData = {};
+        Object.assign(this.oldData, JSON.parse(JSON.stringify(this.data)));
+        this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: false });
+        this.formLogic({ name: '', newVal: null, oldVal: null });
+    }
+
+    /**
+     * 值填充
+     *
+     * @param {*} [_datas={}]
+     * @param {string} [action]
+     * @memberof Main2Base
+     */
+    public fillForm(_datas: any = {},action:string): void {
+        this.ignorefieldvaluechange = true;
+        Object.keys(_datas).forEach((name: string) => {
+            if (this.data.hasOwnProperty(name)) {
+                this.data[name] = _datas[name];
+            }
+        });
+        if(Object.is(action,'loadDraft')){
+            this.createDefault();
+        }
+        if(Object.is(action,'load')){
+            this.updateDefault();
+        }
+        this.$nextTick(function () {
+            this.ignorefieldvaluechange = false;
+        })
+    }
+
+    /**
+     * 设置表单项是否启用
+     *
+     * @public
+     * @param {*} data
+     * @memberof Main2Base
+     */
+    public setFormEnableCond(data: any): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setEnableCond(data.srfuf);
+        });
+    }
+
+    /**
+     * 重置草稿表单状态
+     *
+     * @public
+     * @memberof Main2Base
+     */
+    public resetDraftFormStates(): void {
+        const form: any = this.$refs.form;
+        if (form) {
+            form.resetFields();
+        }
+    }
+
+    /**
+     * 重置校验结果
+     *
+     * @memberof Main2Base
+     */
+    public resetValidates(): void {
+        Object.values(this.detailsModel).forEach((detail: any) => {
+            if (!Object.is(detail.detailType, 'FORMITEM')) {
+                return;
+            }
+            const formItem: FormItemModel = detail;
+            formItem.setError('');
+        });
+    }
+
+    /**
+     * 填充校验结果 （后台）
+     *
+     * @param {any[]} fieldErrors
+     * @memberof Main2Base
+     */
+    public fillValidates(fieldErrors: any[]): void {
+        fieldErrors.forEach((error: any) => {
+            const formItem: FormItemModel = this.detailsModel[error.field];
+            if (!formItem) {
+                return;
+            }
+            this.$nextTick(() => {
+                formItem.setError(error.message);
+            });
+        });
+    }
+
+    /**
+     * 表单校验状态
+     *
+     * @returns {boolean} 
+     * @memberof Main2Base
+     */
+    public formValidateStatus(): boolean {
+        const form: any = this.$refs.form;
+        let validatestate: boolean = true;
+        form.validate((valid: boolean) => {
+            validatestate = valid ? true : false;
+        });
+        return validatestate
+    }
+
+    /**
+     * 获取全部值
+     *
+     * @returns {*}
+     * @memberof Main2Base
+     */
+    public getValues(): any {
+        return this.data;
+    }
+
+    /**
+     * 表单项值变更
+     *
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof Main2Base
+     */
+    public onFormItemValueChange($event: { name: string, value: any }): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !this.data.hasOwnProperty($event.name)) {
+            return;
+        }
+        this.data[$event.name] = $event.value;
+    }
+
+    /**
+     * 设置数据项值
+     *
+     * @param {string} name
+     * @param {*} value
+     * @returns {void}
+     * @memberof Main2Base
+     */
+    public setDataItemValue(name: string, value: any): void {
+        if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
+            return;
+        }
+        if (Object.is(this.data[name], value)) {
+            return;
+        }
+        this.data[name] = value;
+    }
+
+
+
+    /**
+     * 分组界面行为事件
+     *
+     * @param {*} $event
+     * @memberof Main2Base
+     */
+    public groupUIActionClick($event: any): void {
+        if (!$event) {
+            return;
+        }
+        const item:any = $event.item;
+    }
+
+    /**
+     * Vue声明周期(处理组件的输入属性)
+     *
+     * @memberof Main2Base
+     */
+    public created(): void {
+        this.afterCreated();
+    }
+
+    /**
+     * 执行created后的逻辑
+     *
+     *  @memberof Main2Base
+     */    
+    public afterCreated(){
+        if (this.viewState) {
+            this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
+                if (!Object.is(tag, this.name)) {
+                    return;
+                }
+                if (Object.is('autoload', action)) {
+                    this.autoLoad(data);
+                }
+                if (Object.is('load', action)) {
+                    this.load(data);
+                }
+                if (Object.is('loaddraft', action)) {
+                    if(this.context.srfsourcekey){
+                        this.copy(this.context.srfsourcekey);
+                    }else{
+                        this.loadDraft(data);
+                    }
+                }
+                if (Object.is('save', action)) {
+                    this.save(data,data.showResultInfo);
+                }
+                if (Object.is('remove', action)) {
+                    this.remove(data);
+                }
+                if (Object.is('saveandexit', action)) {
+                    this.saveAndExit(data);
+                }
+                if (Object.is('saveandnew', action)) {
+                    this.saveAndNew(data);
+                }
+                if (Object.is('removeandexit', action)) {
+                    this.removeAndExit(data);
+                }
+                if (Object.is('refresh', action)) {
+                    this.refresh(data);
+                }
+            });
+        }
+        this.dataChang
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe((data: any) => {
+                if (this.autosave) {
+                    this.autoSave();
+                }
+                const state = !Object.is(JSON.stringify(this.oldData), JSON.stringify(this.data)) ? true : false;
+                this.$store.commit('viewaction/setViewDataChange', { viewtag: this.viewtag, viewdatachange: state });
+            });
+    }
+
+    /**
+     * vue 生命周期
+     *
+     * @memberof Main2Base
+     */
+    public destroyed() {
+        this.afterDestroy();
+    }
+
+    /**
+     * 执行destroyed后的逻辑
+     *
+     * @memberof Main2Base
+     */
+    public afterDestroy() {
+        if (this.viewStateEvent) {
+            this.viewStateEvent.unsubscribe();
+        }
+        if (this.dataChangEvent) {
+            this.dataChangEvent.unsubscribe();
+        }
+    }
+
+    /**
+     * 拷贝内容
+     *
+     * @param {*} [arg={}]
+     * @memberof @memberof Main2Base
+     */
+    public copy(srfkey: string): void {
+        let copyData = this.$store.getters.getCopyData(srfkey);
+        copyData.srfkey = Util.createUUID();
+        copyData.trmtrainagency = copyData.srfkey;
+        copyData.trmtrainagencyid = copyData.srfkey;
+        Object.assign(this.context,{trmtrainagency:copyData.trmtrainagency})
+        this.data = copyData;
+        this.$nextTick(() => {
+          this.formState.next({ type: 'load', data: copyData });
+          this.data.srfuf = '0';
+          this.setFormEnableCond(this.data);
+        });
+    }
+
+    /**
+     *打印
+     *@memberof @memberof Main2Base
+     */
+    public print(){
+        let _this:any = this;
+        _this.$print({id:'trmtrainagency_main2',popTitle:'主信息表单'});
+    }
+
+    /**
+     * 部件刷新
+     *
+     * @param {any[]} args
+     * @memberof Main2Base
+     */
+    public refresh(args: any[]): void {
+        let arg: any = {};
+        Object.assign(arg,args[0]);
+        if (this.data.srfkey && !Object.is(this.data.srfkey, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (this.data.srfkeys && !Object.is(this.data.srfkeys, '')) {
+            Object.assign(arg, { srfkey: this.data.srfkeys });
+            this.load(arg);
+            return;
+        }
+    }
+
+    /**
+     * 自动加载
+     *
+     * @param {*} [arg={}]
+     * @returns {void}
+     * @memberof Main2Base
+     */
+    public autoLoad(arg: any = {}): void {
+        if (arg.srfkey && !Object.is(arg.srfkey, '')) {
+            Object.assign(arg, { srfkey: arg.srfkey });
+            this.load(arg);
+            return;
+        }
+        if (arg.srfkeys && !Object.is(arg.srfkeys, '')) {
+            Object.assign(arg, { srfkey: arg.srfkeys });
+            this.load(arg);
+            return;
+        }
+        this.loadDraft(arg);
+    }
+
+    /**
+     * 加载
+     *
+     * @public
+     * @param {*} [opt={}]
+     * @memberof Main2Base
+     */
+    public load(opt: any = {}): void {
+        if(!this.loadAction){
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单loadAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt };
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        const get: Promise<any> = this.service.get(this.loadAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        get.then((response: any) => {
+            if (response && response.status === 200) {
+                const data = response.data;
+                this.onFormLoad(data,'load');
+                this.$emit('load', data);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'load', data: data });
+                });
+            }
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 加载草稿
+     *
+     * @param {*} [opt={}]
+     * @memberof Main2Base
+     */
+    public loadDraft(opt: any = {}): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单loaddraftAction参数未配置' });
+            return;
+        }
+        const arg: any = { ...opt } ;
+        let viewparamResult:any = Object.assign(arg,this.viewparams);
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction,JSON.parse(JSON.stringify(this.context)),{viewparams:viewparamResult}, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            if(data.trmtrainagency){
+                Object.assign(this.context,{trmtrainagency:data.trmtrainagency})
+            }
+            this.resetDraftFormStates();
+            this.onFormLoad(data,'loadDraft');
+            this.$emit('load', data);
+            this.$nextTick(() => {
+                this.formState.next({ type: 'load', data: data });
+            });
+            setTimeout(() => {
+                const form: any = this.$refs.form;
+                if (form) {
+                    form.fields.forEach((field: any) => {
+                        field.validateMessage = "";
+                        field.validateState = "";
+                        field.validateStatus = false;
+                    });
+                }
+            });
+        }).catch((response: any) => {
+            if (response && response.status  && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 自动保存
+     *
+     * @param {*} [opt={}]
+     * @memberof Main2Base
+     */
+    public autoSave(opt: any = {}): void {
+        if (!this.formValidateStatus()) {
+            return;
+        }
+        const arg: any = { ...opt };
+        const data = this.getValues();
+        Object.assign(arg, data);
+        const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+        if(!action){
+            let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单'+actionName+'参数未配置' });
+            return;
+        }
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.add(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                }
+                return;
+            }
+
+            const data = response.data;
+            this.onFormLoad(data,'autoSave');
+            this.$emit('save', data);
+            this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+            this.$nextTick(() => {
+                this.formState.next({ type: 'save', data: data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 保存
+     *
+     * @param {*} [opt={}]
+     * @param {boolean} [showResultInfo] 
+     * @param {boolean} [ifStateNext] formState是否下发通知
+     * @returns {Promise<any>}
+     * @memberof Main2Base
+     */
+    public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            showResultInfo = showResultInfo === undefined ? true : false;
+            if (!this.formValidateStatus()) {
+                this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+                return;
+            }
+            const arg: any = { ...opt };
+            const data = this.getValues();
+            Object.assign(arg, data);
+            Object.assign(arg, this.context);
+            if (ifStateNext) {
+                this.drcounter = 0;
+                if(this.drcounter !== 0){
+                    this.drsaveopt = opt;
+                    this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
+                    this.saveState = resolve;
+                    return;
+                }
+            }
+            const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
+            if(!action){
+                let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
+                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单'+actionName+'参数未配置' });
+                return;
+            }
+            Object.assign(arg,{viewparams:this.viewparams});
+            const post: Promise<any> = Object.is(data.srfuf, '1')?this.service.update(action, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(action,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+            post.then((response: any) => {
+                if (!response.status || response.status !== 200) {
+                    if (response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                    }
+                    return;
+                }
+
+                const data = response.data;
+                this.onFormLoad(data,'save');
+                this.$emit('save', data);
+                this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: data });
+                });
+                if (showResultInfo) {
+                    this.$Notice.success({ title: '', desc: (data.srfmajortext ? data.srfmajortext : '') + '&nbsp;保存成功！' });
+                }
+                resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status  && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+        })
+    }
+
+    /**
+    * 删除
+    *
+    * @public
+    * @param {*} [opt={}]
+    * @memberof Main2Base
+    */
+    public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            if(!this.removeAction){
+                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单removeAction参数未配置' });
+                return;
+            }
+            const arg: any = opt[0];
+            const _this: any = this;
+            Object.assign(arg,{viewparams:this.viewparams});
+            this.service.delete(_this.removeAction, JSON.parse(JSON.stringify(this.context)),arg, showResultInfo).then((response: any) => {
+                if (response) {
+                    const data = response.data;
+                    this.$emit('remove',data);
+                    this.formState.next({ type: 'remove', data: data });
+                    this.data.ismodify = false;
+                    this.$Notice.success({ title: '', desc: (data.srfmajortext ? data.srfmajortext : '') + '&nbsp;删除成功！' });
+                    resolve(response);
+                }
+            }).catch((error: any) => {
+                const { data: _data } = error;
+                this.$Notice.error({ title: _data.title, desc: _data.message });
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * 工作流启动
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof Main2Base
+     */
+    public async wfstart(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+            const _this: any = this;
+            const post: Promise<any> = _this.save({},false);
+            post.then((response:any) =>{
+                const arg:any = response.data;
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                const result: Promise<any> = this.service.wfstart(_this.WFStartAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流启动失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.$Notice.info({ title: '', desc: '工作流启动成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        });
+    }
+
+    /**
+     * 工作流提交
+     *
+     * @param {*} [data={}]
+     * @param {*} [localdata={}]
+     * @returns {Promise<any>}
+     * @memberof Main2Base
+     */
+    public async wfsubmit(data: any,localdata?:any): Promise<any> {
+        return new Promise((resolve: any, reject: any) => {
+        const _this: any = this;
+        const arg: any = data[0];
+        Object.assign(arg,{viewparams:this.viewparams});
+        if (!arg.trmtrainagency || Object.is(arg.trmtrainagency, '')) {
+            return;
+        }
+        const post: Promise<any> = Object.is(arg.srfuf, '1')?this.service.update(this.updateAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator):this.service.add(this.createAction,JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator);
+        post.then((response:any) =>{
+                const arg:any = response.data;
+                // 保存完成UI处理
+                this.onFormLoad(arg,'save');
+                this.$emit('save', arg);
+                this.$nextTick(() => {
+                    this.formState.next({ type: 'save', data: arg });
+                });
+                // 准备提交参数
+                if(this.viewparams){
+                    Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
+                }
+                const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
+                result.then((response: any) => {
+                    if (!response || response.status !== 200) {
+                        if(response.data){
+                            this.$Notice.error({ title: '', desc: '工作流提交失败, ' + response.data.message });
+                        }
+                        return;
+                    }
+                    this.onFormLoad(arg,'submit');
+                    this.$store.dispatch('viewaction/datasaved', { viewtag: this.viewtag });
+                    this.$Notice.info({ title: '', desc: '工作流提交成功' });
+                    resolve(response);
+            }).catch((response: any) => {
+                if (response && response.status && response.data) {
+                    this.$Notice.error({ title: '错误', desc: response.data.message });
+                    reject(response);
+                    return;
+                }
+                if (!response || !response.status || !response.data) {
+                    this.$Notice.error({ title: '错误', desc: '系统异常' });
+                    reject(response);
+                    return;
+                }
+                reject(response);
+            });
+            }).catch((response: any) => {
+                    if (response && response.status && response.data) {
+                        this.$Notice.error({ title: '错误', desc: response.data.message });
+                        reject(response);
+                        return;
+                    }
+                    if (!response || !response.status || !response.data) {
+                        this.$Notice.error({ title: '错误', desc: '系统异常' });
+                        reject(response);
+                        return;
+                    }
+                    reject(response);
+            })
+        })
+    }
+
+    /**
+     * 表单项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof Main2Base
+     */
+    public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = { ...data };
+        Object.assign(arg,this.viewparams);
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const data = response.data;
+            const _data: any = {};
+            updateDetails.forEach((name: string) => {
+                if (!data.hasOwnProperty(name)) {
+                    return;
+                }
+                Object.assign(_data, { [name]: data[name] });
+            });
+            this.setFormEnableCond(_data);
+            this.fillForm(_data,'updateFormItem');
+            this.formLogic({ name: '', newVal: null, oldVal: null });
+            this.dataChang.next(JSON.stringify(this.data));
+            this.$nextTick(() => {
+                this.formState.next({ type: 'updateformitem', ufimode: arg.srfufimode, data: _data });
+            });
+        }).catch((response: any) => {
+            if (response && response.status && response.data) {
+                this.$Notice.error({ title: '错误', desc: response.data.message });
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 回车事件
+     *
+     * @param {*} $event
+     * @memberof Main2Base
+     */
+    public onEnter($event: any): void {
+    }
+
+    /**
+     * 保存并退出
+     *
+     * @param {any[]} args
+     * @memberof Main2Base
+     */
+    public saveAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndExit";
+            _this.save([arg]).then((res) =>{
+                if(res){
+                    _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 保存并新建
+     *
+     * @param {any[]} args
+     * @memberof Main2Base
+     */
+    public saveAndNew(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.currentAction = "saveAndNew";
+            _this.save([arg]).then((res) =>{
+                _this.ResetData(res);
+                _this.loadDraft({});
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+     * 删除并退出
+     *
+     * @param {any[]} args
+     * @memberof Main2Base
+     */
+    public removeAndExit(data:any[]):Promise<any>{
+        let _this = this;
+        return new Promise((resolve: any, reject: any) =>{
+            let arg: any = {};
+            if(data && data.length > 0){
+                Object.assign(arg,data[0]);
+            }
+            _this.remove([arg]).then((res) =>{
+                if(res){
+                  _this.closeView(res.data);
+                }
+                resolve(res);
+            }).catch((error) =>{
+                reject(error);
+            })
+        })
+    }
+
+    /**
+    * 关系界面数据保存完成
+    *
+    * @param {any} $event
+    * @memberof Main2Base
+    */
+    public drdatasaved($event:any){
+        let _this = this;
+        this.drcounter--;
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * 新建默认值
+     * @memberof Main2Base
+     */
+    public createDefault(){                    
+    }
+
+    /**
+     * 更新默认值
+     * @memberof Main2Base
+     */
+    public updateDefault(){                    
+    }
+
+    
+}
+</script>
+
+<style lang='less'>
+@import './main2-form.less';
+</style>

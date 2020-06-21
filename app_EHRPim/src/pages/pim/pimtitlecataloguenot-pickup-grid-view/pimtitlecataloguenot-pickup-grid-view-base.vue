@@ -307,7 +307,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     @Prop() public selectedData?: string;
 
@@ -315,7 +315,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 是否单选
      *
      * @type {boolean}
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -323,7 +323,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 搜索值
      *
      * @type {string}
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     public query: string = '';
 
@@ -331,7 +331,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     public isExpandSearchForm: boolean = true;
 
@@ -342,7 +342,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -350,7 +350,7 @@ export default class PIMTITLECATALOGUENotPickupGridViewBase extends PickupViewBa
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof PIMTITLECATALOGUENotPickupGridView
+     * @memberof PIMTITLECATALOGUENotPickupGridViewBase
      */
     public onSearch($event: any): void {
         const refs: any = this.$refs;

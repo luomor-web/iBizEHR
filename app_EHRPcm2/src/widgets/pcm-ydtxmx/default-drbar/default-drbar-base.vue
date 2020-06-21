@@ -27,11 +27,12 @@
 </layout>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmYdtxmxService from '@/service/pcm-ydtxmx/pcm-ydtxmx-service';
 import DefaultService from './default-drbar-service';
 
@@ -48,7 +49,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     @Prop() public name?: string;
 
@@ -56,7 +57,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -64,7 +65,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     @Prop() public context: any;
 
@@ -72,7 +73,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     @Prop() public viewparams: any;
 
@@ -81,7 +82,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -89,7 +90,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public getControlType(): string {
         return 'DRBAR'
@@ -101,7 +102,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Default
+     * @memberof DefaultBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -109,7 +110,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {DefaultService}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public service: DefaultService = new DefaultService({ $store: this.$store });
 
@@ -117,7 +118,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmYdtxmxService}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public appEntityService: PcmYdtxmxService = new PcmYdtxmxService({ $store: this.$store });
     
@@ -127,7 +128,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -137,7 +138,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -156,7 +157,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public getDatas(): any[] {
         return this.items;
@@ -166,7 +167,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public getData(): any {
         return this.selection;
@@ -176,7 +177,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 加载行为
      *
      * @type {string}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     @Prop() public loadAction?: string;
 
@@ -192,7 +193,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 数据选中项
      *
      * @type {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public selection: any = {};
 
@@ -200,7 +201,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 关系栏数据项
      *
      * @type {any[]}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public items: any[] = [
         {
@@ -223,7 +224,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 默认打开项
      *
      * @type {string[]}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public defaultOpeneds: string[] = [];
 
@@ -232,7 +233,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public parentData: any = {};
 
@@ -240,14 +241,14 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 宽度
      *
      * @type {number}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public width: number = 240;
 
     /**
      * 生命周期
      *
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public created(): void {
         if (this.viewState) {
@@ -270,7 +271,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public destroyed() {
         if (this.viewStateEvent) {
@@ -284,7 +285,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [arg={}]
      * @returns {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public getDRBarItem(arg: any = {}): any {
         let expmode = arg.nodetype;
@@ -299,7 +300,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {any[]} items
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public dataProcess(items: any[]): void {
         items.forEach((_item: any) => {
@@ -320,7 +321,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @param {any[]} items
      * @param {string} id
      * @returns {*}
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public getItem(items: any[], id: string): any {
         const item: any = {};
@@ -375,7 +376,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 节点选中
      *
      * @param {*} $event
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public onSelect($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -405,7 +406,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 子节点打开
      *
      * @param {*} $event
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public onOpen($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -423,7 +424,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * 子节点关闭
      *
      * @param {*} $event
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public onClose($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -442,7 +443,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      *
      * @param {any[]} items
      * @param {boolean} state
-     * @memberof Default
+     * @memberof DefaultBase
      */
     public setItemDisabled(items: any[], state: boolean) {
         items.forEach((item: any) => {

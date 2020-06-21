@@ -28,7 +28,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
 
 /**
- * 实体[考核内容评分汇总]
+ * 实体[考核方案]
  */
 @Getter
 @Setter
@@ -56,7 +56,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("updatedate")
     private Timestamp updatedate;
     /**
-     * 月度考核
+     * 月度计划
      */
     @TableField(value = "jswmjc")
     @JSONField(name = "jswmjc")
@@ -77,7 +77,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("khlx")
     private String khlx;
     /**
-     * 工作周报考核
+     * 工作周报
      */
     @TableField(value = "ywnlks")
     @JSONField(name = "ywnlks")
@@ -128,7 +128,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("updateman")
     private String updateman;
     /**
-     * 工作能力及态度评价（下半年）
+     * 工作能力及态度评价
      */
     @DEField(name = "gznljtd_xbn")
     @TableField(value = "gznljtd_xbn")
@@ -148,12 +148,12 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
      * 绩效考核项得分汇总标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parjxkhxhzid",type=IdType.UUID)
+    @TableId(value= "parjxkhxhzid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parjxkhxhzid")
     @JsonProperty("parjxkhxhzid")
     private String parjxkhxhzid;
     /**
-     * 年度量化目标（工作述职）
+     * 量化目标
      */
     @TableField(value = "gzjx")
     @JSONField(name = "gzjx")
@@ -173,6 +173,35 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JSONField(name = "bm")
     @JsonProperty("bm")
     private String bm;
+    /**
+     * 考核模板标识
+     */
+    @TableField(value = "parassesstemplateid")
+    @JSONField(name = "parassesstemplateid")
+    @JsonProperty("parassesstemplateid")
+    private String parassesstemplateid;
+    /**
+     * 考核模板名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "parassesstemplatename")
+    @JsonProperty("parassesstemplatename")
+    private String parassesstemplatename;
+    /**
+     * 年度
+     */
+    @TableField(value = "nd")
+    @JSONField(name = "nd")
+    @JsonProperty("nd")
+    private String nd;
+
+    /**
+     * 考核模板
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.par.domain.ParAssessTemplate parassesstemplate;
 
 
 
@@ -185,7 +214,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [月度考核]
+     * 设置 [月度计划]
      */
     public void setJswmjc(Double jswmjc){
         this.jswmjc = jswmjc ;
@@ -209,7 +238,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [工作周报考核]
+     * 设置 [工作周报]
      */
     public void setYwnlks(Double ywnlks){
         this.ywnlks = ywnlks ;
@@ -249,7 +278,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [工作能力及态度评价（下半年）]
+     * 设置 [工作能力及态度评价]
      */
     public void setGznljtdXbn(Double gznljtdXbn){
         this.gznljtdXbn = gznljtdXbn ;
@@ -257,7 +286,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [年度量化目标（工作述职）]
+     * 设置 [量化目标]
      */
     public void setGzjx(Double gzjx){
         this.gzjx = gzjx ;
@@ -278,6 +307,22 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     public void setBm(String bm){
         this.bm = bm ;
         this.modify("bm",bm);
+    }
+
+    /**
+     * 设置 [考核模板标识]
+     */
+    public void setParassesstemplateid(String parassesstemplateid){
+        this.parassesstemplateid = parassesstemplateid ;
+        this.modify("parassesstemplateid",parassesstemplateid);
+    }
+
+    /**
+     * 设置 [年度]
+     */
+    public void setNd(String nd){
+        this.nd = nd ;
+        this.modify("nd",nd);
     }
 
 

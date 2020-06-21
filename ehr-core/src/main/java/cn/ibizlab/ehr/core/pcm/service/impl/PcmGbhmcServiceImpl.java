@@ -154,7 +154,6 @@ public class PcmGbhmcServiceImpl extends ServiceImpl<PcmGbhmcMapper, PcmGbhmc> i
     public boolean checkKey(PcmGbhmc et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonid()))&&(!Objects.isNull(this.getById(et.getPimpersonid())));
     }
-
     @Override
     @Transactional
     public PcmGbhmc sGBTG(PcmGbhmc et) {
@@ -199,6 +198,8 @@ public class PcmGbhmcServiceImpl extends ServiceImpl<PcmGbhmcMapper, PcmGbhmc> i
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmGbhmc> pages=baseMapper.searchZJPD(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmGbhmc>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -249,5 +250,6 @@ public class PcmGbhmcServiceImpl extends ServiceImpl<PcmGbhmcMapper, PcmGbhmc> i
     }
 
 }
+
 
 

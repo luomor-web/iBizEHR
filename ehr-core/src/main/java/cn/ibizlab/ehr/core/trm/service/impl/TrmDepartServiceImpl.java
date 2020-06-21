@@ -140,7 +140,6 @@ public class TrmDepartServiceImpl extends ServiceImpl<TrmDepartMapper, TrmDepart
     public boolean checkKey(TrmDepart et) {
         return (!ObjectUtils.isEmpty(et.getTrmdepartid()))&&(!Objects.isNull(this.getById(et.getTrmdepartid())));
     }
-
     @Override
     @Transactional
     public boolean update(TrmDepart et) {
@@ -246,6 +245,8 @@ public class TrmDepartServiceImpl extends ServiceImpl<TrmDepartMapper, TrmDepart
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -291,5 +292,6 @@ public class TrmDepartServiceImpl extends ServiceImpl<TrmDepartMapper, TrmDepart
     }
 
 }
+
 
 

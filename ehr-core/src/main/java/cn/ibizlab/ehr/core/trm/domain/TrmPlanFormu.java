@@ -52,7 +52,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
      * 培训计划制定标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmplanformuid",type=IdType.UUID)
+    @TableId(value= "trmplanformuid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmplanformuid")
     @JsonProperty("trmplanformuid")
     private String trmplanformuid;

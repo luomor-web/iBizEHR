@@ -93,7 +93,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
      * 出入境管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimexitandentryid",type=IdType.UUID)
+    @TableId(value= "pimexitandentryid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimexitandentryid")
     @JsonProperty("pimexitandentryid")
     private String pimexitandentryid;

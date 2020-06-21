@@ -1,45 +1,45 @@
 
 export default {
   fields: {
-    serialnumber: '排序号',
-    enable: '逻辑有效标志',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    createman: '建立人',
-    updateman: '更新人',
-    archivalcatalogueid: '档案目录标识',
-    archivalcataloguename: '档案目录名称',
-    pimarchivesname: '档案信息名称',
-    pimarchivesid: '档案信息标识',
+    serialnumber: "排序号",
+    enable: "逻辑有效标志",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    createman: "建立人",
+    updateman: "更新人",
+    archivalcatalogueid: "档案目录标识",
+    archivalcataloguename: "档案目录名称",
+    pimarchivesname: "档案信息名称",
+    pimarchivesid: "档案信息标识",
   },
 	views: {
 		editview: {
 			caption: "档案目录",
-      title: '档案类别编辑视图',
+      		title: "档案类别编辑视图",
 		},
 		pickupgridview: {
 			caption: "档案目录",
-      title: '档案目录选择表格视图',
+      		title: "档案目录选择表格视图",
 		},
 		pickupview: {
 			caption: "档案目录",
-      title: '档案目录数据选择视图',
+      		title: "档案目录数据选择视图",
 		},
 		mpickupview: {
 			caption: "档案目录",
-      title: '档案目录数据多项选择视图',
+      		title: "档案目录数据多项选择视图",
 		},
 		redirectview: {
 			caption: "档案目录",
-      title: '档案目录数据重定向视图',
+      		title: "档案目录数据重定向视图",
 		},
 		gridview: {
 			caption: "档案目录",
-      title: '档案类别表格视图',
+      		title: "档案类别表格视图",
 		},
 		editview2: {
 			caption: "档案目录",
-      title: '档案目录编辑视图',
+      		title: "档案目录编辑视图",
 		},
 	},
 	main_form: {

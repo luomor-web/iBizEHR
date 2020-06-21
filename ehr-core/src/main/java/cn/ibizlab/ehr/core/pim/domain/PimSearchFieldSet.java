@@ -126,7 +126,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
      * 组合查询条件设置标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimsearchfieldsetid",type=IdType.UUID)
+    @TableId(value= "pimsearchfieldsetid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimsearchfieldsetid")
     @JsonProperty("pimsearchfieldsetid")
     private String pimsearchfieldsetid;

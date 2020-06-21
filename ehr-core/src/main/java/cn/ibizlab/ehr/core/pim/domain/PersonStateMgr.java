@@ -84,7 +84,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
      * 员工状态管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "personstatemgrid",type=IdType.UUID)
+    @TableId(value= "personstatemgrid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "personstatemgrid")
     @JsonProperty("personstatemgrid")
     private String personstatemgrid;

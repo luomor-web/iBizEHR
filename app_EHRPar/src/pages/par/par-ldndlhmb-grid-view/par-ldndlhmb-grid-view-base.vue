@@ -576,7 +576,7 @@ export default class ParLdndlhmbGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'par-ldndlhmb-edit-view', 
-            height: 850, 
+            height: 750, 
             width: 0,  
             title: this.$t('entities.parldndlhmb.views.editview.title'),
         };
@@ -621,7 +621,7 @@ export default class ParLdndlhmbGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'par-ldndlhmb-edit-view', 
-            height: 850, 
+            height: 750, 
             width: 0,  
             title: this.$t('entities.parldndlhmb.views.editview.title'),
         };

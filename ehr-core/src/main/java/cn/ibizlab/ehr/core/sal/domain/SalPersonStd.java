@@ -50,7 +50,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
      * 员工薪酬标准标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salpersonstdid",type=IdType.UUID)
+    @TableId(value= "salpersonstdid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salpersonstdid")
     @JsonProperty("salpersonstdid")
     private String salpersonstdid;

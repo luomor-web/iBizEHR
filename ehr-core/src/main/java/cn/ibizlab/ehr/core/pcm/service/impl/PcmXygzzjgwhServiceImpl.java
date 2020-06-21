@@ -115,7 +115,6 @@ public class PcmXygzzjgwhServiceImpl extends ServiceImpl<PcmXygzzjgwhMapper, Pcm
     public boolean checkKey(PcmXygzzjgwh et) {
         return (!ObjectUtils.isEmpty(et.getPcmxygzzjgwhid()))&&(!Objects.isNull(this.getById(et.getPcmxygzzjgwhid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -151,6 +150,8 @@ public class PcmXygzzjgwhServiceImpl extends ServiceImpl<PcmXygzzjgwhMapper, Pcm
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmXygzzjgwh> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmXygzzjgwh>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class PcmXygzzjgwhServiceImpl extends ServiceImpl<PcmXygzzjgwhMapper, Pcm
     }
 
 }
+
 
 

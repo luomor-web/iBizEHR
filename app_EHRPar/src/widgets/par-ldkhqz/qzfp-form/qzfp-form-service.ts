@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import ParLdkhqzService from '@/service/par-ldkhqz/par-ldkhqz-service';
 import QZFPModel from './qzfp-form-model';
-import ParKhzcmxService from '@/service/par-khzcmx/par-khzcmx-service';
 
 
 /**
@@ -43,14 +42,6 @@ export default class QZFPService extends ControlService {
     }
 
     /**
-     * 考核内容服务对象
-     *
-     * @type {ParKhzcmxService}
-     * @memberof QZFPService
-     */
-    public parkhzcmxService: ParKhzcmxService = new ParKhzcmxService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -89,9 +80,6 @@ export default class QZFPService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ParKhzcmxService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.parkhzcmxService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'parkhzcmxid', 'parkhzcmx');
-        }
 
         return Promise.reject([])
     }
@@ -142,7 +130,7 @@ export default class QZFPService extends ControlService {
     @Errorlog
     public wfsubmit(action: string,context: any = {}, data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
         data = this.handleWFData(data,true);
-        context = this.handleRequestData(action,context,data).context;
+        context = this.handleRequestData(action,context,data,true).context;
         return new Promise((resolve: any, reject: any) => {
             let result: Promise<any>;
             const _appEntityService: any = this.appEntityService;
@@ -351,13 +339,16 @@ export default class QZFPService extends ControlService {
      * @param data 数据
      * @memberof QZFPService
      */
-    public handleRequestData(action: string,context:any, data: any = {}){
+    public handleRequestData(action: string,context:any, data: any = {},isMerge:boolean = false){
         let mode: any = this.getMode();
         if (!mode && mode.getDataItems instanceof Function) {
             return data;
         }
         let formItemItems: any[] = mode.getDataItems();
         let requestData:any = {};
+        if(isMerge && (data && data.viewparams)){
+            Object.assign(requestData,data.viewparams);
+        }
         formItemItems.forEach((item:any) =>{
             if(item && item.dataType && Object.is(item.dataType,'FONTKEY')){
                 if(item && item.prop){
@@ -369,9 +360,6 @@ export default class QZFPService extends ControlService {
                 }
             }
         });
-        if(data && data.viewparams){
-            Object.assign(requestData,data.viewparams);
-        }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         if(tempContext && tempContext.srfsessionid){
             tempContext.srfsessionkey = tempContext.srfsessionid;

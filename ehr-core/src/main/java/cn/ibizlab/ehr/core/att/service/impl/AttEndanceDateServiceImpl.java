@@ -142,7 +142,6 @@ public class AttEndanceDateServiceImpl extends ServiceImpl<AttEndanceDateMapper,
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -151,6 +150,8 @@ public class AttEndanceDateServiceImpl extends ServiceImpl<AttEndanceDateMapper,
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<AttEndanceDate> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<AttEndanceDate>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class AttEndanceDateServiceImpl extends ServiceImpl<AttEndanceDateMapper,
     }
 
 }
+
 
 

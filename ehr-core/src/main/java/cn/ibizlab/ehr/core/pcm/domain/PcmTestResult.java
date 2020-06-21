@@ -184,7 +184,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
      * 测评结果信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "testresultid",type=IdType.UUID)
+    @TableId(value= "testresultid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "testresultid")
     @JsonProperty("testresultid")
     private String testresultid;

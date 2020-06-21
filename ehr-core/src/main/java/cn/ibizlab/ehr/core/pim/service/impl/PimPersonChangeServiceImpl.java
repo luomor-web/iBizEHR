@@ -165,7 +165,6 @@ public class PimPersonChangeServiceImpl extends ServiceImpl<PimPersonChangeMappe
     public boolean checkKey(PimPersonChange et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonchangeid()))&&(!Objects.isNull(this.getById(et.getPimpersonchangeid())));
     }
-
     @Override
     public PimPersonChange getDraft(PimPersonChange et) {
         fillParentData(et);
@@ -243,6 +242,8 @@ public class PimPersonChangeServiceImpl extends ServiceImpl<PimPersonChangeMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -288,5 +289,6 @@ public class PimPersonChangeServiceImpl extends ServiceImpl<PimPersonChangeMappe
     }
 
 }
+
 
 

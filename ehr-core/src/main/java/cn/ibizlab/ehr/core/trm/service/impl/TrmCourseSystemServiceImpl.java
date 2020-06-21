@@ -109,7 +109,6 @@ public class TrmCourseSystemServiceImpl extends ServiceImpl<TrmCourseSystemMappe
     public boolean checkKey(TrmCourseSystem et) {
         return (!ObjectUtils.isEmpty(et.getTrmcoursesystemid()))&&(!Objects.isNull(this.getById(et.getTrmcoursesystemid())));
     }
-
     @Override
     public TrmCourseSystem getDraft(TrmCourseSystem et) {
         fillParentData(et);
@@ -198,6 +197,8 @@ public class TrmCourseSystemServiceImpl extends ServiceImpl<TrmCourseSystemMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -243,5 +244,6 @@ public class TrmCourseSystemServiceImpl extends ServiceImpl<TrmCourseSystemMappe
     }
 
 }
+
 
 

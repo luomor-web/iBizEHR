@@ -154,7 +154,6 @@ public class OrmDutyServiceImpl extends ServiceImpl<OrmDutyMapper, OrmDuty> impl
     public boolean checkKey(OrmDuty et) {
         return (!ObjectUtils.isEmpty(et.getOrmdutyid()))&&(!Objects.isNull(this.getById(et.getOrmdutyid())));
     }
-
     @Override
     @Transactional
     public OrmDuty get(String key) {
@@ -259,6 +258,8 @@ public class OrmDutyServiceImpl extends ServiceImpl<OrmDutyMapper, OrmDuty> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -304,5 +305,6 @@ public class OrmDutyServiceImpl extends ServiceImpl<OrmDutyMapper, OrmDuty> impl
     }
 
 }
+
 
 

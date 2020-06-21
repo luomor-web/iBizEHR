@@ -51,7 +51,6 @@ public class PimProvinceServiceImpl extends ServiceImpl<PimProvinceMapper, PimPr
     public boolean checkKey(PimProvince et) {
         return (!ObjectUtils.isEmpty(et.getPimprovinceid()))&&(!Objects.isNull(this.getById(et.getPimprovinceid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -156,6 +155,8 @@ public class PimProvinceServiceImpl extends ServiceImpl<PimProvinceMapper, PimPr
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PimProvinceServiceImpl extends ServiceImpl<PimProvinceMapper, PimPr
     }
 
 }
+
 
 

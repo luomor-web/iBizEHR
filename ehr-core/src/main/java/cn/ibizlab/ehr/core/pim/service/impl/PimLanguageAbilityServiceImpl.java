@@ -113,7 +113,6 @@ public class PimLanguageAbilityServiceImpl extends ServiceImpl<PimLanguageAbilit
     public boolean checkKey(PimLanguageAbility et) {
         return (!ObjectUtils.isEmpty(et.getPimlanguageabilityid()))&&(!Objects.isNull(this.getById(et.getPimlanguageabilityid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -238,6 +237,8 @@ public class PimLanguageAbilityServiceImpl extends ServiceImpl<PimLanguageAbilit
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -283,5 +284,6 @@ public class PimLanguageAbilityServiceImpl extends ServiceImpl<PimLanguageAbilit
     }
 
 }
+
 
 

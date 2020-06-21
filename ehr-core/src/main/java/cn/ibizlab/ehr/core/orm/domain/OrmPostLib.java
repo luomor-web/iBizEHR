@@ -74,7 +74,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
      * 岗位标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormpostlibid",type=IdType.UUID)
+    @TableId(value= "ormpostlibid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormpostlibid")
     @JsonProperty("ormpostlibid")
     private String ormpostlibid;

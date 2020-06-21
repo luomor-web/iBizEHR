@@ -37,6 +37,8 @@ public interface IParKhzcmxService extends IService<ParKhzcmx>{
     boolean update(ParKhzcmx et) ;
     void updateBatch(List<ParKhzcmx> list) ;
     Page<ParKhzcmx> searchDefault(ParKhzcmxSearchContext context) ;
+    List<ParKhzcmx> selectByParassesstemplateid(String parassesstemplateid) ;
+    void removeByParassesstemplateid(String parassesstemplateid) ;
     List<ParKhzcmx> selectByParjxkhjcszid(String parjxkhjcszid) ;
     void removeByParjxkhjcszid(String parjxkhjcszid) ;
     /**

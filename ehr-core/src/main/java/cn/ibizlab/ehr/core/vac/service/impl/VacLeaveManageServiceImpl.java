@@ -178,7 +178,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
     public boolean checkKey(VacLeaveManage et) {
         return (!ObjectUtils.isEmpty(et.getVacleavemanageid()))&&(!Objects.isNull(this.getById(et.getVacleavemanageid())));
     }
-
     @Override
     @Transactional
     public VacLeaveManage mobStart(VacLeaveManage et) {
@@ -279,6 +278,8 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -324,5 +325,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
     }
 
 }
+
 
 

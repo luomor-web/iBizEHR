@@ -125,7 +125,6 @@ public class OrmXmbmxServiceImpl extends ServiceImpl<OrmXmbmxMapper, OrmXmbmx> i
     public boolean checkKey(OrmXmbmx et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmbmxid()))&&(!Objects.isNull(this.getById(et.getOrmxmbmxid())));
     }
-
     @Override
     @Transactional
     public boolean create(OrmXmbmx et) {
@@ -215,6 +214,8 @@ public class OrmXmbmxServiceImpl extends ServiceImpl<OrmXmbmxMapper, OrmXmbmx> i
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class OrmXmbmxServiceImpl extends ServiceImpl<OrmXmbmxMapper, OrmXmbmx> i
     }
 
 }
+
 
 

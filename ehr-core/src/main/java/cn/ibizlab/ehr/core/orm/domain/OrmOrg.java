@@ -184,7 +184,7 @@ public class OrmOrg extends EntityMP implements Serializable {
      * 组织标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "orgid",type=IdType.UUID)
+    @TableId(value= "orgid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "orgid")
     @JsonProperty("orgid")
     private String orgid;

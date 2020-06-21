@@ -51,7 +51,6 @@ public class ParIntegralRuleServiceImpl extends ServiceImpl<ParIntegralRuleMappe
     public boolean checkKey(ParIntegralRule et) {
         return (!ObjectUtils.isEmpty(et.getParintegralruleid()))&&(!Objects.isNull(this.getById(et.getParintegralruleid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -156,6 +155,8 @@ public class ParIntegralRuleServiceImpl extends ServiceImpl<ParIntegralRuleMappe
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class ParIntegralRuleServiceImpl extends ServiceImpl<ParIntegralRuleMappe
     }
 
 }
+
 
 

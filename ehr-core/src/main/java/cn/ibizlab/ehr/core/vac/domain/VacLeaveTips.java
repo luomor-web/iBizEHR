@@ -75,7 +75,7 @@ public class VacLeaveTips extends EntityMP implements Serializable {
      * 请假提示标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacleavetipsid",type=IdType.UUID)
+    @TableId(value= "vacleavetipsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacleavetipsid")
     @JsonProperty("vacleavetipsid")
     private String vacleavetipsid;

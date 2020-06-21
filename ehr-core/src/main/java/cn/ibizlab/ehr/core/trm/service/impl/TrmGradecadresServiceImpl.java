@@ -82,7 +82,6 @@ public class TrmGradecadresServiceImpl extends ServiceImpl<TrmGradecadresMapper,
     public boolean checkKey(TrmGradecadres et) {
         return (!ObjectUtils.isEmpty(et.getTrmgradecadresid()))&&(!Objects.isNull(this.getById(et.getTrmgradecadresid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -344,6 +343,8 @@ public class TrmGradecadresServiceImpl extends ServiceImpl<TrmGradecadresMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -389,5 +390,6 @@ public class TrmGradecadresServiceImpl extends ServiceImpl<TrmGradecadresMapper,
     }
 
 }
+
 
 

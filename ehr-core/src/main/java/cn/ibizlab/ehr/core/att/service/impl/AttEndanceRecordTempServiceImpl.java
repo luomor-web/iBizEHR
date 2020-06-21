@@ -157,7 +157,6 @@ public class AttEndanceRecordTempServiceImpl extends ServiceImpl<AttEndanceRecor
         return (!ObjectUtils.isEmpty(et.getAttendancerecordtempid()))&&(!Objects.isNull(this.getById(et.getAttendancerecordtempid())));
     }
 
-
 	@Override
     public List<AttEndanceRecordTemp> selectByOrmorgsectorid(String orgsectorid) {
         return baseMapper.selectByOrmorgsectorid(orgsectorid);
@@ -239,6 +238,8 @@ public class AttEndanceRecordTempServiceImpl extends ServiceImpl<AttEndanceRecor
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -284,5 +285,6 @@ public class AttEndanceRecordTempServiceImpl extends ServiceImpl<AttEndanceRecor
     }
 
 }
+
 
 

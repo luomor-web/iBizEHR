@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'932px'),}">
+    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet1_chart 
@@ -16,11 +16,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrgBarService from './org-bar-portlet-service';
 
@@ -38,7 +39,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public name?: string;
 
@@ -46,7 +47,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -54,7 +55,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public context: any;
 
@@ -62,7 +63,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public viewparams: any;
 
@@ -71,7 +72,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -79,7 +80,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -91,7 +92,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -99,7 +100,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {OrgBarService}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public service: OrgBarService = new OrgBarService({ $store: this.$store });
 
@@ -107,7 +108,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {OrmOrgService}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public appEntityService: OrmOrgService = new OrmOrgService({ $store: this.$store });
     
@@ -117,7 +118,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -127,7 +128,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -145,7 +146,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 长度
      *
      * @type {number}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public height?: number;
 
@@ -153,7 +154,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 宽度
      *
      * @type {number}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop() public width?: number;
 
@@ -185,6 +186,24 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrgBarBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '932px';
+        }
     }
 
     /**

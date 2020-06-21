@@ -79,7 +79,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
      * 向导实体1标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "wzd0001id",type=IdType.UUID)
+    @TableId(value= "wzd0001id",type=IdType.ASSIGN_UUID)
     @JSONField(name = "wzd0001id")
     @JsonProperty("wzd0001id")
     private String wzd0001id;

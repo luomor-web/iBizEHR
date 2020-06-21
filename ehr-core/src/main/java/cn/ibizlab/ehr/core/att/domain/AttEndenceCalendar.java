@@ -43,7 +43,7 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
      * 考勤日历标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "attendencecalendarid",type=IdType.UUID)
+    @TableId(value= "attendencecalendarid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "attendencecalendarid")
     @JsonProperty("attendencecalendarid")
     private String attendencecalendarid;

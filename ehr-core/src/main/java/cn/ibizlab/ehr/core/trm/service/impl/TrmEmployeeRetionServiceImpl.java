@@ -146,7 +146,6 @@ public class TrmEmployeeRetionServiceImpl extends ServiceImpl<TrmEmployeeRetionM
     public boolean checkKey(TrmEmployeeRetion et) {
         return (!ObjectUtils.isEmpty(et.getTrmemployretionid()))&&(!Objects.isNull(this.getById(et.getTrmemployretionid())));
     }
-
     @Override
     @Transactional
     public TrmEmployeeRetion get(String key) {
@@ -265,6 +264,8 @@ public class TrmEmployeeRetionServiceImpl extends ServiceImpl<TrmEmployeeRetionM
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -310,5 +311,6 @@ public class TrmEmployeeRetionServiceImpl extends ServiceImpl<TrmEmployeeRetionM
     }
 
 }
+
 
 

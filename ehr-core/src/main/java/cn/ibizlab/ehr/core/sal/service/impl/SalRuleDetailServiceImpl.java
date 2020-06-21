@@ -70,7 +70,6 @@ public class SalRuleDetailServiceImpl extends ServiceImpl<SalRuleDetailMapper, S
     public boolean checkKey(SalRuleDetail et) {
         return (!ObjectUtils.isEmpty(et.getSalruledetailid()))&&(!Objects.isNull(this.getById(et.getSalruledetailid())));
     }
-
     @Override
     @Transactional
     public boolean update(SalRuleDetail et) {
@@ -235,6 +234,8 @@ public class SalRuleDetailServiceImpl extends ServiceImpl<SalRuleDetailMapper, S
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -280,5 +281,6 @@ public class SalRuleDetailServiceImpl extends ServiceImpl<SalRuleDetailMapper, S
     }
 
 }
+
 
 

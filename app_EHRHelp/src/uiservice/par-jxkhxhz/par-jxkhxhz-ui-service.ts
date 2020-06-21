@@ -1,7 +1,7 @@
 import ParJxkhxhzUIServiceBase from './par-jxkhxhz-ui-service-base';
 
 /**
- * 考核内容评分汇总UI服务对象
+ * 考核方案UI服务对象
  *
  * @export
  * @class ParJxkhxhzUIService

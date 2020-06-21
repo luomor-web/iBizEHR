@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplansetdfbzt" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplansetdfbzt">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="trmtrainplansetdfbztdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlan" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetdfbztdeaction1" id="D2EC4773-6222-4510-9034-26A00F5263F3" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="D2EC4773-6222-4510-9034-26A00F5263F3_End" name="End"/>
+     <sequenceFlow id="D2EC4773-6222-4510-9034-26A00F5263F3_End_Line" sourceRef="D2EC4773-6222-4510-9034-26A00F5263F3" targetRef="D2EC4773-6222-4510-9034-26A00F5263F3_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetdfbztprepareparam1" id="7236F131-F147-4774-9FB6-ED35D9122246" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
+     <startEvent id="CE8B4F5C-83BA-4632-BF91-85EFAD38B194" isInterrupting="true"/>
+     <sequenceFlow id="DEC73FDA-E955-4496-94F9-3A728B9257D4" sourceRef="7236F131-F147-4774-9FB6-ED35D9122246" targetRef="D2EC4773-6222-4510-9034-26A00F5263F3">
+     </sequenceFlow>
+     <sequenceFlow id="516AF70E-3B97-4944-9400-634E6F105CEA" sourceRef="CE8B4F5C-83BA-4632-BF91-85EFAD38B194" targetRef="7236F131-F147-4774-9FB6-ED35D9122246">
+     </sequenceFlow>
+    </process>
+</definitions>
+

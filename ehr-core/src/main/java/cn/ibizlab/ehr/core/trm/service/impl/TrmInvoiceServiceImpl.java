@@ -109,7 +109,6 @@ public class TrmInvoiceServiceImpl extends ServiceImpl<TrmInvoiceMapper, TrmInvo
     public boolean checkKey(TrmInvoice et) {
         return (!ObjectUtils.isEmpty(et.getTrminvoiceid()))&&(!Objects.isNull(this.getById(et.getTrminvoiceid())));
     }
-
     @Override
     @Transactional
     public TrmInvoice get(String key) {
@@ -192,6 +191,8 @@ public class TrmInvoiceServiceImpl extends ServiceImpl<TrmInvoiceMapper, TrmInvo
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class TrmInvoiceServiceImpl extends ServiceImpl<TrmInvoiceMapper, TrmInvo
     }
 
 }
+
 
 

@@ -1173,7 +1173,7 @@
     "delogicname":"培训计划",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"SetYfbZt" , "name":"设置已发布状态" , "type":"DELOGIC" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"SetDfbZt" , "name":"设置待发布状态" , "type":"DELOGIC" },{"id":"SetApprovalStatus" , "name":"设置审核通过状态" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"SetRejectStatus" , "name":"设置审核不通过状态" , "type":"DELOGIC" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1204,7 +1204,7 @@
     "dename":"PimPerson",
     "delogicname":"人员信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
-    "dedataset":[{"id":"KFPRY" , "name":"可返聘人员"},{"id":"SetAttRules" , "name":"待设置考勤人员"},{"id":"YGXXGLY" , "name":"员工信息（管理员）"},{"id":"XMBRYCX" , "name":"项目部人员查询"},{"id":"CurOrgPerson" , "name":"当前组织实际可选人员"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"CurLeader" , "name":"部门负责人选择范围"},{"id":"SFHMD" , "name":"是否黑名单"},{"id":"SSTRERSONINFO" , "name":"人员信息树视图"},{"id":"CurJHRY" , "name":"当前组织可选计划人员"},{"id":"KTXYG" , "name":"可退休人员"},{"id":"BYLYG" , "name":"非A类员工"},{"id":"GBHMC" , "name":"干部花名册"},{"id":"GZDQGL" , "name":"挂职到期管理"},{"id":"KQJRYCX" , "name":"可请假员工查询"},{"id":"LTXSTAFF" , "name":"离（退）休员工"},{"id":"REP_PERSONORGTYPE" , "name":"机关 项目人员分布"},{"id":"AuthPerson" , "name":"显示人员（权限控制）"},{"id":"Default" , "name":"DEFAULT"},{"id":"KGZRY" , "name":"可挂职人员"},{"id":"SELFHELPID" , "name":"员工自助登录人员ID"},{"id":"SYQYGCX" , "name":"试用期员工查询"},{"id":"LZRYHMC" , "name":"离职人员花名册"},{"id":"TitleUse" , "name":"头衔专用"},{"id":"JXQYGCX" , "name":"见习期员工查询"},{"id":"YXZFPRYDS" , "name":"存在有效分配的主分配的人员"},{"id":"RYZT_30" , "name":"在职人员"},{"id":"DTXYG" , "name":"待退休人员"},{"id":"XZKQRY" , "name":"新增考勤人员（考勤设置）"},{"id":"REP_PERSONAGE" , "name":"年龄分布"},{"id":"SYQKZZRY" , "name":"试用期可转正人员"},{"id":"JXQKZZRY" , "name":"见习期可转正人员"},{"id":"TXGB" , "name":"退休干部"},{"id":"KZJBDRY" , "name":"可进行职级变动的人员"},{"id":"CurOrgPimperson" , "name":"当前组织下人员"},{"id":"TXRYCX" , "name":"退休员工查询"},{"id":"KXZSYQKZZRYDS" , "name":"申请单可选择试用期可转正人员"}],
+    "dedataset":[{"id":"KFPRY" , "name":"可返聘人员"},{"id":"SetAttRules" , "name":"待设置考勤人员"},{"id":"SetSocArchives" , "name":"待设置社保档案人员"},{"id":"YGXXGLY" , "name":"员工信息（管理员）"},{"id":"XMBRYCX" , "name":"项目部人员查询"},{"id":"CurOrgPerson" , "name":"当前组织实际可选人员"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"CurLeader" , "name":"部门负责人选择范围"},{"id":"SFHMD" , "name":"是否黑名单"},{"id":"SSTRERSONINFO" , "name":"人员信息树视图"},{"id":"CurJHRY" , "name":"当前组织可选计划人员"},{"id":"KTXYG" , "name":"可退休人员"},{"id":"BYLYG" , "name":"非A类员工"},{"id":"GBHMC" , "name":"干部花名册"},{"id":"GZDQGL" , "name":"挂职到期管理"},{"id":"KQJRYCX" , "name":"可请假员工查询"},{"id":"LTXSTAFF" , "name":"离（退）休员工"},{"id":"REP_PERSONORGTYPE" , "name":"机关 项目人员分布"},{"id":"AuthPerson" , "name":"显示人员（权限控制）"},{"id":"Default" , "name":"DEFAULT"},{"id":"KGZRY" , "name":"可挂职人员"},{"id":"SELFHELPID" , "name":"员工自助登录人员ID"},{"id":"SYQYGCX" , "name":"试用期员工查询"},{"id":"LZRYHMC" , "name":"离职人员花名册"},{"id":"TitleUse" , "name":"头衔专用"},{"id":"JXQYGCX" , "name":"见习期员工查询"},{"id":"YXZFPRYDS" , "name":"存在有效分配的主分配的人员"},{"id":"RYZT_30" , "name":"在职人员"},{"id":"DTXYG" , "name":"待退休人员"},{"id":"XZKQRY" , "name":"新增考勤人员（考勤设置）"},{"id":"REP_PERSONAGE" , "name":"年龄分布"},{"id":"SYQKZZRY" , "name":"试用期可转正人员"},{"id":"JXQKZZRY" , "name":"见习期可转正人员"},{"id":"TXGB" , "name":"退休干部"},{"id":"KZJBDRY" , "name":"可进行职级变动的人员"},{"id":"CurOrgPimperson" , "name":"当前组织下人员"},{"id":"TXRYCX" , "name":"退休员工查询"},{"id":"KXZSYQKZZRYDS" , "name":"申请单可选择试用期可转正人员"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"YZSFYZFP" , "name":"验证是否有（有效的）主分配" , "type":"USERCUSTOM" },{"id":"ToggleLeader" , "name":"设置/取消为领导班子" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"PersonUpdateInfo" , "name":"根据证件号更改出生日期、性别、年龄" , "type":"USERCUSTOM" },{"id":"FillPersonType" , "name":"根据员工编号更新员工类型" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetJTLXRDH" , "name":"获取家庭联系人电话" , "type":"DELOGIC" },{"id":"SynPerson" , "name":"推送员工信息" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"QRTX" , "name":"确认退休" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"GeneratePersonFile" , "name":"生成人员档案" , "type":"USERCUSTOM" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
@@ -1402,7 +1402,7 @@
      }
     ,    {
     "dename":"ParKhzcmx",
-    "delogicname":"考核内容",
+    "delogicname":"考核模板明细",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
@@ -2330,7 +2330,7 @@
      }
     ,    {
     "dename":"ParJxkhxhz",
-    "delogicname":"考核内容评分汇总",
+    "delogicname":"考核方案",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
@@ -2681,6 +2681,70 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"SocArea",
+    "delogicname":"参保地",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocArchives",
+    "delogicname":"社保档案",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"OrgArchives" , "name":"ORGARCHIVES"},{"id":"Default" , "name":"DEFAULT"},{"id":"StopArchives" , "name":"非员工待终止档案"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"StopArchives" , "name":"终止社保" , "type":"DELOGIC" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocType",
+    "delogicname":"保险类型",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocRule",
+    "delogicname":"社保规则",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocRecord",
+    "delogicname":"社保缴费记录",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocAccount",
+    "delogicname":"参保账户",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocArchivesDetail",
+    "delogicname":"社保档案明细",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocRuleDetail",
+    "delogicname":"社保规则明细",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"PcmProfileApproval",
     "delogicname":"应聘者审批表",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -2833,6 +2897,14 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"ParAssessTemplate",
+    "delogicname":"考核模板",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"ParDjbz",
     "delogicname":"定级规则",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
@@ -2920,6 +2992,12 @@
             }
             ,
             {
+               "appid":"EHRSoc",
+               "appname":"EHRSOC（社保管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"社保规则" , "items":[{ "id":"menuitem2" , "name":"参保地" },{ "id":"menuitem3" , "name":"参保账户" },{ "id":"menuitem4" , "name":"保险类型" },{ "id":"menuitem5" , "name":"社保规则" }]},{ "id":"menuitem7" , "name":"社保档案" , "items":[{ "id":"menuitem6" , "name":"员工社保档案" },{ "id":"menuitem8" , "name":"员工社保设置" },{ "id":"menuitem9" , "name":"非员工终止社保" }]}] }]
+            }
+            ,
+            {
                "appid":"EHRPcm2",
                "appname":"EHRPCM2（人员异动）",
                "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem4" , "name":"人员异动" , "items":[{ "id":"menuitem1" , "name":"调动管理" },{ "id":"menuitem2" , "name":"借调管理" },{ "id":"menuitem3" , "name":"兼职管理" },{ "id":"menuitem7" , "name":"待岗管理" },{ "id":"menuitem8" , "name":"内退管理" },{ "id":"menuitem9" , "name":"病休管理" },{ "id":"menuitem10" , "name":"离职管理" },{ "id":"menuitem11" , "name":"解聘管理" },{ "id":"menuitem12" , "name":"退休管理" }]},{ "id":"menuitem5" , "name":"试用期转正" , "items":[{ "id":"menuitem6" , "name":"试用期转正申请" },{ "id":"menuitem15" , "name":"试用期转正审核" }]},{ "id":"menuitem13" , "name":"见习期转正" , "items":[{ "id":"menuitem14" , "name":"见习期转正申请" },{ "id":"menuitem16" , "name":"见习期转正审核" }]}] }]
@@ -2952,7 +3030,13 @@
             {
                "appid":"EHRPar",
                "appname":"EHRPAR（绩效管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" },{ "id":"menuitem8" , "name":"考核对象设置" },{ "id":"menuitem9" , "name":"考核内容设置" },{ "id":"menuitem10" , "name":"评分权重设置" },{ "id":"menuitem16" , "name":"积分规则设置" }]},{ "id":"menuitem12" , "name":"绩效标准" , "items":[{ "id":"menuitem11" , "name":"考核内容汇总" }]},{ "id":"menuitem3" , "name":"绩效考核" , "items":[{ "id":"menuitem13" , "name":"年度量化目标填报" },{ "id":"menuitem14" , "name":"年度量化目标修正" },{ "id":"menuitem15" , "name":"年度量化目标考核" }]},{ "id":"menuitem4" , "name":"绩效定级" , "items":[{ "id":"menuitem17" , "name":"绩效考核结果" },{ "id":"menuitem18" , "name":"绩效考核定级" }]},{ "id":"menuitem5" , "name":"绩效应用" }] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" },{ "id":"menuitem8" , "name":"考核对象设置" },{ "id":"menuitem9" , "name":"考核内容设置" },{ "id":"menuitem10" , "name":"评分权重设置" },{ "id":"menuitem16" , "name":"积分规则设置" }]},{ "id":"menuitem12" , "name":"绩效标准" , "items":[{ "id":"menuitem19" , "name":"考核模板设置" },{ "id":"menuitem11" , "name":"考核方案设置" }]},{ "id":"menuitem3" , "name":"绩效考核" , "items":[{ "id":"menuitem13" , "name":"年度量化目标填报" },{ "id":"menuitem14" , "name":"年度量化目标修正" },{ "id":"menuitem15" , "name":"年度量化目标考核" }]},{ "id":"menuitem4" , "name":"绩效定级" , "items":[{ "id":"menuitem17" , "name":"绩效考核结果" },{ "id":"menuitem18" , "name":"绩效考核定级" }]},{ "id":"menuitem5" , "name":"绩效应用" }] }]
+            }
+            ,
+            {
+               "appid":"EHRTrm",
+               "appname":"EHRTRM（培训管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"培训资源" , "items":[{ "id":"menuitem6" , "name":"培训机构" },{ "id":"menuitem7" , "name":"培训场地" },{ "id":"menuitem8" , "name":"培训模块" },{ "id":"menuitem9" , "name":"培训课程" },{ "id":"menuitem10" , "name":"内部讲师" },{ "id":"menuitem11" , "name":"外部讲师" }]},{ "id":"menuitem2" , "name":"培训需求" , "items":[{ "id":"menuitem12" , "name":"需求通知" },{ "id":"menuitem13" , "name":"需求填报" }]},{ "id":"menuitem3" , "name":"培训计划" , "items":[{ "id":"menuitem15" , "name":"计划制定" },{ "id":"menuitem16" , "name":"计划审批" },{ "id":"menuitem17" , "name":"计划发布" },{ "id":"menuitem22" , "name":"外出培训申请" }]},{ "id":"menuitem4" , "name":"培训实施" , "items":[{ "id":"menuitem18" , "name":"培训立项" },{ "id":"menuitem19" , "name":"培训班级" },{ "id":"menuitem20" , "name":"培训后评估" }]},{ "id":"menuitem5" , "name":"培训费用" , "items":[{ "id":"menuitem23" , "name":"培训费用登记" },{ "id":"menuitem21" , "name":"讲师费用登记" }]}] }]
             }
             ,
             {

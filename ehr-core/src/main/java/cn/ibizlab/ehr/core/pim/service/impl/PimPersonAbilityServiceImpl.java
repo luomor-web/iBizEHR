@@ -161,7 +161,6 @@ public class PimPersonAbilityServiceImpl extends ServiceImpl<PimPersonAbilityMap
         return (!ObjectUtils.isEmpty(et.getPimpersonabilityid()))&&(!Objects.isNull(this.getById(et.getPimpersonabilityid())));
     }
 
-
 	@Override
     public List<PimPersonAbility> selectByPimpersonid(String pimpersonid) {
         return baseMapper.selectByPimpersonid(pimpersonid);
@@ -200,6 +199,8 @@ public class PimPersonAbilityServiceImpl extends ServiceImpl<PimPersonAbilityMap
             et.setPimpersonname(pimperson.getPimpersonname());
         }
     }
+
+
 
 
     @Override
@@ -247,5 +248,6 @@ public class PimPersonAbilityServiceImpl extends ServiceImpl<PimPersonAbilityMap
     }
 
 }
+
 
 

@@ -127,7 +127,6 @@ public class PimArchivesManageServiceImpl extends ServiceImpl<PimArchivesManageM
     public boolean checkKey(PimArchivesManage et) {
         return (!ObjectUtils.isEmpty(et.getArchivesmanageid()))&&(!Objects.isNull(this.getById(et.getArchivesmanageid())));
     }
-
     @Override
     @Transactional
     public PimArchivesManage get(String key) {
@@ -151,6 +150,8 @@ public class PimArchivesManageServiceImpl extends ServiceImpl<PimArchivesManageM
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimArchivesManage> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimArchivesManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class PimArchivesManageServiceImpl extends ServiceImpl<PimArchivesManageM
     }
 
 }
+
 
 

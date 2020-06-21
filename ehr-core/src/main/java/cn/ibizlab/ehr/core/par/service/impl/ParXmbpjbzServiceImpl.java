@@ -81,7 +81,6 @@ public class ParXmbpjbzServiceImpl extends ServiceImpl<ParXmbpjbzMapper, ParXmbp
     public boolean checkKey(ParXmbpjbz et) {
         return (!ObjectUtils.isEmpty(et.getParxmbpjbzid()))&&(!Objects.isNull(this.getById(et.getParxmbpjbzid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParXmbpjbz et) {
@@ -214,6 +213,8 @@ public class ParXmbpjbzServiceImpl extends ServiceImpl<ParXmbpjbzMapper, ParXmbp
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -259,5 +260,6 @@ public class ParXmbpjbzServiceImpl extends ServiceImpl<ParXmbpjbzMapper, ParXmbp
     }
 
 }
+
 
 

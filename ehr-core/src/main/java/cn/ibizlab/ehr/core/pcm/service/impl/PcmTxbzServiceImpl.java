@@ -51,7 +51,6 @@ public class PcmTxbzServiceImpl extends ServiceImpl<PcmTxbzMapper, PcmTxbz> impl
     public boolean checkKey(PcmTxbz et) {
         return (!ObjectUtils.isEmpty(et.getPcmtxbzid()))&&(!Objects.isNull(this.getById(et.getPcmtxbzid())));
     }
-
     @Override
     @Transactional
     public PcmTxbz get(String key) {
@@ -156,6 +155,8 @@ public class PcmTxbzServiceImpl extends ServiceImpl<PcmTxbzMapper, PcmTxbz> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmTxbzServiceImpl extends ServiceImpl<PcmTxbzMapper, PcmTxbz> impl
     }
 
 }
+
 
 

@@ -77,7 +77,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
      * 内部招聘信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmrecruitmentid",type=IdType.UUID)
+    @TableId(value= "pcmrecruitmentid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmrecruitmentid")
     @JsonProperty("pcmrecruitmentid")
     private String pcmrecruitmentid;

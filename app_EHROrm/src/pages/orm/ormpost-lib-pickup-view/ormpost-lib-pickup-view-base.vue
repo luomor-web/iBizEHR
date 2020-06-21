@@ -248,7 +248,7 @@ export default class ORMPostLibPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ORMPostLibPickupView
+     * @memberof ORMPostLibPickupViewBase
      */
     public selectedData: string = "";
 

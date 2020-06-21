@@ -211,7 +211,6 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
         return (!ObjectUtils.isEmpty(et.getPcmjxsygzzjlmxid()))&&(!Objects.isNull(this.getById(et.getPcmjxsygzzjlmxid())));
     }
 
-
 	@Override
     public List<PcmJxsygzzjlmx> selectByPcmjxsygzzsqid(String pcmjxsygzzsqid) {
         return baseMapper.selectByPcmjxsygzzsqid(pcmjxsygzzsqid);
@@ -331,6 +330,8 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -376,5 +377,6 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
     }
 
 }
+
 
 

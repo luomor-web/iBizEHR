@@ -148,11 +148,19 @@ export default class AppSpan extends Vue {
         if(this.tag){
             return;  //代码表走codelist组件
         }else if(this.editorType === "ADDRESSPICKUP"){
-            JSON.parse(this.value).forEach((item:any,index:number) => {
-              this.text += index === 0 ? item.srfmajortext : ","+item.srfmajortext;
-            });
+            if(this.$util.isEmpty(this.value)){
+                this.text = '';
+            }else{
+                JSON.parse(this.value).forEach((item:any,index:number) => {
+                  this.text += index === 0 ? item.srfmajortext : ","+item.srfmajortext;
+                });
+            }
         }else{
-            this.text = this.value;
+            if(this.$util.isEmpty(this.value)){
+                this.text = '';
+            }else{
+                this.text = this.value;
+            }
         }
     }
     

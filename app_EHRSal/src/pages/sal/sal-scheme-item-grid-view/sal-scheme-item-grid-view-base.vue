@@ -548,7 +548,8 @@ export default class SalSchemeItemGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-        const batchAddPSAppViews=[
+        let batchAddPSAppViews:Array<any>=[];
+        batchAddPSAppViews=[
             {view:{viewname:'sal-scheme-mpickup-view',height: 0,width: 0,title: '薪酬方案数据多项选择视图'},
             res:['SalScheme'],
             'resAppKey':'salschemeid'},
@@ -621,14 +622,28 @@ export default class SalSchemeItemGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'salschemeitems', parameterName: 'salschemeitem' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'sal-scheme-item-edit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.salschemeitem.views.editview.title'),
+            placement: 'DRAWER_RIGHT',
+        };
+        openDrawer(view, data);
     }
 
 

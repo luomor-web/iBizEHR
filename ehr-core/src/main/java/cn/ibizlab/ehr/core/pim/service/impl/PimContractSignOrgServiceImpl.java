@@ -73,7 +73,6 @@ public class PimContractSignOrgServiceImpl extends ServiceImpl<PimContractSignOr
     public boolean checkKey(PimContractSignOrg et) {
         return (!ObjectUtils.isEmpty(et.getContractsignorgid()))&&(!Objects.isNull(this.getById(et.getContractsignorgid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimContractSignOrg et) {
@@ -227,6 +226,8 @@ public class PimContractSignOrgServiceImpl extends ServiceImpl<PimContractSignOr
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -272,5 +273,6 @@ public class PimContractSignOrgServiceImpl extends ServiceImpl<PimContractSignOr
     }
 
 }
+
 
 

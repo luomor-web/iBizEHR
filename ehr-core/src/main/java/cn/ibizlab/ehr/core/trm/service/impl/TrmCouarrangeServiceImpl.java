@@ -131,7 +131,6 @@ public class TrmCouarrangeServiceImpl extends ServiceImpl<TrmCouarrangeMapper, T
     public boolean checkKey(TrmCouarrange et) {
         return (!ObjectUtils.isEmpty(et.getTrmcouarrangeid()))&&(!Objects.isNull(this.getById(et.getTrmcouarrangeid())));
     }
-
     @Override
     @Transactional
     public boolean save(TrmCouarrange et) {
@@ -402,6 +401,8 @@ public class TrmCouarrangeServiceImpl extends ServiceImpl<TrmCouarrangeMapper, T
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -447,5 +448,6 @@ public class TrmCouarrangeServiceImpl extends ServiceImpl<TrmCouarrangeMapper, T
     }
 
 }
+
 
 

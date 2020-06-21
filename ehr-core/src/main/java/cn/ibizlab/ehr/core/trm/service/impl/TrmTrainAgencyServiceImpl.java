@@ -128,7 +128,6 @@ public class TrmTrainAgencyServiceImpl extends ServiceImpl<TrmTrainAgencyMapper,
     public boolean checkKey(TrmTrainAgency et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainagencyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainagencyid())));
     }
-
     @Override
     public TrmTrainAgency getDraft(TrmTrainAgency et) {
         fillParentData(et);
@@ -275,6 +274,8 @@ public class TrmTrainAgencyServiceImpl extends ServiceImpl<TrmTrainAgencyMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -320,5 +321,6 @@ public class TrmTrainAgencyServiceImpl extends ServiceImpl<TrmTrainAgencyMapper,
     }
 
 }
+
 
 

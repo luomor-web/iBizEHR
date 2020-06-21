@@ -142,7 +142,6 @@ public class ParDjbzServiceImpl extends ServiceImpl<ParDjbzMapper, ParDjbz> impl
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -151,6 +150,8 @@ public class ParDjbzServiceImpl extends ServiceImpl<ParDjbzMapper, ParDjbz> impl
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<ParDjbz> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<ParDjbz>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class ParDjbzServiceImpl extends ServiceImpl<ParDjbzMapper, ParDjbz> impl
     }
 
 }
+
 
 

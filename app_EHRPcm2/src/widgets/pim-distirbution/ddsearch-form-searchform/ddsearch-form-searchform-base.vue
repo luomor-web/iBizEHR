@@ -52,11 +52,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimDistirbutionService from '@/service/pim-distirbution/pim-distirbution-service';
 import DDSearchFormService from './ddsearch-form-searchform-service';
 
@@ -75,7 +76,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     @Prop() public name?: string;
 
@@ -83,7 +84,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -91,7 +92,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     @Prop() public context: any;
 
@@ -99,7 +100,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     @Prop() public viewparams: any;
 
@@ -108,7 +109,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -116,7 +117,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -128,7 +129,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -136,7 +137,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {DDSearchFormService}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public service: DDSearchFormService = new DDSearchFormService({ $store: this.$store });
 
@@ -144,7 +145,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PimDistirbutionService}
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public appEntityService: PimDistirbutionService = new PimDistirbutionService({ $store: this.$store });
     
@@ -154,7 +155,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -164,7 +165,7 @@ export default class DDSearchFormBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof DDSearchForm
+     * @memberof DDSearchFormBase
      */
     public counterRefresh(){
         const _this:any =this;

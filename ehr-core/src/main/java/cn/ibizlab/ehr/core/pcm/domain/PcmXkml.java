@@ -74,7 +74,7 @@ public class PcmXkml extends EntityMP implements Serializable {
      * 学科目录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmxkmlid",type=IdType.UUID)
+    @TableId(value= "pcmxkmlid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmxkmlid")
     @JsonProperty("pcmxkmlid")
     private String pcmxkmlid;

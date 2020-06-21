@@ -95,7 +95,6 @@ public class VacLeaveTipsServiceImpl extends ServiceImpl<VacLeaveTipsMapper, Vac
     public boolean checkKey(VacLeaveTips et) {
         return (!ObjectUtils.isEmpty(et.getVacleavetipsid()))&&(!Objects.isNull(this.getById(et.getVacleavetipsid())));
     }
-
     @Override
     @Transactional
     public VacLeaveTips checkRepeat(VacLeaveTips et) {
@@ -206,6 +205,8 @@ public class VacLeaveTipsServiceImpl extends ServiceImpl<VacLeaveTipsMapper, Vac
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -251,5 +252,6 @@ public class VacLeaveTipsServiceImpl extends ServiceImpl<VacLeaveTipsMapper, Vac
     }
 
 }
+
 
 

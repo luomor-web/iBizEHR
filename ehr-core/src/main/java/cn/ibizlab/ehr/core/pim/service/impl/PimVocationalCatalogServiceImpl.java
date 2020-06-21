@@ -103,7 +103,6 @@ public class PimVocationalCatalogServiceImpl extends ServiceImpl<PimVocationalCa
     public boolean checkKey(PimVocationalCatalog et) {
         return (!ObjectUtils.isEmpty(et.getPimvocationalcatalogid()))&&(!Objects.isNull(this.getById(et.getPimvocationalcatalogid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimVocationalCatalog et) {
@@ -159,6 +158,8 @@ public class PimVocationalCatalogServiceImpl extends ServiceImpl<PimVocationalCa
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -204,5 +205,6 @@ public class PimVocationalCatalogServiceImpl extends ServiceImpl<PimVocationalCa
     }
 
 }
+
 
 

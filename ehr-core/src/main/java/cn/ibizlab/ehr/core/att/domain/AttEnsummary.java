@@ -353,7 +353,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
      * 考勤汇总标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "attensummaryid",type=IdType.UUID)
+    @TableId(value= "attensummaryid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "attensummaryid")
     @JsonProperty("attensummaryid")
     private String attensummaryid;

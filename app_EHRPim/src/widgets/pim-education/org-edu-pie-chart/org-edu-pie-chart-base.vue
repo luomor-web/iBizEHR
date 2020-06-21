@@ -7,11 +7,12 @@
 
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimEducationService from '@/service/pim-education/pim-education-service';
 import OrgEduPieService from './org-edu-pie-chart-service';
 
@@ -32,7 +33,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public name?: string;
 
@@ -40,7 +41,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -48,7 +49,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public context: any;
 
@@ -56,7 +57,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public viewparams: any;
 
@@ -65,7 +66,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -73,7 +74,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public getControlType(): string {
         return 'CHART'
@@ -85,7 +86,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {OrgEduPieService}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public service: OrgEduPieService = new OrgEduPieService({ $store: this.$store });
 
@@ -93,7 +94,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PimEducationService}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public appEntityService: PimEducationService = new PimEducationService({ $store: this.$store });
     
@@ -103,7 +104,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -113,7 +114,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -131,7 +132,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public getDatas(): any[] {
         return [];
@@ -141,7 +142,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public getData(): any {
         return null;
@@ -151,7 +152,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop({ default: true }) public showBusyIndicator!: boolean;
 
@@ -159,14 +160,14 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
      * 部件行为--fetch
      *
      * @type {string}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public fetchAction!: string;  
 
     /**
     * Vue声明周期(组件初始化完毕)
     *
-    * @memberof OrgEduPie
+    * @memberof OrgEduPieBase
     */
     public created() {
          this.afterCreated();     
@@ -175,7 +176,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
     /**
     * 执行created后的逻辑
     *
-    * @memberof OrgEduPie
+    * @memberof OrgEduPieBase
     */
     public afterCreated(){
         if (this.viewState) {
@@ -193,7 +194,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -202,7 +203,7 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -430,13 +431,13 @@ export default class OrgEduPieBase extends Vue implements ControlInterface {
             Object.keys(this.seriesModel).forEach((seriesName:string) =>{
                 if(_chartOption && _chartOption.series.length > 0){
                     _chartOption.series.forEach((item:any) =>{
-                        if(this.seriesModel[seriesName].ecxObject){
+                        if(this.seriesModel[seriesName].ecxObject && Object.is(seriesName,item.id)){
                             item = Util.deepObjectMerge(item,this.seriesModel[seriesName].ecxObject);
                         }
-                        if(this.seriesModel[seriesName].baseOption && Object.keys(this.seriesModel[seriesName].baseOption).length > 0){
+                        if(this.seriesModel[seriesName].baseOption && Object.keys(this.seriesModel[seriesName].baseOption).length > 0  && Object.is(seriesName,item.id)){
                             item = Util.deepObjectMerge(item,this.seriesModel[seriesName].baseOption);
                         }
-                        if(this.seriesModel[seriesName].ecObject){
+                        if(this.seriesModel[seriesName].ecObject && Object.is(seriesName,item.id)){
                             item = Util.deepObjectMerge(item,this.seriesModel[seriesName].ecObject);
                         }
                     })

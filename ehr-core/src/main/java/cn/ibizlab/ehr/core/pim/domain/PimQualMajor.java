@@ -135,7 +135,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
      * 执业资格专业编码
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimqualmajorid",type=IdType.UUID)
+    @TableId(value= "pimqualmajorid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimqualmajorid")
     @JsonProperty("pimqualmajorid")
     private String pimqualmajorid;

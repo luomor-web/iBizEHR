@@ -57,7 +57,7 @@ public class ParLdkhqz extends EntityMP implements Serializable {
      * 评分规则标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parldkhqzid",type=IdType.UUID)
+    @TableId(value= "parldkhqzid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parldkhqzid")
     @JsonProperty("parldkhqzid")
     private String parldkhqzid;
@@ -123,6 +123,13 @@ public class ParLdkhqz extends EntityMP implements Serializable {
     @JSONField(name = "parkhzcmxid")
     @JsonProperty("parkhzcmxid")
     private String parkhzcmxid;
+    /**
+     * 考核对象
+     */
+    @TableField(value = "khobject")
+    @JSONField(name = "khobject")
+    @JsonProperty("khobject")
+    private String khobject;
 
     /**
      * 评分权重分配
@@ -164,6 +171,14 @@ public class ParLdkhqz extends EntityMP implements Serializable {
     public void setParkhzcmxid(String parkhzcmxid){
         this.parkhzcmxid = parkhzcmxid ;
         this.modify("parkhzcmxid",parkhzcmxid);
+    }
+
+    /**
+     * 设置 [考核对象]
+     */
+    public void setKhobject(String khobject){
+        this.khobject = khobject ;
+        this.modify("khobject",khobject);
     }
 
 

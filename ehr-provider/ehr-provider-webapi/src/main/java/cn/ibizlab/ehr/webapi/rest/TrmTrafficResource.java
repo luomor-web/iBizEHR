@@ -158,5 +158,137 @@ public class TrmTrafficResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrafficMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @ApiOperation(value = "根据培训场地获取交通草稿", tags = {"交通" },  notes = "根据培训场地获取交通草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/getdraft")
+    public ResponseEntity<TrmTrafficDTO> getDraftByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id) {
+        TrmTraffic domain = new TrmTraffic();
+        domain.setTrmtrainaddressid(trmtrainaddress_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrafficMapping.toDto(trmtrafficService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficService.get(#trmtraffic_id),'ehr-TrmTraffic-Remove')")
+    @ApiOperation(value = "根据培训场地删除交通", tags = {"交通" },  notes = "根据培训场地删除交通")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/{trmtraffic_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @PathVariable("trmtraffic_id") String trmtraffic_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.remove(trmtraffic_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficService.getTrmtrafficByIds(#ids),'ehr-TrmTraffic-Remove')")
+    @ApiOperation(value = "根据培训场地批量删除交通", tags = {"交通" },  notes = "根据培训场地批量删除交通")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/batch")
+    public ResponseEntity<Boolean> removeBatchByTrmTrainAddress(@RequestBody List<String> ids) {
+        trmtrafficService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficMapping.toDomain(#trmtrafficdto),'ehr-TrmTraffic-Save')")
+    @ApiOperation(value = "根据培训场地保存交通", tags = {"交通" },  notes = "根据培训场地保存交通")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/save")
+    public ResponseEntity<Boolean> saveByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody TrmTrafficDTO trmtrafficdto) {
+        TrmTraffic domain = trmtrafficMapping.toDomain(trmtrafficdto);
+        domain.setTrmtrainaddressid(trmtrainaddress_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficMapping.toDomain(#trmtrafficdtos),'ehr-TrmTraffic-Save')")
+    @ApiOperation(value = "根据培训场地批量保存交通", tags = {"交通" },  notes = "根据培训场地批量保存交通")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/savebatch")
+    public ResponseEntity<Boolean> saveBatchByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody List<TrmTrafficDTO> trmtrafficdtos) {
+        List<TrmTraffic> domainlist=trmtrafficMapping.toDomain(trmtrafficdtos);
+        for(TrmTraffic domain:domainlist){
+             domain.setTrmtrainaddressid(trmtrainaddress_id);
+        }
+        trmtrafficService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.trmtrafficMapping.toDomain(returnObject.body),'ehr-TrmTraffic-Get')")
+    @ApiOperation(value = "根据培训场地获取交通", tags = {"交通" },  notes = "根据培训场地获取交通")
+	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/{trmtraffic_id}")
+    public ResponseEntity<TrmTrafficDTO> getByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @PathVariable("trmtraffic_id") String trmtraffic_id) {
+        TrmTraffic domain = trmtrafficService.get(trmtraffic_id);
+        TrmTrafficDTO dto = trmtrafficMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficService.get(#trmtraffic_id),'ehr-TrmTraffic-Update')")
+    @ApiOperation(value = "根据培训场地更新交通", tags = {"交通" },  notes = "根据培训场地更新交通")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/{trmtraffic_id}")
+    @Transactional
+    public ResponseEntity<TrmTrafficDTO> updateByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @PathVariable("trmtraffic_id") String trmtraffic_id, @RequestBody TrmTrafficDTO trmtrafficdto) {
+        TrmTraffic domain = trmtrafficMapping.toDomain(trmtrafficdto);
+        domain.setTrmtrainaddressid(trmtrainaddress_id);
+        domain.setTrmtrafficid(trmtraffic_id);
+		trmtrafficService.update(domain);
+        TrmTrafficDTO dto = trmtrafficMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficService.getTrmtrafficByEntities(this.trmtrafficMapping.toDomain(#trmtrafficdtos)),'ehr-TrmTraffic-Update')")
+    @ApiOperation(value = "根据培训场地批量更新交通", tags = {"交通" },  notes = "根据培训场地批量更新交通")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/batch")
+    public ResponseEntity<Boolean> updateBatchByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody List<TrmTrafficDTO> trmtrafficdtos) {
+        List<TrmTraffic> domainlist=trmtrafficMapping.toDomain(trmtrafficdtos);
+        for(TrmTraffic domain:domainlist){
+            domain.setTrmtrainaddressid(trmtrainaddress_id);
+        }
+        trmtrafficService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficMapping.toDomain(#trmtrafficdto),'ehr-TrmTraffic-Create')")
+    @ApiOperation(value = "根据培训场地建立交通", tags = {"交通" },  notes = "根据培训场地建立交通")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics")
+    @Transactional
+    public ResponseEntity<TrmTrafficDTO> createByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody TrmTrafficDTO trmtrafficdto) {
+        TrmTraffic domain = trmtrafficMapping.toDomain(trmtrafficdto);
+        domain.setTrmtrainaddressid(trmtrainaddress_id);
+		trmtrafficService.create(domain);
+        TrmTrafficDTO dto = trmtrafficMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrafficMapping.toDomain(#trmtrafficdtos),'ehr-TrmTraffic-Create')")
+    @ApiOperation(value = "根据培训场地批量建立交通", tags = {"交通" },  notes = "根据培训场地批量建立交通")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/batch")
+    public ResponseEntity<Boolean> createBatchByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody List<TrmTrafficDTO> trmtrafficdtos) {
+        List<TrmTraffic> domainlist=trmtrafficMapping.toDomain(trmtrafficdtos);
+        for(TrmTraffic domain:domainlist){
+            domain.setTrmtrainaddressid(trmtrainaddress_id);
+        }
+        trmtrafficService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训场地检查交通", tags = {"交通" },  notes = "根据培训场地检查交通")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/checkkey")
+    public ResponseEntity<Boolean> checkKeyByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody TrmTrafficDTO trmtrafficdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmtrafficService.checkKey(trmtrafficMapping.toDomain(trmtrafficdto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTraffic-Default-all')")
+	@ApiOperation(value = "根据培训场地获取DEFAULT", tags = {"交通" } ,notes = "根据培训场地获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/fetchdefault")
+	public ResponseEntity<List<TrmTrafficDTO>> fetchTrmTrafficDefaultByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id,TrmTrafficSearchContext context) {
+        context.setN_trmtrainaddressid_eq(trmtrainaddress_id);
+        Page<TrmTraffic> domains = trmtrafficService.searchDefault(context) ;
+        List<TrmTrafficDTO> list = trmtrafficMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTraffic-Default-all')")
+	@ApiOperation(value = "根据培训场地查询DEFAULT", tags = {"交通" } ,notes = "根据培训场地查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainaddresses/{trmtrainaddress_id}/trmtraffics/searchdefault")
+	public ResponseEntity<Page<TrmTrafficDTO>> searchTrmTrafficDefaultByTrmTrainAddress(@PathVariable("trmtrainaddress_id") String trmtrainaddress_id, @RequestBody TrmTrafficSearchContext context) {
+        context.setN_trmtrainaddressid_eq(trmtrainaddress_id);
+        Page<TrmTraffic> domains = trmtrafficService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmtrafficMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

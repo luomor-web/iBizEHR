@@ -43,7 +43,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
      * 应聘者审批表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmprofileapprovalid",type=IdType.UUID)
+    @TableId(value= "pcmprofileapprovalid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmprofileapprovalid")
     @JsonProperty("pcmprofileapprovalid")
     private String pcmprofileapprovalid;

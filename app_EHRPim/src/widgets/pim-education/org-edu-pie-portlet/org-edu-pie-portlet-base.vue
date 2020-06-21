@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-edu-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'325px'),}">
+    <div class='portlet org-edu-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet3_chart 
@@ -16,11 +16,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimEducationService from '@/service/pim-education/pim-education-service';
 import OrgEduPieService from './org-edu-pie-portlet-service';
 
@@ -38,7 +39,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 名称
      *
      * @type {string}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public name?: string;
 
@@ -46,7 +47,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -54,7 +55,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public context: any;
 
@@ -62,7 +63,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public viewparams: any;
 
@@ -71,7 +72,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -79,7 +80,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -91,7 +92,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -99,7 +100,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 建构部件服务对象
      *
      * @type {OrgEduPieService}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public service: OrgEduPieService = new OrgEduPieService({ $store: this.$store });
 
@@ -107,7 +108,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 实体服务对象
      *
      * @type {PimEducationService}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public appEntityService: PimEducationService = new PimEducationService({ $store: this.$store });
     
@@ -117,7 +118,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -127,7 +128,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
     /**
      *  计数器刷新
      *
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -145,7 +146,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 长度
      *
      * @type {number}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public height?: number;
 
@@ -153,7 +154,7 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      * 宽度
      *
      * @type {number}
-     * @memberof OrgEduPie
+     * @memberof OrgEduPieBase
      */
     @Prop() public width?: number;
 
@@ -185,6 +186,24 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrgEduPieBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '325px';
+        }
     }
 
     /**

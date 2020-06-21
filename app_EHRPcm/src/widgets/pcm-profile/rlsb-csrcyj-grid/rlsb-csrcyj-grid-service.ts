@@ -267,22 +267,11 @@ export default class RLSB_CSRCYJService extends ControlService {
                     response.data.pcmprofileid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof RLSB_CSRCYJService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-        }
     }
 
 

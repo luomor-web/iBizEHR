@@ -13,7 +13,7 @@ import MainModel from './main-grid-model';
 export default class MainService extends ControlService {
 
     /**
-     * 考核内容服务对象
+     * 考核模板明细服务对象
      *
      * @type {ParKhzcmxService}
      * @memberof MainService
@@ -267,22 +267,11 @@ export default class MainService extends ControlService {
                     response.data.parkhzcmxid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof MainService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-        }
     }
 
 

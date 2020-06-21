@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.soc.mapper.SocArchivesDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SocArchivesDetailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t21.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t21.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t21.`HIGHNUM`, t21.`LOWNUM`, t31.`ORDERVALUE`, t21.`PERSONAMOUNT`, t1.`PERSONNUM`, t21.`PERSONRATE`, t1.`SOCARCHIVESDETAILID`, t1.`SOCARCHIVESDETAILNAME`, t1.`SOCARCHIVESID`, t11.`SOCARCHIVESNAME`, t1.`SOCRULEDETAILID`, t21.`SOCRULEDETAILNAME`, t21.`SOCTYPEID`, t31.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCARCHIVESDETAIL` t1  LEFT JOIN T_SOCARCHIVES t11 ON t1.SOCARCHIVESID = t11.SOCARCHIVESID  LEFT JOIN T_SOCRULEDETAIL t21 ON t1.SOCRULEDETAILID = t21.SOCRULEDETAILID  LEFT JOIN T_SOCTYPE t31 ON t21.SOCTYPEID = t31.SOCTYPEID  ) t1 where socarchivesdetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SocArchivesDetailResultMap" type="cn.ibizlab.ehr.core.soc.domain.SocArchivesDetail" autoMapping="true">
+        <id property="socarchivesdetailid" column="socarchivesdetailid" /><!--主键字段映射-->
+		<result property="socarchivesid" column="socarchivesid" />
+		<result property="socruledetailid" column="socruledetailid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="socarchives" javaType="cn.ibizlab.ehr.core.soc.domain.SocArchives" column="socarchivesid" select="cn.ibizlab.ehr.core.soc.mapper.SocArchivesMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="socruledetail" javaType="cn.ibizlab.ehr.core.soc.domain.SocRuleDetail" column="socruledetailid" select="cn.ibizlab.ehr.core.soc.mapper.SocRuleDetailMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID] -->
+	 <select id="selectBySocarchivesid" resultMap="SocArchivesDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  socarchivesid=#{socarchivesid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SOCARCHIVESDETAIL_SOCRULEDETAIL_SOCRULEDETAILID] -->
+	 <select id="selectBySocruledetailid" resultMap="SocArchivesDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  socruledetailid=#{socruledetailid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.soc.filter.SocArchivesDetailSearchContext"  resultMap="SocArchivesDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t21.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t21.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t21.`HIGHNUM`, t21.`LOWNUM`, t31.`ORDERVALUE`, t21.`PERSONAMOUNT`, t1.`PERSONNUM`, t21.`PERSONRATE`, t1.`SOCARCHIVESDETAILID`, t1.`SOCARCHIVESDETAILNAME`, t1.`SOCARCHIVESID`, t11.`SOCARCHIVESNAME`, t1.`SOCRULEDETAILID`, t21.`SOCRULEDETAILNAME`, t21.`SOCTYPEID`, t31.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCARCHIVESDETAIL` t1  LEFT JOIN T_SOCARCHIVES t11 ON t1.SOCARCHIVESID = t11.SOCARCHIVESID  LEFT JOIN T_SOCRULEDETAIL t21 ON t1.SOCRULEDETAILID = t21.SOCRULEDETAILID  LEFT JOIN T_SOCTYPE t31 ON t21.SOCTYPEID = t31.SOCTYPEID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t21.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t21.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t21.`HIGHNUM`, t21.`LOWNUM`, t31.`ORDERVALUE`, t21.`PERSONAMOUNT`, t1.`PERSONNUM`, t21.`PERSONRATE`, t1.`SOCARCHIVESDETAILID`, t1.`SOCARCHIVESDETAILNAME`, t1.`SOCARCHIVESID`, t11.`SOCARCHIVESNAME`, t1.`SOCRULEDETAILID`, t21.`SOCRULEDETAILNAME`, t21.`SOCTYPEID`, t31.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCARCHIVESDETAIL` t1  LEFT JOIN T_SOCARCHIVES t11 ON t1.SOCARCHIVESID = t11.SOCARCHIVESID  LEFT JOIN T_SOCRULEDETAIL t21 ON t1.SOCRULEDETAILID = t21.SOCRULEDETAILID  LEFT JOIN T_SOCTYPE t31 ON t21.SOCTYPEID = t31.SOCTYPEID  
+			]]>
+    </sql>
+</mapper>
+

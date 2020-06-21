@@ -65,7 +65,6 @@ public class AttEnsummarymxServiceImpl extends ServiceImpl<AttEnsummarymxMapper,
     public boolean checkKey(AttEnsummarymx et) {
         return (!ObjectUtils.isEmpty(et.getAttendancesummarymxid()))&&(!Objects.isNull(this.getById(et.getAttendancesummarymxid())));
     }
-
     @Override
     @Transactional
     public AttEnsummarymx get(String key) {
@@ -156,6 +155,8 @@ public class AttEnsummarymxServiceImpl extends ServiceImpl<AttEnsummarymxMapper,
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class AttEnsummarymxServiceImpl extends ServiceImpl<AttEnsummarymxMapper,
     }
 
 }
+
 
 

@@ -248,7 +248,7 @@ export default class VacHolidayRulesCurOrmorgPickupViewBase extends PickupViewBa
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof VacHolidayRulesCurOrmorgPickupView
+     * @memberof VacHolidayRulesCurOrmorgPickupViewBase
      */
     public selectedData: string = "";
 

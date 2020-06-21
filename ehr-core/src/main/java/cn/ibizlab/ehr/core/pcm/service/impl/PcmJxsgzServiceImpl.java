@@ -51,7 +51,6 @@ public class PcmJxsgzServiceImpl extends ServiceImpl<PcmJxsgzMapper, PcmJxsgz> i
     public boolean checkKey(PcmJxsgz et) {
         return (!ObjectUtils.isEmpty(et.getPcmjxsgzid()))&&(!Objects.isNull(this.getById(et.getPcmjxsgzid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -156,6 +155,8 @@ public class PcmJxsgzServiceImpl extends ServiceImpl<PcmJxsgzMapper, PcmJxsgz> i
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmJxsgzServiceImpl extends ServiceImpl<PcmJxsgzMapper, PcmJxsgz> i
     }
 
 }
+
 
 

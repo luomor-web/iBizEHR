@@ -64,6 +64,35 @@ const router = new Router({
                     component: () => import('@pages/par/par-integral-rule-edit-view/par-integral-rule-edit-view.vue'),
                 },
                 {
+                    path: 'parassesstemplates/:parassesstemplate?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.parassesstemplate.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-assess-template-pickup-view/par-assess-template-pickup-view.vue'),
+                },
+                {
+                    path: 'parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/kheditview/:kheditview?',
+                    meta: {
+                        caption: 'entities.parldndlhmbmx.views.kheditview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                            { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                            { pathName: 'kheditview', parameterName: 'kheditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-ldndlhmbmx-khedit-view/par-ldndlhmbmx-khedit-view.vue'),
+                },
+                {
                     path: 'parldndlhmbmxes/:parldndlhmbmx?/kheditview/:kheditview?',
                     meta: {
                         caption: 'entities.parldndlhmbmx.views.kheditview.title',
@@ -76,6 +105,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-ldndlhmbmx-khedit-view/par-ldndlhmbmx-khedit-view.vue'),
+                },
+                {
+                    path: 'parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/xzgridview/:xzgridview?',
+                    meta: {
+                        caption: 'entities.parldndlhmbmx.views.xzgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                            { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                            { pathName: 'xzgridview', parameterName: 'xzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-ldndlhmbmx-xzgrid-view/par-ldndlhmbmx-xzgrid-view.vue'),
                 },
                 {
                     path: 'parldndlhmbmxes/:parldndlhmbmx?/xzgridview/:xzgridview?',
@@ -122,6 +166,20 @@ const router = new Router({
                     component: () => import('@pages/par/par-khfa-grid-view/par-khfa-grid-view.vue'),
                 },
                 {
+                    path: 'parassesstemplates/:parassesstemplate?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.parassesstemplate.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-assess-template-pickup-grid-view/par-assess-template-pickup-grid-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.pimperson.views.pickupgridview.title',
@@ -134,6 +192,35 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'parassesstemplates/:parassesstemplate?/parjxkhxhzs/:parjxkhxhz?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.parjxkhxhz.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-jxkhxhz-edit-view/par-jxkhxhz-edit-view.vue'),
+                },
+                {
+                    path: 'parjxkhxhzs/:parjxkhxhz?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.parjxkhxhz.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-jxkhxhz-edit-view/par-jxkhxhz-edit-view.vue'),
                 },
                 {
                     path: 'parldndlhmbs/:parldndlhmb?/ndlhmbxzgridview/:ndlhmbxzgridview?',
@@ -178,6 +265,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-jxjg-khdjedit-view/par-jxjg-khdjedit-view.vue'),
+                },
+                {
+                    path: 'parexamcycles/:parexamcycle?/newgridview/:newgridview?',
+                    meta: {
+                        caption: 'entities.parexamcycle.views.newgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                            { pathName: 'newgridview', parameterName: 'newgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-exam-cycle-new-grid-view/par-exam-cycle-new-grid-view.vue'),
                 },
                 {
                     path: 'parintegralrules/:parintegralrule?/editview9/:editview9?',
@@ -236,6 +337,35 @@ const router = new Router({
                     component: () => import('@pages/par/par-tzgg-edit-view/par-tzgg-edit-view.vue'),
                 },
                 {
+                    path: 'parldkhqzs/:parldkhqz?/newgridview/:newgridview?',
+                    meta: {
+                        caption: 'entities.parldkhqz.views.newgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parldkhqzs', parameterName: 'parldkhqz' },
+                            { pathName: 'newgridview', parameterName: 'newgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-ldkhqz-new-grid-view/par-ldkhqz-new-grid-view.vue'),
+                },
+                {
+                    path: 'parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.parldndlhmbmx.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                            { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-ldndlhmbmx-grid-view/par-ldndlhmbmx-grid-view.vue'),
+                },
+                {
                     path: 'parldndlhmbmxes/:parldndlhmbmx?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.parldndlhmbmx.views.gridview.title',
@@ -248,6 +378,23 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-ldndlhmbmx-grid-view/par-ldndlhmbmx-grid-view.vue'),
+                },
+                {
+                    path: 'parassesstemplates/:parassesstemplate?/parjxkhxhzs/:parjxkhxhz?/ygkhxgridview/:ygkhxgridview?',
+                    meta: {
+                        caption: 'entities.parjxkhxhz.views.ygkhxgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/yuangongkaohefenleiyilanbiao.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                            { pathName: 'ygkhxgridview', parameterName: 'ygkhxgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-jxkhxhz-ygkhxgrid-view/par-jxkhxhz-ygkhxgrid-view.vue'),
                 },
                 {
                     path: 'parjxkhxhzs/:parjxkhxhz?/ygkhxgridview/:ygkhxgridview?',
@@ -273,6 +420,21 @@ const router = new Router({
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-khzcmx-edit-view/par-khzcmx-edit-view.vue'),
+                },
+                {
+                    path: 'parassesstemplates/:parassesstemplate?/parkhzcmxes/:parkhzcmx?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.parkhzcmx.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
                             { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
@@ -309,18 +471,18 @@ const router = new Router({
                     component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
                 },
                 {
-                    path: 'parexamcycles/:parexamcycle?/gridview/:gridview?',
+                    path: 'parassesstemplates/:parassesstemplate?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.parexamcycle.views.gridview.title',
+                        caption: 'entities.parassesstemplate.views.editview9.title',
                         info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/par/par-exam-cycle-grid-view/par-exam-cycle-grid-view.vue'),
+                    component: () => import('@pages/par/par-assess-template-edit-view9/par-assess-template-edit-view9.vue'),
                 },
                 {
                     path: 'parexamcontents/:parexamcontent?/editview/:editview?',
@@ -351,6 +513,20 @@ const router = new Router({
                     component: () => import('@pages/par/par-ldndlhmb-ndlhmbxzedit-view/par-ldndlhmb-ndlhmbxzedit-view.vue'),
                 },
                 {
+                    path: 'parassesstemplates/:parassesstemplate?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.parassesstemplate.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-assess-template-edit-view/par-assess-template-edit-view.vue'),
+                },
+                {
                     path: 'parintegralrules/:parintegralrule?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.parintegralrule.views.gridview.title',
@@ -363,49 +539,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-integral-rule-grid-view/par-integral-rule-grid-view.vue'),
-                },
-                {
-                    path: 'parldkhqzs/:parldkhqz?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.parldkhqz.views.gridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parldkhqzs', parameterName: 'parldkhqz' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-ldkhqz-grid-view/par-ldkhqz-grid-view.vue'),
-                },
-                {
-                    path: 'parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.parkhzcmx.views.pickupview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
-                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'),
-                },
-                {
-                    path: 'parkhzcmxes/:parkhzcmx?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.parkhzcmx.views.pickupview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'),
                 },
                 {
                     path: 'parexamcontents/:parexamcontent?/editview9/:editview9?',
@@ -448,6 +581,50 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-ldkhqz-edit-view/par-ldkhqz-edit-view.vue'),
+                },
+                {
+                    path: 'parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.parkhzcmx.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
+                },
+                {
+                    path: 'parassesstemplates/:parassesstemplate?/parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.parkhzcmx.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
+                },
+                {
+                    path: 'parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.parkhzcmx.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
                 },
                 {
                     path: 'parjxjgs/:parjxjg?/jxpgdjgridview/:jxpgdjgridview?',
@@ -524,18 +701,19 @@ const router = new Router({
                     component: () => import('@pages/par/par-khfa-edit-view/par-khfa-edit-view.vue'),
                 },
                 {
-                    path: 'parjxkhxhzs/:parjxkhxhz?/ygkhxeditview/:ygkhxeditview?',
+                    path: 'parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/khgridview/:khgridview?',
                     meta: {
-                        caption: 'entities.parjxkhxhz.views.ygkhxeditview.title',
+                        caption: 'entities.parldndlhmbmx.views.khgridview.title',
                         info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
-                            { pathName: 'ygkhxeditview', parameterName: 'ygkhxeditview' },
+                            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                            { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                            { pathName: 'khgridview', parameterName: 'khgridview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/par/par-jxkhxhz-ygkhxedit-view/par-jxkhxhz-ygkhxedit-view.vue'),
+                    component: () => import('@pages/par/par-ldndlhmbmx-khgrid-view/par-ldndlhmbmx-khgrid-view.vue'),
                 },
                 {
                     path: 'parldndlhmbmxes/:parldndlhmbmx?/khgridview/:khgridview?',
@@ -582,6 +760,35 @@ const router = new Router({
                     component: () => import('@pages/par/par-jxjg-edit-view/par-jxjg-edit-view.vue'),
                 },
                 {
+                    path: 'parassesstemplates/:parassesstemplate?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.parassesstemplate.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-assess-template-grid-view/par-assess-template-grid-view.vue'),
+                },
+                {
+                    path: 'parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.parldndlhmbmx.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                            { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-ldndlhmbmx-edit-view/par-ldndlhmbmx-edit-view.vue'),
+                },
+                {
                     path: 'parldndlhmbmxes/:parldndlhmbmx?/editview/:editview?',
                     meta: {
                         caption: 'entities.parldndlhmbmx.views.editview.title',
@@ -594,35 +801,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/par/par-ldndlhmbmx-edit-view/par-ldndlhmbmx-edit-view.vue'),
-                },
-                {
-                    path: 'parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.parkhzcmx.views.pickupgridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
-                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'parkhzcmxes/:parkhzcmx?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.parkhzcmx.views.pickupgridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'),
                 },
             ...indexRoutes,
             ],
@@ -667,33 +845,6 @@ const router = new Router({
         component: () => import('@pages/par/par-exam-cycle-pickup-view/par-exam-cycle-pickup-view.vue'),
     },
     {
-        path: '/parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.parkhzcmx.views.pickupgridview.title',
-            info:'',
-            parameters: [
-                { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
-                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'),
-    },
-    {
-        path: '/parkhzcmxes/:parkhzcmx?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.parkhzcmx.views.pickupgridview.title',
-            info:'',
-            parameters: [
-                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'),
-    },
-    {
         path: '/parjxjgs/:parjxjg?/editview/:editview?',
         meta: {
             caption: 'entities.parjxjg.views.editview.title',
@@ -722,17 +873,18 @@ const router = new Router({
         component: () => import('@pages/par/par-jxjg-jxpgdjgrid-view/par-jxjg-jxpgdjgrid-view.vue'),
     },
     {
-        path: '/parldkhqzs/:parldkhqz?/gridview/:gridview?',
+        path: '/parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/editview/:editview?',
         meta: {
-            caption: 'entities.parldkhqz.views.gridview.title',
+            caption: 'entities.parldndlhmbmx.views.editview.title',
             info:'',
             parameters: [
-                { pathName: 'parldkhqzs', parameterName: 'parldkhqz' },
-                { pathName: 'gridview', parameterName: 'gridview' },
+                { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/par/par-ldkhqz-grid-view/par-ldkhqz-grid-view.vue'),
+        component: () => import('@pages/par/par-ldndlhmbmx-edit-view/par-ldndlhmbmx-edit-view.vue'),
     },
     {
         path: '/parldndlhmbmxes/:parldndlhmbmx?/editview/:editview?',
@@ -759,19 +911,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-integral-rule-grid-view/par-integral-rule-grid-view.vue'),
-    },
-    {
-        path: '/parexamcycles/:parexamcycle?/editview2/:editview2?',
-        meta: {
-            caption: 'entities.parexamcycle.views.editview2.title',
-            info:'',
-            parameters: [
-                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-                { pathName: 'editview2', parameterName: 'editview2' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/par/par-exam-cycle-edit-view2/par-exam-cycle-edit-view2.vue'),
     },
     {
         path: '/parexamcycles/:parexamcycle?/gridview/:gridview?',
@@ -802,6 +941,35 @@ const router = new Router({
         component: () => import('@pages/par/par-khfa-grid-view/par-khfa-grid-view.vue'),
     },
     {
+        path: '/parassesstemplates/:parassesstemplate?/editview/:editview?',
+        meta: {
+            caption: 'entities.parassesstemplate.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-assess-template-edit-view/par-assess-template-edit-view.vue'),
+    },
+    {
+        path: '/parassesstemplates/:parassesstemplate?/parjxkhxhzs/:parjxkhxhz?/ygkhxgridview/:ygkhxgridview?',
+        meta: {
+            caption: 'entities.parjxkhxhz.views.ygkhxgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/yuangongkaohefenleiyilanbiao.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                { pathName: 'ygkhxgridview', parameterName: 'ygkhxgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-jxkhxhz-ygkhxgrid-view/par-jxkhxhz-ygkhxgrid-view.vue'),
+    },
+    {
         path: '/parjxkhxhzs/:parjxkhxhz?/ygkhxgridview/:ygkhxgridview?',
         meta: {
             caption: 'entities.parjxkhxhz.views.ygkhxgridview.title',
@@ -828,6 +996,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-khfa-edit-view9/par-khfa-edit-view9.vue'),
+    },
+    {
+        path: '/parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/kheditview/:kheditview?',
+        meta: {
+            caption: 'entities.parldndlhmbmx.views.kheditview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                { pathName: 'kheditview', parameterName: 'kheditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-ldndlhmbmx-khedit-view/par-ldndlhmbmx-khedit-view.vue'),
     },
     {
         path: '/parldndlhmbmxes/:parldndlhmbmx?/kheditview/:kheditview?',
@@ -921,6 +1103,47 @@ const router = new Router({
         component: () => import('@pages/par/par-integral-rule-edit-view9/par-integral-rule-edit-view9.vue'),
     },
     {
+        path: '/parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.parkhzcmx.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
+    },
+    {
+        path: '/parassesstemplates/:parassesstemplate?/parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.parkhzcmx.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
+    },
+    {
+        path: '/parkhzcmxes/:parkhzcmx?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.parkhzcmx.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-khzcmx-grid-view/par-khzcmx-grid-view.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.pimperson.views.pickupview.title',
@@ -947,6 +1170,33 @@ const router = new Router({
         component: () => import('@pages/par/par-ldkhqz-edit-view/par-ldkhqz-edit-view.vue'),
     },
     {
+        path: '/parassesstemplates/:parassesstemplate?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.parassesstemplate.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-assess-template-pickup-view/par-assess-template-pickup-view.vue'),
+    },
+    {
+        path: '/parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.parldndlhmbmx.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-ldndlhmbmx-grid-view/par-ldndlhmbmx-grid-view.vue'),
+    },
+    {
         path: '/parldndlhmbmxes/:parldndlhmbmx?/gridview/:gridview?',
         meta: {
             caption: 'entities.parldndlhmbmx.views.gridview.title',
@@ -958,6 +1208,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-ldndlhmbmx-grid-view/par-ldndlhmbmx-grid-view.vue'),
+    },
+    {
+        path: '/parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/khgridview/:khgridview?',
+        meta: {
+            caption: 'entities.parldndlhmbmx.views.khgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                { pathName: 'khgridview', parameterName: 'khgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-ldndlhmbmx-khgrid-view/par-ldndlhmbmx-khgrid-view.vue'),
     },
     {
         path: '/parldndlhmbmxes/:parldndlhmbmx?/khgridview/:khgridview?',
@@ -973,6 +1237,20 @@ const router = new Router({
         component: () => import('@pages/par/par-ldndlhmbmx-khgrid-view/par-ldndlhmbmx-khgrid-view.vue'),
     },
     {
+        path: '/parldndlhmbs/:parldndlhmb?/parldndlhmbmxes/:parldndlhmbmx?/xzgridview/:xzgridview?',
+        meta: {
+            caption: 'entities.parldndlhmbmx.views.xzgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+                { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
+                { pathName: 'xzgridview', parameterName: 'xzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-ldndlhmbmx-xzgrid-view/par-ldndlhmbmx-xzgrid-view.vue'),
+    },
+    {
         path: '/parldndlhmbmxes/:parldndlhmbmx?/xzgridview/:xzgridview?',
         meta: {
             caption: 'entities.parldndlhmbmx.views.xzgridview.title',
@@ -984,6 +1262,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-ldndlhmbmx-xzgrid-view/par-ldndlhmbmx-xzgrid-view.vue'),
+    },
+    {
+        path: '/parldkhqzs/:parldkhqz?/newgridview/:newgridview?',
+        meta: {
+            caption: 'entities.parldkhqz.views.newgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parldkhqzs', parameterName: 'parldkhqz' },
+                { pathName: 'newgridview', parameterName: 'newgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-ldkhqz-new-grid-view/par-ldkhqz-new-grid-view.vue'),
     },
     {
         path: '/parexamcontents/:parexamcontent?/gridview/:gridview?',
@@ -1010,19 +1301,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-exam-cycle-mpickup-view/par-exam-cycle-mpickup-view.vue'),
-    },
-    {
-        path: '/parjxkhxhzs/:parjxkhxhz?/ygkhxeditview/:ygkhxeditview?',
-        meta: {
-            caption: 'entities.parjxkhxhz.views.ygkhxeditview.title',
-            info:'',
-            parameters: [
-                { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
-                { pathName: 'ygkhxeditview', parameterName: 'ygkhxeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/par/par-jxkhxhz-ygkhxedit-view/par-jxkhxhz-ygkhxedit-view.vue'),
     },
     {
         path: '/parexamcycles/:parexamcycle?/editview/:editview?',
@@ -1109,6 +1387,19 @@ const router = new Router({
         component: () => import('@pages/par/par-jxjg-grid-view/par-jxjg-grid-view.vue'),
     },
     {
+        path: '/parassesstemplates/:parassesstemplate?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.parassesstemplate.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-assess-template-pickup-grid-view/par-assess-template-pickup-grid-view.vue'),
+    },
+    {
         path: '/parldndlhmbs/:parldndlhmb?/ndlhmbxzeditview/:ndlhmbxzeditview?',
         meta: {
             caption: 'entities.parldndlhmb.views.ndlhmbxzeditview.title',
@@ -1128,6 +1419,20 @@ const router = new Router({
             info:'',
             parameters: [
                 { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-khzcmx-edit-view/par-khzcmx-edit-view.vue'),
+    },
+    {
+        path: '/parassesstemplates/:parassesstemplate?/parkhzcmxes/:parkhzcmx?/editview/:editview?',
+        meta: {
+            caption: 'entities.parkhzcmx.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
                 { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
@@ -1201,6 +1506,45 @@ const router = new Router({
         component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
     },
     {
+        path: '/parassesstemplates/:parassesstemplate?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.parassesstemplate.views.editview9.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-assess-template-edit-view9/par-assess-template-edit-view9.vue'),
+    },
+    {
+        path: '/parexamcycles/:parexamcycle?/newgridview/:newgridview?',
+        meta: {
+            caption: 'entities.parexamcycle.views.newgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'newgridview', parameterName: 'newgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-new-grid-view/par-exam-cycle-new-grid-view.vue'),
+    },
+    {
+        path: '/parassesstemplates/:parassesstemplate?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.parassesstemplate.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-assess-template-grid-view/par-assess-template-grid-view.vue'),
+    },
+    {
         path: '/parldndlhmbs/:parldndlhmb?/kheditview/:kheditview?',
         meta: {
             caption: 'entities.parldndlhmb.views.kheditview.title',
@@ -1227,31 +1571,31 @@ const router = new Router({
         component: () => import('@pages/par/par-exam-content-edit-view9/par-exam-content-edit-view9.vue'),
     },
     {
-        path: '/parjxkhjcszs/:parjxkhjcsz?/parkhzcmxes/:parkhzcmx?/pickupview/:pickupview?',
+        path: '/parassesstemplates/:parassesstemplate?/parjxkhxhzs/:parjxkhxhz?/editview/:editview?',
         meta: {
-            caption: 'entities.parkhzcmx.views.pickupview.title',
+            caption: 'entities.parjxkhxhz.views.editview.title',
             info:'',
             parameters: [
-                { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
-                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
+                { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+                { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'),
+        component: () => import('@pages/par/par-jxkhxhz-edit-view/par-jxkhxhz-edit-view.vue'),
     },
     {
-        path: '/parkhzcmxes/:parkhzcmx?/pickupview/:pickupview?',
+        path: '/parjxkhxhzs/:parjxkhxhz?/editview/:editview?',
         meta: {
-            caption: 'entities.parkhzcmx.views.pickupview.title',
+            caption: 'entities.parjxkhxhz.views.editview.title',
             info:'',
             parameters: [
-                { pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
+                { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
+                { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'),
+        component: () => import('@pages/par/par-jxkhxhz-edit-view/par-jxkhxhz-edit-view.vue'),
     },
         ...globalRoutes,
         {

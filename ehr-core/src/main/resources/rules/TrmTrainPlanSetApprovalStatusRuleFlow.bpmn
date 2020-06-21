@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplansetapprovalstatus" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplansetapprovalstatus">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="trmtrainplansetapprovalstatusdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlan" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetapprovalstatusprepareparam1" id="A85E07E1-C7C4-40FC-BEAF-4901372CAE93" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetapprovalstatusdeaction1" id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End" name="End"/>
+     <sequenceFlow id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End_Line" sourceRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2" targetRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End"/>
+     <startEvent id="D275E4C7-CEDB-463E-9FFE-1070CB103A41" isInterrupting="true"/>
+     <sequenceFlow id="077B64BA-0C97-4AC2-9160-349170924EBC" sourceRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93" targetRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2">
+     </sequenceFlow>
+     <sequenceFlow id="AEAD8006-E0C1-44B0-98AD-0D5255065473" sourceRef="D275E4C7-CEDB-463E-9FFE-1070CB103A41" targetRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93">
+     </sequenceFlow>
+    </process>
+</definitions>
+

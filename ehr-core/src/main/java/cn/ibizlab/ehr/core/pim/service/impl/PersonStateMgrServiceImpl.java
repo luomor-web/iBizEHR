@@ -82,7 +82,6 @@ public class PersonStateMgrServiceImpl extends ServiceImpl<PersonStateMgrMapper,
     public boolean checkKey(PersonStateMgr et) {
         return (!ObjectUtils.isEmpty(et.getPersonstatemgrid()))&&(!Objects.isNull(this.getById(et.getPersonstatemgrid())));
     }
-
     @Override
     public PersonStateMgr getDraft(PersonStateMgr et) {
         return et;
@@ -156,6 +155,8 @@ public class PersonStateMgrServiceImpl extends ServiceImpl<PersonStateMgrMapper,
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PersonStateMgrServiceImpl extends ServiceImpl<PersonStateMgrMapper,
     }
 
 }
+
 
 

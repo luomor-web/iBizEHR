@@ -165,7 +165,7 @@ public class PimAchievements extends EntityMP implements Serializable {
      * 绩效信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimachievementsid",type=IdType.UUID)
+    @TableId(value= "pimachievementsid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimachievementsid")
     @JsonProperty("pimachievementsid")
     private String pimachievementsid;

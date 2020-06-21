@@ -212,11 +212,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimDistirbutionService from '@/service/pim-distirbution/pim-distirbution-service';
 import MaturityDueEditFormService from './maturity-due-edit-form-form-service';
 
@@ -235,7 +236,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 名称
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public name?: string;
 
@@ -243,7 +244,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -251,7 +252,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 应用上下文
      *
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public context: any;
 
@@ -259,7 +260,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 视图参数
      *
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public viewparams: any;
 
@@ -268,7 +269,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -276,7 +277,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -288,7 +289,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -296,7 +297,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 建构部件服务对象
      *
      * @type {MaturityDueEditFormService}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public service: MaturityDueEditFormService = new MaturityDueEditFormService({ $store: this.$store });
 
@@ -304,7 +305,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 实体服务对象
      *
      * @type {PimDistirbutionService}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public appEntityService: PimDistirbutionService = new PimDistirbutionService({ $store: this.$store });
     
@@ -314,7 +315,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 关闭视图
      *
      * @param {any} args
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -324,7 +325,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      *  计数器刷新
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -341,7 +342,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public srfwfmemo:string = "";
     
@@ -349,7 +350,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -359,7 +360,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 获取单项树
      *
      * @returns {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public getData(): any {
         return this.data;
@@ -369,7 +370,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -377,7 +378,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -385,7 +386,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -393,7 +394,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--start
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -401,7 +402,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--update
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public updateAction!: string;
     
@@ -409,7 +410,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public removeAction!: string;
     
@@ -417,7 +418,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -425,7 +426,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--load
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public loadAction!: string;
     
@@ -433,7 +434,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--create
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public createAction!: string;
 
@@ -441,7 +442,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件行为--create
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public searchAction!: string;
 
@@ -449,7 +450,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 视图标识
      *
      * @type {string}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Prop() public viewtag!: string;
 
@@ -457,7 +458,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -465,7 +466,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -474,7 +475,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @type {Subject<any>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -483,7 +484,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -492,7 +493,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public oldData: any = {};
 
@@ -500,7 +501,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 表单数据对象
      *
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -537,7 +538,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof MaturityDueEditForm
+      * @memberof MaturityDueEditFormBase
       */
     public currentAction: string = "";
 
@@ -545,7 +546,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof MaturityDueEditForm
+      * @memberof MaturityDueEditFormBase
       */
     public drcounter: number = 0;
 
@@ -553,7 +554,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof MaturityDueEditForm
+      * @memberof MaturityDueEditFormBase
       */
     public drsaveopt: any = {};
 
@@ -561,7 +562,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof MaturityDueEditForm
+      * @memberof MaturityDueEditFormBase
       */
     public saveState:any ;
 
@@ -569,7 +570,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 属性值规则
      *
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -740,7 +741,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 详情模型集合
      *
      * @type {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public detailsModel: any = {
         grouppanel1: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimdistirbution.maturitydueeditform_form', extractMode: 'ITEM', details: [] } })
@@ -810,7 +811,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -822,7 +823,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -834,7 +835,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -846,7 +847,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -858,7 +859,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -870,7 +871,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -882,7 +883,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -894,7 +895,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -906,7 +907,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -918,7 +919,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -930,7 +931,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -942,7 +943,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.fplx')
     onFplxChange(newVal: any, oldVal: any) {
@@ -954,7 +955,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.fpzt')
     onFpztChange(newVal: any, oldVal: any) {
@@ -966,7 +967,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.cfplx')
     onCfplxChange(newVal: any, oldVal: any) {
@@ -978,7 +979,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -990,7 +991,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
@@ -1002,7 +1003,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormdutyname')
     onOrmdutynameChange(newVal: any, oldVal: any) {
@@ -1014,7 +1015,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormpostname')
     onOrmpostnameChange(newVal: any, oldVal: any) {
@@ -1026,7 +1027,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.gzdq')
     onGzdqChange(newVal: any, oldVal: any) {
@@ -1038,7 +1039,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.gzdd')
     onGzddChange(newVal: any, oldVal: any) {
@@ -1050,7 +1051,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.rzkssj')
     onRzkssjChange(newVal: any, oldVal: any) {
@@ -1062,7 +1063,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.rzjssj')
     onRzjssjChange(newVal: any, oldVal: any) {
@@ -1074,7 +1075,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormdutyid')
     onOrmdutyidChange(newVal: any, oldVal: any) {
@@ -1086,7 +1087,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.pimdistirbutionid')
     onPimdistirbutionidChange(newVal: any, oldVal: any) {
@@ -1098,7 +1099,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormpostid')
     onOrmpostidChange(newVal: any, oldVal: any) {
@@ -1110,7 +1111,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormorgsectorid')
     onOrmorgsectoridChange(newVal: any, oldVal: any) {
@@ -1122,7 +1123,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -1135,7 +1136,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (Object.is(name, 'ormorgid')) {
@@ -1158,7 +1159,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof MaturityDueEditFormBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1175,7 +1176,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1217,7 +1218,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1234,7 +1235,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1255,7 +1256,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1280,7 +1281,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @param {*} data
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1296,7 +1297,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 重置草稿表单状态
      *
      * @public
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1308,7 +1309,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * 重置校验结果
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1324,7 +1325,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1342,7 +1343,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1357,7 +1358,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 获取全部值
      *
      * @returns {*}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public getValues(): any {
         return this.data;
@@ -1368,7 +1369,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1386,7 +1387,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1404,7 +1405,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1416,7 +1417,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public created(): void {
         this.afterCreated();
@@ -1425,7 +1426,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * 执行created后的逻辑
      *
-     *  @memberof MaturityDueEditForm
+     *  @memberof MaturityDueEditFormBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1482,7 +1483,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * vue 生命周期
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1491,7 +1492,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1506,7 +1507,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof MaturityDueEditForm
+     * @memberof @memberof MaturityDueEditFormBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1524,7 +1525,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
 
     /**
      *打印
-     *@memberof @memberof MaturityDueEditForm
+     *@memberof @memberof MaturityDueEditFormBase
      */
     public print(){
         let _this:any = this;
@@ -1535,7 +1536,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1557,7 +1558,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1578,7 +1579,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1613,7 +1614,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1667,7 +1668,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1718,7 +1719,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1788,7 +1789,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof MaturityDueEditFormBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1822,7 +1823,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1878,7 +1879,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1954,7 +1955,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1999,7 +2000,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 回车事件
      *
      * @param {*} $event
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public onEnter($event: any): void {
     }
@@ -2008,7 +2009,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2033,7 +2034,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2056,7 +2057,7 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2080,38 +2081,37 @@ export default class MaturityDueEditFormBase extends Vue implements ControlInter
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof MaturityDueEditForm
+    * @memberof MaturityDueEditFormBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof MaturityDueEditForm
+     * @memberof MaturityDueEditFormBase
      */
     public updateDefault(){                    
     }

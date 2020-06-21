@@ -102,7 +102,6 @@ public class ParDxkhnrmxServiceImpl extends ServiceImpl<ParDxkhnrmxMapper, ParDx
     public boolean checkKey(ParDxkhnrmx et) {
         return (!ObjectUtils.isEmpty(et.getPardxkhnrmxid()))&&(!Objects.isNull(this.getById(et.getPardxkhnrmxid())));
     }
-
     @Override
     @Transactional
     public boolean create(ParDxkhnrmx et) {
@@ -219,6 +218,8 @@ public class ParDxkhnrmxServiceImpl extends ServiceImpl<ParDxkhnrmxMapper, ParDx
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -264,5 +265,6 @@ public class ParDxkhnrmxServiceImpl extends ServiceImpl<ParDxkhnrmxMapper, ParDx
     }
 
 }
+
 
 

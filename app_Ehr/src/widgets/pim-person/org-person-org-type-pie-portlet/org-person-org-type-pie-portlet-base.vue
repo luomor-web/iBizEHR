@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-person-org-type-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
+    <div class='portlet org-person-org-type-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrgPersonOrgTypePie_chart 
@@ -16,11 +16,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import OrgPersonOrgTypePieService from './org-person-org-type-pie-portlet-service';
 
@@ -38,7 +39,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 名称
      *
      * @type {string}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public name?: string;
 
@@ -46,7 +47,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -54,7 +55,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public context: any;
 
@@ -62,7 +63,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public viewparams: any;
 
@@ -71,7 +72,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -79,7 +80,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -91,7 +92,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -99,7 +100,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 建构部件服务对象
      *
      * @type {OrgPersonOrgTypePieService}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public service: OrgPersonOrgTypePieService = new OrgPersonOrgTypePieService({ $store: this.$store });
 
@@ -107,7 +108,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -117,7 +118,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -127,7 +128,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
     /**
      *  计数器刷新
      *
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -145,7 +146,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 长度
      *
      * @type {number}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public height?: number;
 
@@ -153,7 +154,7 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      * 宽度
      *
      * @type {number}
-     * @memberof OrgPersonOrgTypePie
+     * @memberof OrgPersonOrgTypePieBase
      */
     @Prop() public width?: number;
 
@@ -185,6 +186,24 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrgPersonOrgTypePieBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '300px';
+        }
     }
 
     /**

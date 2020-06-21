@@ -48,6 +48,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().get(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/parldndlhmbmxes/${context.parldndlhmbmx}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().get(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/parldndlhmbmxes/${context.parldndlhmbmx}`,isloading);
             return res;
 
@@ -76,6 +82,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && true){
+            return Http.getInstance().get(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/parldndlhmbmxes/getdraft`,isloading);
         res.data.parldndlhmbmx = data.parldndlhmbmx;
         return res;
@@ -91,6 +100,15 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -114,6 +132,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().post(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/parldndlhmbmxes/${context.parldndlhmbmx}/save`,data,isloading);
@@ -130,6 +151,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().delete(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}`,isloading);
+        }
             return Http.getInstance().delete(`/parldndlhmbmxes/${context.parldndlhmbmx}`,isloading);
 
     }
@@ -144,6 +168,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().post(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/parldndlhmbmxes/${context.parldndlhmbmx}/checkkey`,data,isloading);
     }
 
@@ -157,6 +184,9 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && context.parldndlhmbmx){
+            return Http.getInstance().put(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/${context.parldndlhmbmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/parldndlhmbmxes/${context.parldndlhmbmx}`,data,isloading);
@@ -173,6 +203,10 @@ export default class ParLdndlhmbmxServiceBase extends EntityService {
      * @memberof ParLdndlhmbmxServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.parldndlhmb && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/parldndlhmbs/${context.parldndlhmb}/parldndlhmbmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/parldndlhmbmxes/fetchdefault`,tempData,isloading);
     }

@@ -158,5 +158,137 @@ public class ParLdndlhmbmxResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parldndlhmbmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PostAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(returnObject.body),'ehr-ParLdndlhmbmx-Get')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）获取年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）获取年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.GET, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/{parldndlhmbmx_id}")
+    public ResponseEntity<ParLdndlhmbmxDTO> getByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id) {
+        ParLdndlhmbmx domain = parldndlhmbmxService.get(parldndlhmbmx_id);
+        ParLdndlhmbmxDTO dto = parldndlhmbmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @ApiOperation(value = "根据年度量化目标（公司领导类）获取年度量化目标明细（公司领导类 ）草稿", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）获取年度量化目标明细（公司领导类 ）草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/getdraft")
+    public ResponseEntity<ParLdndlhmbmxDTO> getDraftByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id) {
+        ParLdndlhmbmx domain = new ParLdndlhmbmx();
+        domain.setParldndlhmbid(parldndlhmb_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxMapping.toDto(parldndlhmbmxService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdto),'ehr-ParLdndlhmbmx-Create')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）建立年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）建立年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes")
+    @Transactional
+    public ResponseEntity<ParLdndlhmbmxDTO> createByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
+        ParLdndlhmbmx domain = parldndlhmbmxMapping.toDomain(parldndlhmbmxdto);
+        domain.setParldndlhmbid(parldndlhmb_id);
+		parldndlhmbmxService.create(domain);
+        ParLdndlhmbmxDTO dto = parldndlhmbmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos),'ehr-ParLdndlhmbmx-Create')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）批量建立年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）批量建立年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/batch")
+    public ResponseEntity<Boolean> createBatchByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
+        List<ParLdndlhmbmx> domainlist=parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos);
+        for(ParLdndlhmbmx domain:domainlist){
+            domain.setParldndlhmbid(parldndlhmb_id);
+        }
+        parldndlhmbmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdto),'ehr-ParLdndlhmbmx-Save')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）保存年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）保存年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/save")
+    public ResponseEntity<Boolean> saveByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
+        ParLdndlhmbmx domain = parldndlhmbmxMapping.toDomain(parldndlhmbmxdto);
+        domain.setParldndlhmbid(parldndlhmb_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos),'ehr-ParLdndlhmbmx-Save')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）批量保存年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）批量保存年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
+        List<ParLdndlhmbmx> domainlist=parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos);
+        for(ParLdndlhmbmx domain:domainlist){
+             domain.setParldndlhmbid(parldndlhmb_id);
+        }
+        parldndlhmbmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxService.get(#parldndlhmbmx_id),'ehr-ParLdndlhmbmx-Remove')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）删除年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）删除年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/{parldndlhmbmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxService.remove(parldndlhmbmx_id));
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxService.getParldndlhmbmxByIds(#ids),'ehr-ParLdndlhmbmx-Remove')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）批量删除年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）批量删除年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByParLdndlhmb(@RequestBody List<String> ids) {
+        parldndlhmbmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据年度量化目标（公司领导类）检查年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）检查年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxService.checkKey(parldndlhmbmxMapping.toDomain(parldndlhmbmxdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxService.get(#parldndlhmbmx_id),'ehr-ParLdndlhmbmx-Update')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）更新年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）更新年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/{parldndlhmbmx_id}")
+    @Transactional
+    public ResponseEntity<ParLdndlhmbmxDTO> updateByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id, @RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
+        ParLdndlhmbmx domain = parldndlhmbmxMapping.toDomain(parldndlhmbmxdto);
+        domain.setParldndlhmbid(parldndlhmb_id);
+        domain.setParldndlhmbmxid(parldndlhmbmx_id);
+		parldndlhmbmxService.update(domain);
+        ParLdndlhmbmxDTO dto = parldndlhmbmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.parldndlhmbmxService.getParldndlhmbmxByEntities(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos)),'ehr-ParLdndlhmbmx-Update')")
+    @ApiOperation(value = "根据年度量化目标（公司领导类）批量更新年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "根据年度量化目标（公司领导类）批量更新年度量化目标明细（公司领导类 ）")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
+        List<ParLdndlhmbmx> domainlist=parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos);
+        for(ParLdndlhmbmx domain:domainlist){
+            domain.setParldndlhmbid(parldndlhmb_id);
+        }
+        parldndlhmbmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdndlhmbmx-Default-all')")
+	@ApiOperation(value = "根据年度量化目标（公司领导类）获取DEFAULT", tags = {"年度量化目标明细（公司领导类 ）" } ,notes = "根据年度量化目标（公司领导类）获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/fetchdefault")
+	public ResponseEntity<List<ParLdndlhmbmxDTO>> fetchParLdndlhmbmxDefaultByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id,ParLdndlhmbmxSearchContext context) {
+        context.setN_parldndlhmbid_eq(parldndlhmb_id);
+        Page<ParLdndlhmbmx> domains = parldndlhmbmxService.searchDefault(context) ;
+        List<ParLdndlhmbmxDTO> list = parldndlhmbmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdndlhmbmx-Default-all')")
+	@ApiOperation(value = "根据年度量化目标（公司领导类）查询DEFAULT", tags = {"年度量化目标明细（公司领导类 ）" } ,notes = "根据年度量化目标（公司领导类）查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/parldndlhmbs/{parldndlhmb_id}/parldndlhmbmxes/searchdefault")
+	public ResponseEntity<Page<ParLdndlhmbmxDTO>> searchParLdndlhmbmxDefaultByParLdndlhmb(@PathVariable("parldndlhmb_id") String parldndlhmb_id, @RequestBody ParLdndlhmbmxSearchContext context) {
+        context.setN_parldndlhmbid_eq(parldndlhmb_id);
+        Page<ParLdndlhmbmx> domains = parldndlhmbmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(parldndlhmbmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

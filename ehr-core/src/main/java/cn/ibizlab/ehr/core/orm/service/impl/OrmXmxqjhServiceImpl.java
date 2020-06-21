@@ -165,7 +165,6 @@ public class OrmXmxqjhServiceImpl extends ServiceImpl<OrmXmxqjhMapper, OrmXmxqjh
     public boolean checkKey(OrmXmxqjh et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmxqjhid()))&&(!Objects.isNull(this.getById(et.getOrmxmxqjhid())));
     }
-
     @Override
     @Transactional
     public OrmXmxqjh ensure(OrmXmxqjh et) {
@@ -274,6 +273,8 @@ public class OrmXmxqjhServiceImpl extends ServiceImpl<OrmXmxqjhMapper, OrmXmxqjh
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -319,5 +320,6 @@ public class OrmXmxqjhServiceImpl extends ServiceImpl<OrmXmxqjhMapper, OrmXmxqjh
     }
 
 }
+
 
 

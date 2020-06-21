@@ -1,44 +1,44 @@
 
 export default {
   fields: {
-    enable: '逻辑有效标志',
-    pimgwtypename: '岗位类型对照表名称',
-    gwlx: '岗位类型',
-    ordervalue: '排序值',
-    createdate: '建立时间',
-    pimgwtypeid: '岗位类型对照表标识',
-    createman: '建立人',
-    updateman: '更新人',
-    updatedate: '更新时间',
+    enable: "逻辑有效标志",
+    pimgwtypename: "岗位类型对照表名称",
+    gwlx: "岗位类型",
+    ordervalue: "排序值",
+    createdate: "建立时间",
+    pimgwtypeid: "岗位类型对照表标识",
+    createman: "建立人",
+    updateman: "更新人",
+    updatedate: "更新时间",
   },
 	views: {
 		gridview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表表格视图',
+      		title: "岗位类型对照表表格视图",
 		},
 		editview2: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表编辑视图',
+      		title: "岗位类型对照表编辑视图",
 		},
 		pickupgridview: {
 			caption: "岗位类型",
-      title: '岗位类型',
+      		title: "岗位类型",
 		},
 		redirectview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表数据重定向视图',
+      		title: "岗位类型对照表数据重定向视图",
 		},
 		editview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表编辑视图',
+      		title: "岗位类型对照表编辑视图",
 		},
 		mpickupview: {
 			caption: "岗位类型",
-      title: '岗位类型',
+      		title: "岗位类型",
 		},
 		pickupview: {
 			caption: "岗位类型",
-      title: '岗位类型',
+      		title: "岗位类型",
 		},
 	},
 	main_form: {

@@ -57,7 +57,6 @@ public class PcmZjdyzwServiceImpl extends ServiceImpl<PcmZjdyzwMapper, PcmZjdyzw
     public boolean checkKey(PcmZjdyzw et) {
         return (!ObjectUtils.isEmpty(et.getPcmzjdyzwid()))&&(!Objects.isNull(this.getById(et.getPcmzjdyzwid())));
     }
-
     @Override
     public PcmZjdyzw getDraft(PcmZjdyzw et) {
         fillParentData(et);
@@ -215,6 +214,8 @@ public class PcmZjdyzwServiceImpl extends ServiceImpl<PcmZjdyzwMapper, PcmZjdyzw
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class PcmZjdyzwServiceImpl extends ServiceImpl<PcmZjdyzwMapper, PcmZjdyzw
     }
 
 }
+
 
 

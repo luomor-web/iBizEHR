@@ -157,7 +157,6 @@ public class VacSystemApplicationServiceImpl extends ServiceImpl<VacSystemApplic
         return (!ObjectUtils.isEmpty(et.getVacsystemapplicationid()))&&(!Objects.isNull(this.getById(et.getVacsystemapplicationid())));
     }
 
-
 	@Override
     public List<VacSystemApplication> selectByOrmorgsectorid(String orgsectorid) {
         return baseMapper.selectByOrmorgsectorid(orgsectorid);
@@ -238,6 +237,8 @@ public class VacSystemApplicationServiceImpl extends ServiceImpl<VacSystemApplic
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -283,5 +284,6 @@ public class VacSystemApplicationServiceImpl extends ServiceImpl<VacSystemApplic
     }
 
 }
+
 
 

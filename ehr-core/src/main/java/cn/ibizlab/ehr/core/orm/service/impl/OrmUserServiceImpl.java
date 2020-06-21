@@ -114,7 +114,6 @@ public class OrmUserServiceImpl extends ServiceImpl<OrmUserMapper, OrmUser> impl
     public boolean checkKey(OrmUser et) {
         return (!ObjectUtils.isEmpty(et.getOrguserid()))&&(!Objects.isNull(this.getById(et.getOrguserid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmUser et) {
@@ -224,6 +223,8 @@ public class OrmUserServiceImpl extends ServiceImpl<OrmUserMapper, OrmUser> impl
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -269,5 +270,6 @@ public class OrmUserServiceImpl extends ServiceImpl<OrmUserMapper, OrmUser> impl
     }
 
 }
+
 
 

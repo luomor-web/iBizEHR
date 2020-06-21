@@ -137,7 +137,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimjixgridview', parameterName: 'grpimjixgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -155,7 +160,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'gryynlgridview', parameterName: 'gryynlgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -173,7 +183,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grresearchgridview', parameterName: 'grresearchgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -191,7 +206,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'ygzzgridview', parameterName: 'ygzzgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -209,7 +229,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimfimgridview', parameterName: 'grpimfimgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -227,7 +252,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grcontractgridview', parameterName: 'grcontractgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -245,7 +275,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimedugridview', parameterName: 'grpimedugridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -263,7 +298,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimworkgridview', parameterName: 'grpimworkgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -281,7 +321,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grzzeditview', parameterName: 'grzzeditview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -299,7 +344,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimzhicgridview', parameterName: 'grpimzhicgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -317,7 +367,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimjanglgridview', parameterName: 'grpimjanglgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -335,7 +390,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grarmygridview', parameterName: 'grarmygridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -353,7 +413,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpatentgridview', parameterName: 'grpatentgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -371,7 +436,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimdangagridview', parameterName: 'grpimdangagridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -389,7 +459,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpapergridview', parameterName: 'grpapergridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -407,7 +482,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimziggridview', parameterName: 'grpimziggridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -425,7 +505,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'ygzzgridview', parameterName: 'ygzzgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -443,7 +528,12 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
             { pathName: 'grpimfenpgridview', parameterName: 'grpimfenpgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
 
     public render(): any {

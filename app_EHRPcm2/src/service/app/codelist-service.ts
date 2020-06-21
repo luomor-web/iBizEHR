@@ -1,7 +1,14 @@
-import EhrCodeList0231 from '@/codelist/ehr-code-list0231';   
 import EhrCodeList0237 from '@/codelist/ehr-code-list0237';   
-import EhrCodeList0205 from '@/codelist/ehr-code-list0205';   
 import EhrCodeList0018 from '@/codelist/ehr-code-list0018';   
+import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
+import EhrCodeList0075 from '@/codelist/ehr-code-list0075';   
+import EhrCodeList0029 from '@/codelist/ehr-code-list0029';   
+import EhrCodeList0165 from '@/codelist/ehr-code-list0165';   
+import EhrCodeList0041 from '@/codelist/ehr-code-list0041';   
+import EhrCodeList0070 from '@/codelist/ehr-code-list0070';   
+import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
+import EhrCodeList0231 from '@/codelist/ehr-code-list0231';   
+import EhrCodeList0205 from '@/codelist/ehr-code-list0205';   
 import EhrCodeList0137 from '@/codelist/ehr-code-list0137';   
 import EhrCodeList0025 from '@/codelist/ehr-code-list0025';   
 import EhrCodeList0167 from '@/codelist/ehr-code-list0167';   
@@ -9,20 +16,13 @@ import EhrCodeList0219 from '@/codelist/ehr-code-list0219';
 import EhrCodeList0096 from '@/codelist/ehr-code-list0096';   
 import EhrCodeList0001 from '@/codelist/ehr-code-list0001';   
 import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
-import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
 import EhrCodeList0217 from '@/codelist/ehr-code-list0217';   
 import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
-import EhrCodeList0075 from '@/codelist/ehr-code-list0075';   
-import EhrCodeList0029 from '@/codelist/ehr-code-list0029';   
 import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
 import EhrCodeList0072 from '@/codelist/ehr-code-list0072';   
 import EhrCodeList0043 from '@/codelist/ehr-code-list0043';   
-import EhrCodeList0165 from '@/codelist/ehr-code-list0165';   
-import EhrCodeList0041 from '@/codelist/ehr-code-list0041';   
 import EhrCodeList0140 from '@/codelist/ehr-code-list0140';   
 import EhrCodeList0066 from '@/codelist/ehr-code-list0066';   
-import EhrCodeList0070 from '@/codelist/ehr-code-list0070';   
-import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
 import { Store } from 'vuex';
 
 /**
@@ -75,14 +75,6 @@ export default class CodeListService {
 
 
     /**
-     * 代码表--证件类型
-     *
-     * @type {EhrCodeList0231}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0231: EhrCodeList0231 = new EhrCodeList0231();
-
-    /**
      * 代码表--次分配类型
      *
      * @type {EhrCodeList0237}
@@ -91,20 +83,84 @@ export default class CodeListService {
     public EhrCodeList0237: EhrCodeList0237 = new EhrCodeList0237();
 
     /**
-     * 代码表--分配类型
-     *
-     * @type {EhrCodeList0205}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0205: EhrCodeList0205 = new EhrCodeList0205();
-
-    /**
      * 代码表--血型
      *
      * @type {EhrCodeList0018}
      * @memberof CodeListService
      */
     public EhrCodeList0018: EhrCodeList0018 = new EhrCodeList0018();
+
+    /**
+     * 代码表--云系统操作者
+     *
+     * @type {EhrCodeList0249}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
+
+    /**
+     * 代码表--婚姻状况
+     *
+     * @type {EhrCodeList0075}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0075: EhrCodeList0075 = new EhrCodeList0075();
+
+    /**
+     * 代码表--政治面貌
+     *
+     * @type {EhrCodeList0029}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0029: EhrCodeList0029 = new EhrCodeList0029();
+
+    /**
+     * 代码表--解聘原因
+     *
+     * @type {EhrCodeList0165}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0165: EhrCodeList0165 = new EhrCodeList0165();
+
+    /**
+     * 代码表--入职渠道
+     *
+     * @type {EhrCodeList0041}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0041: EhrCodeList0041 = new EhrCodeList0041();
+
+    /**
+     * 代码表--户口类型
+     *
+     * @type {EhrCodeList0070}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0070: EhrCodeList0070 = new EhrCodeList0070();
+
+    /**
+     * 代码表--员工状态
+     *
+     * @type {EhrCodeList0014}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
+
+    /**
+     * 代码表--证件类型
+     *
+     * @type {EhrCodeList0231}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0231: EhrCodeList0231 = new EhrCodeList0231();
+
+    /**
+     * 代码表--分配类型
+     *
+     * @type {EhrCodeList0205}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0205: EhrCodeList0205 = new EhrCodeList0205();
 
     /**
      * 代码表--分配状态
@@ -163,14 +219,6 @@ export default class CodeListService {
     public EhrCodeList0233: EhrCodeList0233 = new EhrCodeList0233();
 
     /**
-     * 代码表--云系统操作者
-     *
-     * @type {EhrCodeList0249}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
-
-    /**
      * 代码表--离职原因
      *
      * @type {EhrCodeList0217}
@@ -185,22 +233,6 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
-
-    /**
-     * 代码表--婚姻状况
-     *
-     * @type {EhrCodeList0075}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0075: EhrCodeList0075 = new EhrCodeList0075();
-
-    /**
-     * 代码表--政治面貌
-     *
-     * @type {EhrCodeList0029}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0029: EhrCodeList0029 = new EhrCodeList0029();
 
     /**
      * 代码表--所属区域
@@ -227,22 +259,6 @@ export default class CodeListService {
     public EhrCodeList0043: EhrCodeList0043 = new EhrCodeList0043();
 
     /**
-     * 代码表--解聘原因
-     *
-     * @type {EhrCodeList0165}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0165: EhrCodeList0165 = new EhrCodeList0165();
-
-    /**
-     * 代码表--入职渠道
-     *
-     * @type {EhrCodeList0041}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0041: EhrCodeList0041 = new EhrCodeList0041();
-
-    /**
      * 代码表--岗位类型
      *
      * @type {EhrCodeList0140}
@@ -257,22 +273,6 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0066: EhrCodeList0066 = new EhrCodeList0066();
-
-    /**
-     * 代码表--户口类型
-     *
-     * @type {EhrCodeList0070}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0070: EhrCodeList0070 = new EhrCodeList0070();
-
-    /**
-     * 代码表--员工状态
-     *
-     * @type {EhrCodeList0014}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
 
     /**
      * 获取动态代码表

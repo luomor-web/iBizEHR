@@ -54,7 +54,6 @@ public class ParLdkhqzServiceImpl extends ServiceImpl<ParLdkhqzMapper, ParLdkhqz
     public boolean checkKey(ParLdkhqz et) {
         return (!ObjectUtils.isEmpty(et.getParldkhqzid()))&&(!Objects.isNull(this.getById(et.getParldkhqzid())));
     }
-
     @Override
     @Transactional
     public boolean create(ParLdkhqz et) {
@@ -193,6 +192,8 @@ public class ParLdkhqzServiceImpl extends ServiceImpl<ParLdkhqzMapper, ParLdkhqz
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -238,5 +239,6 @@ public class ParLdkhqzServiceImpl extends ServiceImpl<ParLdkhqzMapper, ParLdkhqz
     }
 
 }
+
 
 

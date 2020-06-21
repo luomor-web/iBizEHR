@@ -117,7 +117,6 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
     public boolean checkKey(ParJxzgpc et) {
         return (!ObjectUtils.isEmpty(et.getParjxzgpcid()))&&(!Objects.isNull(this.getById(et.getParjxzgpcid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParJxzgpc et) {
@@ -154,6 +153,8 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<ParJxzgpc> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<ParJxzgpc>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -204,5 +205,6 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
     }
 
 }
+
 
 

@@ -61,8 +61,9 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JsonProperty("ysze")
     private Double ysze;
     /**
-     * 审核方式
+     * 发布状态
      */
+    @DEField(defaultValue = "10")
     @TableField(value = "shfs")
     @JSONField(name = "shfs")
     @JsonProperty("shfs")
@@ -76,7 +77,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JsonProperty("jhkssj")
     private Timestamp jhkssj;
     /**
-     * 排序号
+     * 排序
      */
     @TableField(value = "xh")
     @JSONField(name = "xh")
@@ -105,7 +106,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JsonProperty("npxqs")
     private String npxqs;
     /**
-     * 计划年度
+     * 年度
      */
     @TableField(value = "jhnd")
     @JSONField(name = "jhnd")
@@ -145,7 +146,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
      * 培训计划标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtrainplanid",type=IdType.UUID)
+    @TableId(value= "trmtrainplanid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtrainplanid")
     @JsonProperty("trmtrainplanid")
     private String trmtrainplanid;
@@ -167,7 +168,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JsonProperty("createman")
     private String createman;
     /**
-     * 计划类型
+     * 类型
      */
     @TableField(value = "jhlx")
     @JSONField(name = "jhlx")
@@ -307,7 +308,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JsonProperty("pimpersonid")
     private String pimpersonid;
     /**
-     * 需求调查定义标识
+     * 培训需求标识
      */
     @TableField(value = "trmdemdeftionid")
     @JSONField(name = "trmdemdeftionid")
@@ -327,6 +328,35 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     @JSONField(name = "ormorgid")
     @JsonProperty("ormorgid")
     private String ormorgid;
+    /**
+     * 拟培训地点
+     */
+    @TableField(value = "pxadress")
+    @JSONField(name = "pxadress")
+    @JsonProperty("pxadress")
+    private String pxadress;
+    /**
+     * 拟培训内容
+     */
+    @TableField(value = "pxcontent")
+    @JSONField(name = "pxcontent")
+    @JsonProperty("pxcontent")
+    private String pxcontent;
+    /**
+     * 拟培训人数
+     */
+    @TableField(value = "pxnum")
+    @JSONField(name = "pxnum")
+    @JsonProperty("pxnum")
+    private Integer pxnum;
+    /**
+     * 审批状态
+     */
+    @DEField(defaultValue = "2")
+    @TableField(value = "approvalstatus")
+    @JSONField(name = "approvalstatus")
+    @JsonProperty("approvalstatus")
+    private String approvalstatus;
 
     /**
      * 所属单位
@@ -345,7 +375,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     private cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson;
 
     /**
-     * 培训需求调研表
+     * 培训需求
      */
     @JsonIgnore
     @JSONField(serialize = false)
@@ -387,7 +417,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [审核方式]
+     * 设置 [发布状态]
      */
     public void setShfs(String shfs){
         this.shfs = shfs ;
@@ -413,7 +443,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
         return sdf.format(jhkssj);
     }
     /**
-     * 设置 [排序号]
+     * 设置 [排序]
      */
     public void setXh(String xh){
         this.xh = xh ;
@@ -455,7 +485,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [计划年度]
+     * 设置 [年度]
      */
     public void setJhnd(String jhnd){
         this.jhnd = jhnd ;
@@ -515,7 +545,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [计划类型]
+     * 设置 [类型]
      */
     public void setJhlx(String jhlx){
         this.jhlx = jhlx ;
@@ -563,7 +593,7 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [需求调查定义标识]
+     * 设置 [培训需求标识]
      */
     public void setTrmdemdeftionid(String trmdemdeftionid){
         this.trmdemdeftionid = trmdemdeftionid ;
@@ -584,6 +614,38 @@ public class TrmTrainPlan extends EntityMP implements Serializable {
     public void setOrmorgid(String ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [拟培训地点]
+     */
+    public void setPxadress(String pxadress){
+        this.pxadress = pxadress ;
+        this.modify("pxadress",pxadress);
+    }
+
+    /**
+     * 设置 [拟培训内容]
+     */
+    public void setPxcontent(String pxcontent){
+        this.pxcontent = pxcontent ;
+        this.modify("pxcontent",pxcontent);
+    }
+
+    /**
+     * 设置 [拟培训人数]
+     */
+    public void setPxnum(Integer pxnum){
+        this.pxnum = pxnum ;
+        this.modify("pxnum",pxnum);
+    }
+
+    /**
+     * 设置 [审批状态]
+     */
+    public void setApprovalstatus(String approvalstatus){
+        this.approvalstatus = approvalstatus ;
+        this.modify("approvalstatus",approvalstatus);
     }
 
 

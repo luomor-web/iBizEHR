@@ -90,7 +90,6 @@ public class PimArchivalCatalogueServiceImpl extends ServiceImpl<PimArchivalCata
     public boolean checkKey(PimArchivalCatalogue et) {
         return (!ObjectUtils.isEmpty(et.getArchivalcatalogueid()))&&(!Objects.isNull(this.getById(et.getArchivalcatalogueid())));
     }
-
     @Override
     @Transactional
     public PimArchivalCatalogue get(String key) {
@@ -195,6 +194,8 @@ public class PimArchivalCatalogueServiceImpl extends ServiceImpl<PimArchivalCata
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -240,5 +241,6 @@ public class PimArchivalCatalogueServiceImpl extends ServiceImpl<PimArchivalCata
     }
 
 }
+
 
 

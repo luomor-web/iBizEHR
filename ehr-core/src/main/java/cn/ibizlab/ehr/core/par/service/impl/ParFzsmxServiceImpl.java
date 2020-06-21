@@ -107,7 +107,6 @@ public class ParFzsmxServiceImpl extends ServiceImpl<ParFzsmxMapper, ParFzsmx> i
     public boolean checkKey(ParFzsmx et) {
         return (!ObjectUtils.isEmpty(et.getParfzsmxid()))&&(!Objects.isNull(this.getById(et.getParfzsmxid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParFzsmx et) {
@@ -217,6 +216,8 @@ public class ParFzsmxServiceImpl extends ServiceImpl<ParFzsmxMapper, ParFzsmx> i
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -262,5 +263,6 @@ public class ParFzsmxServiceImpl extends ServiceImpl<ParFzsmxMapper, ParFzsmx> i
     }
 
 }
+
 
 

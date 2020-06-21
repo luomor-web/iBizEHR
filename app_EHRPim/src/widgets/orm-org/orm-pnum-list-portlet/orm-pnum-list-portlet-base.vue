@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
+    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrmPNumList_list 
@@ -19,11 +19,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrmPNumListService from './orm-pnum-list-portlet-service';
 
@@ -41,7 +42,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 名称
      *
      * @type {string}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public name?: string;
 
@@ -49,7 +50,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -57,7 +58,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public context: any;
 
@@ -65,7 +66,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 视图参数
      *
      * @type {*}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public viewparams: any;
 
@@ -74,7 +75,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -82,7 +83,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -94,7 +95,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -102,7 +103,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 建构部件服务对象
      *
      * @type {OrmPNumListService}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public service: OrmPNumListService = new OrmPNumListService({ $store: this.$store });
 
@@ -110,7 +111,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 实体服务对象
      *
      * @type {OrmOrgService}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public appEntityService: OrmOrgService = new OrmOrgService({ $store: this.$store });
     
@@ -120,7 +121,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -130,7 +131,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     /**
      *  计数器刷新
      *
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -148,7 +149,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 长度
      *
      * @type {number}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public height?: number;
 
@@ -156,7 +157,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 宽度
      *
      * @type {number}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop() public width?: number;
 
@@ -188,6 +189,24 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrmPNumListBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '300px';
+        }
     }
 
     /**

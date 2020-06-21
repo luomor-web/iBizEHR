@@ -248,7 +248,7 @@ export default class PimFaminfoJTLXRPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PimFaminfoJTLXRPickupView
+     * @memberof PimFaminfoJTLXRPickupViewBase
      */
     public selectedData: string = "";
 

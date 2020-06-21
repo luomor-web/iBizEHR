@@ -28,7 +28,6 @@ import AppCheckboxList from './components/app-checkbox-list/app-checkbox-list.vu
 import AppRadioGroup from './components/app-radio-group/app-radio-group.vue'
 import AppEmbedPicker from './components/app-embed-picker/app-embed-picker.vue'
 import AppTreePicker from './components/app-tree-picker/app-tree-picker.vue'
-import AppRichTextEditor from './components/app-rich-text-editor/app-rich-text-editor.vue'
 import AppFileUpload from './components/app-file-upload/app-file-upload.vue'
 import AppImageUpload from './components/app-image-upload/app-image-upload.vue'
 import PropertyLayout from './components/property-layout/property-layout.vue'
@@ -53,7 +52,6 @@ import AppRate from './components/app-rate/app-rate.vue'
 import AppSwitch from './components/app-switch/app-switch.vue'
 import AppSlider from './components/app-slider/app-slider.vue'
 import AppStepper from './components/app-stepper/app-stepper.vue'
-import AppPortalDesign from './components/app-portal-design/app-portal-design.vue'
 import DatePickerRange from './components/date-picker-range/date-picker-range.vue'
 import AppRangeDate from './components/app-range-date/app-range-date.vue'
 import AppActionBar from './components/app-actionbar/app-actionbar.vue'
@@ -63,7 +61,6 @@ import AppStudioAction from './components/app-studioaction/app-studioaction.vue'
 import AppDebugActions from './components/app-debug-actions/app-debug-actions.vue'
 import AppTopMenus from './components/app-top-menus/app-top-menus.vue'
 import AppColumnLink from './components/app-column-link/app-column-link.vue'
-import AppDataUploadView from './components/app-data-upload/app-data-upload.vue'
 import DropDownListDynamic from './components/dropdown-list-dynamic/dropdown-list-dynamic.vue'
 import AppImagePreview from './components/app-image-preview/app-image-preview.vue'
 import AppFormatData from './components/app-format-data/app-format-data.vue'
@@ -76,8 +73,9 @@ import AppDepartmentSelect from './components/app-department-select/app-departme
 import IBizGroupSelect from './components/ibiz-group-select/ibiz-group-select.vue'
 import IBizGroupPicker from './components/ibiz-group-picker/ibiz-group-picker.vue'
 import AppWFApproval from './components/app-wf-approval/app-wf-approval.vue'
-import Breadcrumb from './components/app-breadcrumb/app-breadcrumb.vue';
+import Breadcrumb from './components/app-breadcrumb/app-breadcrumb.vue'
 import AppTransfer from './components/app-transfer/app-transfer.vue'
+import ContextMenuDrag from './components/context-menu-drag/context-menu-drag.vue'
 
 // 全局挂载UI实体服务注册中心
 window['uiServiceRegister'] = uiServiceRegister;
@@ -115,7 +113,7 @@ export const AppComponents = {
         v.component('app-radio-group',AppRadioGroup);
         v.component('app-embed-picker', AppEmbedPicker);
         v.component('app-tree-picker', AppTreePicker);
-        v.component('app-rich-text-editor',AppRichTextEditor);
+        v.component('app-rich-text-editor', () => import('./components/app-rich-text-editor/app-rich-text-editor.vue'));
         v.component('app-file-upload',AppFileUpload);
         v.component('app-image-upload',AppImageUpload);
         v.component('property-layout',PropertyLayout);
@@ -140,7 +138,7 @@ export const AppComponents = {
         v.component('app-switch', AppSwitch);
         v.component('app-slider', AppSlider);
         v.component('app-stepper', AppStepper);
-        v.component('app-portal-design',AppPortalDesign);
+        v.component('app-portal-design', () => import('./components/app-portal-design/app-portal-design.vue'));
         v.component('date-picker-range',DatePickerRange);
         v.component('app-range-date', AppRangeDate);
         v.component('app-actionbar', AppActionBar);
@@ -150,7 +148,7 @@ export const AppComponents = {
         v.component('app-debug-actions', AppDebugActions);
         v.component('app-top-menus', AppTopMenus);
         v.component('app-column-link', AppColumnLink);
-        v.component('app-data-upload', AppDataUploadView);
+        v.component('app-data-upload', () => import('./components/app-data-upload/app-data-upload.vue'));
         v.component('dropdown-list-dynamic', DropDownListDynamic);
         v.component('app-image-preview', AppImagePreview);
         v.component('app-format-data', AppFormatData);
@@ -165,5 +163,6 @@ export const AppComponents = {
         v.component('app-wf-approval',AppWFApproval);
         v.component('app-breadcrumb',Breadcrumb);
         v.component('app-transfer',AppTransfer);
+        v.component('context-menu-drag',ContextMenuDrag);
     },
 };

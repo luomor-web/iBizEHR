@@ -60,7 +60,6 @@ public class SalStdXmgzRateServiceImpl extends ServiceImpl<SalStdXmgzRateMapper,
     public boolean checkKey(SalStdXmgzRate et) {
         return (!ObjectUtils.isEmpty(et.getSalstdxmgzrateid()))&&(!Objects.isNull(this.getById(et.getSalstdxmgzrateid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalStdXmgzRate et) {
@@ -192,6 +191,8 @@ public class SalStdXmgzRateServiceImpl extends ServiceImpl<SalStdXmgzRateMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class SalStdXmgzRateServiceImpl extends ServiceImpl<SalStdXmgzRateMapper,
     }
 
 }
+
 
 

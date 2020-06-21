@@ -155,7 +155,6 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
     public boolean checkKey(AttEndanceMreport et) {
         return (!ObjectUtils.isEmpty(et.getAttendancemreportid()))&&(!Objects.isNull(this.getById(et.getAttendancemreportid())));
     }
-
     @Override
     @Transactional
     public AttEndanceMreport qR(AttEndanceMreport et) {
@@ -291,6 +290,8 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -336,5 +337,6 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
     }
 
 }
+
 
 

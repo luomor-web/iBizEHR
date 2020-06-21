@@ -1,0 +1,30 @@
+package cn.ibizlab.ehr.soc.logic.socarchiveslogic.initarchivesdetail;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.soc.domain.SocArchives socarchivesinitarchivesdetaildefault;
+global cn.ibizlab.ehr.core.soc.service.ISocArchivesService iBzSysSocarchivesDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "socarchivesinitarchivesdetailbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[初始化档案明细]
+rule "rawsqlcall1"
+ruleflow-group "socarchivesinitarchivesdetailrawsqlcall1"
+    when
+    then
+    Map param =new HashMap();
+    param.put("param0",socarchivesinitarchivesdetaildefault.get("socarchivesid"));
+    String strSql="INSERT INTO T_SOCARCHIVESDETAIL  (SOCARCHIVESDETAILID,CREATEMAN,CREATEDATE,UPDATEMAN,UPDATEDATE,SOCARCHIVESID,SOCRULEDETAILID) SELECT CONCAT(T.SOCARCHIVESID,T1.SOCRULEDETAILID),T.UPDATEMAN,T.UPDATEDATE,T.UPDATEMAN,T.UPDATEDATE,T.SOCARCHIVESID,T1.SOCRULEDETAILID  FROM T_SOCARCHIVES T  INNER JOIN T_SOCRULEDETAIL T1 ON T.SOCRULEID=T1.SOCRULEID  WHERE T.SOCARCHIVESID=#{et.param0} AND NOT EXISTS(SELECT 1 FROM T_SOCARCHIVESDETAIL A WHERE A.SOCARCHIVESID=T.SOCARCHIVESID AND A.SOCRULEDETAILID=T1.SOCRULEDETAILID)";
+    iBzSysSocarchivesDefaultService.execute(strSql,param);//SQL调用
+    update(socarchivesinitarchivesdetaildefault);//更新fact中变量值
+    end
+

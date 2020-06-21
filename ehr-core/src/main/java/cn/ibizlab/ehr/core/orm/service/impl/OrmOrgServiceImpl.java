@@ -246,10 +246,13 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.sal.service.ISalStdzyzgService salstdzyzgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISocCompanyWelService soccompanywelService;
+    private cn.ibizlab.ehr.core.soc.service.ISocAccountService socaccountService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISocSelfareBaseService socselfarebaseService;
+    private cn.ibizlab.ehr.core.soc.service.ISocAreaService socareaService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
@@ -380,7 +383,6 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     public boolean checkKey(OrmOrg et) {
         return (!ObjectUtils.isEmpty(et.getOrgid()))&&(!Objects.isNull(this.getById(et.getOrgid())));
     }
-
     @Override
     @Transactional
     public boolean create(OrmOrg et) {
@@ -642,6 +644,8 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -687,5 +691,6 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     }
 
 }
+
 
 

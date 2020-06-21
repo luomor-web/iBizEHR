@@ -77,18 +77,21 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
 
     @Override
     public boolean saveBatch(Collection<PimTitleCatalogue> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<PimTitleCatalogue> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(PimTitleCatalogue et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimtitlecatalogueid",et.getPimtitlecatalogueid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimtitlecatalogueid()),et);
@@ -97,17 +100,20 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
 
     @Override
     public void updateBatch(List<PimTitleCatalogue> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
     @Override
     public PimTitleCatalogue getDraft(PimTitleCatalogue et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean create(PimTitleCatalogue et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimtitlecatalogueid()),et);
@@ -116,6 +122,7 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
 
     @Override
     public void createBatch(List<PimTitleCatalogue> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -123,7 +130,6 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
     public boolean checkKey(PimTitleCatalogue et) {
         return (!ObjectUtils.isEmpty(et.getPimtitlecatalogueid()))&&(!Objects.isNull(this.getById(et.getPimtitlecatalogueid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -200,6 +206,24 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(PimTitleCatalogue et){
+        //实体关系[DER1N_PIMTITLECATALOGUE_PIMTITLECATALOGUE_PIMTITLECATALOGUEID2]
+        if(!ObjectUtils.isEmpty(et.getPimtitlecatalogueid2())){
+            cn.ibizlab.ehr.core.pim.domain.PimTitleCatalogue pimtitlecatalogue2=et.getPimtitlecatalogue2();
+            if(ObjectUtils.isEmpty(pimtitlecatalogue2)){
+                cn.ibizlab.ehr.core.pim.domain.PimTitleCatalogue majorEntity=pimtitlecatalogueService.get(et.getPimtitlecatalogueid2());
+                et.setPimtitlecatalogue2(majorEntity);
+                pimtitlecatalogue2=majorEntity;
+            }
+            et.setPimtitlecataloguename2(pimtitlecatalogue2.getPimtitlecataloguename());
+        }
+    }
+
+
 
 
     @Override
@@ -247,5 +271,6 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
     }
 
 }
+
 
 

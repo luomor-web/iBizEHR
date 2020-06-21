@@ -118,7 +118,6 @@ public class SalParamServiceImpl extends ServiceImpl<SalParamMapper, SalParam> i
     public boolean checkKey(SalParam et) {
         return (!ObjectUtils.isEmpty(et.getSalparamid()))&&(!Objects.isNull(this.getById(et.getSalparamid())));
     }
-
     @Override
     @Transactional
     public boolean create(SalParam et) {
@@ -198,6 +197,8 @@ public class SalParamServiceImpl extends ServiceImpl<SalParamMapper, SalParam> i
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -243,5 +244,6 @@ public class SalParamServiceImpl extends ServiceImpl<SalParamMapper, SalParam> i
     }
 
 }
+
 
 

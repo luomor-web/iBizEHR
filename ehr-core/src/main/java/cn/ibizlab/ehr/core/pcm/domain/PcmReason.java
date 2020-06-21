@@ -113,7 +113,7 @@ public class PcmReason extends EntityMP implements Serializable {
      * 配置原因代码表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmreasonid",type=IdType.UUID)
+    @TableId(value= "pcmreasonid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmreasonid")
     @JsonProperty("pcmreasonid")
     private String pcmreasonid;

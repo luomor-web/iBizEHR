@@ -119,7 +119,6 @@ public class TrmLgbDetailServiceImpl extends ServiceImpl<TrmLgbDetailMapper, Trm
     public boolean checkKey(TrmLgbDetail et) {
         return (!ObjectUtils.isEmpty(et.getTrmlgbdetailid()))&&(!Objects.isNull(this.getById(et.getTrmlgbdetailid())));
     }
-
     @Override
     public TrmLgbDetail getDraft(TrmLgbDetail et) {
         fillParentData(et);
@@ -216,6 +215,8 @@ public class TrmLgbDetailServiceImpl extends ServiceImpl<TrmLgbDetailMapper, Trm
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -261,5 +262,6 @@ public class TrmLgbDetailServiceImpl extends ServiceImpl<TrmLgbDetailMapper, Trm
     }
 
 }
+
 
 

@@ -119,7 +119,6 @@ public class PcmRcxlServiceImpl extends ServiceImpl<PcmRcxlMapper, PcmRcxl> impl
     public boolean checkKey(PcmRcxl et) {
         return (!ObjectUtils.isEmpty(et.getPcmrcxlid()))&&(!Objects.isNull(this.getById(et.getPcmrcxlid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmRcxl et) {
@@ -230,6 +229,8 @@ public class PcmRcxlServiceImpl extends ServiceImpl<PcmRcxlMapper, PcmRcxl> impl
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -275,5 +276,6 @@ public class PcmRcxlServiceImpl extends ServiceImpl<PcmRcxlMapper, PcmRcxl> impl
     }
 
 }
+
 
 

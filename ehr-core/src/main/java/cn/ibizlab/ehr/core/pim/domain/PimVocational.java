@@ -227,7 +227,7 @@ public class PimVocational extends EntityMP implements Serializable {
      * 执（职）业资格信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimvocationalid",type=IdType.UUID)
+    @TableId(value= "pimvocationalid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimvocationalid")
     @JsonProperty("pimvocationalid")
     private String pimvocationalid;

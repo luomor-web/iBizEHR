@@ -134,7 +134,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
         Double cursumSyts = 0d;
         String njsy = "";
         //探亲回显信息
-        if(et.getQjzl().equals("TQ")) {
+        if("TQ".equals(et.getQjzl())) {
             et.setHyzk(pimPerson.getHyzk());
             if("20".equals(pimPerson.getHyzk())) {
                 et.setTqlx("20");
@@ -163,11 +163,11 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             List<VacLeaveDetail> vacLeaveDetailList = this.selectByPimpersonid(pimpersonid);
             if(vacLeaveDetailList.size() > 0) {
                 for (VacLeaveDetail vacLeaveDetail : vacLeaveDetailList) {
-                    if(et.getQjzl().equals(vacLeaveDetail.getQjzl()) && !et.getQjzl().equals("NX")) {
-                        String jhkssj = vacLeaveDetail.getJhkssj().toString().substring(0, 4);
-                        if(String.valueOf(lastyear).equals(jhkssj) && vacLeaveDetail.getJhts() != null) {
+                    if(et.getQjzl().equals(vacLeaveDetail.getQjzl()) && !"NX".equals(et.getQjzl())) {
+                        int jhkssj = vacLeaveDetail.getJhkssj().getYear() + 1900;
+                        if(lastyear == jhkssj && vacLeaveDetail.getJhts() != null) {
                             lastsumSyts += vacLeaveDetail.getJhts();
-                        }else if(String.valueOf(curyear).equals(jhkssj) && vacLeaveDetail.getJhts() != null) {
+                        }else if(curyear == jhkssj && vacLeaveDetail.getJhts() != null) {
                             cursumSyts += vacLeaveDetail.getJhts();
                         }
                     }
@@ -176,7 +176,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             njsy +=  lastyear + "年已请" + leaveName + lastsumSyts + " 天;\n "
                     + curyear  + "年已请" + leaveName + cursumSyts  + " 天; ";
             //如果是年休假，拼接年休假使用情况
-            if(et.getQjzl().equals("NX")) {
+            if("NX".equals(et.getQjzl())) {
                 sql = "select * from T_VACSYNJCX where pimpersonId=#{et.pimpersonId}  and nd in (#{et.curyear},#{et.nextyear}) order by nd ASC";
                 param.put("curyear", String.valueOf(curyear));
                 param.put("nextyear", String.valueOf(nextyear));
@@ -349,6 +349,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             String id = com.alibaba.fastjson.JSON.toJavaObject(jsonList.get(0), String.class);
             ormorgId = id;
         } else {
+		       ormorgId = "";
             //  throw new Exception("您所属的组织未设置假期规则或未将你加入考勤人员，请联系管理员！");
         }
         //  查询该组织的考勤日历
@@ -435,6 +436,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             String id = com.alibaba.fastjson.JSON.toJavaObject(jsonList.get(0), String.class);
             ormorgId = id;
         } else {
+		       ormorgId = "";
             //   throw new Exception("您所属的组织未设置假期规则或未将你加入考勤人员，请联系管理员！");
         }
 
@@ -608,7 +610,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     public boolean checkKey(VacLeaveDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavedetailid()))&&(!Objects.isNull(this.getById(et.getVacleavedetailid())));
     }
-
     @Override
     public VacLeaveDetail getDraft(VacLeaveDetail et) {
         fillParentData(et);
@@ -660,6 +661,8 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -705,5 +708,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     }
 
 }
+
 
 

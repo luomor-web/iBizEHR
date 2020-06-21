@@ -66,7 +66,6 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
     public boolean checkKey(VacUseNxjmx et) {
         return (!ObjectUtils.isEmpty(et.getVacusenxjmxid()))&&(!Objects.isNull(this.getById(et.getVacusenxjmxid())));
     }
-
     @Override
     @Transactional
     public boolean create(VacUseNxjmx et) {
@@ -169,6 +168,8 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -214,5 +215,6 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
     }
 
 }
+
 
 

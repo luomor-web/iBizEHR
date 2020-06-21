@@ -43,7 +43,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
      * 请销假明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacleavedetailid",type=IdType.UUID)
+    @TableId(value= "vacleavedetailid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacleavedetailid")
     @JsonProperty("vacleavedetailid")
     private String vacleavedetailid;

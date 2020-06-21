@@ -131,7 +131,6 @@ public class PcmTxfpsqServiceImpl extends ServiceImpl<PcmTxfpsqMapper, PcmTxfpsq
     public boolean checkKey(PcmTxfpsq et) {
         return (!ObjectUtils.isEmpty(et.getPcmtxfpsqid()))&&(!Objects.isNull(this.getById(et.getPcmtxfpsqid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmTxfpsq et) {
@@ -293,6 +292,8 @@ public class PcmTxfpsqServiceImpl extends ServiceImpl<PcmTxfpsqMapper, PcmTxfpsq
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -338,5 +339,6 @@ public class PcmTxfpsqServiceImpl extends ServiceImpl<PcmTxfpsqMapper, PcmTxfpsq
     }
 
 }
+
 
 

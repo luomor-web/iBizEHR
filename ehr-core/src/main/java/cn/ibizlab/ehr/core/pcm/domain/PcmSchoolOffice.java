@@ -97,7 +97,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
      * 在校职务标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmschoolofficeid",type=IdType.UUID)
+    @TableId(value= "pcmschoolofficeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmschoolofficeid")
     @JsonProperty("pcmschoolofficeid")
     private String pcmschoolofficeid;

@@ -1,37 +1,37 @@
 
 export default {
   fields: {
-    enable: '逻辑有效标志',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    createman: '建立人',
-    updateman: '更新人',
-    salitemname: '要素项',
-    salitemid: '薪酬要素项标识',
-    xh: '排序号',
-    salsubjectname: '财务科目',
-    salsubjectid: '财务科目标识',
+    enable: "逻辑有效标志",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    createman: "建立人",
+    updateman: "更新人",
+    salitemname: "要素项",
+    salitemid: "薪酬要素项标识",
+    xh: "排序号",
+    salsubjectname: "财务科目",
+    salsubjectid: "财务科目标识",
   },
 	views: {
 		pickupgridview: {
 			caption: "薪酬要素项",
-      title: '薪酬要素项选择表格视图',
+      		title: "薪酬要素项选择表格视图",
 		},
 		mpickupview: {
 			caption: "薪酬要素项",
-      title: '薪酬要素项数据多项选择视图',
+      		title: "薪酬要素项数据多项选择视图",
 		},
 		pickupview: {
 			caption: "薪酬要素项",
-      title: '薪酬要素项数据选择视图',
+      		title: "薪酬要素项数据选择视图",
 		},
 		gridview: {
 			caption: "薪酬要素项",
-      title: '薪酬要素项表格视图',
+      		title: "薪酬要素项表格视图",
 		},
 		editview: {
 			caption: "薪酬要素项",
-      title: '薪酬要素项编辑视图',
+      		title: "薪酬要素项编辑视图",
 		},
 	},
 	main_form: {

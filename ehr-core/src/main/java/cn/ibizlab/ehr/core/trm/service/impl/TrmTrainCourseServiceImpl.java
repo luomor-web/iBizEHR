@@ -94,7 +94,6 @@ public class TrmTrainCourseServiceImpl extends ServiceImpl<TrmTrainCourseMapper,
     public boolean checkKey(TrmTrainCourse et) {
         return (!ObjectUtils.isEmpty(et.getTrmtraincourseid()))&&(!Objects.isNull(this.getById(et.getTrmtraincourseid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -260,6 +259,8 @@ public class TrmTrainCourseServiceImpl extends ServiceImpl<TrmTrainCourseMapper,
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -305,5 +306,6 @@ public class TrmTrainCourseServiceImpl extends ServiceImpl<TrmTrainCourseMapper,
     }
 
 }
+
 
 

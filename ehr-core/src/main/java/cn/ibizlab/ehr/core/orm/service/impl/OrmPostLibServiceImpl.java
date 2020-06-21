@@ -145,7 +145,6 @@ public class OrmPostLibServiceImpl extends ServiceImpl<OrmPostLibMapper, OrmPost
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -154,6 +153,8 @@ public class OrmPostLibServiceImpl extends ServiceImpl<OrmPostLibMapper, OrmPost
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<OrmPostLib> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<OrmPostLib>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -204,5 +205,6 @@ public class OrmPostLibServiceImpl extends ServiceImpl<OrmPostLibMapper, OrmPost
     }
 
 }
+
 
 

@@ -57,11 +57,12 @@
     </layout>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import VacHolidayRulesService from '@/service/vac-holiday-rules/vac-holiday-rules-service';
 import KQGZSTXDService from './kqgzstxd-wizardpanel-service';
 
@@ -78,7 +79,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public name?: string;
 
@@ -86,7 +87,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -94,7 +95,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public context: any;
 
@@ -102,7 +103,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public viewparams: any;
 
@@ -111,7 +112,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -119,7 +120,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public getControlType(): string {
         return 'WIZARDPANEL'
@@ -131,7 +132,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -139,7 +140,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {KQGZSTXDService}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public service: KQGZSTXDService = new KQGZSTXDService({ $store: this.$store });
 
@@ -147,7 +148,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {VacHolidayRulesService}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public appEntityService: VacHolidayRulesService = new VacHolidayRulesService({ $store: this.$store });
 
@@ -156,7 +157,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard01_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard01', $event2);
@@ -167,7 +168,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard01_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard01', $event2);
@@ -178,7 +179,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard02_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard02', $event2);
@@ -189,7 +190,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard02_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard02', $event2);
@@ -200,7 +201,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard03_save($event: any, $event2?: any) {
         this.wizardpanel_formsave($event, 'wizardpanel_form_wizard03', $event2);
@@ -211,7 +212,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_form_wizard03_load($event: any, $event2?: any) {
         this.wizardpanel_formload($event, 'wizardpanel_form_wizard03', $event2);
@@ -223,7 +224,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -233,7 +234,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -251,7 +252,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 部件行为--init
      *
      * @type {string}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public initAction!: string;
     
@@ -259,7 +260,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 部件行为--finish
      *
      * @type {string}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop() public finishAction!: string;
 
@@ -267,7 +268,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -275,7 +276,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
       * 获取多项数据
       *
       * @returns {any[]}
-      * @memberof KQGZSTXD
+      * @memberof KQGZSTXDBase
       */
     public getDatas(): any[] {
         return [this.formParam];
@@ -285,7 +286,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
       * 获取单项数据
       *
       * @returns {*}
-      * @memberof KQGZSTXD
+      * @memberof KQGZSTXDBase
       */
     public getData(): any {
         return this.formParam;
@@ -296,7 +297,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardState: Subject<ViewState> = new Subject();
 
@@ -304,7 +305,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 当前激活表单
      *
      * @type {string}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public activeForm: string = 'wizardpanel_form_wizard01';
 
@@ -312,7 +313,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 向导表单参数
      *
      * @type {*}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public formParam: any = {};
 
@@ -321,7 +322,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Array<string>}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public historyForms: Array<string> = [];
 
@@ -329,7 +330,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 步骤行为集合
      *
      * @type {*}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public stepActions: any = {};
 
@@ -337,21 +338,21 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 向导表单集合
      *
      * @type {Array<any>}
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardForms: Array<any> = [];
 
     /**
      * 当前状态
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public curState = '';
 
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public created(): void {
         this.regFormActions();
@@ -372,7 +373,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public destroyed() {
         if (this.viewStateEvent) {
@@ -383,7 +384,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 注册表单步骤行为
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public regFormActions() {
         this.regFormAction('wizardpanel_form_wizard01', ['NEXT','FINISH']);
@@ -394,7 +395,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 注册表单步骤行为
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public regFormAction(name: string, actions: Array<string>) {
         this.stepActions[name] = actions;
@@ -404,7 +405,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 初始化行为
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public doInit(opt: any = {}) {
         const arg: any = { ...opt };
@@ -429,7 +430,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 表单加载
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public formLoad() {
         if(this.activeForm) {
@@ -440,7 +441,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 完成行为
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public doFinish() {
         let arg: any = {};
@@ -465,7 +466,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} args
      * @param {string} name
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_formload(args: any, name: string, $event2?: any) {
         if(args) {
@@ -478,7 +479,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      *
      * @param {*} args
      * @param {string} name
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public wizardpanel_formsave(args: any, name: string, $event2?: any) {
         Object.assign(this.formParam, args);
@@ -500,7 +501,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 获取下一步向导表单
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public getNextForm() {
         let index = this.wizardForms.indexOf(this.activeForm);
@@ -516,7 +517,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 上一步
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public onClickPrev() {
         const length = this.historyForms.length;
@@ -533,7 +534,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 下一步
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public onClickNext() {
         if(this.activeForm) {
@@ -552,7 +553,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
     /**
      * 完成
      *
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public onClickFinish() {
         if(this.activeForm) {
@@ -572,7 +573,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
      * 是否禁用
      *
      * @param {string} type
-     * @memberof KQGZSTXD
+     * @memberof KQGZSTXDBase
      */
     public isDisabled(type: string) {
         const actions: Array<string> = this.stepActions[this.activeForm]

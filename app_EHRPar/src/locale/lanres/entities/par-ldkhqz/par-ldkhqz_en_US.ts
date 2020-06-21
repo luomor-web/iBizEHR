@@ -1,42 +1,47 @@
 
 export default {
   fields: {
-    qzzb: '权重占比（%）',
-    pfzt: '评分主体',
-    parldkhqzid: '评分规则标识',
-    createman: '建立人',
-    updatedate: '更新时间',
-    createdate: '建立时间',
-    updateman: '更新人',
-    parldkhqzname: '评分规则',
-    parkhzcmxname: '考核内容',
-    khdx: '所属考核对象',
-    parkhzcmxid: '考核内容ID',
+    qzzb: "权重占比（%）",
+    pfzt: "评分主体",
+    parldkhqzid: "评分规则标识",
+    createman: "建立人",
+    updatedate: "更新时间",
+    createdate: "建立时间",
+    updateman: "更新人",
+    parldkhqzname: "评分规则",
+    parkhzcmxname: "考核内容",
+    khdx: "所属考核对象",
+    parkhzcmxid: "考核内容ID",
+    khobject: "考核对象",
   },
 	views: {
 		pickupgridview: {
 			caption: "评分权重分配",
-      title: '评分权重分配选择表格视图',
+      		title: "评分权重分配选择表格视图",
 		},
 		gridview: {
 			caption: "评分权重分配",
-      title: '评分权重分配表格视图',
+      		title: "评分权重分配表格视图",
 		},
 		mpickupview: {
 			caption: "评分权重分配",
-      title: '评分权重分配数据多项选择视图',
+      		title: "评分权重分配数据多项选择视图",
 		},
 		editview: {
 			caption: "评分权重分配",
-      title: '评分权重分配',
+      		title: "评分权重分配",
+		},
+		newgridview: {
+			caption: "评分权重设置",
+      		title: "评分权重分配表格视图",
 		},
 		editview2: {
 			caption: "评分权重分配",
-      title: '评分权重分配编辑视图',
+      		title: "评分权重分配编辑视图",
 		},
 		pickupview: {
 			caption: "评分权重分配",
-      title: '评分权重分配数据选择视图',
+      		title: "评分权重分配数据选择视图",
 		},
 	},
 	qzfp_form: {
@@ -51,9 +56,7 @@ export default {
 			srfuf: "", 
 			srfdeid: "", 
 			srfsourcekey: "", 
-			parkhzcmxid: "考核内容ID", 
-			parkhzcmxname: "考核内容", 
-			khdx: "所属考核对象", 
+			khobject: "考核对象", 
 			pfzt: "评分主体", 
 			qzzb: "权重占比（%）", 
 			parldkhqzid: "评分规则标识", 
@@ -82,8 +85,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			parkhzcmxname: "考核内容",
-			khdx: "所属考核对象",
+			khobject: "考核对象",
 			pfzt: "评分主体",
 			qzzb: "权重占比（%）",
 		},
@@ -139,6 +141,20 @@ export default {
 		tbitem22: {
 			caption: "Help",
 			tip: "Help",
+		},
+	},
+	newgridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "新建",
+			tip: "新建",
+		},
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
+		deuiaction3: {
+			caption: "Remove",
+			tip: "Remove {0}",
 		},
 	},
 	editview2toolbar_toolbar: {

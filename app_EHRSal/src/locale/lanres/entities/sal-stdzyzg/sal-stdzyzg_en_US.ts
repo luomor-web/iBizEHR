@@ -1,27 +1,27 @@
 
 export default {
   fields: {
-    salstdzyzgname: '执业资格津贴标准名称',
-    enable: '逻辑有效标志',
-    bz: '补贴标准',
-    updateman: '更新人',
-    createdate: '建立时间',
-    salstdzyzgid: '执业资格津贴标准标识',
-    zyfl: '专业分类',
-    updatedate: '更新时间',
-    jbfl: '级别分类',
-    createman: '建立人',
-    ormorgname: '组织',
-    ormorgid: '组织标识',
+    salstdzyzgname: "执业资格津贴标准名称",
+    enable: "逻辑有效标志",
+    bz: "补贴标准",
+    updateman: "更新人",
+    createdate: "建立时间",
+    salstdzyzgid: "执业资格津贴标准标识",
+    zyfl: "专业分类",
+    updatedate: "更新时间",
+    jbfl: "级别分类",
+    createman: "建立人",
+    ormorgname: "组织",
+    ormorgid: "组织标识",
   },
 	views: {
 		editview: {
 			caption: "执业资格津贴标准",
-      title: '执业资格津贴标准编辑视图',
+      		title: "执业资格津贴标准编辑视图",
 		},
 		gridview: {
 			caption: "执业资格津贴标准",
-      title: '执业资格津贴标准表格视图',
+      		title: "执业资格津贴标准表格视图",
 		},
 	},
 	main_form: {

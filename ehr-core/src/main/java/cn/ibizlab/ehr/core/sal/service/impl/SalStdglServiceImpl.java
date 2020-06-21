@@ -98,7 +98,6 @@ public class SalStdglServiceImpl extends ServiceImpl<SalStdglMapper, SalStdgl> i
     public boolean checkKey(SalStdgl et) {
         return (!ObjectUtils.isEmpty(et.getSalstdglid()))&&(!Objects.isNull(this.getById(et.getSalstdglid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalStdgl et) {
@@ -192,6 +191,8 @@ public class SalStdglServiceImpl extends ServiceImpl<SalStdglMapper, SalStdgl> i
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class SalStdglServiceImpl extends ServiceImpl<SalStdglMapper, SalStdgl> i
     }
 
 }
+
 
 

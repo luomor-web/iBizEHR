@@ -157,7 +157,6 @@ public class TrmTrainDemandSumServiceImpl extends ServiceImpl<TrmTrainDemandSumM
         return (!ObjectUtils.isEmpty(et.getTrmtraindemandsumid()))&&(!Objects.isNull(this.getById(et.getTrmtraindemandsumid())));
     }
 
-
 	@Override
     public List<TrmTrainDemandSum> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -239,6 +238,8 @@ public class TrmTrainDemandSumServiceImpl extends ServiceImpl<TrmTrainDemandSumM
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -284,5 +285,6 @@ public class TrmTrainDemandSumServiceImpl extends ServiceImpl<TrmTrainDemandSumM
     }
 
 }
+
 
 

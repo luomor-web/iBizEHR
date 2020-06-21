@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class AttEnsummaryKQHZTreeExpViewBase extends TreeExpViewBase {
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof AttEnsummaryKQHZTreeExpView
+     * @memberof AttEnsummaryKQHZTreeExpViewBase
      */
     public viewUID: string = 'att-att-ensummary-kqhztree-exp-view';
 

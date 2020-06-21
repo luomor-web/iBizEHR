@@ -28,7 +28,7 @@
     },
     "parkhzcmxpickupgridview": {
         "title": "考核组成明细选择表格视图",
-        "caption": "考核内容",
+        "caption": "考核模板明细",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "PAR",
         "viewname": "ParKhzcmxPickupGridView",
@@ -143,15 +143,6 @@
         "viewtag": "1d25ec98327f6665fff2fce37634c3bb",
         "memo": ""
     },
-    "parexamcycleeditview2": {
-        "title": "考核周期编辑视图",
-        "caption": "考核周期",
-        "viewtype": "DEEDITVIEW2",
-        "viewmodule": "PAR",
-        "viewname": "ParExamCycleEditView2",
-        "viewtag": "1e42ac493a08f87edf0c49360e4450e3",
-        "memo": ""
-    },
     "parintegralrulepickupview": {
         "title": "积分规则数据选择视图",
         "caption": "积分规则",
@@ -159,6 +150,15 @@
         "viewmodule": "PAR",
         "viewname": "ParIntegralRulePickupView",
         "viewtag": "23351fc51755a7fdc1a7778e00843604",
+        "memo": ""
+    },
+    "parassesstemplatempickupview": {
+        "title": "考核模板数据多项选择视图",
+        "caption": "考核模板",
+        "viewtype": "DEMPICKUPVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplateMPickupView",
+        "viewtag": "239f64fe862525f2729a4b0ba52d05c5",
         "memo": ""
     },
     "parexamcyclegridview": {
@@ -179,9 +179,18 @@
         "viewtag": "2698c6c20aa3e029be5d7b71d05d529d",
         "memo": ""
     },
+    "parassesstemplateeditview": {
+        "title": "考核模板",
+        "caption": "考核模板",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplateEditView",
+        "viewtag": "29840f97ec229cf7c791378d26d3b4d0",
+        "memo": ""
+    },
     "parjxkhxhzygkhxgridview": {
-        "title": "员工考核内容及评分汇总",
-        "caption": "员工考核内容及评分汇总",
+        "title": "考核方案",
+        "caption": "考核方案",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzYGKHXGridView",
@@ -305,6 +314,15 @@
         "viewtag": "5c54c01bf48769338bb7134b7d0bf089",
         "memo": ""
     },
+    "parkhzcmxgridview": {
+        "title": "考核模板明细",
+        "caption": "考核模板明细",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParKhzcmxGridView",
+        "viewtag": "63b45d0d28eff091f82699780bda4b6b",
+        "memo": ""
+    },
     "pimpersonpickupview": {
         "title": "人员信息数据选择视图",
         "caption": "人员信息",
@@ -341,9 +359,18 @@
         "viewtag": "6a111cee676fd5fb8c00ddee952e6357",
         "memo": ""
     },
+    "parassesstemplatepickupview": {
+        "title": "考核模板数据选择视图",
+        "caption": "考核模板",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplatePickupView",
+        "viewtag": "6ab6caf3a12b7882065cc3c605659a79",
+        "memo": ""
+    },
     "parjxkhxhzgridview": {
-        "title": "绩效考核项得分汇总表格视图",
-        "caption": "考核内容评分汇总",
+        "title": "考核方案",
+        "caption": "考核方案",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzGridView",
@@ -395,6 +422,15 @@
         "viewtag": "74382e16e0e984fd5af452531de035aa",
         "memo": ""
     },
+    "parldkhqznewgridview": {
+        "title": "评分权重分配表格视图",
+        "caption": "评分权重设置",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParLdkhqzNewGridView",
+        "viewtag": "7f59f30064383fc5ee87bcdf3bc42f9b",
+        "memo": ""
+    },
     "parexamcontentgridview": {
         "title": "考核内容",
         "caption": "考核内容",
@@ -441,8 +477,8 @@
         "memo": ""
     },
     "parjxkhxhzygkhxeditview": {
-        "title": "员工考核内容及评分汇总",
-        "caption": "员工考核内容及评分汇总",
+        "title": "考核方案",
+        "caption": "考核方案",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzYGKHXEditView",
@@ -467,15 +503,6 @@
         "viewtag": "963f9744f61222f20041022b8b7eba31",
         "memo": ""
     },
-    "parjxkhxhzeditview2": {
-        "title": "绩效考核项得分汇总编辑视图",
-        "caption": "考核内容评分汇总",
-        "viewtype": "DEEDITVIEW2",
-        "viewmodule": "PAR",
-        "viewname": "ParJxkhxhzEditView2",
-        "viewtag": "97559f1cdaf3ad58b41f7bf4ba34d089",
-        "memo": ""
-    },
     "parldndlhmbgridview": {
         "title": "量化目标填报",
         "caption": "量化目标填报",
@@ -486,8 +513,8 @@
         "memo": ""
     },
     "parjxkhxhzpickupview": {
-        "title": "绩效考核项得分汇总数据选择视图",
-        "caption": "考核内容评分汇总",
+        "title": "考核方案数据选择视图",
+        "caption": "考核方案",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzPickupView",
@@ -504,8 +531,8 @@
         "memo": "系统自动添加"
     },
     "parjxkhxhzmpickupview": {
-        "title": "绩效考核项得分汇总数据多项选择视图",
-        "caption": "考核内容评分汇总",
+        "title": "考核方案数据多项选择视图",
+        "caption": "考核方案",
         "viewtype": "DEMPICKUPVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzMPickupView",
@@ -593,6 +620,15 @@
         "viewtag": "b8adaeafac9a1acdbd8f4aef296c22ee",
         "memo": ""
     },
+    "parassesstemplatepickupgridview": {
+        "title": "考核模板选择表格视图",
+        "caption": "考核模板",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplatePickupGridView",
+        "viewtag": "be2e9f41096c9c65982109c44e67b657",
+        "memo": ""
+    },
     "parldndlhmbndlhmbxzeditview": {
         "title": "量化目标修正",
         "caption": "量化目标修正",
@@ -612,8 +648,8 @@
         "memo": ""
     },
     "parkhzcmxeditview": {
-        "title": "考核组成明细编辑视图",
-        "caption": "考核内容",
+        "title": "考核模板明细",
+        "caption": "考核模板明细",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "PAR",
         "viewname": "ParKhzcmxEditView",
@@ -719,6 +755,33 @@
         "viewtag": "d6dc79636ec9c777e8c62b03e428b518",
         "memo": ""
     },
+    "parassesstemplateeditview9": {
+        "title": "考核模板",
+        "caption": "考核模板",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplateEditView9",
+        "viewtag": "d84eab620a82c604d82070edc298611c",
+        "memo": ""
+    },
+    "parexamcyclenewgridview": {
+        "title": "考核周期设置",
+        "caption": "考核周期设置",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParExamCycleNewGridView",
+        "viewtag": "e184f5db6e3acb31c15469de5437cf75",
+        "memo": ""
+    },
+    "parassesstemplategridview": {
+        "title": "考核模板表格视图",
+        "caption": "考核模板设置",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "PAR",
+        "viewname": "ParAssessTemplateGridView",
+        "viewtag": "e28617a43cd83dbace56537236958b1d",
+        "memo": ""
+    },
     "parldndlhmbkheditview": {
         "title": "量化目标考核（公司领导类）",
         "caption": "量化目标考核（公司领导类）",
@@ -748,7 +811,7 @@
     },
     "parkhzcmxpickupview": {
         "title": "考核组成明细数据选择视图",
-        "caption": "考核内容",
+        "caption": "考核模板明细",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "PAR",
         "viewname": "ParKhzcmxPickupView",
@@ -765,8 +828,8 @@
         "memo": ""
     },
     "parjxkhxhzpickupgridview": {
-        "title": "绩效考核项得分汇总选择表格视图",
-        "caption": "考核内容评分汇总",
+        "title": "考核方案选择表格视图",
+        "caption": "考核方案",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzPickupGridView",
@@ -774,8 +837,8 @@
         "memo": ""
     },
     "parjxkhxhzeditview": {
-        "title": "绩效考核项得分汇总编辑视图",
-        "caption": "考核内容评分汇总",
+        "title": "考核方案编辑视图",
+        "caption": "考核方案",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "PAR",
         "viewname": "ParJxkhxhzEditView",

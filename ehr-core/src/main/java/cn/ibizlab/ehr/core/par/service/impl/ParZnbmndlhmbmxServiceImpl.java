@@ -105,7 +105,6 @@ public class ParZnbmndlhmbmxServiceImpl extends ServiceImpl<ParZnbmndlhmbmxMappe
     public boolean checkKey(ParZnbmndlhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParznbmndlhmbmxid()))&&(!Objects.isNull(this.getById(et.getParznbmndlhmbmxid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParZnbmndlhmbmx et) {
@@ -192,6 +191,8 @@ public class ParZnbmndlhmbmxServiceImpl extends ServiceImpl<ParZnbmndlhmbmxMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class ParZnbmndlhmbmxServiceImpl extends ServiceImpl<ParZnbmndlhmbmxMappe
     }
 
 }
+
 
 

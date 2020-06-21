@@ -86,7 +86,6 @@ public class VacSituationServiceImpl extends ServiceImpl<VacSituationMapper, Vac
     public boolean checkKey(VacSituation et) {
         return (!ObjectUtils.isEmpty(et.getVacsituationid()))&&(!Objects.isNull(this.getById(et.getVacsituationid())));
     }
-
     @Override
     public VacSituation getDraft(VacSituation et) {
         fillParentData(et);
@@ -192,6 +191,8 @@ public class VacSituationServiceImpl extends ServiceImpl<VacSituationMapper, Vac
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class VacSituationServiceImpl extends ServiceImpl<VacSituationMapper, Vac
     }
 
 }
+
 
 

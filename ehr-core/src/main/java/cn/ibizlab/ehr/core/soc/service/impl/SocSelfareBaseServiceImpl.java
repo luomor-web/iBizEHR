@@ -66,7 +66,6 @@ public class SocSelfareBaseServiceImpl extends ServiceImpl<SocSelfareBaseMapper,
     public boolean checkKey(SocSelfareBase et) {
         return (!ObjectUtils.isEmpty(et.getSocselfarebaseid()))&&(!Objects.isNull(this.getById(et.getSocselfarebaseid())));
     }
-
     @Override
     @Transactional
     public boolean save(SocSelfareBase et) {
@@ -243,5 +242,6 @@ public class SocSelfareBaseServiceImpl extends ServiceImpl<SocSelfareBaseMapper,
     }
 
 }
+
 
 

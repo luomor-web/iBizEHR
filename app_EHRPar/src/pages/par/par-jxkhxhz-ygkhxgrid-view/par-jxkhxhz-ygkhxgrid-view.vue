@@ -2,11 +2,11 @@
 import { Component } from 'vue-property-decorator';
 import ParJxkhxhzYGKHXGridViewBase from './par-jxkhxhz-ygkhxgrid-view-base.vue';
 
-import view_grid from '@widgets/par-jxkhxhz/ygkhx-grid/ygkhx-grid.vue';
+import view_grid from '@widgets/par-jxkhxhz/main-grid/main-grid.vue';
 import view_searchform from '@widgets/par-jxkhxhz/default-searchform/default-searchform.vue';
 
 /**
- * 员工考核内容及评分汇总
+ * 考核方案
  *
  * @export
  * @class ParJxkhxhzYGKHXGridView

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.soc.service.logic.socruleinitruledetail" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.soc.service.logic.socruleinitruledetail">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="socruleinitruledetaildefault" type="cn.ibizlab.ehr.core.soc.domain.SocRule" />
+        </extensionElements>
+     <startEvent id="6947FEA4-6F58-42BD-91CC-F413F202ED7B" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="socruleinitruledetailrawsqlcall1" id="AF5758EE-D3D5-4D96-8265-0530196AF9CA" implementation="http://www.jboss.org/drools/rule" name="初始化明细"/>
+     <endEvent id="AF5758EE-D3D5-4D96-8265-0530196AF9CA_End" name="End"/>
+     <sequenceFlow id="AF5758EE-D3D5-4D96-8265-0530196AF9CA_End_Line" sourceRef="AF5758EE-D3D5-4D96-8265-0530196AF9CA" targetRef="AF5758EE-D3D5-4D96-8265-0530196AF9CA_End"/>
+     <sequenceFlow id="E3352CDF-54B3-4ED3-ABBC-5B12493A091F" sourceRef="6947FEA4-6F58-42BD-91CC-F413F202ED7B" targetRef="AF5758EE-D3D5-4D96-8265-0530196AF9CA">
+     </sequenceFlow>
+    </process>
+</definitions>
+

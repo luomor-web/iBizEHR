@@ -157,7 +157,6 @@ public class SalSchemeServiceImpl extends ServiceImpl<SalSchemeMapper, SalScheme
         return (!ObjectUtils.isEmpty(et.getSalschemeid()))&&(!Objects.isNull(this.getById(et.getSalschemeid())));
     }
 
-
 	@Override
     public List<SalScheme> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -196,6 +195,8 @@ public class SalSchemeServiceImpl extends ServiceImpl<SalSchemeMapper, SalScheme
             et.setOrmorgname(ormorg.getOrgname());
         }
     }
+
+
 
 
     @Override
@@ -243,5 +244,6 @@ public class SalSchemeServiceImpl extends ServiceImpl<SalSchemeMapper, SalScheme
     }
 
 }
+
 
 

@@ -81,7 +81,6 @@ public class PcmZsglServiceImpl extends ServiceImpl<PcmZsglMapper, PcmZsgl> impl
     public boolean checkKey(PcmZsgl et) {
         return (!ObjectUtils.isEmpty(et.getPcmzsglid()))&&(!Objects.isNull(this.getById(et.getPcmzsglid())));
     }
-
     @Override
     @Transactional
     public boolean update(PcmZsgl et) {
@@ -156,6 +155,8 @@ public class PcmZsglServiceImpl extends ServiceImpl<PcmZsglMapper, PcmZsgl> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmZsglServiceImpl extends ServiceImpl<PcmZsglMapper, PcmZsgl> impl
     }
 
 }
+
 
 

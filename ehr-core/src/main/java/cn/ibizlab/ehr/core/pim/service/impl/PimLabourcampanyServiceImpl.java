@@ -93,7 +93,6 @@ public class PimLabourcampanyServiceImpl extends ServiceImpl<PimLabourcampanyMap
     public boolean checkKey(PimLabourcampany et) {
         return (!ObjectUtils.isEmpty(et.getPimlabourcampanyid()))&&(!Objects.isNull(this.getById(et.getPimlabourcampanyid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimLabourcampany et) {
@@ -228,6 +227,8 @@ public class PimLabourcampanyServiceImpl extends ServiceImpl<PimLabourcampanyMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -273,5 +274,6 @@ public class PimLabourcampanyServiceImpl extends ServiceImpl<PimLabourcampanyMap
     }
 
 }
+
 
 

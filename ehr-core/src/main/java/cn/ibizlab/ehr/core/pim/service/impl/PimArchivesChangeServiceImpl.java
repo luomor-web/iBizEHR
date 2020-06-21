@@ -115,7 +115,6 @@ public class PimArchivesChangeServiceImpl extends ServiceImpl<PimArchivesChangeM
     public boolean checkKey(PimArchivesChange et) {
         return (!ObjectUtils.isEmpty(et.getPimarchiveschangeid()))&&(!Objects.isNull(this.getById(et.getPimarchiveschangeid())));
     }
-
     @Override
     @Transactional
     public PimArchivesChange updatePersonFile(PimArchivesChange et) {
@@ -270,6 +269,8 @@ public class PimArchivesChangeServiceImpl extends ServiceImpl<PimArchivesChangeM
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -315,5 +316,6 @@ public class PimArchivesChangeServiceImpl extends ServiceImpl<PimArchivesChangeM
     }
 
 }
+
 
 

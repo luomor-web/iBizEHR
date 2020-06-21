@@ -113,7 +113,6 @@ public class OrmTitleServiceImpl extends ServiceImpl<OrmTitleMapper, OrmTitle> i
     public boolean checkKey(OrmTitle et) {
         return (!ObjectUtils.isEmpty(et.getOrmtitleid()))&&(!Objects.isNull(this.getById(et.getOrmtitleid())));
     }
-
     @Override
     @Transactional
     public OrmTitle get(String key) {
@@ -151,6 +150,8 @@ public class OrmTitleServiceImpl extends ServiceImpl<OrmTitleMapper, OrmTitle> i
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<OrmTitle> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<OrmTitle>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class OrmTitleServiceImpl extends ServiceImpl<OrmTitleMapper, OrmTitle> i
     }
 
 }
+
 
 

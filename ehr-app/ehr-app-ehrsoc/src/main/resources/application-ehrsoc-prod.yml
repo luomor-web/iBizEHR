@@ -1,0 +1,63 @@
+server:
+  port: 36100
+#Log配置
+logging:
+  level:
+    cn.ibizlab.ehr: info
+#zuul网关路由设置
+zuul:
+  routes:
+    socarea:
+      path: /socareas/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socarchives:
+      path: /socarchives/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    soctype:
+      path: /soctypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socrule:
+      path: /socrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socrecord:
+      path: /socrecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socaccount:
+      path: /socaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socarchivesdetail:
+      path: /socarchivesdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socruledetail:
+      path: /socruledetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    personstatemgr:
+      path: /personstatemgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

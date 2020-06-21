@@ -43,7 +43,7 @@ public class PimWorkflowRef extends EntityMP implements Serializable {
      * 平台流程配置标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimworkflowrefid",type=IdType.UUID)
+    @TableId(value= "pimworkflowrefid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimworkflowrefid")
     @JsonProperty("pimworkflowrefid")
     private String pimworkflowrefid;

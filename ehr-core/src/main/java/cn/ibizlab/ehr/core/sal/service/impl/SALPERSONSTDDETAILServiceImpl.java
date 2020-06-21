@@ -90,7 +90,6 @@ public class SALPERSONSTDDETAILServiceImpl extends ServiceImpl<SALPERSONSTDDETAI
     public boolean checkKey(SALPERSONSTDDETAIL et) {
         return (!ObjectUtils.isEmpty(et.getSalpersonstddetailid()))&&(!Objects.isNull(this.getById(et.getSalpersonstddetailid())));
     }
-
     @Override
     @Transactional
     public boolean create(SALPERSONSTDDETAIL et) {
@@ -215,6 +214,8 @@ public class SALPERSONSTDDETAILServiceImpl extends ServiceImpl<SALPERSONSTDDETAI
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class SALPERSONSTDDETAILServiceImpl extends ServiceImpl<SALPERSONSTDDETAI
     }
 
 }
+
 
 

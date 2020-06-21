@@ -43,6 +43,7 @@ import './entity/par-znbmmxs/par-znbmmxs';
 import './entity/par-jxkhjcszs/par-jxkhjcszs';
 import './entity/par-ptryndlhmbs/par-ptryndlhmbs';
 import './entity/par-ldndlhmbs/par-ldndlhmbs';
+import './entity/par-assess-templates/par-assess-templates';
 import './entity/par-xmbpjbzs/par-xmbpjbzs';
 import './entity/par-djbzs/par-djbzs';
 import './entity/par-jgbmpjbzs/par-jgbmpjbzs';

@@ -83,7 +83,7 @@ public class PimFilebatvhupload extends EntityMP implements Serializable {
      * 附件批量上传标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimfilebatvhuploadid",type=IdType.UUID)
+    @TableId(value= "pimfilebatvhuploadid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimfilebatvhuploadid")
     @JsonProperty("pimfilebatvhuploadid")
     private String pimfilebatvhuploadid;

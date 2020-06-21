@@ -557,7 +557,12 @@ export default class ParLdndlhmbmxXZGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.parldndlhmb && true){
+            deResParameters = [
+            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
         ];
@@ -602,7 +607,12 @@ export default class ParLdndlhmbmxXZGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.parldndlhmb && true){
+            deResParameters = [
+            { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'parldndlhmbmxes', parameterName: 'parldndlhmbmx' },
         ];

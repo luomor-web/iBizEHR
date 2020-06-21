@@ -99,7 +99,6 @@ public class PimExaminationResultsServiceImpl extends ServiceImpl<PimExamination
     public boolean checkKey(PimExaminationResults et) {
         return (!ObjectUtils.isEmpty(et.getPimexaminationresultsid()))&&(!Objects.isNull(this.getById(et.getPimexaminationresultsid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimExaminationResults et) {
@@ -159,6 +158,8 @@ public class PimExaminationResultsServiceImpl extends ServiceImpl<PimExamination
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -204,5 +205,6 @@ public class PimExaminationResultsServiceImpl extends ServiceImpl<PimExamination
     }
 
 }
+
 
 

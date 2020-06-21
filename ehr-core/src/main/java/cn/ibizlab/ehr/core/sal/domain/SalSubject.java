@@ -51,7 +51,7 @@ public class SalSubject extends EntityMP implements Serializable {
      * 财务科目标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salsubjectid",type=IdType.UUID)
+    @TableId(value= "salsubjectid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salsubjectid")
     @JsonProperty("salsubjectid")
     private String salsubjectid;

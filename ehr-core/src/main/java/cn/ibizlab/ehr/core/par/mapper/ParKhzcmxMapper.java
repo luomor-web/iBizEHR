@@ -62,6 +62,8 @@ public interface ParKhzcmxMapper extends BaseMapper<ParKhzcmx>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
+    List<ParKhzcmx> selectByParassesstemplateid(@Param("parassesstemplateid") Serializable parassesstemplateid) ;
+
     List<ParKhzcmx> selectByParjxkhjcszid(@Param("parjxkhjcszid") Serializable parjxkhjcszid) ;
 
 }

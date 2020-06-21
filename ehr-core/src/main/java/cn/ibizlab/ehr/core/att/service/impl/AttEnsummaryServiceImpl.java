@@ -150,7 +150,6 @@ public class AttEnsummaryServiceImpl extends ServiceImpl<AttEnsummaryMapper, Att
     public boolean checkKey(AttEnsummary et) {
         return (!ObjectUtils.isEmpty(et.getAttensummaryid()))&&(!Objects.isNull(this.getById(et.getAttensummaryid())));
     }
-
     @Override
     @Transactional
     public AttEnsummary exportKQHZ(AttEnsummary et) {
@@ -215,6 +214,8 @@ public class AttEnsummaryServiceImpl extends ServiceImpl<AttEnsummaryMapper, Att
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class AttEnsummaryServiceImpl extends ServiceImpl<AttEnsummaryMapper, Att
     }
 
 }
+
 
 

@@ -169,6 +169,30 @@ public class ParJxkhxhzDTO extends DTOBase implements Serializable {
     @JsonProperty("bm")
     private String bm;
 
+    /**
+     * 属性 [PARASSESSTEMPLATEID]
+     *
+     */
+    @JSONField(name = "parassesstemplateid")
+    @JsonProperty("parassesstemplateid")
+    private String parassesstemplateid;
+
+    /**
+     * 属性 [PARASSESSTEMPLATENAME]
+     *
+     */
+    @JSONField(name = "parassesstemplatename")
+    @JsonProperty("parassesstemplatename")
+    private String parassesstemplatename;
+
+    /**
+     * 属性 [ND]
+     *
+     */
+    @JSONField(name = "nd")
+    @JsonProperty("nd")
+    private String nd;
+
 
     /**
      * 设置 [XH]
@@ -272,6 +296,22 @@ public class ParJxkhxhzDTO extends DTOBase implements Serializable {
     public void setBm(String  bm){
         this.bm = bm ;
         this.modify("bm",bm);
+    }
+
+    /**
+     * 设置 [PARASSESSTEMPLATEID]
+     */
+    public void setParassesstemplateid(String  parassesstemplateid){
+        this.parassesstemplateid = parassesstemplateid ;
+        this.modify("parassesstemplateid",parassesstemplateid);
+    }
+
+    /**
+     * 设置 [ND]
+     */
+    public void setNd(String  nd){
+        this.nd = nd ;
+        this.modify("nd",nd);
     }
 
 

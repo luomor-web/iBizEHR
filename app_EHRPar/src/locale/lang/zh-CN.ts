@@ -34,6 +34,7 @@ import parznbmmx_zh_CN from '@locale/lanres/entities/par-znbmmx/par-znbmmx_zh_CN
 import parjxkhjcsz_zh_CN from '@locale/lanres/entities/par-jxkhjcsz/par-jxkhjcsz_zh_CN';
 import parptryndlhmb_zh_CN from '@locale/lanres/entities/par-ptryndlhmb/par-ptryndlhmb_zh_CN';
 import parldndlhmb_zh_CN from '@locale/lanres/entities/par-ldndlhmb/par-ldndlhmb_zh_CN';
+import parassesstemplate_zh_CN from '@locale/lanres/entities/par-assess-template/par-assess-template_zh_CN';
 import parxmbpjbz_zh_CN from '@locale/lanres/entities/par-xmbpjbz/par-xmbpjbz_zh_CN';
 import pardjbz_zh_CN from '@locale/lanres/entities/par-djbz/par-djbz_zh_CN';
 import parjgbmpjbz_zh_CN from '@locale/lanres/entities/par-jgbmpjbz/par-jgbmpjbz_zh_CN';
@@ -49,50 +50,50 @@ import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
 export default {
     app: {
         commonWords:{
-            error: '失败',
-            success: '成功',
-            ok: '确认',
-            cancel: '取消',
+            error: "失败",
+            success: "成功",
+            ok: "确认",
+            cancel: "取消",
         },
         local:{
-            new: '新建'
+            new: "新建"
         },
         gridpage: {
-            choicecolumns: '选择列',
-            refresh: '刷新',
-            show: '显示',
-            records: '条',
-            totle: '共',
+            choicecolumns: "选择列",
+            refresh: "刷新",
+            show: "显示",
+            records: "条",
+            totle: "共",
         },
         tabpage: {
             sureclosetip: {
-                title: '关闭提醒',
-                content: '表单数据已经修改，确定要关闭？',
+                title: "关闭提醒",
+                content: "表单数据已经修改，确定要关闭？",
             },
-            closeall: '关闭所有',
-            closeother: '关闭其他',
+            closeall: "关闭所有",
+            closeother: "关闭其他",
         },
         fileUpload: {
-            caption: '上传',
+            caption: "上传",
         },
         searchButton: {
-            search: '搜索',
-            reset: '重置',
+            search: "搜索",
+            reset: "重置",
         },
         calendar:{
-          today: '今天',
-          month: '月',
-          week: '周',
-          day: '天',
-          list: '列',
-          dateSelectModalTitle: '选择要跳转的时间',
-          gotoDate: '跳转',
+          today: "今天",
+          month: "月",
+          week: "周",
+          day: "天",
+          list: "列",
+          dateSelectModalTitle: "选择要跳转的时间",
+          gotoDate: "跳转",
         },
         // 非实体视图
         views: {
             index: {
-                caption: 'EHR—绩效管理',
-                title: 'EHR—绩效管理',
+                caption: "EHR—绩效管理",
+                title: "EHR—绩效管理",
             },
         },
         utilview:{
@@ -102,24 +103,25 @@ export default {
         },
         menus: {
             index: {
-                menuitem1: '通知发布',
-                menuitem7: '通知发布',
-                menuitem2: '基础设置',
-                menuitem6: '考核周期设置',
-                menuitem8: '考核对象设置',
-                menuitem9: '考核内容设置',
-                menuitem10: '评分权重设置',
-                menuitem16: '积分规则设置',
-                menuitem12: '绩效标准',
-                menuitem11: '考核内容汇总',
-                menuitem3: '绩效考核',
-                menuitem13: '年度量化目标填报',
-                menuitem14: '年度量化目标修正',
-                menuitem15: '年度量化目标考核',
-                menuitem4: '绩效定级',
-                menuitem17: '绩效考核结果',
-                menuitem18: '绩效考核定级',
-                menuitem5: '绩效应用',
+                menuitem1: "通知发布",
+                menuitem7: "通知发布",
+                menuitem2: "基础设置",
+                menuitem6: "考核周期设置",
+                menuitem8: "考核对象设置",
+                menuitem9: "考核内容设置",
+                menuitem10: "评分权重设置",
+                menuitem16: "积分规则设置",
+                menuitem12: "绩效标准",
+                menuitem19: "考核模板设置",
+                menuitem11: "考核方案设置",
+                menuitem3: "绩效考核",
+                menuitem13: "年度量化目标填报",
+                menuitem14: "年度量化目标修正",
+                menuitem15: "年度量化目标考核",
+                menuitem4: "绩效定级",
+                menuitem17: "绩效考核结果",
+                menuitem18: "绩效考核定级",
+                menuitem5: "绩效应用",
             },
         },
     },
@@ -160,6 +162,7 @@ export default {
         parjxkhjcsz: parjxkhjcsz_zh_CN,
         parptryndlhmb: parptryndlhmb_zh_CN,
         parldndlhmb: parldndlhmb_zh_CN,
+        parassesstemplate: parassesstemplate_zh_CN,
         parxmbpjbz: parxmbpjbz_zh_CN,
         pardjbz: pardjbz_zh_CN,
         parjgbmpjbz: parjgbmpjbz_zh_CN,

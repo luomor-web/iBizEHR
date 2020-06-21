@@ -126,7 +126,6 @@ public class PcmWzd0001ServiceImpl extends ServiceImpl<PcmWzd0001Mapper, PcmWzd0
     public boolean checkKey(PcmWzd0001 et) {
         return (!ObjectUtils.isEmpty(et.getWzd0001id()))&&(!Objects.isNull(this.getById(et.getWzd0001id())));
     }
-
     @Override
     @Transactional
     public boolean create(PcmWzd0001 et) {
@@ -158,6 +157,8 @@ public class PcmWzd0001ServiceImpl extends ServiceImpl<PcmWzd0001Mapper, PcmWzd0
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmWzd0001> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmWzd0001>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -208,5 +209,6 @@ public class PcmWzd0001ServiceImpl extends ServiceImpl<PcmWzd0001Mapper, PcmWzd0
     }
 
 }
+
 
 

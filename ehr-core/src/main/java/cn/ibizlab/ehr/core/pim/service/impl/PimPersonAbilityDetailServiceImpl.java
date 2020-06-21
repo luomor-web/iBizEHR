@@ -54,7 +54,6 @@ public class PimPersonAbilityDetailServiceImpl extends ServiceImpl<PimPersonAbil
     public boolean checkKey(PimPersonAbilityDetail et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonabilitydetailid()))&&(!Objects.isNull(this.getById(et.getPimpersonabilitydetailid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimPersonAbilityDetail et) {
@@ -169,6 +168,8 @@ public class PimPersonAbilityDetailServiceImpl extends ServiceImpl<PimPersonAbil
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -214,5 +215,6 @@ public class PimPersonAbilityDetailServiceImpl extends ServiceImpl<PimPersonAbil
     }
 
 }
+
 
 

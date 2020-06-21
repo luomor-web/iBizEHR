@@ -1,5 +1,9 @@
 server:
   port: 6098
+#Log配置
+logging:
+  level:
+    cn.ibizlab.ehr: info
 #zuul网关路由设置
 zuul:
   routes:
@@ -145,6 +149,10 @@ zuul:
       stripPrefix: false
     parldndlhmb:
       path: /parldndlhmbs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    parassesstemplate:
+      path: /parassesstemplates/**
       serviceId: ehr-webapi
       stripPrefix: false
     parxmbpjbz:

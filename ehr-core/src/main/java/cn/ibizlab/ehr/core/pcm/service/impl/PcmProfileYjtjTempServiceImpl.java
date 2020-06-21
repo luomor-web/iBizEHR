@@ -84,7 +84,6 @@ public class PcmProfileYjtjTempServiceImpl extends ServiceImpl<PcmProfileYjtjTem
     public boolean checkKey(PcmProfileYjtjTemp et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofileyjtjtempid()))&&(!Objects.isNull(this.getById(et.getPcmprofileyjtjtempid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -156,6 +155,8 @@ public class PcmProfileYjtjTempServiceImpl extends ServiceImpl<PcmProfileYjtjTem
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmProfileYjtjTempServiceImpl extends ServiceImpl<PcmProfileYjtjTem
     }
 
 }
+
 
 

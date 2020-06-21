@@ -56,19 +56,9 @@ export default class QZFPModel {
         name: 'srfsourcekey',
       },
       {
-        name: 'parkhzcmxid',
-        prop: 'parkhzcmxid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'parkhzcmxname',
-        prop: 'parkhzcmxname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'khdx',
-        prop: 'khdx',
-        dataType: 'PICKUPDATA',
+        name: 'khobject',
+        prop: 'khobject',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'pfzt',

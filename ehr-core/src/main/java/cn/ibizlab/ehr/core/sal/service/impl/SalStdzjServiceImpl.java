@@ -151,7 +151,6 @@ public class SalStdzjServiceImpl extends ServiceImpl<SalStdzjMapper, SalStdzj> i
         return (!ObjectUtils.isEmpty(et.getSalstdzjid()))&&(!Objects.isNull(this.getById(et.getSalstdzjid())));
     }
 
-
 	@Override
     public List<SalStdzj> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -190,6 +189,8 @@ public class SalStdzjServiceImpl extends ServiceImpl<SalStdzjMapper, SalStdzj> i
             et.setOrmorgname(ormorg.getOrgname());
         }
     }
+
+
 
 
     @Override
@@ -237,5 +238,6 @@ public class SalStdzjServiceImpl extends ServiceImpl<SalStdzjMapper, SalStdzj> i
     }
 
 }
+
 
 

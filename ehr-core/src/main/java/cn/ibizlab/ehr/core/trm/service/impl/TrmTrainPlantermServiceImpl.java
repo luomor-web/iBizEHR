@@ -118,7 +118,6 @@ public class TrmTrainPlantermServiceImpl extends ServiceImpl<TrmTrainPlantermMap
     public boolean checkKey(TrmTrainPlanterm et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainplantermid()))&&(!Objects.isNull(this.getById(et.getTrmtrainplantermid())));
     }
-
     @Override
     @Transactional
     public boolean update(TrmTrainPlanterm et) {
@@ -317,6 +316,8 @@ public class TrmTrainPlantermServiceImpl extends ServiceImpl<TrmTrainPlantermMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -362,5 +363,6 @@ public class TrmTrainPlantermServiceImpl extends ServiceImpl<TrmTrainPlantermMap
     }
 
 }
+
 
 

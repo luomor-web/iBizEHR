@@ -98,7 +98,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
      * 部门编制管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormdepestmanid",type=IdType.UUID)
+    @TableId(value= "ormdepestmanid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormdepestmanid")
     @JsonProperty("ormdepestmanid")
     private String ormdepestmanid;

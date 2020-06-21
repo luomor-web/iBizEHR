@@ -223,7 +223,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
      * 奖励惩罚标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimrewardpunishmentid",type=IdType.UUID)
+    @TableId(value= "pimrewardpunishmentid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimrewardpunishmentid")
     @JsonProperty("pimrewardpunishmentid")
     private String pimrewardpunishmentid;

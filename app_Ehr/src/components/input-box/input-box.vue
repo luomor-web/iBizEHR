@@ -1,11 +1,19 @@
 <template>
   <div class="input-unit">
-    <i-input
+    <InputNumber v-if="type === 'number'"
+      :placeholder="placeholder"
+      :size="size"
+      :precision="precision"
+      v-model="CurrentVal"
+      :disabled="disabled ? true : false"
+    ></InputNumber>
+    <i-input v-else
       :placeholder="placeholder"
       :size="size"
       :type="type"
       v-model="CurrentVal"
       :disabled="disabled ? true : false"
+      :autosize="autoSize"
       @on-enter="enter"
     ></i-input>
     <div class="unit-text">{{unit}}</div>
@@ -63,12 +71,32 @@ export default class InputBox extends Vue {
   @Prop() public type?: string;
 
   /**
+   * 精度
+   *
+   * @type {number}
+   * @memberof InputBox
+   */
+  @Prop({default: 0}) public precision?: number;
+
+  /**
+   * 多行文本行数
+   *
+   * @type {string}
+   * @memberof InputBox
+   */
+  @Prop() public autoSize?: any;
+
+  /**
    * 当前值
    *
    * @memberof InputBox
    */
   get CurrentVal() {
-    return this.itemValue;
+    if(Object.is(this.type, 'number') && this.itemValue && !isNaN(this.itemValue)){
+      return Number(Number(this.itemValue).toFixed(this.precision));
+    }else{
+      return this.itemValue;
+    }
   }
 
   /**

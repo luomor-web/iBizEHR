@@ -151,7 +151,6 @@ public class ParJxzgpcmxServiceImpl extends ServiceImpl<ParJxzgpcmxMapper, ParJx
         return (!ObjectUtils.isEmpty(et.getParjxzgpcmxid()))&&(!Objects.isNull(this.getById(et.getParjxzgpcmxid())));
     }
 
-
 	@Override
     public List<ParJxzgpcmx> selectByParjxzgpcid(String parjxzgpcid) {
         return baseMapper.selectByParjxzgpcid(parjxzgpcid);
@@ -190,6 +189,8 @@ public class ParJxzgpcmxServiceImpl extends ServiceImpl<ParJxzgpcmxMapper, ParJx
             et.setParjxzgpcname(parjxzgpc.getParjxzgpcname());
         }
     }
+
+
 
 
     @Override
@@ -237,5 +238,6 @@ public class ParJxzgpcmxServiceImpl extends ServiceImpl<ParJxzgpcmxMapper, ParJx
     }
 
 }
+
 
 

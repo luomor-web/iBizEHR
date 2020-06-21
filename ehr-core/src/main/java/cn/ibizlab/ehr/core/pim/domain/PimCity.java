@@ -60,7 +60,7 @@ public class PimCity extends EntityMP implements Serializable {
      * 市标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimcityid",type=IdType.UUID)
+    @TableId(value= "pimcityid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimcityid")
     @JsonProperty("pimcityid")
     private String pimcityid;

@@ -248,7 +248,7 @@ export default class PcmYdntmxPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PcmYdntmxPickupView
+     * @memberof PcmYdntmxPickupViewBase
      */
     public selectedData: string = "";
 

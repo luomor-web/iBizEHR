@@ -79,7 +79,6 @@ public class TrmZzobmServiceImpl extends ServiceImpl<TrmZzobmMapper, TrmZzobm> i
     public boolean checkKey(TrmZzobm et) {
         return (!ObjectUtils.isEmpty(et.getTrmzzobmid()))&&(!Objects.isNull(this.getById(et.getTrmzzobmid())));
     }
-
     @Override
     public TrmZzobm getDraft(TrmZzobm et) {
         return et;
@@ -156,6 +155,8 @@ public class TrmZzobmServiceImpl extends ServiceImpl<TrmZzobmMapper, TrmZzobm> i
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class TrmZzobmServiceImpl extends ServiceImpl<TrmZzobmMapper, TrmZzobm> i
     }
 
 }
+
 
 

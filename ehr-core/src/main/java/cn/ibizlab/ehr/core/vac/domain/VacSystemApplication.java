@@ -67,7 +67,7 @@ public class VacSystemApplication extends EntityMP implements Serializable {
      * 制度适用标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "vacsystemapplicationid",type=IdType.UUID)
+    @TableId(value= "vacsystemapplicationid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "vacsystemapplicationid")
     @JsonProperty("vacsystemapplicationid")
     private String vacsystemapplicationid;

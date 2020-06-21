@@ -154,7 +154,6 @@ public class ParJxbzglmxServiceImpl extends ServiceImpl<ParJxbzglmxMapper, ParJx
         return (!ObjectUtils.isEmpty(et.getParjxbzglmxid()))&&(!Objects.isNull(this.getById(et.getParjxbzglmxid())));
     }
 
-
 	@Override
     public List<ParJxbzglmx> selectByParjxbzglid(String parjxbzglid) {
         return baseMapper.selectByParjxbzglid(parjxbzglid);
@@ -217,6 +216,8 @@ public class ParJxbzglmxServiceImpl extends ServiceImpl<ParJxbzglmxMapper, ParJx
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -262,5 +263,6 @@ public class ParJxbzglmxServiceImpl extends ServiceImpl<ParJxbzglmxMapper, ParJx
     }
 
 }
+
 
 

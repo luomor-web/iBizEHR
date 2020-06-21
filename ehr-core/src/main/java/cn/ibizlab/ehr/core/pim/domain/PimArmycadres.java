@@ -149,7 +149,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
      * 军转干部标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimarmycadresid",type=IdType.UUID)
+    @TableId(value= "pimarmycadresid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimarmycadresid")
     @JsonProperty("pimarmycadresid")
     private String pimarmycadresid;

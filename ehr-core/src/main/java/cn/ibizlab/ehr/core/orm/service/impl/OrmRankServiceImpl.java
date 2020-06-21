@@ -136,7 +136,6 @@ public class OrmRankServiceImpl extends ServiceImpl<OrmRankMapper, OrmRank> impl
     public boolean checkKey(OrmRank et) {
         return (!ObjectUtils.isEmpty(et.getOrmrankid()))&&(!Objects.isNull(this.getById(et.getOrmrankid())));
     }
-
     @Override
     public OrmRank getDraft(OrmRank et) {
         return et;
@@ -216,6 +215,8 @@ public class OrmRankServiceImpl extends ServiceImpl<OrmRankMapper, OrmRank> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -261,5 +262,6 @@ public class OrmRankServiceImpl extends ServiceImpl<OrmRankMapper, OrmRank> impl
     }
 
 }
+
 
 

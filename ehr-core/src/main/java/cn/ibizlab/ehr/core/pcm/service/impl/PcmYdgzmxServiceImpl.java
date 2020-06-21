@@ -144,7 +144,6 @@ public class PcmYdgzmxServiceImpl extends ServiceImpl<PcmYdgzmxMapper, PcmYdgzmx
     public boolean checkKey(PcmYdgzmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmydgzmxid()))&&(!Objects.isNull(this.getById(et.getPcmydgzmxid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -204,6 +203,8 @@ public class PcmYdgzmxServiceImpl extends ServiceImpl<PcmYdgzmxMapper, PcmYdgzmx
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmYdgzmx> pages=baseMapper.searchGZCLSJLDQ(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmYdgzmx>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -271,5 +272,6 @@ public class PcmYdgzmxServiceImpl extends ServiceImpl<PcmYdgzmxMapper, PcmYdgzmx
     }
 
 }
+
 
 

@@ -1,36 +1,36 @@
 
 export default {
   fields: {
-    nd: '年度',
-    createdate: '建立时间',
-    pcmxkmlname: '学科名称',
-    updateman: '更新人',
-    pcmxkmlid: '学科目录标识',
-    xh: '排序号',
-    updatedate: '更新时间',
-    createman: '建立人',
-    xkml: '学科门类',
+    nd: "年度",
+    createdate: "建立时间",
+    pcmxkmlname: "学科名称",
+    updateman: "更新人",
+    pcmxkmlid: "学科目录标识",
+    xh: "排序号",
+    updatedate: "更新时间",
+    createman: "建立人",
+    xkml: "学科门类",
   },
 	views: {
 		pickupgridview: {
 			caption: "学科目录",
-      title: '学科目录选择表格视图',
+      		title: "学科目录选择表格视图",
 		},
 		xkmltreeexpview: {
 			caption: "学科目录",
-      title: '学科目录树导航视图',
+      		title: "学科目录树导航视图",
 		},
 		editview: {
 			caption: "学科目录",
-      title: '学科目录编辑视图',
+      		title: "学科目录编辑视图",
 		},
 		mpickupview: {
 			caption: "学科目录",
-      title: '学科目录数据多项选择视图',
+      		title: "学科目录数据多项选择视图",
 		},
 		curndgridview: {
 			caption: "学科目录",
-      title: '学科目录表格视图',
+      		title: "学科目录表格视图",
 		},
 	},
 	main_form: {
@@ -111,7 +111,7 @@ export default {
 	},
 	xkmltree_treeview: {
 		nodes: {
-			root: '默认根节点',
+			root: "默认根节点",
 		},
 		uiactions: {
 		},

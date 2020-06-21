@@ -227,11 +227,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmYdjdmxService from '@/service/pcm-ydjdmx/pcm-ydjdmx-service';
 import XZJDEditFormService from './xzjdedit-form-form-service';
 
@@ -250,7 +251,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public name?: string;
 
@@ -258,7 +259,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -266,7 +267,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public context: any;
 
@@ -274,7 +275,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public viewparams: any;
 
@@ -283,7 +284,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -291,7 +292,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -303,7 +304,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -311,7 +312,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {XZJDEditFormService}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public service: XZJDEditFormService = new XZJDEditFormService({ $store: this.$store });
 
@@ -319,7 +320,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmYdjdmxService}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public appEntityService: PcmYdjdmxService = new PcmYdjdmxService({ $store: this.$store });
     
@@ -329,7 +330,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -339,7 +340,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -356,7 +357,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public srfwfmemo:string = "";
     
@@ -364,7 +365,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -374,7 +375,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public getData(): any {
         return this.data;
@@ -384,7 +385,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -392,7 +393,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -400,7 +401,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -408,7 +409,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -416,7 +417,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public updateAction!: string;
     
@@ -424,7 +425,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public removeAction!: string;
     
@@ -432,7 +433,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -440,7 +441,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public loadAction!: string;
     
@@ -448,7 +449,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public createAction!: string;
 
@@ -456,7 +457,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public searchAction!: string;
 
@@ -464,7 +465,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Prop() public viewtag!: string;
 
@@ -472,7 +473,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -480,7 +481,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -489,7 +490,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -498,7 +499,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -507,7 +508,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public oldData: any = {};
 
@@ -515,7 +516,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -555,7 +556,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof XZJDEditForm
+      * @memberof XZJDEditFormBase
       */
     public currentAction: string = "";
 
@@ -563,7 +564,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof XZJDEditForm
+      * @memberof XZJDEditFormBase
       */
     public drcounter: number = 0;
 
@@ -571,7 +572,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof XZJDEditForm
+      * @memberof XZJDEditFormBase
       */
     public drsaveopt: any = {};
 
@@ -579,7 +580,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof XZJDEditForm
+      * @memberof XZJDEditFormBase
       */
     public saveState:any ;
 
@@ -587,7 +588,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -776,7 +777,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public detailsModel: any = {
         grouppanel1: new FormGroupPanelModel({ caption: '人员信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmydjdmx.xzjdeditform_form', extractMode: 'ITEM', details: [] } })
@@ -852,7 +853,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -864,7 +865,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -876,7 +877,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -888,7 +889,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -900,7 +901,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -912,7 +913,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -924,7 +925,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -936,7 +937,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -948,7 +949,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -960,7 +961,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -972,7 +973,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -984,7 +985,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.zz')
     onZzChange(newVal: any, oldVal: any) {
@@ -996,7 +997,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.zzid')
     onZzidChange(newVal: any, oldVal: any) {
@@ -1008,7 +1009,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.bm')
     onBmChange(newVal: any, oldVal: any) {
@@ -1020,7 +1021,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.bmid')
     onBmidChange(newVal: any, oldVal: any) {
@@ -1032,7 +1033,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.yzw')
     onYzwChange(newVal: any, oldVal: any) {
@@ -1044,7 +1045,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ygw')
     onYgwChange(newVal: any, oldVal: any) {
@@ -1056,7 +1057,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.jdksrq')
     onJdksrqChange(newVal: any, oldVal: any) {
@@ -1068,7 +1069,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.jdjsrq')
     onJdjsrqChange(newVal: any, oldVal: any) {
@@ -1080,7 +1081,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -1092,7 +1093,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -1104,7 +1105,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
@@ -1116,7 +1117,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormorgsectorid')
     onOrmorgsectoridChange(newVal: any, oldVal: any) {
@@ -1128,7 +1129,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormdutyname')
     onOrmdutynameChange(newVal: any, oldVal: any) {
@@ -1140,7 +1141,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormdutyid')
     onOrmdutyidChange(newVal: any, oldVal: any) {
@@ -1152,7 +1153,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormpostname')
     onOrmpostnameChange(newVal: any, oldVal: any) {
@@ -1164,7 +1165,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.ormpostid')
     onOrmpostidChange(newVal: any, oldVal: any) {
@@ -1176,7 +1177,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.finished')
     onFinishedChange(newVal: any, oldVal: any) {
@@ -1188,7 +1189,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.isfinished')
     onIsfinishedChange(newVal: any, oldVal: any) {
@@ -1200,7 +1201,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     @Watch('data.pcmydjdmxid')
     onPcmydjdmxidChange(newVal: any, oldVal: any) {
@@ -1213,7 +1214,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (Object.is(name, 'ormorgid')) {
@@ -1229,7 +1230,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof XZJDEditFormBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1246,7 +1247,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1286,12 +1287,12 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
 
         if(Object.is(name, 'pimpersonid')){
             const details: string[] = ['zzid', 'yzw', 'ygw', 'pimpersonname', 'ygbh', 'bm', 'zz', 'bmid'];
-            this.updateFormItems('FillPersonInfo', this.data, details, true);
+            this.updateFormItems('PersonInfo', this.data, details, true);
         }
 
         if(Object.is(name, 'pimpersonname')){
             const details: string[] = ['zzid', 'yzw', 'ygw', 'pimpersonname', 'ygbh', 'bm', 'zz', 'bmid'];
-            this.updateFormItems('FillPersonInfo', this.data, details, true);
+            this.updateFormItems('PersonInfo', this.data, details, true);
         }
     }
 
@@ -1301,7 +1302,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1318,7 +1319,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1339,7 +1340,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1364,7 +1365,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1380,7 +1381,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1392,7 +1393,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1408,7 +1409,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1426,7 +1427,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1441,7 +1442,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public getValues(): any {
         return this.data;
@@ -1452,7 +1453,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1470,7 +1471,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1488,7 +1489,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1500,7 +1501,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public created(): void {
         this.afterCreated();
@@ -1509,7 +1510,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof XZJDEditForm
+     *  @memberof XZJDEditFormBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1566,7 +1567,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1575,7 +1576,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1590,7 +1591,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof XZJDEditForm
+     * @memberof @memberof XZJDEditFormBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1608,7 +1609,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof XZJDEditForm
+     *@memberof @memberof XZJDEditFormBase
      */
     public print(){
         let _this:any = this;
@@ -1619,7 +1620,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1641,7 +1642,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1662,7 +1663,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1697,7 +1698,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1751,7 +1752,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1802,7 +1803,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1872,7 +1873,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof XZJDEditFormBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1906,7 +1907,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1962,7 +1963,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2038,7 +2039,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -2083,7 +2084,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public onEnter($event: any): void {
     }
@@ -2092,7 +2093,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2117,7 +2118,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2140,7 +2141,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2164,31 +2165,30 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof XZJDEditForm
+    * @memberof XZJDEditFormBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('finished')) {
@@ -2201,7 +2201,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof XZJDEditForm
+     * @memberof XZJDEditFormBase
      */
     public updateDefault(){                    
     }

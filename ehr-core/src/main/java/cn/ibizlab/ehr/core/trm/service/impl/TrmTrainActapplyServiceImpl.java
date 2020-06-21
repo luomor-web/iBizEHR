@@ -69,7 +69,6 @@ public class TrmTrainActapplyServiceImpl extends ServiceImpl<TrmTrainActapplyMap
     public boolean checkKey(TrmTrainActapply et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainactapplyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainactapplyid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmTrainActapply et) {
@@ -201,6 +200,8 @@ public class TrmTrainActapplyServiceImpl extends ServiceImpl<TrmTrainActapplyMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -246,5 +247,6 @@ public class TrmTrainActapplyServiceImpl extends ServiceImpl<TrmTrainActapplyMap
     }
 
 }
+
 
 

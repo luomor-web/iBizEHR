@@ -76,7 +76,6 @@ public class TrmAgencyRecordServiceImpl extends ServiceImpl<TrmAgencyRecordMappe
     public boolean checkKey(TrmAgencyRecord et) {
         return (!ObjectUtils.isEmpty(et.getTrmagencyrecordid()))&&(!Objects.isNull(this.getById(et.getTrmagencyrecordid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -195,6 +194,8 @@ public class TrmAgencyRecordServiceImpl extends ServiceImpl<TrmAgencyRecordMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -240,5 +241,6 @@ public class TrmAgencyRecordServiceImpl extends ServiceImpl<TrmAgencyRecordMappe
     }
 
 }
+
 
 

@@ -62,6 +62,13 @@ public class ParLdkhqzSearchContext extends QueryWrapperContext<ParLdkhqz> {
             this.getSearchCond().eq("parkhzcmxid", n_parkhzcmxid_eq);
         }
     }
+	private String n_khobject_eq;//[考核对象]
+	public void setN_khobject_eq(String n_khobject_eq) {
+        this.n_khobject_eq = n_khobject_eq;
+        if(!ObjectUtils.isEmpty(this.n_khobject_eq)){
+            this.getSearchCond().eq("khobject", n_khobject_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

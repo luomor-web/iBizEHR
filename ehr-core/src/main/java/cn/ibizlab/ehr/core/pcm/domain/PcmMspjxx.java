@@ -105,7 +105,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
      * 面试评价信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmmspjxxid",type=IdType.UUID)
+    @TableId(value= "pcmmspjxxid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmmspjxxid")
     @JsonProperty("pcmmspjxxid")
     private String pcmmspjxxid;

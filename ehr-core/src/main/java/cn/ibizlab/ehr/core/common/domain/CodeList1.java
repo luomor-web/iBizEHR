@@ -170,7 +170,7 @@ public class CodeList1 extends EntityMP implements Serializable {
      * 代码表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "codelistid",type=IdType.UUID)
+    @TableId(value= "codelistid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "codelistid")
     @JsonProperty("codelistid")
     private String codelistid;

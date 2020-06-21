@@ -40,7 +40,7 @@ public class TrmTrainActment extends EntityMP implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 调查问卷题目
+     * 调查问卷附件
      */
     @TableField(value = "dcwjtm")
     @JSONField(name = "dcwjtm")
@@ -70,10 +70,10 @@ public class TrmTrainActment extends EntityMP implements Serializable {
     @JsonProperty("updateman")
     private String updateman;
     /**
-     * 培训活动评估标识
+     * 培训后评估标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtrainactmentid",type=IdType.UUID)
+    @TableId(value= "trmtrainactmentid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtrainactmentid")
     @JsonProperty("trmtrainactmentid")
     private String trmtrainactmentid;
@@ -112,26 +112,48 @@ public class TrmTrainActment extends EntityMP implements Serializable {
     @JsonProperty("pxjg")
     private String pxjg;
     /**
-     * 培训活动评估名称
+     * 培训后评估名称
      */
     @TableField(value = "trmtrainactmentname")
     @JSONField(name = "trmtrainactmentname")
     @JsonProperty("trmtrainactmentname")
     private String trmtrainactmentname;
     /**
-     * 培训活动申请名称
+     * 培训后评估名称
      */
     @TableField(exist = false)
     @JSONField(name = "trmtrainactapplyname")
     @JsonProperty("trmtrainactapplyname")
     private String trmtrainactapplyname;
     /**
-     * 培训活动申请标识
+     * 培训后评估标识
      */
     @TableField(value = "trmtrainactapplyid")
     @JSONField(name = "trmtrainactapplyid")
     @JsonProperty("trmtrainactapplyid")
     private String trmtrainactapplyid;
+    /**
+     * 评估对象
+     */
+    @TableField(value = "evaltarget")
+    @JSONField(name = "evaltarget")
+    @JsonProperty("evaltarget")
+    private String evaltarget;
+    /**
+     * 评估内容
+     */
+    @TableField(value = "evalcontents")
+    @JSONField(name = "evalcontents")
+    @JsonProperty("evalcontents")
+    private String evalcontents;
+    /**
+     * 评估时间
+     */
+    @TableField(value = "evaltime")
+    @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @JSONField(name = "evaltime" , format="yyyy-MM-dd")
+    @JsonProperty("evaltime")
+    private Timestamp evaltime;
 
     /**
      * 培训活动
@@ -144,7 +166,7 @@ public class TrmTrainActment extends EntityMP implements Serializable {
 
 
     /**
-     * 设置 [调查问卷题目]
+     * 设置 [调查问卷附件]
      */
     public void setDcwjtm(String dcwjtm){
         this.dcwjtm = dcwjtm ;
@@ -168,7 +190,7 @@ public class TrmTrainActment extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [培训活动评估名称]
+     * 设置 [培训后评估名称]
      */
     public void setTrmtrainactmentname(String trmtrainactmentname){
         this.trmtrainactmentname = trmtrainactmentname ;
@@ -176,13 +198,47 @@ public class TrmTrainActment extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [培训活动申请标识]
+     * 设置 [培训后评估标识]
      */
     public void setTrmtrainactapplyid(String trmtrainactapplyid){
         this.trmtrainactapplyid = trmtrainactapplyid ;
         this.modify("trmtrainactapplyid",trmtrainactapplyid);
     }
 
+    /**
+     * 设置 [评估对象]
+     */
+    public void setEvaltarget(String evaltarget){
+        this.evaltarget = evaltarget ;
+        this.modify("evaltarget",evaltarget);
+    }
+
+    /**
+     * 设置 [评估内容]
+     */
+    public void setEvalcontents(String evalcontents){
+        this.evalcontents = evalcontents ;
+        this.modify("evalcontents",evalcontents);
+    }
+
+    /**
+     * 设置 [评估时间]
+     */
+    public void setEvaltime(Timestamp evaltime){
+        this.evaltime = evaltime ;
+        this.modify("evaltime",evaltime);
+    }
+
+    /**
+     * 格式化日期 [评估时间]
+     */
+    public String formatEvaltime(){
+        if (this.evaltime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(evaltime);
+    }
 
 }
 

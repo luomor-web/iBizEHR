@@ -1,46 +1,46 @@
 .app-form-item {
-    // margin-bottom: 16px;
-    >.ivu-form-item-label {
-        text-decoration: none;
-        display: block;
-        overflow: hidden;
-        white-space: nowrap;
-    }
-    >.ivu-form-item-content {
-        min-height: 36px;
-    }
-}
-.app-form-item-label-top {
-    >.ivu-form-item-label {
-        float: none;
-        display: inline-block;
-        padding: 0 0 10px;
-    }
+  height: 100%;
+  .editor {
+      height: 100%;
+      .ivu-form-item-content {
+          height: 100%;
+          min-height: 36px;
+      }
+  }
+  .app-form-item-label {
+      padding: 6px 10px 6px 0px;
+
+  }
 }
 
-.app-form-item-label-left{
-  .app-form-item-label{
-    float: left;
-    text-align: right;
-    padding-right: 12px;
+.app-form-item.label-top, .app-form-item.label-bottom {
+  .app-form-item-label {
+      display: block;
   }
 }
-.app-form-item-label-right{
-  .app-form-item-label{
-    float: right;
-    text-align: left;
-    padding-left: 12px;
+
+.app-form-item.label-left, .app-form-item.label-right {
+  .app-form-item-label, .editor {
+      height: 100%;
   }
 }
-.app-form-item-label-top{
-  .app-form-item-label{
-    display: block;
-    padding-bottom: 10px;
+
+.app-form-item.label-left {
+  .app-form-item-label {
+      float: left;
+      text-align: right;
   }
 }
-.app-form-item-label-bottom{
-  .app-form-item-label{
-    display: block;
-    padding-top: 10px;
+
+.app-form-item.label-right {
+  .app-form-item-label {
+      float: right;
+      padding: 6px 0px 6px 10px;
+  }
+}
+
+.app-form-item.label-none {
+  .app-form-item-label {
+      display: none !important;
   }
 }

@@ -154,7 +154,6 @@ public class TrmTeacherChargeServiceImpl extends ServiceImpl<TrmTeacherChargeMap
         return (!ObjectUtils.isEmpty(et.getTrmteacherchargeid()))&&(!Objects.isNull(this.getById(et.getTrmteacherchargeid())));
     }
 
-
 	@Override
     public List<TrmTeacherCharge> selectByTrmtrainplantermid(String trmtrainplantermid) {
         return baseMapper.selectByTrmtrainplantermid(trmtrainplantermid);
@@ -215,6 +214,8 @@ public class TrmTeacherChargeServiceImpl extends ServiceImpl<TrmTeacherChargeMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class TrmTeacherChargeServiceImpl extends ServiceImpl<TrmTeacherChargeMap
     }
 
 }
+
 
 

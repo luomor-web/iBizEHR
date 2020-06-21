@@ -43,7 +43,7 @@ public class PcmMonth extends EntityMP implements Serializable {
      * 月份标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmmonthid",type=IdType.UUID)
+    @TableId(value= "pcmmonthid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmmonthid")
     @JsonProperty("pcmmonthid")
     private String pcmmonthid;

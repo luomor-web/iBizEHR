@@ -99,7 +99,6 @@ public class PimNationMgrServiceImpl extends ServiceImpl<PimNationMgrMapper, Pim
     public boolean checkKey(PimNationMgr et) {
         return (!ObjectUtils.isEmpty(et.getNationmgrid()))&&(!Objects.isNull(this.getById(et.getNationmgrid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimNationMgr et) {
@@ -156,6 +155,8 @@ public class PimNationMgrServiceImpl extends ServiceImpl<PimNationMgrMapper, Pim
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PimNationMgrServiceImpl extends ServiceImpl<PimNationMgrMapper, Pim
     }
 
 }
+
 
 

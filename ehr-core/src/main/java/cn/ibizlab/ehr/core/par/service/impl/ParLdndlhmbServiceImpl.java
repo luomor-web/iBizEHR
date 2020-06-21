@@ -96,7 +96,6 @@ public class ParLdndlhmbServiceImpl extends ServiceImpl<ParLdndlhmbMapper, ParLd
     public boolean checkKey(ParLdndlhmb et) {
         return (!ObjectUtils.isEmpty(et.getParldndlhmbid()))&&(!Objects.isNull(this.getById(et.getParldndlhmbid())));
     }
-
     @Override
     @Transactional
     public ParLdndlhmb get(String key) {
@@ -195,6 +194,8 @@ public class ParLdndlhmbServiceImpl extends ServiceImpl<ParLdndlhmbMapper, ParLd
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -240,5 +241,6 @@ public class ParLdndlhmbServiceImpl extends ServiceImpl<ParLdndlhmbMapper, ParLd
     }
 
 }
+
 
 

@@ -51,7 +51,7 @@ public class PimStafftype extends EntityMP implements Serializable {
      * 员工类型管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimstafftypeid",type=IdType.UUID)
+    @TableId(value= "pimstafftypeid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimstafftypeid")
     @JsonProperty("pimstafftypeid")
     private String pimstafftypeid;

@@ -248,7 +248,7 @@ export default class OrmSignOrgPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof OrmSignOrgPickupView
+     * @memberof OrmSignOrgPickupViewBase
      */
     public selectedData: string = "";
 

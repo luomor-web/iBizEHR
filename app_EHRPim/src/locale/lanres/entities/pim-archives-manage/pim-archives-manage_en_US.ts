@@ -1,43 +1,43 @@
 
 export default {
   fields: {
-    enable: '逻辑有效标志',
-    createman: '建立人',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    archivesmanagename: '档案管理名称',
-    archivesno: '档案编号',
-    createdate: '建立时间',
-    archivesmanageid: '档案管理标识',
+    enable: "逻辑有效标志",
+    createman: "建立人",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    archivesmanagename: "档案管理名称",
+    archivesno: "档案编号",
+    createdate: "建立时间",
+    archivesmanageid: "档案管理标识",
   },
 	views: {
 		pickupgridview: {
 			caption: "档案管理",
-      title: '档案管理选择表格视图',
+      		title: "档案管理选择表格视图",
 		},
 		editview: {
 			caption: "档案管理",
-      title: '档案管理编辑视图',
+      		title: "档案管理编辑视图",
 		},
 		pickupview: {
 			caption: "档案管理",
-      title: '档案管理数据选择视图',
+      		title: "档案管理数据选择视图",
 		},
 		gridview: {
 			caption: "档案管理",
-      title: '档案管理表格视图',
+      		title: "档案管理表格视图",
 		},
 		editview2: {
 			caption: "档案管理",
-      title: '档案管理编辑视图',
+      		title: "档案管理编辑视图",
 		},
 		mpickupview: {
 			caption: "档案管理",
-      title: '档案管理数据多项选择视图',
+      		title: "档案管理数据多项选择视图",
 		},
 		redirectview: {
 			caption: "档案管理",
-      title: '档案管理数据重定向视图',
+      		title: "档案管理数据重定向视图",
 		},
 	},
 	main_form: {

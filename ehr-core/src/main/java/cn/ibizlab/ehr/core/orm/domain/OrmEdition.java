@@ -50,7 +50,7 @@ public class OrmEdition extends EntityMP implements Serializable {
      * 版本对照表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormeditionid",type=IdType.UUID)
+    @TableId(value= "ormeditionid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormeditionid")
     @JsonProperty("ormeditionid")
     private String ormeditionid;

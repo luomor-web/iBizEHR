@@ -99,6 +99,22 @@ export default class AppImageUpload extends Vue {
     @Prop() public data!: string;
 
     /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof AppFormDRUIPart
+     */
+    @Prop() public viewparams!: any;
+
+    /**
+     * 视图上下文
+     *
+     * @type {*}
+     * @memberof AppAutocomplete
+     */
+    @Prop() public context!: any;
+
+    /**
      * 初始化值
      *
      * @type {*}
@@ -185,20 +201,20 @@ export default class AppImageUpload extends Vue {
     @Provide() public files = [];
 
     /**
-     * 上传keys
+     * 上传params
      *
      * @type {Array<any>}
      * @memberof AppImageUpload
      */
-    public upload_keys: Array<any> = [];
+    public upload_params: Array<any> = [];
 
     /**
-     * 导出keys
+     * 导出params
      *
      * @type {Array<any>}
      * @memberof AppImageUpload
      */
-    public export_keys: Array<any> = [];
+    public export_params: Array<any> = [];
 
     /**
      * 自定义数组
@@ -238,26 +254,31 @@ export default class AppImageUpload extends Vue {
      * @memberof AppImageUpload
      */
     private dataProcess(): void {
-        let upload_arr: Array<string> = [];
-        let export_arr: Array<string> = [];
-        const _data: any = JSON.parse(this.data);
-        this.upload_keys.forEach((key: string) => {
-            upload_arr.push(`${key}=${_data[key]}`);
-        });
-        this.export_keys.forEach((key: string) => {
-            export_arr.push(`${key}=${_data[key]}`);
-        });
 
         let _url = `${Environment.BaseUrl}${Environment.UploadFile}`;
-        if (upload_arr.length > 0 || this.custom_arr.length > 0) {
-            _url = `${_url}?${upload_arr.join('&')}${upload_arr.length > 0 ? '&' : ''}${this.custom_arr.join('&')}`;
+        if (this.upload_params.length > 0 ) {
+            _url +='?';
+            this.upload_params.forEach((item:any,i:any)=>{
+                _url += `${Object.keys(item)[0]}=${Object.values(item)[0]}`;
+                if(i<this.upload_params.length-1){
+                    _url += '&';
+                }
+            })
+            
         }
+        
         this.uploadUrl = _url;
-
+        
         this.files.forEach((file: any) => {
             let url = `${this.downloadUrl}/${file.id}`;
-            if (upload_arr.length > 0 || this.custom_arr.length > 0) {
-                url = `${url}?${upload_arr.join('&')}${upload_arr.length > 0 ? '&' : ''}${this.custom_arr.join('&')}`;
+            if (this.export_params.length > 0) {
+                url +='?';
+                this.export_params.forEach((item:any,i:any)=>{
+                    url += `${Object.keys(item)[0]}=${Object.values(item)[0]}`;
+                    if(i<this.export_params.length-1){
+                        url += '&';
+                    }
+                })
             }
             file.url = url;
         });
@@ -288,28 +309,35 @@ export default class AppImageUpload extends Vue {
     public mounted() {
         this.appData = this.$store.getters.getAppData();
 
-        let uploadparams: string = '';
-        let exportparams: string = '';
+        let uploadparams: any = {};
+        let exportparams: any = {};
 
-        let upload_keys: Array<string> = [];
-        let export_keys: Array<string> = [];
+        let upload_params: Array<string> = [];
+        let export_params: Array<string> = [];
         let custom_arr: Array<string> = [];
+
+        let param:any = this.viewparams;
+        let context:any = this.context;
+        let _data:any = JSON.parse(this.data);
         if (this.uploadparams && !Object.is(this.uploadparams, '')) {
             uploadparams = this.uploadparams;
-            upload_keys = uploadparams.split(';');
+            upload_params = this.$util.computedNavData(_data,param,context,uploadparams);
         }
         if (this.exportparams && !Object.is(this.exportparams, '')) {
             exportparams = this.exportparams;
-            export_keys = exportparams.split(';');
+            export_params = this.$util.computedNavData(_data,param,context,exportparams);
         }
-        if (this.customparams && !Object.is(this.customparams, '')) {
-            Object.keys(this.customparams).forEach((name: string) => {
-                custom_arr.push(`${name}=${this.customparams[name]}`);
-            });
+        
+        for (const item in upload_params) {
+            this.upload_params.push({
+                [item]:upload_params[item]
+            })
         }
-        this.upload_keys = upload_keys;
-        this.export_keys = export_keys;
-        this.custom_arr = custom_arr;
+        for (const item in export_params) {
+            this.export_params.push({
+                [item]:export_params[item]
+            })
+        }
 
         this.setFiles(this.value);
         this.dataProcess();

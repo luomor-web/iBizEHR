@@ -60,7 +60,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
      * 优秀青年干部推荐标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmgradecadresid",type=IdType.UUID)
+    @TableId(value= "trmgradecadresid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmgradecadresid")
     @JsonProperty("trmgradecadresid")
     private String trmgradecadresid;

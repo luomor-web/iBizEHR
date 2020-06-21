@@ -82,7 +82,6 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
     public boolean checkKey(PcmYdjpmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmydjpmxid()))&&(!Objects.isNull(this.getById(et.getPcmydjpmxid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmYdjpmx et) {
@@ -194,6 +193,8 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
 
 
 
+
+
     @Autowired
     cn.ibizlab.ehr.core.pcm.mapping.PcmYdjpmxInheritMapping pcmydjpmxInheritMapping;
     @Autowired
@@ -257,5 +258,6 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
     }
 
 }
+
 
 

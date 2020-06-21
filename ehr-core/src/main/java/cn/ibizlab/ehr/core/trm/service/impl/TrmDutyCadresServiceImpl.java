@@ -150,7 +150,6 @@ public class TrmDutyCadresServiceImpl extends ServiceImpl<TrmDutyCadresMapper, T
     public boolean checkKey(TrmDutyCadres et) {
         return (!ObjectUtils.isEmpty(et.getTrmdutycadresid()))&&(!Objects.isNull(this.getById(et.getTrmdutycadresid())));
     }
-
     @Override
     @Transactional
     public TrmDutyCadres xX(TrmDutyCadres et) {
@@ -377,6 +376,8 @@ public class TrmDutyCadresServiceImpl extends ServiceImpl<TrmDutyCadresMapper, T
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -422,5 +423,6 @@ public class TrmDutyCadresServiceImpl extends ServiceImpl<TrmDutyCadresMapper, T
     }
 
 }
+
 
 

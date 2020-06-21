@@ -70,7 +70,6 @@ public class ParJxkhmbmxServiceImpl extends ServiceImpl<ParJxkhmbmxMapper, ParJx
     public boolean checkKey(ParJxkhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParjxkhmbmxid()))&&(!Objects.isNull(this.getById(et.getParjxkhmbmxid())));
     }
-
     @Override
     public ParJxkhmbmx getDraft(ParJxkhmbmx et) {
         fillParentData(et);
@@ -192,6 +191,8 @@ public class ParJxkhmbmxServiceImpl extends ServiceImpl<ParJxkhmbmxMapper, ParJx
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class ParJxkhmbmxServiceImpl extends ServiceImpl<ParJxkhmbmxMapper, ParJx
     }
 
 }
+
 
 

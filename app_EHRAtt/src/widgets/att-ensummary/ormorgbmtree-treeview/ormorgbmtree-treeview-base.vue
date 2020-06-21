@@ -48,11 +48,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import AttEnsummaryService from '@/service/att-ensummary/att-ensummary-service';
 import ORMORGBMTreeService from './ormorgbmtree-treeview-service';
 
@@ -69,7 +70,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public name?: string;
 
@@ -77,7 +78,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -85,7 +86,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public context: any;
 
@@ -93,7 +94,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public viewparams: any;
 
@@ -102,7 +103,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -110,7 +111,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public getControlType(): string {
         return 'TREEVIEW'
@@ -122,7 +123,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -130,7 +131,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {ORMORGBMTreeService}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public service: ORMORGBMTreeService = new ORMORGBMTreeService({ $store: this.$store });
 
@@ -138,7 +139,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {AttEnsummaryService}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public appEntityService: AttEnsummaryService = new AttEnsummaryService({ $store: this.$store });
     
@@ -148,7 +149,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -158,7 +159,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -176,7 +177,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public getDatas(): any[] {
         return [this.currentselectedNode];
@@ -186,7 +187,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public getData(): any {
         return this.currentselectedNode;
@@ -196,7 +197,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop({ default: true }) public isSingleSelect!: boolean;
 
@@ -204,7 +205,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 是否默认选中第一条数据
      *
      * @type {boolean}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
@@ -212,7 +213,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 枝干节点是否可用（具有数据能力，可抛出）
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop({default:true}) public isBranchAvailable!: boolean;
 
@@ -220,7 +221,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -228,7 +229,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 初始化完成
      *
      * @type {boolean}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public inited: boolean = false;
 
@@ -236,7 +237,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 已选中数据集合
      *
      * @type {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public selectedNodes: any = [];
 
@@ -244,7 +245,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 当前选中数据项
      *
      * @type {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public currentselectedNode: any = {};
 
@@ -252,7 +253,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public selectedData?: string;
 
@@ -261,7 +262,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Watch('selectedData')
     public onValueChange(newVal: any, oldVal: any) {
@@ -283,7 +284,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 回显选中数据集合
      *
      * @type {*}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public echoselectedNodes:any[] = this.selectedData ? ( this.isSingleSelect ? [JSON.parse(this.selectedData)[0]] : JSON.parse(this.selectedData)) : [];
 
@@ -291,7 +292,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public updateAction!: string;
 
@@ -299,7 +300,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 部件行为--fetch
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public fetchAction!: string;
 
@@ -307,7 +308,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public removeAction!: string;
 
@@ -315,7 +316,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public loadAction!: string;
 
@@ -323,7 +324,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Prop() public createAction!: string;
 
@@ -331,7 +332,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 过滤属性
      *
      * @type {string}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public srfnodefilter: string = '';
 
@@ -339,7 +340,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 默认输出图标
      *
      * @type {boolean}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public isOutputIconDefault: boolean = true;
 
@@ -348,7 +349,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 数据展开主键
      *
      * @type {string[]}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     @Provide()
     public expandedKeys: string[] = [];
@@ -360,7 +361,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * @param {*} data
      * @param {*} data 当前节点对应传入对象
      * @param {*} checkedState 树目前选中状态对象
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public onCheck(data: any, checkedState: any) {
         // 处理多选数据
@@ -377,7 +378,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * @public
      * @param {*} data 节点对应传入对象
      * @param {*} node 节点对应node对象
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public selectionChange(data: any, node: any) {
         // 禁用项处理
@@ -400,7 +401,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public created() {
         this.afterCreated();
@@ -409,7 +410,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof ORMORGBMTree
+     *  @memberof ORMORGBMTreeBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -447,7 +448,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -456,7 +457,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -467,7 +468,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * 刷新数据
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public refresh_all(): void {
         this.inited = false;
@@ -479,7 +480,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
     /**
      * 刷新父节点
      *
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public refresh_parent(): void {
         if (Object.keys(this.currentselectedNode).length === 0) {
@@ -508,7 +509,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 数据加载
      *
      * @param {*} node
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public load(node: any = {}, resolve?: any) {
         if (node.data && node.data.children) {
@@ -558,7 +559,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 计算当前节点的上下文
      *
      * @param {*} curNode 当前节点
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public computecurNodeContext(curNode:any){
         let tempContext:any = {};
@@ -574,7 +575,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 刷新功能
      *
      * @param {any[]} args
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public refresh(args: any[]): void {
         this.refresh_all();
@@ -587,7 +588,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * @param {*} [curContext] 当前节点上下文
      * @param {*} [arg={}] 当前节点附加参数
      * @param {boolean} parentnode 是否是刷新父节点
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public refresh_node(curContext:any,arg: any = {}, parentnode: boolean): void {
         const { srfnodeid: id } = arg;
@@ -620,7 +621,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * @public
      * @param {any[]} items
      * @returns {any[]}
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public formatExpanded(items: any[]): any[] {
         const data: any[] = [];
@@ -638,7 +639,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * @param {any[]} items 当前节点所有子节点集合
      * @param {boolean} isRoot 是否是加载根节点
      * @param {boolean} isSelectedAll 是否选中所有子节点
-     * @memberof MainTree
+     * @memberof ORMORGBMTreeBase
      */
     public setDefaultSelection(items: any[], isRoot: boolean = false, isSelectedAll: boolean = false): void {
         if(items.length == 0){
@@ -704,7 +705,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      *
      * @param {*} node
      * @returns
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public renderContextMenu(node: any) {
         let content;
@@ -720,7 +721,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 设置选中高亮
      *
      * @param {*} data
-     * @memberof ORMORGBMTree
+     * @memberof ORMORGBMTreeBase
      */
     public setTreeNodeHighLight(data: any): void {
         const tree: any = this.$refs.treeexpbar_tree;
@@ -731,7 +732,7 @@ export default class ORMORGBMTreeBase extends Vue implements ControlInterface {
      * 执行默认界面行为
      *
      * @param {*} node
-     * @memberof AppView
+     * @memberof ORMORGBMTreeBase
      */
     public doDefaultAction(node: any) {
         if (node && node.data) {

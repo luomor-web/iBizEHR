@@ -1,27 +1,27 @@
 
 export default {
   fields: {
-    updatedate: '更新时间',
-    bz: '补贴标准',
-    createman: '建立人',
-    salstdgwid: '高温津贴标准标识',
-    updateman: '更新人',
-    jssj: '结束时间',
-    enable: '逻辑有效标志',
-    createdate: '建立时间',
-    salstdgwname: '高温津贴标准名称',
-    qssj: '起始时间',
-    ormorgname: '组织',
-    ormorgid: '组织标识',
+    updatedate: "更新时间",
+    bz: "补贴标准",
+    createman: "建立人",
+    salstdgwid: "高温津贴标准标识",
+    updateman: "更新人",
+    jssj: "结束时间",
+    enable: "逻辑有效标志",
+    createdate: "建立时间",
+    salstdgwname: "高温津贴标准名称",
+    qssj: "起始时间",
+    ormorgname: "组织",
+    ormorgid: "组织标识",
   },
 	views: {
 		editview: {
 			caption: "高温津贴标准",
-      title: '高温津贴标准编辑视图',
+      		title: "高温津贴标准编辑视图",
 		},
 		gridview: {
 			caption: "高温津贴标准",
-      title: '高温津贴标准表格视图',
+      		title: "高温津贴标准表格视图",
 		},
 	},
 	main_form: {

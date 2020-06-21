@@ -70,7 +70,6 @@ public class OrmXmglServiceImpl extends ServiceImpl<OrmXmglMapper, OrmXmgl> impl
     public boolean checkKey(OrmXmgl et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmglid()))&&(!Objects.isNull(this.getById(et.getOrmxmglid())));
     }
-
     @Override
     public OrmXmgl getDraft(OrmXmgl et) {
         return et;
@@ -178,6 +177,8 @@ public class OrmXmglServiceImpl extends ServiceImpl<OrmXmglMapper, OrmXmgl> impl
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -223,5 +224,6 @@ public class OrmXmglServiceImpl extends ServiceImpl<OrmXmglMapper, OrmXmgl> impl
     }
 
 }
+
 
 

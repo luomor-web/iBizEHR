@@ -248,7 +248,7 @@ export default class PIMLABOURCAMPANYPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PIMLABOURCAMPANYPickupView
+     * @memberof PIMLABOURCAMPANYPickupViewBase
      */
     public selectedData: string = "";
 

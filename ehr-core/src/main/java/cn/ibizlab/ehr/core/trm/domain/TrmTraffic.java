@@ -43,7 +43,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
      * 交通标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtrafficid",type=IdType.UUID)
+    @TableId(value= "trmtrafficid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtrafficid")
     @JsonProperty("trmtrafficid")
     private String trmtrafficid;

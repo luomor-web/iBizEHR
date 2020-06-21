@@ -137,7 +137,6 @@ public class TrmTrainDataServiceImpl extends ServiceImpl<TrmTrainDataMapper, Trm
     public boolean checkKey(TrmTrainData et) {
         return (!ObjectUtils.isEmpty(et.getTrmtraindataid()))&&(!Objects.isNull(this.getById(et.getTrmtraindataid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmTrainData et) {
@@ -215,6 +214,8 @@ public class TrmTrainDataServiceImpl extends ServiceImpl<TrmTrainDataMapper, Trm
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -260,5 +261,6 @@ public class TrmTrainDataServiceImpl extends ServiceImpl<TrmTrainDataMapper, Trm
     }
 
 }
+
 
 

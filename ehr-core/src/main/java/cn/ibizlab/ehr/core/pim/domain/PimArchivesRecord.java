@@ -83,7 +83,7 @@ public class PimArchivesRecord extends EntityMP implements Serializable {
      * 档案目录缺失记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimarchivesrecordid",type=IdType.UUID)
+    @TableId(value= "pimarchivesrecordid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimarchivesrecordid")
     @JsonProperty("pimarchivesrecordid")
     private String pimarchivesrecordid;

@@ -10,21 +10,21 @@ global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
 
 no-loop
 
-//逻辑处理节点[准备参数]
-rule "deaction1"
-ruleflow-group "trmtrainplantermlxdeaction1"
-    when
-    then
-    trmtrainplantermservice.update(trmtrainplantermlxdefault);
-    update(trmtrainplantermlxdefault);//更新fact中变量值
-    end
-
-//逻辑处理节点[更新状态]
+//逻辑处理节点[参数准备]
 rule "prepareparam1"
 ruleflow-group "trmtrainplantermlxprepareparam1"
     when
     then
     trmtrainplantermlxdefault.set("bjzt","20");
+    update(trmtrainplantermlxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[更新状态]
+rule "deaction1"
+ruleflow-group "trmtrainplantermlxdeaction1"
+    when
+    then
+    trmtrainplantermservice.update(trmtrainplantermlxdefault);
     update(trmtrainplantermlxdefault);//更新fact中变量值
     end
 

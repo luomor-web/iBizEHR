@@ -28,7 +28,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
 
 /**
- * 实体[考核内容]
+ * 实体[考核模板明细]
  */
 @Getter
 @Setter
@@ -47,10 +47,10 @@ public class ParKhzcmx extends EntityMP implements Serializable {
     @JsonProperty("szqz")
     private Double szqz;
     /**
-     * 考核内容标识
+     * 考核模板明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "parkhzcmxid",type=IdType.UUID)
+    @TableId(value= "parkhzcmxid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "parkhzcmxid")
     @JsonProperty("parkhzcmxid")
     private String parkhzcmxid;
@@ -78,7 +78,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
     @JsonProperty("sfqy")
     private Integer sfqy;
     /**
-     * 考核内容
+     * 考核模板明细
      */
     @TableField(value = "parkhzcmxname")
     @JSONField(name = "parkhzcmxname")
@@ -123,6 +123,42 @@ public class ParKhzcmx extends EntityMP implements Serializable {
     @JSONField(name = "parjxkhjcszid")
     @JsonProperty("parjxkhjcszid")
     private String parjxkhjcszid;
+    /**
+     * 考核模板标识
+     */
+    @TableField(value = "parassesstemplateid")
+    @JSONField(name = "parassesstemplateid")
+    @JsonProperty("parassesstemplateid")
+    private String parassesstemplateid;
+    /**
+     * 考核模板名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "parassesstemplatename")
+    @JsonProperty("parassesstemplatename")
+    private String parassesstemplatename;
+    /**
+     * 考核内容
+     */
+    @TableField(value = "khnr")
+    @JSONField(name = "khnr")
+    @JsonProperty("khnr")
+    private String khnr;
+    /**
+     * 排序
+     */
+    @TableField(value = "xh")
+    @JSONField(name = "xh")
+    @JsonProperty("xh")
+    private Integer xh;
+
+    /**
+     * 考核模板
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.par.domain.ParAssessTemplate parassesstemplate;
 
     /**
      * 考核方案
@@ -151,7 +187,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [考核内容]
+     * 设置 [考核模板明细]
      */
     public void setParkhzcmxname(String parkhzcmxname){
         this.parkhzcmxname = parkhzcmxname ;
@@ -164,6 +200,30 @@ public class ParKhzcmx extends EntityMP implements Serializable {
     public void setParjxkhjcszid(String parjxkhjcszid){
         this.parjxkhjcszid = parjxkhjcszid ;
         this.modify("parjxkhjcszid",parjxkhjcszid);
+    }
+
+    /**
+     * 设置 [考核模板标识]
+     */
+    public void setParassesstemplateid(String parassesstemplateid){
+        this.parassesstemplateid = parassesstemplateid ;
+        this.modify("parassesstemplateid",parassesstemplateid);
+    }
+
+    /**
+     * 设置 [考核内容]
+     */
+    public void setKhnr(String khnr){
+        this.khnr = khnr ;
+        this.modify("khnr",khnr);
+    }
+
+    /**
+     * 设置 [排序]
+     */
+    public void setXh(Integer xh){
+        this.xh = xh ;
+        this.modify("xh",xh);
     }
 
 

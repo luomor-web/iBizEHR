@@ -248,7 +248,7 @@ export default class AttEndenceSetupPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof AttEndenceSetupPickupView
+     * @memberof AttEndenceSetupPickupViewBase
      */
     public selectedData: string = "";
 

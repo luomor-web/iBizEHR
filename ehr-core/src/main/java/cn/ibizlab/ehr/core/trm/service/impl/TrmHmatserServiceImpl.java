@@ -137,7 +137,6 @@ public class TrmHmatserServiceImpl extends ServiceImpl<TrmHmatserMapper, TrmHmat
     public boolean checkKey(TrmHmatser et) {
         return (!ObjectUtils.isEmpty(et.getTrmhmatserid()))&&(!Objects.isNull(this.getById(et.getTrmhmatserid())));
     }
-
     @Override
     public TrmHmatser getDraft(TrmHmatser et) {
         fillParentData(et);
@@ -242,6 +241,8 @@ public class TrmHmatserServiceImpl extends ServiceImpl<TrmHmatserMapper, TrmHmat
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -287,5 +288,6 @@ public class TrmHmatserServiceImpl extends ServiceImpl<TrmHmatserMapper, TrmHmat
     }
 
 }
+
 
 

@@ -6,41 +6,25 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parldkhqz.qzfp_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.parkhzcmxname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='parkhzcmxname' :itemRules="this.rules.parkhzcmxname" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.parkhzcmxname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.parkhzcmxname.error" :isEmptyCaption="false" labelPos="LEFT">
+        <i-col v-show="detailsModel.khobject.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khobject' :itemRules="this.rules.khobject" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.khobject')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khobject.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.parkhzcmxname.disabled"
-  name='parkhzcmxname'
-  deMajorField='parkhzcmxname'
-  deKeyField='parkhzcmx'
-  :service="service"
-  :acParams="{ serviceName: 'ParKhzcmxService', interfaceName: 'FetchDefault'}"
-  valueitem='parkhzcmxid' 
-  :value="data.parkhzcmxname" 
-  editortype="" 
-  :pickupView="{ viewname: 'par-khzcmx-pickup-view', title: $t('entities.parkhzcmx.views.pickupview.title'), deResParameters: [{ pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' }, ], parameters: [{ pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+ <dropdown-list 
+    v-model="data.khobject" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.khobject.disabled"  
+    tag='EhrCodeList0015' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.khdx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='khdx' :itemRules="this.rules.khdx" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.khdx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khdx.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='khdx' :value="data.khdx" tag='EhrCodeList0015' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pfzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.pfzt.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pfzt' :itemRules="this.rules.pfzt" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.pfzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pfzt.error" :isEmptyCaption="false" labelPos="LEFT">
     
  <dropdown-list 
@@ -58,7 +42,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.qzzb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.qzzb.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='qzzb' :itemRules="this.rules.qzzb" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.qzzb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qzzb.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.qzzb"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.qzzb.disabled" type='number'  style=""></input-box>
 </app-form-item>
@@ -76,11 +60,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import ParLdkhqzService from '@/service/par-ldkhqz/par-ldkhqz-service';
 import QZFPService from './qzfp-form-service';
 
@@ -99,7 +84,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public name?: string;
 
@@ -107,7 +92,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -115,7 +100,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public context: any;
 
@@ -123,7 +108,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public viewparams: any;
 
@@ -132,7 +117,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -140,7 +125,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -152,7 +137,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -160,7 +145,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {QZFPService}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public service: QZFPService = new QZFPService({ $store: this.$store });
 
@@ -168,7 +153,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {ParLdkhqzService}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public appEntityService: ParLdkhqzService = new ParLdkhqzService({ $store: this.$store });
     
@@ -178,7 +163,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -188,7 +173,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -205,7 +190,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public srfwfmemo:string = "";
     
@@ -213,7 +198,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -223,7 +208,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public getData(): any {
         return this.data;
@@ -233,7 +218,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -241,7 +226,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -249,7 +234,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -257,7 +242,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -265,7 +250,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public updateAction!: string;
     
@@ -273,7 +258,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public removeAction!: string;
     
@@ -281,7 +266,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -289,7 +274,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public loadAction!: string;
     
@@ -297,7 +282,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public createAction!: string;
 
@@ -305,7 +290,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public searchAction!: string;
 
@@ -313,7 +298,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Prop() public viewtag!: string;
 
@@ -321,7 +306,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -329,7 +314,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -338,7 +323,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -347,7 +332,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -356,7 +341,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public oldData: any = {};
 
@@ -364,7 +349,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -375,9 +360,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        parkhzcmxid: null,
-        parkhzcmxname: null,
-        khdx: null,
+        khobject: null,
         pfzt: null,
         qzzb: null,
         parldkhqzid: null,
@@ -388,7 +371,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof QZFP
+      * @memberof QZFPBase
       */
     public currentAction: string = "";
 
@@ -396,7 +379,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof QZFP
+      * @memberof QZFPBase
       */
     public drcounter: number = 0;
 
@@ -404,7 +387,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof QZFP
+      * @memberof QZFPBase
       */
     public drsaveopt: any = {};
 
@@ -412,7 +395,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof QZFP
+      * @memberof QZFPBase
       */
     public saveState:any ;
 
@@ -420,7 +403,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -471,23 +454,11 @@ export default class QZFPBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        parkhzcmxid: [
-            { type: 'string', message: '考核内容ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容ID 值不能为空', trigger: 'blur' },
-        ],
-        parkhzcmxname: [
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'blur' },
-        ],
-        khdx: [
-            { type: 'string', message: '所属考核对象 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '所属考核对象 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '所属考核对象 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '所属考核对象 值不能为空', trigger: 'blur' },
+        khobject: [
+            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'blur' },
         ],
         pfzt: [
             { type: 'string', message: '评分主体 值必须为字符串类型', trigger: 'change' },
@@ -513,7 +484,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '评分权重分配', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parldkhqz.qzfp_form', extractMode: 'ITEM', details: [] } })
@@ -536,11 +507,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parkhzcmxid: new FormItemModel({ caption: '考核内容ID', detailType: 'FORMITEM', name: 'parkhzcmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        parkhzcmxname: new FormItemModel({ caption: '考核内容', detailType: 'FORMITEM', name: 'parkhzcmxname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        khdx: new FormItemModel({ caption: '所属考核对象', detailType: 'FORMITEM', name: 'khdx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        khobject: new FormItemModel({ caption: '考核对象', detailType: 'FORMITEM', name: 'khobject', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pfzt: new FormItemModel({ caption: '评分主体', detailType: 'FORMITEM', name: 'pfzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -555,7 +522,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -567,7 +534,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -579,7 +546,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -591,7 +558,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -603,7 +570,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -615,7 +582,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -627,7 +594,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -639,7 +606,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -647,39 +614,15 @@ export default class QZFPBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 parkhzcmxid 值
+     * 监控表单属性 khobject 值
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
-    @Watch('data.parkhzcmxid')
-    onParkhzcmxidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 parkhzcmxname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof QZFP
-     */
-    @Watch('data.parkhzcmxname')
-    onParkhzcmxnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 khdx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof QZFP
-     */
-    @Watch('data.khdx')
-    onKhdxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'khdx', newVal: newVal, oldVal: oldVal });
+    @Watch('data.khobject')
+    onKhobjectChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'khobject', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -687,7 +630,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.pfzt')
     onPfztChange(newVal: any, oldVal: any) {
@@ -699,7 +642,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.qzzb')
     onQzzbChange(newVal: any, oldVal: any) {
@@ -711,7 +654,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     @Watch('data.parldkhqzid')
     onParldkhqzidChange(newVal: any, oldVal: any) {
@@ -724,7 +667,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -733,7 +676,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof QZFPBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -750,12 +693,10 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -778,7 +719,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -795,7 +736,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -816,7 +757,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -841,7 +782,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -857,7 +798,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -869,7 +810,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -885,7 +826,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -903,7 +844,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -918,7 +859,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public getValues(): any {
         return this.data;
@@ -929,7 +870,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -947,7 +888,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -965,7 +906,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -977,7 +918,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public created(): void {
         this.afterCreated();
@@ -986,7 +927,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof QZFP
+     *  @memberof QZFPBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1043,7 +984,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1052,7 +993,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1067,7 +1008,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof QZFP
+     * @memberof @memberof QZFPBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1085,7 +1026,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof QZFP
+     *@memberof @memberof QZFPBase
      */
     public print(){
         let _this:any = this;
@@ -1096,7 +1037,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1118,7 +1059,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1139,7 +1080,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1174,7 +1115,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1228,7 +1169,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1279,7 +1220,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1349,7 +1290,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof QZFPBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1383,7 +1324,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1439,7 +1380,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1515,7 +1456,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1560,7 +1501,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public onEnter($event: any): void {
     }
@@ -1569,7 +1510,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1594,7 +1535,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1617,7 +1558,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1641,38 +1582,37 @@ export default class QZFPBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof QZFP
+    * @memberof QZFPBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof QZFP
+     * @memberof QZFPBase
      */
     public updateDefault(){                    
     }

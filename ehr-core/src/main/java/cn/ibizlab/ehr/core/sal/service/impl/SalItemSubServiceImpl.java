@@ -101,7 +101,6 @@ public class SalItemSubServiceImpl extends ServiceImpl<SalItemSubMapper, SalItem
     public boolean checkKey(SalItemSub et) {
         return (!ObjectUtils.isEmpty(et.getSalitemsubid()))&&(!Objects.isNull(this.getById(et.getSalitemsubid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalItemSub et) {
@@ -238,6 +237,8 @@ public class SalItemSubServiceImpl extends ServiceImpl<SalItemSubMapper, SalItem
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -283,5 +284,6 @@ public class SalItemSubServiceImpl extends ServiceImpl<SalItemSubMapper, SalItem
     }
 
 }
+
 
 

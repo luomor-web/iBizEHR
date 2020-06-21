@@ -222,7 +222,7 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
      * 选中数据
      *
      * @type {*}
-     * @memberof PIMPERSONEditView2
+     * @memberof PIMPERSONEditView2Base
      */
     public selection: any = {};
 

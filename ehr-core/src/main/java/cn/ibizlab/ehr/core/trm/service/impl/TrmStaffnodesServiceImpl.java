@@ -85,7 +85,6 @@ public class TrmStaffnodesServiceImpl extends ServiceImpl<TrmStaffnodesMapper, T
     public boolean checkKey(TrmStaffnodes et) {
         return (!ObjectUtils.isEmpty(et.getTrmstaffnodesid()))&&(!Objects.isNull(this.getById(et.getTrmstaffnodesid())));
     }
-
     @Override
     @Transactional
     public boolean update(TrmStaffnodes et) {
@@ -238,6 +237,8 @@ public class TrmStaffnodesServiceImpl extends ServiceImpl<TrmStaffnodesMapper, T
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -283,5 +284,6 @@ public class TrmStaffnodesServiceImpl extends ServiceImpl<TrmStaffnodesMapper, T
     }
 
 }
+
 
 

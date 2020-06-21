@@ -37,6 +37,8 @@ public interface IParJxkhxhzService extends IService<ParJxkhxhz>{
     boolean save(ParJxkhxhz et) ;
     void saveBatch(List<ParJxkhxhz> list) ;
     Page<ParJxkhxhz> searchDefault(ParJxkhxhzSearchContext context) ;
+    List<ParJxkhxhz> selectByParassesstemplateid(String parassesstemplateid) ;
+    void removeByParassesstemplateid(String parassesstemplateid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

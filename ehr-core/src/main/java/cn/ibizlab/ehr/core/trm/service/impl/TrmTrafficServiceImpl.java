@@ -151,7 +151,6 @@ public class TrmTrafficServiceImpl extends ServiceImpl<TrmTrafficMapper, TrmTraf
         return (!ObjectUtils.isEmpty(et.getTrmtrafficid()))&&(!Objects.isNull(this.getById(et.getTrmtrafficid())));
     }
 
-
 	@Override
     public List<TrmTraffic> selectByTrmtrainaddressid(String trmtrainaddressid) {
         return baseMapper.selectByTrmtrainaddressid(trmtrainaddressid);
@@ -190,6 +189,8 @@ public class TrmTrafficServiceImpl extends ServiceImpl<TrmTrafficMapper, TrmTraf
             et.setTrmtrainaddressname(trmtrainaddress.getTrmtrainaddressname());
         }
     }
+
+
 
 
     @Override
@@ -237,5 +238,6 @@ public class TrmTrafficServiceImpl extends ServiceImpl<TrmTrafficMapper, TrmTraf
     }
 
 }
+
 
 

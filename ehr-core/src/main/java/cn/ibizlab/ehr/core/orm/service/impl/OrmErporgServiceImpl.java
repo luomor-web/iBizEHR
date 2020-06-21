@@ -149,7 +149,6 @@ public class OrmErporgServiceImpl extends ServiceImpl<OrmErporgMapper, OrmErporg
     }
 
 
-
     /**
      * 查询集合 查询可用ERP部门
      */
@@ -194,6 +193,8 @@ public class OrmErporgServiceImpl extends ServiceImpl<OrmErporgMapper, OrmErporg
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<OrmErporg> pages=baseMapper.searchCXZBM(context.getPages(),context,context.getSelectCond());
         return new PageImpl<OrmErporg>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -244,5 +245,6 @@ public class OrmErporgServiceImpl extends ServiceImpl<OrmErporgMapper, OrmErporg
     }
 
 }
+
 
 

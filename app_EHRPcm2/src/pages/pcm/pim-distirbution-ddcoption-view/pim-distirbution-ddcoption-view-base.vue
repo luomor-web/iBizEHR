@@ -11,9 +11,9 @@
       <div class="view-content-wrapper">
             <app-studioaction viewTitle="调出" viewName="pimdistirbutionddcoptionview"></app-studioaction>
     <card class='view-card' dis-hover :padding="0" :bordered="false">
-        <p slot='title'>
+        <div slot='title' class="header-container">
         <span class='caption-info'>{{$t(model.srfTitle)}}</span>
-        </p>
+        </div>
         <div class="content-container">
             <view_form 
                 :viewState="viewState"  

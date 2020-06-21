@@ -70,7 +70,6 @@ public class VacLeaveSystemDtailServiceImpl extends ServiceImpl<VacLeaveSystemDt
     public boolean checkKey(VacLeaveSystemDtail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavesystemdetailid()))&&(!Objects.isNull(this.getById(et.getVacleavesystemdetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(VacLeaveSystemDtail et) {
@@ -192,6 +191,8 @@ public class VacLeaveSystemDtailServiceImpl extends ServiceImpl<VacLeaveSystemDt
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class VacLeaveSystemDtailServiceImpl extends ServiceImpl<VacLeaveSystemDt
     }
 
 }
+
 
 

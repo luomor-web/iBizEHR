@@ -142,7 +142,6 @@ public class PimLwgzServiceImpl extends ServiceImpl<PimLwgzMapper, PimLwgz> impl
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -151,6 +150,8 @@ public class PimLwgzServiceImpl extends ServiceImpl<PimLwgzMapper, PimLwgz> impl
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimLwgz> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimLwgz>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class PimLwgzServiceImpl extends ServiceImpl<PimLwgzMapper, PimLwgz> impl
     }
 
 }
+
 
 

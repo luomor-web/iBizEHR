@@ -267,25 +267,11 @@ export default class Main_3Service extends ControlService {
                     response.data.pimworkhistoryid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof Main_3Service
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-            Object.assign(response.data,{'pimpersonid':'SRFSELFSERVICEID'});
-            Object.assign(response.data,{'experience':'0'});
-            Object.assign(response.data,{'jlss':'20'});
-        }
     }
 
 

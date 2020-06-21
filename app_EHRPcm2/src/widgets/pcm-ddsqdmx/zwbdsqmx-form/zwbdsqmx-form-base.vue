@@ -133,11 +133,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmDdsqdmxService from '@/service/pcm-ddsqdmx/pcm-ddsqdmx-service';
 import ZWBDSQMXService from './zwbdsqmx-form-service';
 
@@ -156,7 +157,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public name?: string;
 
@@ -164,7 +165,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -172,7 +173,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public context: any;
 
@@ -180,7 +181,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public viewparams: any;
 
@@ -189,7 +190,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -197,7 +198,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -209,7 +210,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -217,7 +218,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {ZWBDSQMXService}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public service: ZWBDSQMXService = new ZWBDSQMXService({ $store: this.$store });
 
@@ -225,7 +226,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmDdsqdmxService}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public appEntityService: PcmDdsqdmxService = new PcmDdsqdmxService({ $store: this.$store });
     
@@ -235,7 +236,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -245,7 +246,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -262,7 +263,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public srfwfmemo:string = "";
     
@@ -270,7 +271,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -280,7 +281,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public getData(): any {
         return this.data;
@@ -290,7 +291,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -298,7 +299,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -306,7 +307,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -314,7 +315,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -322,7 +323,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public updateAction!: string;
     
@@ -330,7 +331,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public removeAction!: string;
     
@@ -338,7 +339,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -346,7 +347,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public loadAction!: string;
     
@@ -354,7 +355,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public createAction!: string;
 
@@ -362,7 +363,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public searchAction!: string;
 
@@ -370,7 +371,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Prop() public viewtag!: string;
 
@@ -378,7 +379,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -386,7 +387,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -395,7 +396,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -404,7 +405,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -413,7 +414,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public oldData: any = {};
 
@@ -421,7 +422,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -454,7 +455,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof ZWBDSQMX
+      * @memberof ZWBDSQMXBase
       */
     public currentAction: string = "";
 
@@ -462,7 +463,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof ZWBDSQMX
+      * @memberof ZWBDSQMXBase
       */
     public drcounter: number = 0;
 
@@ -470,7 +471,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof ZWBDSQMX
+      * @memberof ZWBDSQMXBase
       */
     public drsaveopt: any = {};
 
@@ -478,7 +479,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof ZWBDSQMX
+      * @memberof ZWBDSQMXBase
       */
     public saveState:any ;
 
@@ -486,7 +487,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -633,7 +634,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '职务变动申请明细', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmddsqdmx.zwbdsqmx_form', extractMode: 'ITEM', details: [] } })
@@ -693,7 +694,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -705,7 +706,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -717,7 +718,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -729,7 +730,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -741,7 +742,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -753,7 +754,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -765,7 +766,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -777,7 +778,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -789,7 +790,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.pimdistirbutionid')
     onPimdistirbutionidChange(newVal: any, oldVal: any) {
@@ -801,7 +802,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.pimdistirbutionname')
     onPimdistirbutionnameChange(newVal: any, oldVal: any) {
@@ -813,7 +814,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.pcmddsqdid')
     onPcmddsqdidChange(newVal: any, oldVal: any) {
@@ -825,7 +826,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -837,7 +838,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
@@ -849,7 +850,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormyzw')
     onOrmyzwChange(newVal: any, oldVal: any) {
@@ -861,7 +862,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormygw')
     onOrmygwChange(newVal: any, oldVal: any) {
@@ -873,7 +874,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormdutyname')
     onOrmdutynameChange(newVal: any, oldVal: any) {
@@ -885,7 +886,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormpostname')
     onOrmpostnameChange(newVal: any, oldVal: any) {
@@ -897,7 +898,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.sxrq')
     onSxrqChange(newVal: any, oldVal: any) {
@@ -909,7 +910,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormpostid')
     onOrmpostidChange(newVal: any, oldVal: any) {
@@ -921,7 +922,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.ormdutyid')
     onOrmdutyidChange(newVal: any, oldVal: any) {
@@ -933,7 +934,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.orgsectorid')
     onOrgsectoridChange(newVal: any, oldVal: any) {
@@ -945,7 +946,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.orgid')
     onOrgidChange(newVal: any, oldVal: any) {
@@ -957,7 +958,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     @Watch('data.pcmddsqdmxid')
     onPcmddsqdmxidChange(newVal: any, oldVal: any) {
@@ -970,7 +971,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (Object.is(name, 'orgid')) {
@@ -982,7 +983,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof ZWBDSQMXBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -999,7 +1000,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1036,7 +1037,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1053,7 +1054,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1074,7 +1075,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1099,7 +1100,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1115,7 +1116,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1127,7 +1128,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1143,7 +1144,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1161,7 +1162,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1176,7 +1177,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public getValues(): any {
         return this.data;
@@ -1187,7 +1188,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1205,7 +1206,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1223,7 +1224,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1235,7 +1236,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public created(): void {
         this.afterCreated();
@@ -1244,7 +1245,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof ZWBDSQMX
+     *  @memberof ZWBDSQMXBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1301,7 +1302,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1310,7 +1311,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1325,7 +1326,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof ZWBDSQMX
+     * @memberof @memberof ZWBDSQMXBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1343,7 +1344,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof ZWBDSQMX
+     *@memberof @memberof ZWBDSQMXBase
      */
     public print(){
         let _this:any = this;
@@ -1354,7 +1355,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1376,7 +1377,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1397,7 +1398,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1432,7 +1433,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1486,7 +1487,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1537,7 +1538,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1607,7 +1608,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof ZWBDSQMXBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1641,7 +1642,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1697,7 +1698,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1773,7 +1774,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1818,7 +1819,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public onEnter($event: any): void {
     }
@@ -1827,7 +1828,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1852,7 +1853,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1875,7 +1876,7 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1899,38 +1900,37 @@ export default class ZWBDSQMXBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof ZWBDSQMX
+    * @memberof ZWBDSQMXBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof ZWBDSQMX
+     * @memberof ZWBDSQMXBase
      */
     public updateDefault(){                    
     }

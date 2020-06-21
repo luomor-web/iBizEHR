@@ -141,7 +141,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
      * 项目人力成本标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormxmrlcbid",type=IdType.UUID)
+    @TableId(value= "ormxmrlcbid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormxmrlcbid")
     @JsonProperty("ormxmrlcbid")
     private String ormxmrlcbid;

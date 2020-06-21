@@ -114,7 +114,7 @@ public class PimVacation extends EntityMP implements Serializable {
      * 休假信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimvacationid",type=IdType.UUID)
+    @TableId(value= "pimvacationid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimvacationid")
     @JsonProperty("pimvacationid")
     private String pimvacationid;

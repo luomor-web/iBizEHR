@@ -1,42 +1,42 @@
 
 export default {
   fields: {
-    titletype: '头衔类型',
-    ormtitlename: '头衔',
-    ormtitleid: '头衔标识',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    createman: '建立人',
+    titletype: "头衔类型",
+    ormtitlename: "头衔",
+    ormtitleid: "头衔标识",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    createman: "建立人",
   },
 	views: {
 		editview: {
 			caption: "标准头衔设置",
-      title: '标准头衔设置',
+      		title: "标准头衔设置",
 		},
 		redirectview: {
 			caption: "头衔管理",
-      title: '头衔管理数据重定向视图',
+      		title: "头衔管理数据重定向视图",
 		},
 		mpickupview: {
 			caption: "标准头衔库",
-      title: '标准头衔库',
+      		title: "标准头衔库",
 		},
 		pickupgridview: {
 			caption: "标准头衔库",
-      title: '标准头衔库',
+      		title: "标准头衔库",
 		},
 		gridview: {
 			caption: "标准头衔设置",
-      title: '标准头衔设置',
+      		title: "标准头衔设置",
 		},
 		pickupview: {
 			caption: "标准头衔库",
-      title: '标准头衔库',
+      		title: "标准头衔库",
 		},
 		editview2: {
 			caption: "头衔管理",
-      title: '头衔管理编辑视图',
+      		title: "头衔管理编辑视图",
 		},
 	},
 	main_form: {

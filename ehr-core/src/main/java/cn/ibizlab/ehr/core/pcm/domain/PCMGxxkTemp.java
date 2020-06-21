@@ -69,7 +69,7 @@ public class PCMGxxkTemp extends EntityMP implements Serializable {
      * 高校学科中间表标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmgxxktempid",type=IdType.UUID)
+    @TableId(value= "pcmgxxktempid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmgxxktempid")
     @JsonProperty("pcmgxxktempid")
     private String pcmgxxktempid;

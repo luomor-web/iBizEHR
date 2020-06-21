@@ -1,40 +1,40 @@
 
 export default {
   fields: {
-    updatedate: '更新时间',
-    attendancemreportid: '考勤月报标识',
-    attendancemreportname: '考勤月报名称',
-    createman: '建立人',
-    orgid: '组织ID',
-    createdate: '建立时间',
-    updateman: '更新人',
-    yf: '月份',
-    enable: '逻辑有效标志',
-    nd: '年度',
-    zt: '状态',
-    ormorgname: '组织',
-    pimpersonname: '考勤员',
-    pimpersonid: '考勤员id',
-    attendencesetupname: '考勤表',
-    ormorgid: '组织标识',
-    attendencesetupid: '考勤设置标识',
+    updatedate: "更新时间",
+    attendancemreportid: "考勤月报标识",
+    attendancemreportname: "考勤月报名称",
+    createman: "建立人",
+    orgid: "组织ID",
+    createdate: "建立时间",
+    updateman: "更新人",
+    yf: "月份",
+    enable: "逻辑有效标志",
+    nd: "年度",
+    zt: "状态",
+    ormorgname: "组织",
+    pimpersonname: "考勤员",
+    pimpersonid: "考勤员id",
+    attendencesetupname: "考勤表",
+    ormorgid: "组织标识",
+    attendencesetupid: "考勤设置标识",
   },
 	views: {
 		gridview: {
 			caption: "考勤月报",
-      title: '考勤月报',
+      		title: "考勤月报",
 		},
 		editview: {
 			caption: "考勤月报",
-      title: '考勤月报',
+      		title: "考勤月报",
 		},
 		curzzkqybgridview: {
 			caption: "考勤月报",
-      title: '考勤月报',
+      		title: "考勤月报",
 		},
 		kqybtreeexpview: {
 			caption: "考勤月报",
-      title: '考勤月报树导航视图',
+      		title: "考勤月报树导航视图",
 		},
 	},
 	main_form: {
@@ -172,7 +172,7 @@ export default {
 	},
 	ormorgbmtree_treeview: {
 		nodes: {
-			root: '默认根节点',
+			root: "默认根节点",
 		},
 		uiactions: {
 		},

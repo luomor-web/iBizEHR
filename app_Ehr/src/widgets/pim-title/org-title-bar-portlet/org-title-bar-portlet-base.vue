@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-title-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'325px'),}">
+    <div class='portlet org-title-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet5_chart 
@@ -16,11 +16,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimTitleService from '@/service/pim-title/pim-title-service';
 import OrgTitleBarService from './org-title-bar-portlet-service';
 
@@ -38,7 +39,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 名称
      *
      * @type {string}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public name?: string;
 
@@ -46,7 +47,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -54,7 +55,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public context: any;
 
@@ -62,7 +63,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public viewparams: any;
 
@@ -71,7 +72,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -79,7 +80,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -91,7 +92,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -99,7 +100,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 建构部件服务对象
      *
      * @type {OrgTitleBarService}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public service: OrgTitleBarService = new OrgTitleBarService({ $store: this.$store });
 
@@ -107,7 +108,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 实体服务对象
      *
      * @type {PimTitleService}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public appEntityService: PimTitleService = new PimTitleService({ $store: this.$store });
     
@@ -117,7 +118,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -127,7 +128,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
     /**
      *  计数器刷新
      *
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -145,7 +146,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 长度
      *
      * @type {number}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public height?: number;
 
@@ -153,7 +154,7 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      * 宽度
      *
      * @type {number}
-     * @memberof OrgTitleBar
+     * @memberof OrgTitleBarBase
      */
     @Prop() public width?: number;
 
@@ -185,6 +186,24 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrgTitleBarBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '325px';
+        }
     }
 
     /**

@@ -181,7 +181,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
      * 工作履历标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimworkhistoryid",type=IdType.UUID)
+    @TableId(value= "pimworkhistoryid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimworkhistoryid")
     @JsonProperty("pimworkhistoryid")
     private String pimworkhistoryid;

@@ -154,7 +154,6 @@ public class AttEndanceSettingsServiceImpl extends ServiceImpl<AttEndanceSetting
     public boolean checkKey(AttEndanceSettings et) {
         return (!ObjectUtils.isEmpty(et.getAttendancesettingsid()))&&(!Objects.isNull(this.getById(et.getAttendancesettingsid())));
     }
-
     @Override
     public AttEndanceSettings getDraft(AttEndanceSettings et) {
         fillParentData(et);
@@ -248,6 +247,8 @@ public class AttEndanceSettingsServiceImpl extends ServiceImpl<AttEndanceSetting
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -293,5 +294,6 @@ public class AttEndanceSettingsServiceImpl extends ServiceImpl<AttEndanceSetting
     }
 
 }
+
 
 

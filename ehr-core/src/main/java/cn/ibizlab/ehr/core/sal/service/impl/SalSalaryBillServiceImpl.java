@@ -72,7 +72,6 @@ public class SalSalaryBillServiceImpl extends ServiceImpl<SalSalaryBillMapper, S
     public boolean checkKey(SalSalaryBill et) {
         return (!ObjectUtils.isEmpty(et.getSalsalarybillid()))&&(!Objects.isNull(this.getById(et.getSalsalarybillid())));
     }
-
     @Override
     @Transactional
     public boolean create(SalSalaryBill et) {
@@ -218,6 +217,8 @@ public class SalSalaryBillServiceImpl extends ServiceImpl<SalSalaryBillMapper, S
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -263,5 +264,6 @@ public class SalSalaryBillServiceImpl extends ServiceImpl<SalSalaryBillMapper, S
     }
 
 }
+
 
 

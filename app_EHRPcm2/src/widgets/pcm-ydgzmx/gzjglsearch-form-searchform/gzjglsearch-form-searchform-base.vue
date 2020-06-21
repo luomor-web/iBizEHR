@@ -40,11 +40,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmYdgzmxService from '@/service/pcm-ydgzmx/pcm-ydgzmx-service';
 import GZJGLSearchFormService from './gzjglsearch-form-searchform-service';
 
@@ -63,7 +64,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 名称
      *
      * @type {string}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     @Prop() public name?: string;
 
@@ -71,7 +72,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -79,7 +80,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 应用上下文
      *
      * @type {*}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     @Prop() public context: any;
 
@@ -87,7 +88,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 视图参数
      *
      * @type {*}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     @Prop() public viewparams: any;
 
@@ -96,7 +97,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -104,7 +105,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -116,7 +117,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -124,7 +125,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 建构部件服务对象
      *
      * @type {GZJGLSearchFormService}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public service: GZJGLSearchFormService = new GZJGLSearchFormService({ $store: this.$store });
 
@@ -132,7 +133,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 实体服务对象
      *
      * @type {PcmYdgzmxService}
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public appEntityService: PcmYdgzmxService = new PcmYdgzmxService({ $store: this.$store });
     
@@ -142,7 +143,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
      * 关闭视图
      *
      * @param {any} args
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -152,7 +153,7 @@ export default class GZJGLSearchFormBase extends Vue implements ControlInterface
     /**
      *  计数器刷新
      *
-     * @memberof GZJGLSearchForm
+     * @memberof GZJGLSearchFormBase
      */
     public counterRefresh(){
         const _this:any =this;

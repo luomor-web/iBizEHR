@@ -65,7 +65,6 @@ public class PimTypeContractServiceImpl extends ServiceImpl<PimTypeContractMappe
     public boolean checkKey(PimTypeContract et) {
         return (!ObjectUtils.isEmpty(et.getPimtypecontractid()))&&(!Objects.isNull(this.getById(et.getPimtypecontractid())));
     }
-
     @Override
     @Transactional
     public PimTypeContract get(String key) {
@@ -156,6 +155,8 @@ public class PimTypeContractServiceImpl extends ServiceImpl<PimTypeContractMappe
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PimTypeContractServiceImpl extends ServiceImpl<PimTypeContractMappe
     }
 
 }
+
 
 

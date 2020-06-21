@@ -3,7 +3,7 @@ import ParKhzcmxServiceBase from './par-khzcmx-service-base';
 
 
 /**
- * 考核内容服务对象
+ * 考核模板明细服务对象
  *
  * @export
  * @class ParKhzcmxService

@@ -108,11 +108,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import JXQYGSearchFormService from './jxqygsearch-form-searchform-service';
 
@@ -131,7 +132,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 名称
      *
      * @type {string}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     @Prop() public name?: string;
 
@@ -139,7 +140,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -147,7 +148,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 应用上下文
      *
      * @type {*}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     @Prop() public context: any;
 
@@ -155,7 +156,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 视图参数
      *
      * @type {*}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     @Prop() public viewparams: any;
 
@@ -164,7 +165,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -172,7 +173,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -184,7 +185,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -192,7 +193,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 建构部件服务对象
      *
      * @type {JXQYGSearchFormService}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public service: JXQYGSearchFormService = new JXQYGSearchFormService({ $store: this.$store });
 
@@ -200,7 +201,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -210,7 +211,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
      * 关闭视图
      *
      * @param {any} args
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -220,7 +221,7 @@ export default class JXQYGSearchFormBase extends Vue implements ControlInterface
     /**
      *  计数器刷新
      *
-     * @memberof JXQYGSearchForm
+     * @memberof JXQYGSearchFormBase
      */
     public counterRefresh(){
         const _this:any =this;

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.soc.mapper.SocRuleDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SocRuleDetailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t1.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`HIGHNUM`, t1.`LOWNUM`, t1.`MEMO`, t11.`ORDERVALUE`, t1.`PERSONAMOUNT`, t1.`PERSONNUM`, t1.`PERSONRATE`, t1.`SOCRULEDETAILID`, t1.`SOCRULEDETAILNAME`, t1.`SOCRULEID`, t21.`SOCRULENAME`, t1.`SOCTYPEID`, t11.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULEDETAIL` t1  LEFT JOIN T_SOCTYPE t11 ON t1.SOCTYPEID = t11.SOCTYPEID  LEFT JOIN T_SOCRULE t21 ON t1.SOCRULEID = t21.SOCRULEID  ) t1 where socruledetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SocRuleDetailResultMap" type="cn.ibizlab.ehr.core.soc.domain.SocRuleDetail" autoMapping="true">
+        <id property="socruledetailid" column="socruledetailid" /><!--主键字段映射-->
+		<result property="soctypeid" column="soctypeid" />
+		<result property="socruleid" column="socruleid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="socrule" javaType="cn.ibizlab.ehr.core.soc.domain.SocRule" column="socruleid" select="cn.ibizlab.ehr.core.soc.mapper.SocRuleMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="soctype" javaType="cn.ibizlab.ehr.core.soc.domain.SocType" column="soctypeid" select="cn.ibizlab.ehr.core.soc.mapper.SocTypeMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SOCRULEDETAIL_SOCRULE_SOCRULEID] -->
+	 <select id="selectBySocruleid" resultMap="SocRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  socruleid=#{socruleid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SOCRULEDETAIL_SOCTYPE_SOCTYPEID] -->
+	 <select id="selectBySoctypeid" resultMap="SocRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  soctypeid=#{soctypeid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.soc.filter.SocRuleDetailSearchContext"  resultMap="SocRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t1.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`HIGHNUM`, t1.`LOWNUM`, t1.`MEMO`, t11.`ORDERVALUE`, t1.`PERSONAMOUNT`, t1.`PERSONNUM`, t1.`PERSONRATE`, t1.`SOCRULEDETAILID`, t1.`SOCRULEDETAILNAME`, t1.`SOCRULEID`, t21.`SOCRULENAME`, t1.`SOCTYPEID`, t11.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULEDETAIL` t1  LEFT JOIN T_SOCTYPE t11 ON t1.SOCTYPEID = t11.SOCTYPEID  LEFT JOIN T_SOCRULE t21 ON t1.SOCRULEID = t21.SOCRULEID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`COMPANYAMOUNT`, t1.`COMPANYNUM`, t1.`COMPANYRATE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`HIGHNUM`, t1.`LOWNUM`, t1.`MEMO`, t11.`ORDERVALUE`, t1.`PERSONAMOUNT`, t1.`PERSONNUM`, t1.`PERSONRATE`, t1.`SOCRULEDETAILID`, t1.`SOCRULEDETAILNAME`, t1.`SOCRULEID`, t21.`SOCRULENAME`, t1.`SOCTYPEID`, t11.`SOCTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULEDETAIL` t1  LEFT JOIN T_SOCTYPE t11 ON t1.SOCTYPEID = t11.SOCTYPEID  LEFT JOIN T_SOCRULE t21 ON t1.SOCRULEID = t21.SOCRULEID  
+			]]>
+    </sql>
+</mapper>
+

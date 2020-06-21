@@ -32,16 +32,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '0587c03dd8511394456567f75983d68d',
-            viewmodule: 'PAR',
-            viewname: 'ParKhzcmxPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'c254a4abcdeaa4de6c2969b4f4335e9e',
-            ],
-        },
-        {
             viewtag: '05888e4abd44fea4605d6f22c87eb807',
             viewmodule: 'PAR',
             viewname: 'ParJxjgEditView',
@@ -58,16 +48,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'a97ed731f303a44f10abb4df79b7bfc5',
-            ],
-        },
-        {
-            viewtag: '11e69b35ff04251d7f8e7295a1d63f06',
-            viewmodule: 'PAR',
-            viewname: 'ParLdkhqzGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '663fc0adb5dc1b0c3d92e2bdeb30c163',
             ],
         },
         {
@@ -88,15 +68,6 @@ export const viewstate: any = {
             refviews: [
                 '5367978cf366f005827916576e777686',
                 '02139952c2ac2e90cbc2d5712c5ded50',
-            ],
-        },
-        {
-            viewtag: '1e42ac493a08f87edf0c49360e4450e3',
-            viewmodule: 'PAR',
-            viewname: 'ParExamCycleEditView2',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -121,13 +92,23 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '29840f97ec229cf7c791378d26d3b4d0',
+            viewmodule: 'PAR',
+            viewname: 'ParAssessTemplateEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '63b45d0d28eff091f82699780bda4b6b',
+            ],
+        },
+        {
             viewtag: '2c011a5df68fea9e14fd6dd50a31b3da',
             viewmodule: 'PAR',
             viewname: 'ParJxkhxhzYGKHXGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '94611ef3a4827e95f4bea2199ed9b4a2',
+                'f99944d28b7536b1bc2c398035f7482b',
             ],
         },
         {
@@ -208,6 +189,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '63b45d0d28eff091f82699780bda4b6b',
+            viewmodule: 'PAR',
+            viewname: 'ParKhzcmxGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c254a4abcdeaa4de6c2969b4f4335e9e',
+            ],
+        },
+        {
             viewtag: '64e14790f02145378336091f8f95421e',
             viewmodule: 'PIM',
             viewname: 'PimPersonPickupView',
@@ -224,7 +215,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'e9be57ed7f3eaa058e17276a047e1d92',
+            ],
+        },
+        {
+            viewtag: '6ab6caf3a12b7882065cc3c605659a79',
+            viewmodule: 'PAR',
+            viewname: 'ParAssessTemplatePickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'be2e9f41096c9c65982109c44e67b657',
             ],
         },
         {
@@ -258,6 +258,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '7f59f30064383fc5ee87bcdf3bc42f9b',
+            viewmodule: 'PAR',
+            viewname: 'ParLdkhqzNewGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '663fc0adb5dc1b0c3d92e2bdeb30c163',
+            ],
+        },
+        {
             viewtag: '86536dfe782911ef08becd8d6bf5b175',
             viewmodule: 'PAR',
             viewname: 'ParExamContentGridView',
@@ -276,15 +286,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '44b5e93634d7355506f37cde5dd7dde8',
-            ],
-        },
-        {
-            viewtag: '94611ef3a4827e95f4bea2199ed9b4a2',
-            viewmodule: 'PAR',
-            viewname: 'ParJxkhxhzYGKHXEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -344,6 +345,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'be2e9f41096c9c65982109c44e67b657',
+            viewmodule: 'PAR',
+            viewname: 'ParAssessTemplatePickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '29840f97ec229cf7c791378d26d3b4d0',
+                'd84eab620a82c604d82070edc298611c',
+            ],
+        },
+        {
             viewtag: 'c088f921bed521fc40c770bfcf4b980e',
             viewmodule: 'PAR',
             viewname: 'ParLdndlhmbNDLHMBXZEditView',
@@ -363,16 +375,17 @@ export const viewstate: any = {
             refviews: [
                 '11beb7ce619d4fa3c5286eba91be6d7a',
                 '188a0a8121edcb88a352a84cf562aa58',
+                'e184f5db6e3acb31c15469de5437cf75',
                 '51460be10bc6dc74ec79e53ae545e1c7',
-                '11e69b35ff04251d7f8e7295a1d63f06',
                 '4cb79515b9133499fc74b275a26e2da5',
                 'b8adaeafac9a1acdbd8f4aef296c22ee',
                 '2698c6c20aa3e029be5d7b71d05d529d',
+                '7f59f30064383fc5ee87bcdf3bc42f9b',
                 '2c011a5df68fea9e14fd6dd50a31b3da',
                 '99f1bd86d47f8bfefef6803ebda3e437',
                 '86536dfe782911ef08becd8d6bf5b175',
                 '35977acfc0970b347cace0a7d8ccfac5',
-                '25a6fb2dc9f85ee002bcbeca2f1a8205',
+                'e28617a43cd83dbace56537236958b1d',
             ],
         },
         {
@@ -382,7 +395,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '11e69b35ff04251d7f8e7295a1d63f06',
             ],
         },
         {
@@ -425,6 +437,37 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'd84eab620a82c604d82070edc298611c',
+            viewmodule: 'PAR',
+            viewname: 'ParAssessTemplateEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '63b45d0d28eff091f82699780bda4b6b',
+            ],
+        },
+        {
+            viewtag: 'e184f5db6e3acb31c15469de5437cf75',
+            viewmodule: 'PAR',
+            viewname: 'ParExamCycleNewGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '963f9744f61222f20041022b8b7eba31',
+            ],
+        },
+        {
+            viewtag: 'e28617a43cd83dbace56537236958b1d',
+            viewmodule: 'PAR',
+            viewname: 'ParAssessTemplateGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '29840f97ec229cf7c791378d26d3b4d0',
+                'd84eab620a82c604d82070edc298611c',
+            ],
+        },
+        {
             viewtag: 'e519a0448aa58cc9ef26d17863520b2b',
             viewmodule: 'PAR',
             viewname: 'ParLdndlhmbKHEditView',
@@ -445,13 +488,13 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'e9be57ed7f3eaa058e17276a047e1d92',
+            viewtag: 'f99944d28b7536b1bc2c398035f7482b',
             viewmodule: 'PAR',
-            viewname: 'ParKhzcmxPickupView',
+            viewname: 'ParJxkhxhzEditView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '0587c03dd8511394456567f75983d68d',
+                '6ab6caf3a12b7882065cc3c605659a79',
             ],
         },
     ],

@@ -1,28 +1,28 @@
 
 export default {
   fields: {
-    pimarchivesrecordname: '档案目录缺失记录名称',
-    enable: '逻辑有效标志',
-    updatedate: '更新时间',
-    memo: '备注',
-    createman: '建立人',
-    pimarchivesrecordid: '档案目录缺失记录标识',
-    createdate: '建立时间',
-    updateman: '更新人',
-    pimarchivesname: '档案信息名称',
-    serialnumber: '目录序号',
-    archivalcataloguename: '档案目录名称',
-    archivalcatalogueid: '档案目录标识',
-    pimarchivesid: '档案信息标识',
+    pimarchivesrecordname: "档案目录缺失记录名称",
+    enable: "逻辑有效标志",
+    updatedate: "更新时间",
+    memo: "备注",
+    createman: "建立人",
+    pimarchivesrecordid: "档案目录缺失记录标识",
+    createdate: "建立时间",
+    updateman: "更新人",
+    pimarchivesname: "档案信息名称",
+    serialnumber: "目录序号",
+    archivalcataloguename: "档案目录名称",
+    archivalcatalogueid: "档案目录标识",
+    pimarchivesid: "档案信息标识",
   },
 	views: {
 		gridview: {
 			caption: "档案目录缺失记录",
-      title: '档案目录缺失记录表格视图',
+      		title: "档案目录缺失记录表格视图",
 		},
 		editview: {
 			caption: "档案目录缺失记录",
-      title: '档案目录缺失记录编辑视图',
+      		title: "档案目录缺失记录编辑视图",
 		},
 	},
 	main_form: {

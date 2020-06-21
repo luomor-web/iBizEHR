@@ -307,7 +307,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     @Prop() public selectedData?: string;
 
@@ -315,7 +315,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 是否单选
      *
      * @type {boolean}
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -323,7 +323,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 搜索值
      *
      * @type {string}
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     public query: string = '';
 
@@ -331,7 +331,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     public isExpandSearchForm: boolean = true;
 
@@ -342,7 +342,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -350,7 +350,7 @@ export default class ORMORGAllLevelTwoOrgPickupGridViewBase extends PickupViewBa
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof ORMORGAllLevelTwoOrgPickupGridView
+     * @memberof ORMORGAllLevelTwoOrgPickupGridViewBase
      */
     public onSearch($event: any): void {
         const refs: any = this.$refs;

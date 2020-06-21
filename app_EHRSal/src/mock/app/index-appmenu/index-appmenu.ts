@@ -43,7 +43,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/gongzidanmingxi.png',
 	textcls: '',
-	appfunctag: '_16',
+	appfunctag: 'Auto71',
 	resourcetag: '',
 },
 		{
@@ -61,7 +61,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoujisuanyuan.png',
 	textcls: '',
-	appfunctag: '_6',
+	appfunctag: 'Auto53',
 	resourcetag: '',
 },
 		{
@@ -79,7 +79,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoujisuanzhibiao.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: 'Auto51',
 	resourcetag: '',
 },
 		{
@@ -97,7 +97,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoukemu.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: 'Auto49',
 	resourcetag: '',
 },
 		{
@@ -115,7 +115,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoujisuanyaosu.png',
 	textcls: '',
-	appfunctag: '_19',
+	appfunctag: 'Auto81',
 	resourcetag: '',
 },
 		{
@@ -133,7 +133,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoujisuanfangan.png',
 	textcls: '',
-	appfunctag: '_9',
+	appfunctag: 'Auto59',
 	resourcetag: '',
 },
 	],
@@ -171,7 +171,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/gangweigongzibiaozhun.png',
 	textcls: '',
-	appfunctag: '_13',
+	appfunctag: 'Auto65',
 	resourcetag: '',
 },
 		{
@@ -189,7 +189,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xiangmugongzibiaozhun.png',
 	textcls: '',
-	appfunctag: '_5',
+	appfunctag: 'Auto52',
 	resourcetag: '',
 },
 		{
@@ -207,7 +207,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/gonglinggongzibiaozhun.png',
 	textcls: '',
-	appfunctag: '_2',
+	appfunctag: 'Auto48',
 	resourcetag: '',
 },
 		{
@@ -225,7 +225,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/zhichengjintiebiaozhun.png',
 	textcls: '',
-	appfunctag: '_11',
+	appfunctag: 'Auto61',
 	resourcetag: '',
 },
 		{
@@ -243,7 +243,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/zhuanxiangjintiebiaozhun.png',
 	textcls: '',
-	appfunctag: '_7',
+	appfunctag: 'Auto54',
 	resourcetag: '',
 },
 		{
@@ -261,7 +261,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/zhiyezigejintiebiaozhun.png',
 	textcls: '',
-	appfunctag: '_14',
+	appfunctag: 'Auto66',
 	resourcetag: '',
 },
 		{
@@ -279,7 +279,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/dushengzinvbiaozhun.png',
 	textcls: '',
-	appfunctag: '_12',
+	appfunctag: 'Auto62',
 	resourcetag: '',
 },
 		{
@@ -297,7 +297,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/gaowenjintiebiaozhun.png',
 	textcls: '',
-	appfunctag: '_15',
+	appfunctag: 'Auto69',
 	resourcetag: '',
 },
 	],
@@ -335,7 +335,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/yuangongxinchoubiaozhun.png',
 	textcls: '',
-	appfunctag: '_17',
+	appfunctag: 'Auto74',
 	resourcetag: '',
 },
 		{
@@ -353,7 +353,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/yuangongxinchoubiaozhunqueren.png',
 	textcls: '',
-	appfunctag: '_17',
+	appfunctag: 'Auto74',
 	resourcetag: '',
 },
 	],
@@ -391,7 +391,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jlgl/1/xinchoujisuanjihua.png',
 	textcls: '',
-	appfunctag: '_8',
+	appfunctag: 'Auto55',
 	resourcetag: '',
 },
 		{
@@ -409,7 +409,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/xinchouxinxi.png',
 	textcls: '',
-	appfunctag: '_10',
+	appfunctag: 'Auto60',
 	resourcetag: '',
 },
 		{
@@ -427,7 +427,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/lunwenxinxi.png',
 	textcls: '',
-	appfunctag: '_18',
+	appfunctag: 'Auto77',
 	resourcetag: '',
 },
 	],

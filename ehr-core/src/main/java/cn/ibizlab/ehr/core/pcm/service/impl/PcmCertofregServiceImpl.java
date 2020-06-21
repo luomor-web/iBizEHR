@@ -154,7 +154,6 @@ public class PcmCertofregServiceImpl extends ServiceImpl<PcmCertofregMapper, Pcm
         return (!ObjectUtils.isEmpty(et.getPcmcertofregid()))&&(!Objects.isNull(this.getById(et.getPcmcertofregid())));
     }
 
-
 	@Override
     public List<PcmCertofreg> selectByPcmprofileid(String pcmprofileid) {
         return baseMapper.selectByPcmprofileid(pcmprofileid);
@@ -216,6 +215,8 @@ public class PcmCertofregServiceImpl extends ServiceImpl<PcmCertofregMapper, Pcm
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -261,5 +262,6 @@ public class PcmCertofregServiceImpl extends ServiceImpl<PcmCertofregMapper, Pcm
     }
 
 }
+
 
 

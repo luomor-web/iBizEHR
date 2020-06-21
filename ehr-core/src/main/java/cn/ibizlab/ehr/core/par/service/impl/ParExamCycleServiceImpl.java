@@ -84,7 +84,6 @@ public class ParExamCycleServiceImpl extends ServiceImpl<ParExamCycleMapper, Par
     public boolean checkKey(ParExamCycle et) {
         return (!ObjectUtils.isEmpty(et.getParexamcycleid()))&&(!Objects.isNull(this.getById(et.getParexamcycleid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParExamCycle et) {
@@ -156,6 +155,8 @@ public class ParExamCycleServiceImpl extends ServiceImpl<ParExamCycleMapper, Par
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class ParExamCycleServiceImpl extends ServiceImpl<ParExamCycleMapper, Par
     }
 
 }
+
 
 

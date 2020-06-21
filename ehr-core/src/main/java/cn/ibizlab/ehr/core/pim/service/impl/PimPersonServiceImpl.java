@@ -240,7 +240,7 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     private cn.ibizlab.ehr.core.pcm.service.IPcmPcmSgqMgrService pcmpcmsgqmgrService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISocWelfareInfoService socwelfareinfoService;
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesService socarchivesService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
@@ -463,7 +463,6 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     public boolean checkKey(PimPerson et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonid()))&&(!Objects.isNull(this.getById(et.getPimpersonid())));
     }
-
     @Override
     @Transactional
     public PimPerson qRTX(PimPerson et) {
@@ -581,6 +580,15 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     @Override
     public Page<PimPerson> searchSetAttRules(PimPersonSearchContext context) {
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimPerson> pages=baseMapper.searchSetAttRules(context.getPages(),context,context.getSelectCond());
+        return new PageImpl<PimPerson>(pages.getRecords(), context.getPageable(), pages.getTotal());
+    }
+
+    /**
+     * 查询集合 待设置社保档案人员
+     */
+    @Override
+    public Page<PimPerson> searchSetSocArchives(PimPersonSearchContext context) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimPerson> pages=baseMapper.searchSetSocArchives(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimPerson>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
@@ -982,6 +990,8 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -1027,5 +1037,6 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     }
 
 }
+
 
 

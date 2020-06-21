@@ -56,7 +56,6 @@ public class PcmProfileSpyyServiceImpl extends ServiceImpl<PcmProfileSpyyMapper,
     public boolean checkKey(PcmProfileSpyy et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofilespyyid()))&&(!Objects.isNull(this.getById(et.getPcmprofilespyyid())));
     }
-
     @Override
     @Transactional
     public PcmProfileSpyy get(String key) {
@@ -156,6 +155,8 @@ public class PcmProfileSpyyServiceImpl extends ServiceImpl<PcmProfileSpyyMapper,
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmProfileSpyyServiceImpl extends ServiceImpl<PcmProfileSpyyMapper,
     }
 
 }
+
 
 

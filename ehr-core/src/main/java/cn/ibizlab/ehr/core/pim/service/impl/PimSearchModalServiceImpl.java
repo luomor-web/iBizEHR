@@ -97,7 +97,6 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
     public boolean checkKey(PimSearchModal et) {
         return (!ObjectUtils.isEmpty(et.getPimsearchmodalid()))&&(!Objects.isNull(this.getById(et.getPimsearchmodalid())));
     }
-
     @Override
     @Transactional
     public boolean save(PimSearchModal et) {
@@ -156,6 +155,8 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
     }
 
 }
+
 
 

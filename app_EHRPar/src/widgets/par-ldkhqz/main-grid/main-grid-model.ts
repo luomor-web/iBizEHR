@@ -32,9 +32,9 @@ export default class MainModel {
           dataType: 'SSCODELIST',
         },
         {
-          name: 'khdx',
-          prop: 'khdx',
-          dataType: 'PICKUPDATA',
+          name: 'khobject_text',
+          prop: 'khobject',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'parkhzcmxid',
@@ -42,14 +42,14 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'parkhzcmxname',
-          prop: 'parkhzcmxname',
-          dataType: 'PICKUPTEXT',
-        },
-        {
           name: 'qzzb',
           prop: 'qzzb',
           dataType: 'FLOAT',
+        },
+        {
+          name: 'khobject',
+          prop: 'khobject',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'srfmajortext',

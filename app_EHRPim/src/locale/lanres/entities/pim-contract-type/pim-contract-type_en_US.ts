@@ -1,49 +1,49 @@
 
 export default {
   fields: {
-    lx: '类型',
-    createdate: '建立时间',
-    sbm: '合同类别代码',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    enable: '逻辑有效标志',
-    pimcontracttypeid: '合同/协议类型管理标识',
-    pimcontracttypename: '合同类别名称',
-    createman: '建立人',
-    ormorgid: '组织标识',
+    lx: "类型",
+    createdate: "建立时间",
+    sbm: "合同类别代码",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    enable: "逻辑有效标志",
+    pimcontracttypeid: "合同/协议类型管理标识",
+    pimcontracttypename: "合同类别名称",
+    createman: "建立人",
+    ormorgid: "组织标识",
   },
 	views: {
 		editview: {
 			caption: "合同类型",
-      title: '合同类型编辑视图',
+      		title: "合同类型编辑视图",
 		},
 		pickupview: {
 			caption: "合同类别",
-      title: '合同/协议类型管理数据选择视图',
+      		title: "合同/协议类型管理数据选择视图",
 		},
 		editview2: {
 			caption: "合同类别",
-      title: '合同/协议类型管理编辑视图',
+      		title: "合同/协议类型管理编辑视图",
 		},
 		redirectview: {
 			caption: "合同类别",
-      title: '合同/协议类型管理数据重定向视图',
+      		title: "合同/协议类型管理数据重定向视图",
 		},
 		mpickupview: {
 			caption: "合同类别",
-      title: '合同/协议类型管理数据多项选择视图',
+      		title: "合同/协议类型管理数据多项选择视图",
 		},
 		selgridview: {
 			caption: "合同类型",
-      title: '合同类型表格视图',
+      		title: "合同类型表格视图",
 		},
 		gridview: {
 			caption: "合同类别",
-      title: '合同类别表格视图',
+      		title: "合同类别表格视图",
 		},
 		pickupgridview: {
 			caption: "合同类别",
-      title: '合同/协议类型管理选择表格视图',
+      		title: "合同/协议类型管理选择表格视图",
 		},
 	},
 	main_form: {

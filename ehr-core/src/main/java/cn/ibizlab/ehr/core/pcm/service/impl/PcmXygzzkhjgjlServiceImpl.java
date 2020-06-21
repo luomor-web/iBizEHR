@@ -145,7 +145,6 @@ public class PcmXygzzkhjgjlServiceImpl extends ServiceImpl<PcmXygzzkhjgjlMapper,
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -154,6 +153,8 @@ public class PcmXygzzkhjgjlServiceImpl extends ServiceImpl<PcmXygzzkhjgjlMapper,
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PcmXygzzkhjgjl> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PcmXygzzkhjgjl>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -204,5 +205,6 @@ public class PcmXygzzkhjgjlServiceImpl extends ServiceImpl<PcmXygzzkhjgjlMapper,
     }
 
 }
+
 
 

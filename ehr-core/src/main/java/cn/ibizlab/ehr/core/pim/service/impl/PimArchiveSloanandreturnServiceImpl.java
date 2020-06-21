@@ -118,7 +118,6 @@ public class PimArchiveSloanandreturnServiceImpl extends ServiceImpl<PimArchiveS
     public boolean checkKey(PimArchiveSloanandreturn et) {
         return (!ObjectUtils.isEmpty(et.getPimarchivesloanandreturnid()))&&(!Objects.isNull(this.getById(et.getPimarchivesloanandreturnid())));
     }
-
     @Override
     @Transactional
     public PimArchiveSloanandreturn updateState(PimArchiveSloanandreturn et) {
@@ -279,6 +278,8 @@ public class PimArchiveSloanandreturnServiceImpl extends ServiceImpl<PimArchiveS
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -324,5 +325,6 @@ public class PimArchiveSloanandreturnServiceImpl extends ServiceImpl<PimArchiveS
     }
 
 }
+
 
 

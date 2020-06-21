@@ -307,7 +307,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     @Prop() public selectedData?: string;
 
@@ -315,7 +315,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -323,7 +323,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     public query: string = '';
 
@@ -331,7 +331,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     public isExpandSearchForm: boolean = true;
 
@@ -342,7 +342,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -350,7 +350,7 @@ export default class ORMORGSECTORYDBMPickupGridViewBase extends PickupViewBase {
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof ORMORGSECTORYDBMPickupGridView
+     * @memberof ORMORGSECTORYDBMPickupGridViewBase
      */
     public onSearch($event: any): void {
         const refs: any = this.$refs;

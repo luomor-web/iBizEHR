@@ -291,6 +291,138 @@ public class TrmTrainFillinResource {
                 .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TrmTrainFillin-Get')")
+    @ApiOperation(value = "根据组织管理获取培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理获取培训需求填报")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/trmtrainfillins/{trmtrainfillin_id}")
+    public ResponseEntity<TrmTrainFillinDTO> getByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
+        TrmTrainFillin domain = trmtrainfillinService.get(trmtrainfillin_id);
+        TrmTrainFillinDTO dto = trmtrainfillinMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TrmTrainFillin-Update')")
+    @ApiOperation(value = "根据组织管理更新培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理更新培训需求填报")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/trmtrainfillins/{trmtrainfillin_id}")
+    @Transactional
+    public ResponseEntity<TrmTrainFillinDTO> updateByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id, @RequestBody TrmTrainFillinDTO trmtrainfillindto) {
+        TrmTrainFillin domain = trmtrainfillinMapping.toDomain(trmtrainfillindto);
+        domain.setOrmorgid(ormorg_id);
+        domain.setTrmtrainfillinid(trmtrainfillin_id);
+		trmtrainfillinService.update(domain);
+        TrmTrainFillinDTO dto = trmtrainfillinMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByEntities(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos)),'ehr-TrmTrainFillin-Update')")
+    @ApiOperation(value = "根据组织管理批量更新培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理批量更新培训需求填报")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/trmtrainfillins/batch")
+    public ResponseEntity<Boolean> updateBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<TrmTrainFillinDTO> trmtrainfillindtos) {
+        List<TrmTrainFillin> domainlist=trmtrainfillinMapping.toDomain(trmtrainfillindtos);
+        for(TrmTrainFillin domain:domainlist){
+            domain.setOrmorgid(ormorg_id);
+        }
+        trmtrainfillinService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据组织管理检查培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理检查培训需求填报")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/trmtrainfillins/checkkey")
+    public ResponseEntity<Boolean> checkKeyByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody TrmTrainFillinDTO trmtrainfillindto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.checkKey(trmtrainfillinMapping.toDomain(trmtrainfillindto)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TrmTrainFillin-Create')")
+    @ApiOperation(value = "根据组织管理建立培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理建立培训需求填报")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/trmtrainfillins")
+    @Transactional
+    public ResponseEntity<TrmTrainFillinDTO> createByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody TrmTrainFillinDTO trmtrainfillindto) {
+        TrmTrainFillin domain = trmtrainfillinMapping.toDomain(trmtrainfillindto);
+        domain.setOrmorgid(ormorg_id);
+		trmtrainfillinService.create(domain);
+        TrmTrainFillinDTO dto = trmtrainfillinMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TrmTrainFillin-Create')")
+    @ApiOperation(value = "根据组织管理批量建立培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理批量建立培训需求填报")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/trmtrainfillins/batch")
+    public ResponseEntity<Boolean> createBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<TrmTrainFillinDTO> trmtrainfillindtos) {
+        List<TrmTrainFillin> domainlist=trmtrainfillinMapping.toDomain(trmtrainfillindtos);
+        for(TrmTrainFillin domain:domainlist){
+            domain.setOrmorgid(ormorg_id);
+        }
+        trmtrainfillinService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindto),'ehr-TrmTrainFillin-Save')")
+    @ApiOperation(value = "根据组织管理保存培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理保存培训需求填报")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/trmtrainfillins/save")
+    public ResponseEntity<Boolean> saveByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody TrmTrainFillinDTO trmtrainfillindto) {
+        TrmTrainFillin domain = trmtrainfillinMapping.toDomain(trmtrainfillindto);
+        domain.setOrmorgid(ormorg_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(#trmtrainfillindtos),'ehr-TrmTrainFillin-Save')")
+    @ApiOperation(value = "根据组织管理批量保存培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理批量保存培训需求填报")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/trmtrainfillins/savebatch")
+    public ResponseEntity<Boolean> saveBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<TrmTrainFillinDTO> trmtrainfillindtos) {
+        List<TrmTrainFillin> domainlist=trmtrainfillinMapping.toDomain(trmtrainfillindtos);
+        for(TrmTrainFillin domain:domainlist){
+             domain.setOrmorgid(ormorg_id);
+        }
+        trmtrainfillinService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据组织管理获取培训需求填报草稿", tags = {"培训需求填报" },  notes = "根据组织管理获取培训需求填报草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/trmtrainfillins/getdraft")
+    public ResponseEntity<TrmTrainFillinDTO> getDraftByOrmOrg(@PathVariable("ormorg_id") String ormorg_id) {
+        TrmTrainFillin domain = new TrmTrainFillin();
+        domain.setOrmorgid(ormorg_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinMapping.toDto(trmtrainfillinService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.get(#trmtrainfillin_id),'ehr-TrmTrainFillin-Remove')")
+    @ApiOperation(value = "根据组织管理删除培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理删除培训需求填报")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/trmtrainfillins/{trmtrainfillin_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmtrainfillinService.remove(trmtrainfillin_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainfillinService.getTrmtrainfillinByIds(#ids),'ehr-TrmTrainFillin-Remove')")
+    @ApiOperation(value = "根据组织管理批量删除培训需求填报", tags = {"培训需求填报" },  notes = "根据组织管理批量删除培训需求填报")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/trmtrainfillins/batch")
+    public ResponseEntity<Boolean> removeBatchByOrmOrg(@RequestBody List<String> ids) {
+        trmtrainfillinService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainFillin-Default-all')")
+	@ApiOperation(value = "根据组织管理获取DEFAULT", tags = {"培训需求填报" } ,notes = "根据组织管理获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/trmtrainfillins/fetchdefault")
+	public ResponseEntity<List<TrmTrainFillinDTO>> fetchTrmTrainFillinDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,TrmTrainFillinSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<TrmTrainFillin> domains = trmtrainfillinService.searchDefault(context) ;
+        List<TrmTrainFillinDTO> list = trmtrainfillinMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainFillin-Default-all')")
+	@ApiOperation(value = "根据组织管理查询DEFAULT", tags = {"培训需求填报" } ,notes = "根据组织管理查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/trmtrainfillins/searchdefault")
+	public ResponseEntity<Page<TrmTrainFillinDTO>> searchTrmTrainFillinDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody TrmTrainFillinSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<TrmTrainFillin> domains = trmtrainfillinService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmtrainfillinMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PostAuthorize("hasPermission(this.trmtrainfillinMapping.toDomain(returnObject.body),'ehr-TrmTrainFillin-Get')")
     @ApiOperation(value = "根据培训需求通知获取培训需求填报", tags = {"培训需求填报" },  notes = "根据培训需求通知获取培训需求填报")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdeparts/{trmdepart_id}/trmtrainfillins/{trmtrainfillin_id}")
     public ResponseEntity<TrmTrainFillinDTO> getByTrmDepart(@PathVariable("trmdepart_id") String trmdepart_id, @PathVariable("trmtrainfillin_id") String trmtrainfillin_id) {

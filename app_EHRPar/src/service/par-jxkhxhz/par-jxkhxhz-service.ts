@@ -3,7 +3,7 @@ import ParJxkhxhzServiceBase from './par-jxkhxhz-service-base';
 
 
 /**
- * 考核内容评分汇总服务对象
+ * 考核方案服务对象
  *
  * @export
  * @class ParJxkhxhzService

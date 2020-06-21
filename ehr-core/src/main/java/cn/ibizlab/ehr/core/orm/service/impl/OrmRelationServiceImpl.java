@@ -109,7 +109,6 @@ public class OrmRelationServiceImpl extends ServiceImpl<OrmRelationMapper, OrmRe
     public boolean checkKey(OrmRelation et) {
         return (!ObjectUtils.isEmpty(et.getOrmorgrelationid()))&&(!Objects.isNull(this.getById(et.getOrmorgrelationid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmRelation et) {
@@ -151,6 +150,8 @@ public class OrmRelationServiceImpl extends ServiceImpl<OrmRelationMapper, OrmRe
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<OrmRelation> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<OrmRelation>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -201,5 +202,6 @@ public class OrmRelationServiceImpl extends ServiceImpl<OrmRelationMapper, OrmRe
     }
 
 }
+
 
 

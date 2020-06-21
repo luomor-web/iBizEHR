@@ -74,8 +74,8 @@
         <!--httpClient -->
         <openfeign-httpclient.version>11.0</openfeign-httpclient.version>
 
-        <!--xxl-job定时服务 -->
-        <xxl-job.version>2.1.0</xxl-job.version>
+        <!--baomidou-jobs定时服务 -->
+        <baomidou-jobs.version>1.0.3</baomidou-jobs.version>
 
 
     </properties>
@@ -254,9 +254,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.xuxueli</groupId>
-                <artifactId>xxl-job-core</artifactId>
-                <version>${xxl-job.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>jobs-spring-boot-starter</artifactId>
+                <version>${baomidou-jobs.version}</version>
             </dependency>
 
         </dependencies>

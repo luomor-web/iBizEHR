@@ -102,6 +102,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
     /**
      * 班级状态
      */
+    @DEField(defaultValue = "10")
     @TableField(value = "bjzt")
     @JSONField(name = "bjzt")
     @JsonProperty("bjzt")
@@ -211,10 +212,10 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
     @JsonProperty("jhkssj")
     private Timestamp jhkssj;
     /**
-     * 培训计划项标识
+     * 培训立项标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "trmtrainplantermid",type=IdType.UUID)
+    @TableId(value= "trmtrainplantermid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "trmtrainplantermid")
     @JsonProperty("trmtrainplantermid")
     private String trmtrainplantermid;
@@ -226,7 +227,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
     @JsonProperty("pxnr")
     private String pxnr;
     /**
-     * 培训计划项名称
+     * 培训立项名称
      */
     @TableField(value = "trmtrainplantermname")
     @JSONField(name = "trmtrainplantermname")
@@ -533,7 +534,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [培训计划项名称]
+     * 设置 [培训立项名称]
      */
     public void setTrmtrainplantermname(String trmtrainplantermname){
         this.trmtrainplantermname = trmtrainplantermname ;

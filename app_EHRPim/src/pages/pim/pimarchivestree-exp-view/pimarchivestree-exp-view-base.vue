@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof PIMARCHIVESTreeExpView
+     * @memberof PIMARCHIVESTreeExpViewBase
      */
     public viewUID: string = 'pim-pimarchivestree-exp-view';
 

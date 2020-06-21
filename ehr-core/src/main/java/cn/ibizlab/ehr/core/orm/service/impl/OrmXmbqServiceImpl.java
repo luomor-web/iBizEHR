@@ -116,7 +116,6 @@ public class OrmXmbqServiceImpl extends ServiceImpl<OrmXmbqMapper, OrmXmbq> impl
     public boolean checkKey(OrmXmbq et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmbqid()))&&(!Objects.isNull(this.getById(et.getOrmxmbqid())));
     }
-
     @Override
     public OrmXmbq getDraft(OrmXmbq et) {
         fillParentData(et);
@@ -192,6 +191,8 @@ public class OrmXmbqServiceImpl extends ServiceImpl<OrmXmbqMapper, OrmXmbq> impl
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class OrmXmbqServiceImpl extends ServiceImpl<OrmXmbqMapper, OrmXmbq> impl
     }
 
 }
+
 
 

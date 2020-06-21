@@ -66,7 +66,6 @@ public class PimMajorSetypeServiceImpl extends ServiceImpl<PimMajorSetypeMapper,
     public boolean checkKey(PimMajorSetype et) {
         return (!ObjectUtils.isEmpty(et.getPimmajorsetypeid()))&&(!Objects.isNull(this.getById(et.getPimmajorsetypeid())));
     }
-
     @Override
     @Transactional
     public PimMajorSetype get(String key) {
@@ -159,6 +158,8 @@ public class PimMajorSetypeServiceImpl extends ServiceImpl<PimMajorSetypeMapper,
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -204,5 +205,6 @@ public class PimMajorSetypeServiceImpl extends ServiceImpl<PimMajorSetypeMapper,
     }
 
 }
+
 
 

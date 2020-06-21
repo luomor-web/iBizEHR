@@ -204,7 +204,6 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     public boolean checkKey(OrmOrgsector et) {
         return (!ObjectUtils.isEmpty(et.getOrgsectorid()))&&(!Objects.isNull(this.getById(et.getOrgsectorid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmOrgsector et) {
@@ -594,6 +593,8 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -639,5 +640,6 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     }
 
 }
+
 
 

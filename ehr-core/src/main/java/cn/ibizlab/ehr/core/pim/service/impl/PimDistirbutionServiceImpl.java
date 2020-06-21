@@ -91,7 +91,6 @@ public class PimDistirbutionServiceImpl extends ServiceImpl<PimDistirbutionMappe
     public boolean checkKey(PimDistirbution et) {
         return (!ObjectUtils.isEmpty(et.getPimdistirbutionid()))&&(!Objects.isNull(this.getById(et.getPimdistirbutionid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimDistirbution et) {
@@ -522,6 +521,8 @@ public class PimDistirbutionServiceImpl extends ServiceImpl<PimDistirbutionMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -567,5 +568,6 @@ public class PimDistirbutionServiceImpl extends ServiceImpl<PimDistirbutionMappe
     }
 
 }
+
 
 

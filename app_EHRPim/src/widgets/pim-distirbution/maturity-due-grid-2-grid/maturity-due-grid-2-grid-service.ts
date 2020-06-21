@@ -291,22 +291,11 @@ export default class MaturityDueGrid_2Service extends ControlService {
                     response.data.pimdistirbutionid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof MaturityDueGrid_2Service
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-        }
     }
 
 

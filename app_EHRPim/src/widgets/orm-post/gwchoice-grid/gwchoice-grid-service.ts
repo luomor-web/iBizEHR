@@ -90,6 +90,9 @@ export default class GWChoiceService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        }
 
         return Promise.reject([])
     }
@@ -276,22 +279,11 @@ export default class GWChoiceService extends ControlService {
                     response.data.ormpostid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof GWChoiceService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-        }
     }
 
 

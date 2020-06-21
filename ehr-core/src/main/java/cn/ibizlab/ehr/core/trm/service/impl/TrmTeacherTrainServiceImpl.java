@@ -160,7 +160,6 @@ public class TrmTeacherTrainServiceImpl extends ServiceImpl<TrmTeacherTrainMappe
         return (!ObjectUtils.isEmpty(et.getTrmteachertrainid()))&&(!Objects.isNull(this.getById(et.getTrmteachertrainid())));
     }
 
-
 	@Override
     public List<TrmTeacherTrain> selectByTrmtrainaddressid(String trmtrainaddressid) {
         return baseMapper.selectByTrmtrainaddressid(trmtrainaddressid);
@@ -264,6 +263,8 @@ public class TrmTeacherTrainServiceImpl extends ServiceImpl<TrmTeacherTrainMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -309,5 +310,6 @@ public class TrmTeacherTrainServiceImpl extends ServiceImpl<TrmTeacherTrainMappe
     }
 
 }
+
 
 

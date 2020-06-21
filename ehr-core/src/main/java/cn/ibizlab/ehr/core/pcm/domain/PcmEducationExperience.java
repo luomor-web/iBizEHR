@@ -272,7 +272,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
      * 教育背景标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmeducationexperienceid",type=IdType.UUID)
+    @TableId(value= "pcmeducationexperienceid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmeducationexperienceid")
     @JsonProperty("pcmeducationexperienceid")
     private String pcmeducationexperienceid;

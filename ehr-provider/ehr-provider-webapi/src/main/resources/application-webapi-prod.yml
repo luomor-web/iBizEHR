@@ -1,2 +1,6 @@
 server:
   port: 35080
+#Log配置
+logging:
+  level:
+    cn.ibizlab.ehr: info

@@ -28,11 +28,12 @@
 </i-form>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import BZCXService from './bzcx-searchform-service';
 
@@ -51,7 +52,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     @Prop() public name?: string;
 
@@ -59,7 +60,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -67,7 +68,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     @Prop() public context: any;
 
@@ -75,7 +76,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     @Prop() public viewparams: any;
 
@@ -84,7 +85,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -92,7 +93,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public getControlType(): string {
         return 'SEARCHFORM'
@@ -104,7 +105,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -112,7 +113,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {BZCXService}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public service: BZCXService = new BZCXService({ $store: this.$store });
 
@@ -120,7 +121,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {OrmOrgsectorService}
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public appEntityService: OrmOrgsectorService = new OrmOrgsectorService({ $store: this.$store });
     
@@ -130,7 +131,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -140,7 +141,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof BZCX
+     * @memberof BZCXBase
      */
     public counterRefresh(){
         const _this:any =this;

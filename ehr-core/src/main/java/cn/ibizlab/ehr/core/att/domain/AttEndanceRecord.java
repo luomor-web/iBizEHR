@@ -122,7 +122,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
      * 考勤记录标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "attendancerecordid",type=IdType.UUID)
+    @TableId(value= "attendancerecordid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "attendancerecordid")
     @JsonProperty("attendancerecordid")
     private String attendancerecordid;

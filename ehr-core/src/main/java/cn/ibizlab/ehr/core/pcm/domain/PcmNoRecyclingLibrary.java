@@ -43,7 +43,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
      * 员工编号回收库标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pcmnorecyclinglibraryid",type=IdType.UUID)
+    @TableId(value= "pcmnorecyclinglibraryid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pcmnorecyclinglibraryid")
     @JsonProperty("pcmnorecyclinglibraryid")
     private String pcmnorecyclinglibraryid;

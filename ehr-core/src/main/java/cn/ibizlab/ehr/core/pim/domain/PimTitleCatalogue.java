@@ -135,7 +135,7 @@ public class PimTitleCatalogue extends EntityMP implements Serializable {
      * 职称标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimtitlecatalogueid",type=IdType.UUID)
+    @TableId(value= "pimtitlecatalogueid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimtitlecatalogueid")
     @JsonProperty("pimtitlecatalogueid")
     private String pimtitlecatalogueid;

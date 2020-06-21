@@ -144,7 +144,6 @@ public class PimContractTypeServiceImpl extends ServiceImpl<PimContractTypeMappe
         return (!ObjectUtils.isEmpty(et.getPimcontracttypeid()))&&(!Objects.isNull(this.getById(et.getPimcontracttypeid())));
     }
 
-
 	@Override
     public List<PimContractType> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -164,6 +163,8 @@ public class PimContractTypeServiceImpl extends ServiceImpl<PimContractTypeMappe
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimContractType> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimContractType>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -214,5 +215,6 @@ public class PimContractTypeServiceImpl extends ServiceImpl<PimContractTypeMappe
     }
 
 }
+
 
 

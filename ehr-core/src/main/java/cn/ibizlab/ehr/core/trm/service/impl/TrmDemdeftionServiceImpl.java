@@ -152,7 +152,6 @@ public class TrmDemdeftionServiceImpl extends ServiceImpl<TrmDemdeftionMapper, T
     public boolean checkKey(TrmDemdeftion et) {
         return (!ObjectUtils.isEmpty(et.getTrmdemdeftionid()))&&(!Objects.isNull(this.getById(et.getTrmdemdeftionid())));
     }
-
     @Override
     @Transactional
     public TrmDemdeftion get(String key) {
@@ -287,6 +286,8 @@ public class TrmDemdeftionServiceImpl extends ServiceImpl<TrmDemdeftionMapper, T
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -332,5 +333,6 @@ public class TrmDemdeftionServiceImpl extends ServiceImpl<TrmDemdeftionMapper, T
     }
 
 }
+
 
 

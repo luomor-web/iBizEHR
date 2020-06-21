@@ -171,7 +171,6 @@ public class PimExitandentryServiceImpl extends ServiceImpl<PimExitandentryMappe
     public boolean checkKey(PimExitandentry et) {
         return (!ObjectUtils.isEmpty(et.getPimexitandentryid()))&&(!Objects.isNull(this.getById(et.getPimexitandentryid())));
     }
-
     @Override
     @Transactional
     public PimExitandentry start(PimExitandentry et) {
@@ -297,6 +296,8 @@ public class PimExitandentryServiceImpl extends ServiceImpl<PimExitandentryMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -342,5 +343,6 @@ public class PimExitandentryServiceImpl extends ServiceImpl<PimExitandentryMappe
     }
 
 }
+
 
 

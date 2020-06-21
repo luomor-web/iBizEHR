@@ -104,7 +104,7 @@ public class TrmTrainFillinSearchContext extends QueryWrapperContext<TrmTrainFil
             this.getSearchCond().eq("trmtrainfillinid2", n_trmtrainfillinid2_eq);
         }
     }
-	private String n_trmdepartid_eq;//[培训需求填报标识]
+	private String n_trmdepartid_eq;//[培训需求通知标识]
 	public void setN_trmdepartid_eq(String n_trmdepartid_eq) {
         this.n_trmdepartid_eq = n_trmdepartid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmdepartid_eq)){

@@ -119,7 +119,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
      * 劳务派遣公司管理标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimlabourcampanyid",type=IdType.UUID)
+    @TableId(value= "pimlabourcampanyid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimlabourcampanyid")
     @JsonProperty("pimlabourcampanyid")
     private String pimlabourcampanyid;

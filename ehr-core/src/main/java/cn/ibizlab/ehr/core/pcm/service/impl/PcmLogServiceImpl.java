@@ -117,7 +117,6 @@ public class PcmLogServiceImpl extends ServiceImpl<PcmLogMapper, PcmLog> impleme
     public boolean checkKey(PcmLog et) {
         return (!ObjectUtils.isEmpty(et.getPcmlogid()))&&(!Objects.isNull(this.getById(et.getPcmlogid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmLog et) {
@@ -193,6 +192,8 @@ public class PcmLogServiceImpl extends ServiceImpl<PcmLogMapper, PcmLog> impleme
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -238,5 +239,6 @@ public class PcmLogServiceImpl extends ServiceImpl<PcmLogMapper, PcmLog> impleme
     }
 
 }
+
 
 

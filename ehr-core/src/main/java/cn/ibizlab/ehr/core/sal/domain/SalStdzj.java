@@ -107,7 +107,7 @@ public class SalStdzj extends EntityMP implements Serializable {
      * 专家津贴标准标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salstdzjid",type=IdType.UUID)
+    @TableId(value= "salstdzjid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salstdzjid")
     @JsonProperty("salstdzjid")
     private String salstdzjid;

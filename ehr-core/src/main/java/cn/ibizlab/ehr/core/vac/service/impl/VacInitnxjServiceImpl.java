@@ -54,7 +54,6 @@ public class VacInitnxjServiceImpl extends ServiceImpl<VacInitnxjMapper, VacInit
     public boolean checkKey(VacInitnxj et) {
         return (!ObjectUtils.isEmpty(et.getVacinitnxjid()))&&(!Objects.isNull(this.getById(et.getVacinitnxjid())));
     }
-
     @Override
     @Transactional
     public boolean create(VacInitnxj et) {
@@ -192,6 +191,8 @@ public class VacInitnxjServiceImpl extends ServiceImpl<VacInitnxjMapper, VacInit
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class VacInitnxjServiceImpl extends ServiceImpl<VacInitnxjMapper, VacInit
     }
 
 }
+
 
 

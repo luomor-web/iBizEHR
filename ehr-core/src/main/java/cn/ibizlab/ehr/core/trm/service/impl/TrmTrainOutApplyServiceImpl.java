@@ -67,7 +67,6 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     public boolean checkKey(TrmTrainOutApply et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainoutapplyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainoutapplyid())));
     }
-
     @Override
     @Transactional
     public boolean save(TrmTrainOutApply et) {
@@ -194,6 +193,8 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -239,5 +240,6 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     }
 
 }
+
 
 

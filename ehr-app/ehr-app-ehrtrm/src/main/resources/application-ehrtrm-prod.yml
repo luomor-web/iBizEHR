@@ -1,0 +1,203 @@
+server:
+  port: 36099
+#Log配置
+logging:
+  level:
+    cn.ibizlab.ehr: info
+#zuul网关路由设置
+zuul:
+  routes:
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainfacies:
+      path: /trmtrainfacies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstaffnodes:
+      path: /trmstaffnodes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdutycadres:
+      path: /trmdutycadres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmlgbdetail:
+      path: /trmlgbdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancerecord:
+      path: /attendancerecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraffic:
+      path: /trmtraffics/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainteacher:
+      path: /trmtrainteachers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmplanformu:
+      path: /trmplanformus/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstaff:
+      path: /trmstaffs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraincourse:
+      path: /trmtraincourses/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindemandsum:
+      path: /trmtraindemandsums/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainresment:
+      path: /trmtrainresments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainfillin:
+      path: /trmtrainfillins/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmgradecadres:
+      path: /trmgradecadres/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmstay:
+      path: /trmstays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainoutapply:
+      path: /trmtrainoutapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmagencyrecord:
+      path: /trmagencyrecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrianperson:
+      path: /trmtrainpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmlgbcost:
+      path: /trmlgbcosts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmteachertrain:
+      path: /trmteachertrains/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainaddress:
+      path: /trmtrainaddresses/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainactapply:
+      path: /trmtrainactapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainplanterm:
+      path: /trmtrainplanterms/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindemand:
+      path: /trmtraindemands/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainbuapply:
+      path: /trmtrainbuapplies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmcouarrange:
+      path: /trmcouarranges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmcoursesystem:
+      path: /trmcoursesystems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    dynachart:
+      path: /dynacharts/**
+      serviceId: r7rt-dyna
+      stripPrefix: false
+    trmemployeeretion:
+      path: /trmemployeeretions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtraindata:
+      path: /trmtraindata/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmzzobm:
+      path: /trmzzobms/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trminvoice:
+      path: /trminvoices/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainactment:
+      path: /trmtrainactments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmkqdz:
+      path: /ormbmkqdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmteachercharge:
+      path: /trmteachercharges/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdepartneeds:
+      path: /trmdepartneeds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormerporg:
+      path: /ormerporgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdemdeftion:
+      path: /trmdemdeftions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmdepart:
+      path: /trmdeparts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainplan:
+      path: /trmtrainplans/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmtrainagency:
+      path: /trmtrainagencies/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    trmhmatser:
+      path: /trmhmatsers/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    dynadashboard:
+      path: /dynadashboards/**
+      serviceId: r7rt-dyna
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

@@ -267,26 +267,11 @@ export default class Main_SelfHelpService extends ControlService {
                     response.data.pimeducationid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof Main_SelfHelpService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-            Object.assign(response.data,{'pimpersonid':'SRFSELFSERVICEID'});
-            Object.assign(response.data,{'sfdyxl':'0'});
-            Object.assign(response.data,{'sfzgxl':'0'});
-            Object.assign(response.data,{'jlss':'20'});
-        }
     }
 
 

@@ -62,6 +62,7 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
     @Override
     @Transactional
     public boolean create(PimQualMajor et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPimqualmajorid()),et);
@@ -70,6 +71,7 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
     @Override
     public void createBatch(List<PimQualMajor> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -77,10 +79,10 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
     public boolean checkKey(PimQualMajor et) {
         return (!ObjectUtils.isEmpty(et.getPimqualmajorid()))&&(!Objects.isNull(this.getById(et.getPimqualmajorid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimQualMajor et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pimqualmajorid",et.getPimqualmajorid())))
             return false;
         CachedBeanCopier.copy(get(et.getPimqualmajorid()),et);
@@ -89,6 +91,7 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
     @Override
     public void updateBatch(List<PimQualMajor> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -106,6 +109,7 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
     @Override
     public PimQualMajor getDraft(PimQualMajor et) {
+        fillParentData(et);
         return et;
     }
 
@@ -131,12 +135,14 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
     @Override
     public boolean saveBatch(Collection<PimQualMajor> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<PimQualMajor> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -195,6 +201,24 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(PimQualMajor et){
+        //实体关系[DER1N_PIMQUALMAJOR_PIMQUALTYPE_PIMQUALTYPEID]
+        if(!ObjectUtils.isEmpty(et.getPimqualtypeid())){
+            cn.ibizlab.ehr.core.pim.domain.PimQualType pimqualtype=et.getPimqualtype();
+            if(ObjectUtils.isEmpty(pimqualtype)){
+                cn.ibizlab.ehr.core.pim.domain.PimQualType majorEntity=pimqualtypeService.get(et.getPimqualtypeid());
+                et.setPimqualtype(majorEntity);
+                pimqualtype=majorEntity;
+            }
+            et.setPimqualtypename(pimqualtype.getPimqualtypename());
+        }
+    }
+
+
 
 
     @Override
@@ -242,5 +266,6 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
     }
 
 }
+
 
 

@@ -1,39 +1,39 @@
 
 export default {
   fields: {
-    khpgdj: '考核评估等级',
-    createdate: '建立时间',
-    createman: '建立人',
-    pardjbzname: '定级标准名称',
-    updatedate: '更新时间',
-    pardjbzid: '定级标准标识',
-    updateman: '更新人',
-    fbbl: '分布比例（%）',
+    khpgdj: "考核评估等级",
+    createdate: "建立时间",
+    createman: "建立人",
+    pardjbzname: "定级标准名称",
+    updatedate: "更新时间",
+    pardjbzid: "定级标准标识",
+    updateman: "更新人",
+    fbbl: "分布比例（%）",
   },
 	views: {
 		gridview: {
 			caption: "定级规则",
-      title: '定级标准表格视图',
+      		title: "定级标准表格视图",
 		},
 		editview: {
 			caption: "定级规则",
-      title: '定级标准编辑视图',
+      		title: "定级标准编辑视图",
 		},
 		pickupgridview: {
 			caption: "定级规则",
-      title: '定级标准选择表格视图',
+      		title: "定级标准选择表格视图",
 		},
 		pickupview: {
 			caption: "定级规则",
-      title: '定级标准数据选择视图',
+      		title: "定级标准数据选择视图",
 		},
 		mpickupview: {
 			caption: "定级规则",
-      title: '定级标准数据多项选择视图',
+      		title: "定级标准数据多项选择视图",
 		},
 		editview2: {
 			caption: "定级规则",
-      title: '定级标准编辑视图',
+      		title: "定级标准编辑视图",
 		},
 	},
 	main_form: {

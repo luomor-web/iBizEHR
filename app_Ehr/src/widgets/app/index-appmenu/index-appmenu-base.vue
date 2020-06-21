@@ -122,7 +122,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ehrportalview', parameterName: 'ehrportalview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     /**
      * 人员异动管理

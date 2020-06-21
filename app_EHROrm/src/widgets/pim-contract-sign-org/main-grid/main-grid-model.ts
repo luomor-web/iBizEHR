@@ -44,7 +44,7 @@ export default class MainModel {
         {
           name: 'isdefaultsignorg',
           prop: 'isdefaultsignorg',
-          dataType: 'YESNO',
+          dataType: 'NSCODELIST',
         },
         {
           name: 'srfmajortext',

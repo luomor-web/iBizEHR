@@ -123,7 +123,6 @@ public class SalSalaryDetailServiceImpl extends ServiceImpl<SalSalaryDetailMappe
     public boolean checkKey(SalSalaryDetail et) {
         return (!ObjectUtils.isEmpty(et.getSalsalarydetailid()))&&(!Objects.isNull(this.getById(et.getSalsalarydetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalSalaryDetail et) {
@@ -218,6 +217,8 @@ public class SalSalaryDetailServiceImpl extends ServiceImpl<SalSalaryDetailMappe
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -263,5 +264,6 @@ public class SalSalaryDetailServiceImpl extends ServiceImpl<SalSalaryDetailMappe
     }
 
 }
+
 
 

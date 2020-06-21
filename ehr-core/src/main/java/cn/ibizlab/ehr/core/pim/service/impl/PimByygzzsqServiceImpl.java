@@ -148,7 +148,6 @@ public class PimByygzzsqServiceImpl extends ServiceImpl<PimByygzzsqMapper, PimBy
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -157,6 +156,8 @@ public class PimByygzzsqServiceImpl extends ServiceImpl<PimByygzzsqMapper, PimBy
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimByygzzsq> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimByygzzsq>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
+
+
 
 
 
@@ -207,5 +208,6 @@ public class PimByygzzsqServiceImpl extends ServiceImpl<PimByygzzsqMapper, PimBy
     }
 
 }
+
 
 

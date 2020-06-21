@@ -19,11 +19,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import SalItemService from '@/service/sal-item/sal-item-service';
 import MPickupViewpickupviewpanelService from './mpickup-viewpickupviewpanel-pickupviewpanel-service';
 
@@ -41,7 +42,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 名称
      *
      * @type {string}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     @Prop() public name?: string;
 
@@ -49,7 +50,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -57,7 +58,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 应用上下文
      *
      * @type {*}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     @Prop() public context: any;
 
@@ -65,7 +66,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 视图参数
      *
      * @type {*}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     @Prop() public viewparams: any;
 
@@ -74,7 +75,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -82,7 +83,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public getControlType(): string {
         return 'PICKUPVIEWPANEL'
@@ -94,7 +95,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 建构部件服务对象
      *
      * @type {MPickupViewpickupviewpanelService}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public service: MPickupViewpickupviewpanelService = new MPickupViewpickupviewpanelService({ $store: this.$store });
 
@@ -102,7 +103,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 实体服务对象
      *
      * @type {SalItemService}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public appEntityService: SalItemService = new SalItemService({ $store: this.$store });
     
@@ -112,7 +113,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 关闭视图
      *
      * @param {any} args
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -122,7 +123,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
     /**
      *  计数器刷新
      *
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -134,6 +135,8 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
             })
         }
     }
+
+
 
     /**
      * 视图打开模式
@@ -149,15 +152,15 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    @Prop() protected selectedData?: string;
+    @Prop() public selectedData?: string;
 
     /**
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public getDatas(): any[] {
         return [];
@@ -167,7 +170,7 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 获取单项树
      *
      * @returns {*}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
     public getData(): any {
         return {};
@@ -177,20 +180,36 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 视图名称
      *
      * @type {*}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected view: any = {
+    public view: any = {
         viewname: 'sal-item-pickup-grid-view',
         data: {},
     }
 
     /**
+     * 局部上下文
+     *
+     * @type {*}
+     * @memberof MPickupViewpickupviewpanelBase
+     */
+    public localContext: any = null;
+
+    /**
+     * 局部视图参数
+     *
+     * @type {*}
+     * @memberof PickupViewpickupviewpanel
+     */
+    public localViewParam: any = null;
+
+    /**
      * 视图数据
      *
      * @type {*}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected viewdata: string  = JSON.stringify(this.context);
+    public viewdata: string  = JSON.stringify(this.context);
 
     /**
      * 视图参数
@@ -198,39 +217,39 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * @type {*}
      * @memberof PickupViewpickupviewpanel
      */
-    protected viewparam: string  = JSON.stringify(this.viewparams);
+    public viewparam: string  = JSON.stringify(this.viewparams);
 
     /**
      * 是否显示按钮
      *
      * @type {boolean}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    @Prop({default: true}) protected isShowButton!: boolean;
+    @Prop({default: true}) public isShowButton!: boolean;
 
     /**
      * 是否单选
      *
      * @type {boolean}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    @Prop() protected isSingleSelect?: boolean;
+    @Prop() public isSingleSelect?: boolean;
 
     /**
      * 初始化完成
      *
      * @type {boolean}
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected inited: boolean = false;
+    public inited: boolean = false;
 
     /**
      * 视图数据变化
      *
      * @param {*} $event
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected onViewDatasChange($event: any): void {
+    public onViewDatasChange($event: any): void {
         if($event.length>0){
           $event.forEach((item:any,index:any) => {
               let srfmajortext = item['salitemname'];
@@ -246,9 +265,9 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 视图数据被激活
      *
      * @param {*} $event
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected viewDatasActivated($event: any): void {
+    public viewDatasActivated($event: any): void {
         this.$emit('activated', $event);
     }
 
@@ -256,27 +275,28 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
      * 视图加载完成
      *
      * @param {*} $event
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected onViewLoad($event: any): void {
+    public onViewLoad($event: any): void {
         this.$emit('load', $event);
     }
 
     /**
      * vue 生命周期
      *
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected created() {
+    public created() {
         this.afterCreated();
     }
 
     /**
      * 执行created后的逻辑
      *
-     *  @memberof MPickupViewpickupviewpanel
+     *  @memberof MPickupViewpickupviewpanelBase
      */    
-    protected afterCreated(){
+    public afterCreated(){
+        this.initNavParam();
         if (this.viewState) {
             this.viewStateEvent = this.viewState.subscribe(({ tag, action, data }) => {
                 if (!Object.is(tag, this.name)) {
@@ -292,20 +312,39 @@ export default class MPickupViewpickupviewpanelBase extends Vue implements Contr
     }
 
     /**
+     * 初始化导航参数
+     *
+     *  @memberof MPickupViewpickupviewpanelBase
+     */  
+    public initNavParam(){
+        if(this.localContext && Object.keys(this.localContext).length >0){
+            let _context:any = this.$util.computedNavData({},this.context,this.viewparams,this.localContext);
+            Object.assign(this.context,_context);
+        }
+        if(this.localViewParam && Object.keys(this.localViewParam).length >0){
+            let _param:any = this.$util.computedNavData({},this.context,this.viewparams,this.localViewParam);
+            Object.assign(this.viewparams,_param);
+        }
+        this.viewdata = JSON.stringify(this.context);
+        this.viewparam = JSON.stringify(this.viewparams);
+    }
+
+
+    /**
      * vue 生命周期
      *
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected destroyed() {
+    public destroyed() {
         this.afterDestroy();
     }
 
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof MPickupViewpickupviewpanel
+     * @memberof MPickupViewpickupviewpanelBase
      */
-    protected afterDestroy() {
+    public afterDestroy() {
         if (this.viewStateEvent) {
             this.viewStateEvent.unsubscribe();
         }

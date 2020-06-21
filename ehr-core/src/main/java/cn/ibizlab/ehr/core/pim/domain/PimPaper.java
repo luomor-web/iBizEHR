@@ -72,7 +72,7 @@ public class PimPaper extends EntityMP implements Serializable {
      * 论文信息标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimpaperid",type=IdType.UUID)
+    @TableId(value= "pimpaperid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimpaperid")
     @JsonProperty("pimpaperid")
     private String pimpaperid;

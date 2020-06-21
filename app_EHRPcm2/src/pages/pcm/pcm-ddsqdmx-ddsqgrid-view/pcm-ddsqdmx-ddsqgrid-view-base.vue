@@ -583,7 +583,8 @@ export default class PcmDdsqdmxDDSQGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-        const batchAddPSAppViews=[
+        let batchAddPSAppViews:Array<any>=[];
+        batchAddPSAppViews=[
             {view:{viewname:'pim-distirbution-kddmpickup-view',height: 0,width: 0,title: '可调动的分配'},
             res:['PimDistirbution'],
             'resAppKey':'pimdistirbutionid'}

@@ -91,7 +91,6 @@ public class OrmXmrlcbServiceImpl extends ServiceImpl<OrmXmrlcbMapper, OrmXmrlcb
     public boolean checkKey(OrmXmrlcb et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmrlcbid()))&&(!Objects.isNull(this.getById(et.getOrmxmrlcbid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmXmrlcb et) {
@@ -165,6 +164,8 @@ public class OrmXmrlcbServiceImpl extends ServiceImpl<OrmXmrlcbMapper, OrmXmrlcb
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -210,5 +211,6 @@ public class OrmXmrlcbServiceImpl extends ServiceImpl<OrmXmrlcbMapper, OrmXmrlcb
     }
 
 }
+
 
 

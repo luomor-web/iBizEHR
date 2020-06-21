@@ -97,7 +97,6 @@ public class VacSituationDetailServiceImpl extends ServiceImpl<VacSituationDetai
     public boolean checkKey(VacSituationDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacsituationdetailid()))&&(!Objects.isNull(this.getById(et.getVacsituationdetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(VacSituationDetail et) {
@@ -156,6 +155,8 @@ public class VacSituationDetailServiceImpl extends ServiceImpl<VacSituationDetai
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class VacSituationDetailServiceImpl extends ServiceImpl<VacSituationDetai
     }
 
 }
+
 
 

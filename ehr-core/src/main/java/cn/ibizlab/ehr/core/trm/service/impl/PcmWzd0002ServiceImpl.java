@@ -99,7 +99,6 @@ public class PcmWzd0002ServiceImpl extends ServiceImpl<PcmWzd0002Mapper, PcmWzd0
     public boolean checkKey(PcmWzd0002 et) {
         return (!ObjectUtils.isEmpty(et.getWzd0002id()))&&(!Objects.isNull(this.getById(et.getWzd0002id())));
     }
-
     @Override
     @Transactional
     public PcmWzd0002 get(String key) {
@@ -156,6 +155,8 @@ public class PcmWzd0002ServiceImpl extends ServiceImpl<PcmWzd0002Mapper, PcmWzd0
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -201,5 +202,6 @@ public class PcmWzd0002ServiceImpl extends ServiceImpl<PcmWzd0002Mapper, PcmWzd0
     }
 
 }
+
 
 

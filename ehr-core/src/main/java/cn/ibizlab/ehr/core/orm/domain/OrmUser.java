@@ -64,7 +64,7 @@ public class OrmUser extends EntityMP implements Serializable {
      * 用户标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "orguserid",type=IdType.UUID)
+    @TableId(value= "orguserid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "orguserid")
     @JsonProperty("orguserid")
     private String orguserid;

@@ -151,7 +151,7 @@ export default class PimPortalViewBase extends PortalViewBase {
      * 应用起始页面
      *
      * @type {boolean}
-     * @memberof PimPortalView
+     * @memberof PimPortalViewBase
      */
     public isDefaultPage: boolean = false;
     

@@ -120,7 +120,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
      * 工资单要素项标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "salschemeitemid",type=IdType.UUID)
+    @TableId(value= "salschemeitemid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "salschemeitemid")
     @JsonProperty("salschemeitemid")
     private String salschemeitemid;
@@ -180,6 +180,13 @@ public class SalSchemeItem extends EntityMP implements Serializable {
     @JSONField(name = "salitemid")
     @JsonProperty("salitemid")
     private String salitemid;
+    /**
+     * 排序号
+     */
+    @TableField(exist = false)
+    @JSONField(name = "xh2")
+    @JsonProperty("xh2")
+    private Integer xh2;
 
     /**
      * 方案要素项

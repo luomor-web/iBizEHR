@@ -72,6 +72,9 @@ export default class PickupViewpickupviewpanelModel {
       {
         name: 'salitemid',
       },
+      {
+        name: 'xh2',
+      },
     ]
   }
 

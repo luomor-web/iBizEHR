@@ -326,7 +326,6 @@ public class PcmProfileServiceImpl extends ServiceImpl<PcmProfileMapper, PcmProf
     public boolean checkKey(PcmProfile et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofileid()))&&(!Objects.isNull(this.getById(et.getPcmprofileid())));
     }
-
     @Override
     @Transactional
     public PcmProfile invalid(PcmProfile et) {
@@ -777,6 +776,8 @@ public class PcmProfileServiceImpl extends ServiceImpl<PcmProfileMapper, PcmProf
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -822,5 +823,6 @@ public class PcmProfileServiceImpl extends ServiceImpl<PcmProfileMapper, PcmProf
     }
 
 }
+
 
 

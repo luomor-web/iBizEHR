@@ -167,7 +167,6 @@ public class PcmDdsqdmxServiceImpl extends ServiceImpl<PcmDdsqdmxMapper, PcmDdsq
     public boolean checkKey(PcmDdsqdmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmddsqdmxid()))&&(!Objects.isNull(this.getById(et.getPcmddsqdmxid())));
     }
-
     @Override
     @Transactional
     public PcmDdsqdmx dDCZ(PcmDdsqdmx et) {
@@ -440,6 +439,8 @@ public class PcmDdsqdmxServiceImpl extends ServiceImpl<PcmDdsqdmxMapper, PcmDdsq
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -485,5 +486,6 @@ public class PcmDdsqdmxServiceImpl extends ServiceImpl<PcmDdsqdmxMapper, PcmDdsq
     }
 
 }
+
 
 

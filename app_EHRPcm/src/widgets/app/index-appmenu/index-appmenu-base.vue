@@ -131,7 +131,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'bhsp_csrcyjgridview', parameterName: 'bhsp_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -149,7 +154,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'gxmltreeexpview', parameterName: 'gxmltreeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -167,7 +177,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'rlsbgridview', parameterName: 'rlsbgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -185,7 +200,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'xkmltreeexpview', parameterName: 'xkmltreeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -203,7 +223,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'zpdwshgridview', parameterName: 'zpdwshgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -221,7 +246,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'treeexpview', parameterName: 'treeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -239,7 +269,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'bhspgridview', parameterName: 'bhspgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -257,7 +292,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ypzxx_csrcyjgridview', parameterName: 'ypzxx_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -275,7 +315,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'yrdwcs_csrcyjgridview', parameterName: 'yrdwcs_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -293,7 +338,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ypzbdgridview', parameterName: 'ypzbdgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -311,7 +361,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -329,7 +384,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ypzbd_csrcyjgridview', parameterName: 'ypzbd_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -347,7 +407,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'rzspgridview', parameterName: 'rzspgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -365,7 +430,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'rzsp_csrcyjgridview', parameterName: 'rzsp_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -383,7 +453,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'ypzxx_lrgridview', parameterName: 'ypzxx_lrgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
     
     /**
@@ -401,7 +476,12 @@ export default class IndexBase extends AppMenusCtrlBase {
             { pathName: 'rlsb_csrcyjgridview', parameterName: 'rlsb_csrcyjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
+        if(Object.is(this.$route.fullPath,path)){
+            return;
+        }
+        this.$nextTick(function(){
+            this.$router.push(path);
+        })
     }
 
     public render(): any {

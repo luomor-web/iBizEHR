@@ -121,6 +121,31 @@ public class TrmTrainActmentDTO extends DTOBase implements Serializable {
     @JsonProperty("trmtrainactapplyid")
     private String trmtrainactapplyid;
 
+    /**
+     * 属性 [EVALTARGET]
+     *
+     */
+    @JSONField(name = "evaltarget")
+    @JsonProperty("evaltarget")
+    private String evaltarget;
+
+    /**
+     * 属性 [EVALCONTENTS]
+     *
+     */
+    @JSONField(name = "evalcontents")
+    @JsonProperty("evalcontents")
+    private String evalcontents;
+
+    /**
+     * 属性 [EVALTIME]
+     *
+     */
+    @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
+    @JSONField(name = "evaltime" , format="yyyy-MM-dd")
+    @JsonProperty("evaltime")
+    private Timestamp evaltime;
+
 
     /**
      * 设置 [DCWJTM]
@@ -160,6 +185,30 @@ public class TrmTrainActmentDTO extends DTOBase implements Serializable {
     public void setTrmtrainactapplyid(String  trmtrainactapplyid){
         this.trmtrainactapplyid = trmtrainactapplyid ;
         this.modify("trmtrainactapplyid",trmtrainactapplyid);
+    }
+
+    /**
+     * 设置 [EVALTARGET]
+     */
+    public void setEvaltarget(String  evaltarget){
+        this.evaltarget = evaltarget ;
+        this.modify("evaltarget",evaltarget);
+    }
+
+    /**
+     * 设置 [EVALCONTENTS]
+     */
+    public void setEvalcontents(String  evalcontents){
+        this.evalcontents = evalcontents ;
+        this.modify("evalcontents",evalcontents);
+    }
+
+    /**
+     * 设置 [EVALTIME]
+     */
+    public void setEvaltime(Timestamp  evaltime){
+        this.evaltime = evaltime ;
+        this.modify("evaltime",evaltime);
     }
 
 

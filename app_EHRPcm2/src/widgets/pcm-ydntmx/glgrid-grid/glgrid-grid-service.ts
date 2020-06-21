@@ -267,22 +267,11 @@ export default class GLGridService extends ControlService {
                     response.data.pcmydntmxid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof GLGridService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-        }
     }
 
 

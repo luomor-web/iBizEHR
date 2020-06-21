@@ -117,11 +117,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PcmYddgmxService from '@/service/pcm-yddgmx/pcm-yddgmx-service';
 import DGCKService from './dgck-form-service';
 
@@ -140,7 +141,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public name?: string;
 
@@ -148,7 +149,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -156,7 +157,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public context: any;
 
@@ -164,7 +165,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public viewparams: any;
 
@@ -173,7 +174,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -181,7 +182,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -193,7 +194,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -201,7 +202,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {DGCKService}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public service: DGCKService = new DGCKService({ $store: this.$store });
 
@@ -209,7 +210,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PcmYddgmxService}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public appEntityService: PcmYddgmxService = new PcmYddgmxService({ $store: this.$store });
     
@@ -219,7 +220,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -229,7 +230,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -246,7 +247,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public srfwfmemo:string = "";
     
@@ -254,7 +255,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -264,7 +265,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public getData(): any {
         return this.data;
@@ -274,7 +275,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -282,7 +283,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -290,7 +291,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -298,7 +299,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -306,7 +307,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public updateAction!: string;
     
@@ -314,7 +315,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public removeAction!: string;
     
@@ -322,7 +323,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -330,7 +331,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public loadAction!: string;
     
@@ -338,7 +339,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public createAction!: string;
 
@@ -346,7 +347,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public searchAction!: string;
 
@@ -354,7 +355,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Prop() public viewtag!: string;
 
@@ -362,7 +363,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -370,7 +371,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -379,7 +380,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -388,7 +389,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -397,7 +398,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public oldData: any = {};
 
@@ -405,7 +406,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -444,7 +445,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof DGCK
+      * @memberof DGCKBase
       */
     public currentAction: string = "";
 
@@ -452,7 +453,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof DGCK
+      * @memberof DGCKBase
       */
     public drcounter: number = 0;
 
@@ -460,7 +461,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof DGCK
+      * @memberof DGCKBase
       */
     public drsaveopt: any = {};
 
@@ -468,7 +469,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof DGCK
+      * @memberof DGCKBase
       */
     public saveState:any ;
 
@@ -476,7 +477,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -659,7 +660,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '人员信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pcmyddgmx.dgck_form', extractMode: 'ITEM', details: [] } })
@@ -733,7 +734,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -745,7 +746,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -757,7 +758,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -769,7 +770,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -781,7 +782,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -793,7 +794,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -805,7 +806,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -817,7 +818,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -829,7 +830,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -841,7 +842,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -853,7 +854,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.zz')
     onZzChange(newVal: any, oldVal: any) {
@@ -865,7 +866,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.zzid')
     onZzidChange(newVal: any, oldVal: any) {
@@ -877,7 +878,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.bm')
     onBmChange(newVal: any, oldVal: any) {
@@ -889,7 +890,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.bmid')
     onBmidChange(newVal: any, oldVal: any) {
@@ -901,7 +902,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.yrank')
     onYrankChange(newVal: any, oldVal: any) {
@@ -913,7 +914,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.yzw')
     onYzwChange(newVal: any, oldVal: any) {
@@ -925,7 +926,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.ygw')
     onYgwChange(newVal: any, oldVal: any) {
@@ -937,7 +938,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.lxdh')
     onLxdhChange(newVal: any, oldVal: any) {
@@ -949,7 +950,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -961,7 +962,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -973,7 +974,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.sxrq')
     onSxrqChange(newVal: any, oldVal: any) {
@@ -985,7 +986,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.jsrq')
     onJsrqChange(newVal: any, oldVal: any) {
@@ -997,7 +998,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.ormorgsectorid')
     onOrmorgsectoridChange(newVal: any, oldVal: any) {
@@ -1009,7 +1010,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
@@ -1021,7 +1022,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.reason')
     onReasonChange(newVal: any, oldVal: any) {
@@ -1033,7 +1034,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.bz')
     onBzChange(newVal: any, oldVal: any) {
@@ -1045,7 +1046,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.dglx')
     onDglxChange(newVal: any, oldVal: any) {
@@ -1057,7 +1058,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.isfinished')
     onIsfinishedChange(newVal: any, oldVal: any) {
@@ -1069,7 +1070,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     @Watch('data.pcmyddgmxid')
     onPcmyddgmxidChange(newVal: any, oldVal: any) {
@@ -1082,7 +1083,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1091,7 +1092,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof DGCKBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1108,7 +1109,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1157,7 +1158,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1174,7 +1175,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1195,7 +1196,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1220,7 +1221,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1236,7 +1237,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1248,7 +1249,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1264,7 +1265,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1282,7 +1283,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1297,7 +1298,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public getValues(): any {
         return this.data;
@@ -1308,7 +1309,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1326,7 +1327,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1344,7 +1345,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1356,7 +1357,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public created(): void {
         this.afterCreated();
@@ -1365,7 +1366,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof DGCK
+     *  @memberof DGCKBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1422,7 +1423,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1431,7 +1432,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1446,7 +1447,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof DGCK
+     * @memberof @memberof DGCKBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1464,7 +1465,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof DGCK
+     *@memberof @memberof DGCKBase
      */
     public print(){
         let _this:any = this;
@@ -1475,7 +1476,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1497,7 +1498,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1518,7 +1519,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1553,7 +1554,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1607,7 +1608,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1658,7 +1659,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1728,7 +1729,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof DGCKBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1762,7 +1763,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1818,7 +1819,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1894,7 +1895,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1939,7 +1940,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public onEnter($event: any): void {
     }
@@ -1948,7 +1949,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1973,7 +1974,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1996,7 +1997,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2020,31 +2021,30 @@ export default class DGCKBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof DGCK
+    * @memberof DGCKBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('dglx')) {
@@ -2054,7 +2054,7 @@ export default class DGCKBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof DGCK
+     * @memberof DGCKBase
      */
     public updateDefault(){                    
     }

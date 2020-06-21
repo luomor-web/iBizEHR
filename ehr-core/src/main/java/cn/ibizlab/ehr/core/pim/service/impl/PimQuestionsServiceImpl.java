@@ -151,7 +151,6 @@ public class PimQuestionsServiceImpl extends ServiceImpl<PimQuestionsMapper, Pim
     public boolean checkKey(PimQuestions et) {
         return (!ObjectUtils.isEmpty(et.getQuestionsid()))&&(!Objects.isNull(this.getById(et.getQuestionsid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -235,6 +234,8 @@ public class PimQuestionsServiceImpl extends ServiceImpl<PimQuestionsMapper, Pim
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -280,5 +281,6 @@ public class PimQuestionsServiceImpl extends ServiceImpl<PimQuestionsMapper, Pim
     }
 
 }
+
 
 

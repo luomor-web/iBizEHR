@@ -73,13 +73,13 @@
     <!--数据查询[BasDuty]-->
     <sql id="BasDuty" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
-				 WHERE 	( ( (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.srfparentkey')}) ) >0 )  OR  (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.ormzwbzid')}) ) >0 ) ) )
+				 WHERE 	( ( (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.srfparentkey}) ) >0 )  OR  (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.ormzwbzid}) ) >0 ) ) )
 			]]>
     </sql>
     <!--数据查询[CurOrg]-->
     <sql id="CurOrg" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
-				 WHERE 	( ( ( ( t1.`ZWLB` LIKE '%10%'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid')}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  OR  ( ( t1.`ZWLB` LIKE '%20%'  OR  t1.`ZWLB` = '30'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid')}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
+				 WHERE 	( ( ( ( t1.`ZWLB` LIKE '%10%'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  OR  ( ( t1.`ZWLB` LIKE '%20%'  OR  t1.`ZWLB` = '30'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
 			]]>
     </sql>
     <!--数据查询[CurOrgsector]-->
@@ -101,7 +101,7 @@
     <!--数据查询[SrfOrgData]-->
     <sql id="SrfOrgData" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
-				 WHERE 	( ( ( ( t1.`ZWLB` LIKE '%10%'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid')}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  OR  ( ( t1.`ZWLB` LIKE '%20%'  OR  t1.`ZWLB` = '30'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid')}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
+				 WHERE 	( ( ( ( t1.`ZWLB` LIKE '%10%'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  OR  ( ( t1.`ZWLB` LIKE '%20%'  OR  t1.`ZWLB` = '30'  OR  t1.`ZWLB` = '40' )  AND  ( #{srf.sessioncontext.srforgid}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
 			]]>
     </sql>
     <!--数据查询[View]-->

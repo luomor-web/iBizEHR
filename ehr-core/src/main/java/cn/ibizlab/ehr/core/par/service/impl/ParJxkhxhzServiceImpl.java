@@ -38,23 +38,28 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[考核内容评分汇总] 服务对象接口实现
+ * 实体[考核方案] 服务对象接口实现
  */
 @Slf4j
 @Service("ParJxkhxhzServiceImpl")
 public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkhxhz> implements IParJxkhxhzService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.par.service.IParAssessTemplateService parassesstemplateService;
 
     private int batchSize = 500;
 
     @Override
     public ParJxkhxhz getDraft(ParJxkhxhz et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean update(ParJxkhxhz et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("parjxkhxhzid",et.getParjxkhxhzid())))
             return false;
         CachedBeanCopier.copy(get(et.getParjxkhxhzid()),et);
@@ -63,6 +68,7 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
 
     @Override
     public void updateBatch(List<ParJxkhxhz> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -70,7 +76,6 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
     public boolean checkKey(ParJxkhxhz et) {
         return (!ObjectUtils.isEmpty(et.getParjxkhxhzid()))&&(!Objects.isNull(this.getById(et.getParjxkhxhzid())));
     }
-
     @Override
     @Transactional
     public ParJxkhxhz get(String key) {
@@ -99,6 +104,7 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
     @Override
     @Transactional
     public boolean create(ParJxkhxhz et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getParjxkhxhzid()),et);
@@ -107,6 +113,7 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
 
     @Override
     public void createBatch(List<ParJxkhxhz> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -132,15 +139,27 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
 
     @Override
     public boolean saveBatch(Collection<ParJxkhxhz> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<ParJxkhxhz> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
+
+	@Override
+    public List<ParJxkhxhz> selectByParassesstemplateid(String parassesstemplateid) {
+        return baseMapper.selectByParassesstemplateid(parassesstemplateid);
+    }
+
+    @Override
+    public void removeByParassesstemplateid(String parassesstemplateid) {
+        this.remove(new QueryWrapper<ParJxkhxhz>().eq("parassesstemplateid",parassesstemplateid));
+    }
 
 
     /**
@@ -152,6 +171,24 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
         return new PageImpl<ParJxkhxhz>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
+
+
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(ParJxkhxhz et){
+        //实体关系[DER1N_PARJXKHXHZ_PARASSESSTEMPLATE_PARASSESSTEMPLATEID]
+        if(!ObjectUtils.isEmpty(et.getParassesstemplateid())){
+            cn.ibizlab.ehr.core.par.domain.ParAssessTemplate parassesstemplate=et.getParassesstemplate();
+            if(ObjectUtils.isEmpty(parassesstemplate)){
+                cn.ibizlab.ehr.core.par.domain.ParAssessTemplate majorEntity=parassesstemplateService.get(et.getParassesstemplateid());
+                et.setParassesstemplate(majorEntity);
+                parassesstemplate=majorEntity;
+            }
+            et.setParassesstemplatename(parassesstemplate.getParassesstemplatename());
+        }
+    }
 
 
 
@@ -201,5 +238,6 @@ public class ParJxkhxhzServiceImpl extends ServiceImpl<ParJxkhxhzMapper, ParJxkh
     }
 
 }
+
 
 

@@ -1,8 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import KBLogic from '@/service/trm-train-planterm/kb-logic';
-import QXLogic from '@/service/trm-train-planterm/qx-logic';
-import LXLogic from '@/service/trm-train-planterm/lx-logic';
 
 
 
@@ -51,6 +48,18 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/select`,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/select`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/select`,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmtrainplanterms/${context.trmtrainplanterm}/select`,isloading);
     }
 
@@ -64,7 +73,21 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().get(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainbuapplies',JSON.stringify(res.data.trmtrainbuapplies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmteachercharges',JSON.stringify(res.data.trmteachercharges));
             return res;
 
     }
@@ -79,6 +102,18 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().delete(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().delete(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
+        }
             return Http.getInstance().delete(`/trmtrainplanterms/${context.trmtrainplanterm}`,isloading);
 
     }
@@ -93,6 +128,18 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/checkkey`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/checkkey`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/checkkey`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/checkkey`,data,isloading);
     }
 
@@ -106,9 +153,53 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().put(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().put(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}`,data,isloading);
+        }
         let masterData:any = {};
+        let trmtrainbuappliesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies'),'undefined')){
+            trmtrainbuappliesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies') as any);
+            if(trmtrainbuappliesData && trmtrainbuappliesData.length && trmtrainbuappliesData.length > 0){
+                trmtrainbuappliesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainbuapplyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainbuapplies = trmtrainbuappliesData;
+        let trmteacherchargesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges'),'undefined')){
+            trmteacherchargesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges') as any);
+            if(trmteacherchargesData && trmteacherchargesData.length && trmteacherchargesData.length > 0){
+                trmteacherchargesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmteacherchargeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmteachercharges = trmteacherchargesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtrainplanterms/${context.trmtrainplanterm}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainbuapplies',JSON.stringify(res.data.trmtrainbuapplies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmteachercharges',JSON.stringify(res.data.trmteachercharges));
             return res;
     }
 
@@ -122,9 +213,53 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/save`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/save`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/save`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/save`,data,isloading);
+        }
         let masterData:any = {};
+        let trmtrainbuappliesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies'),'undefined')){
+            trmtrainbuappliesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies') as any);
+            if(trmtrainbuappliesData && trmtrainbuappliesData.length && trmtrainbuappliesData.length > 0){
+                trmtrainbuappliesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainbuapplyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainbuapplies = trmtrainbuappliesData;
+        let trmteacherchargesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges'),'undefined')){
+            trmteacherchargesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges') as any);
+            if(trmteacherchargesData && trmteacherchargesData.length && trmteacherchargesData.length > 0){
+                trmteacherchargesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmteacherchargeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmteachercharges = trmteacherchargesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainbuapplies',JSON.stringify(res.data.trmtrainbuapplies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmteachercharges',JSON.stringify(res.data.trmteachercharges));
             return res;
     }
 
@@ -138,8 +273,22 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/getdraft`,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/getdraft`,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/getdraft`,isloading);
+        }
+        if(context.trmtrainplan && true){
+            return Http.getInstance().get(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmtrainplanterms/getdraft`,isloading);
         res.data.trmtrainplanterm = data.trmtrainplanterm;
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainbuapplies',JSON.stringify(res.data.trmtrainbuapplies));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmteachercharges',JSON.stringify(res.data.trmteachercharges));
         return res;
     }
 
@@ -153,9 +302,19 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async KB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:KBLogic = new KBLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
     }
 
     /**
@@ -168,7 +327,73 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms`,data,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms`,data,isloading);
+        }
+        if(context.trmtrainplan && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms`,data,isloading);
+        }
         let masterData:any = {};
+        let trmtrainbuappliesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies'),'undefined')){
+            trmtrainbuappliesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainbuapplies') as any);
+            if(trmtrainbuappliesData && trmtrainbuappliesData.length && trmtrainbuappliesData.length > 0){
+                trmtrainbuappliesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainbuapplyid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainbuapplies = trmtrainbuappliesData;
+        let trmteacherchargesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges'),'undefined')){
+            trmteacherchargesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmteachercharges') as any);
+            if(trmteacherchargesData && trmteacherchargesData.length && trmteacherchargesData.length > 0){
+                trmteacherchargesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmteacherchargeid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmteachercharges = trmteacherchargesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -178,6 +403,8 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/trmtrainplanterms`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainbuapplies',JSON.stringify(res.data.trmtrainbuapplies));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmteachercharges',JSON.stringify(res.data.trmteachercharges));
         return res;
     }
 
@@ -191,9 +418,19 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async QX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:QXLogic = new QXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
     }
 
     /**
@@ -206,9 +443,19 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async LX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:LXLogic = new LXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+        if(context.trmtrainplan && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
     }
 
     /**
@@ -221,6 +468,22 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/fetchdefault`,tempData,isloading);
+        }
+        if(context.pimperson && context.trmtrainplan && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/fetchdefault`,tempData,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/fetchdefault`,tempData,isloading);
+        }
+        if(context.trmtrainplan && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainplans/${context.trmtrainplan}/trmtrainplanterms/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmtrainplanterms/fetchdefault`,tempData,isloading);
     }

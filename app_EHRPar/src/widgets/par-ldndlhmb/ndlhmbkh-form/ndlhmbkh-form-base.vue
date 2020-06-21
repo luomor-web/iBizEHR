@@ -85,6 +85,7 @@
     paramItem='parldndlhmb' 
     :parentdata='{"srfparentdefname":"PARLDNDLHMBID","srfparentdename":"PARLDNDLHMB","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PARLDNDLHMBMX_PARLDNDLHMB_PARLDNDLHMBID","SRFDER1NID":"DER1N_PARLDNDLHMBMX_PARLDNDLHMB_PARLDNDLHMBID"}'
     :parameters="[
+        { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -114,11 +115,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import ParLdndlhmbService from '@/service/par-ldndlhmb/par-ldndlhmb-service';
 import NDLHMBKHService from './ndlhmbkh-form-service';
 
@@ -137,7 +139,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public name?: string;
 
@@ -145,7 +147,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -153,7 +155,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public context: any;
 
@@ -161,7 +163,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public viewparams: any;
 
@@ -170,7 +172,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -178,7 +180,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -190,7 +192,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -198,7 +200,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {NDLHMBKHService}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public service: NDLHMBKHService = new NDLHMBKHService({ $store: this.$store });
 
@@ -206,7 +208,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {ParLdndlhmbService}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public appEntityService: ParLdndlhmbService = new ParLdndlhmbService({ $store: this.$store });
     
@@ -216,7 +218,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -226,7 +228,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -243,7 +245,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public srfwfmemo:string = "";
     
@@ -251,7 +253,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -261,7 +263,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public getData(): any {
         return this.data;
@@ -271,7 +273,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -279,7 +281,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -287,7 +289,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -295,7 +297,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -303,7 +305,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public updateAction!: string;
     
@@ -311,7 +313,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public removeAction!: string;
     
@@ -319,7 +321,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -327,7 +329,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public loadAction!: string;
     
@@ -335,7 +337,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public createAction!: string;
 
@@ -343,7 +345,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public searchAction!: string;
 
@@ -351,7 +353,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Prop() public viewtag!: string;
 
@@ -359,7 +361,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -367,7 +369,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -376,7 +378,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -385,7 +387,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -394,7 +396,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public oldData: any = {};
 
@@ -402,7 +404,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -429,7 +431,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof NDLHMBKH
+      * @memberof NDLHMBKHBase
       */
     public currentAction: string = "";
 
@@ -437,7 +439,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof NDLHMBKH
+      * @memberof NDLHMBKHBase
       */
     public drcounter: number = 0;
 
@@ -445,7 +447,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof NDLHMBKH
+      * @memberof NDLHMBKHBase
       */
     public drsaveopt: any = {};
 
@@ -453,7 +455,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof NDLHMBKH
+      * @memberof NDLHMBKHBase
       */
     public saveState:any ;
 
@@ -461,7 +463,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -572,7 +574,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parldndlhmb.ndlhmbkh_form', extractMode: 'ITEM', details: [] } })
@@ -624,7 +626,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -636,7 +638,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -648,7 +650,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -660,7 +662,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -672,7 +674,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -684,7 +686,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -696,7 +698,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -708,7 +710,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -720,7 +722,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -732,7 +734,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.sstz')
     onSstzChange(newVal: any, oldVal: any) {
@@ -744,7 +746,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.xh')
     onXhChange(newVal: any, oldVal: any) {
@@ -756,7 +758,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -768,7 +770,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.nd')
     onNdChange(newVal: any, oldVal: any) {
@@ -780,7 +782,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.sszz')
     onSszzChange(newVal: any, oldVal: any) {
@@ -792,7 +794,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.ssbm')
     onSsbmChange(newVal: any, oldVal: any) {
@@ -804,7 +806,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.jxjd')
     onJxjdChange(newVal: any, oldVal: any) {
@@ -816,7 +818,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     @Watch('data.parldndlhmbid')
     onParldndlhmbidChange(newVal: any, oldVal: any) {
@@ -829,7 +831,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -838,7 +840,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof NDLHMBKHBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -855,7 +857,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -888,7 +890,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -905,7 +907,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -926,7 +928,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -951,7 +953,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -967,7 +969,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -979,7 +981,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -995,7 +997,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1013,7 +1015,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1028,7 +1030,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public getValues(): any {
         return this.data;
@@ -1039,7 +1041,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1057,7 +1059,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1075,7 +1077,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1087,7 +1089,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public created(): void {
         this.afterCreated();
@@ -1096,7 +1098,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof NDLHMBKH
+     *  @memberof NDLHMBKHBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1153,7 +1155,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1162,7 +1164,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1177,7 +1179,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof NDLHMBKH
+     * @memberof @memberof NDLHMBKHBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1195,7 +1197,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof NDLHMBKH
+     *@memberof @memberof NDLHMBKHBase
      */
     public print(){
         let _this:any = this;
@@ -1206,7 +1208,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1228,7 +1230,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1249,7 +1251,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1284,7 +1286,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1338,7 +1340,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1389,7 +1391,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1459,7 +1461,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof NDLHMBKHBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1493,7 +1495,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1549,7 +1551,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1625,7 +1627,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1670,7 +1672,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public onEnter($event: any): void {
     }
@@ -1679,7 +1681,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1704,7 +1706,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1727,7 +1729,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1751,31 +1753,30 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof NDLHMBKH
+    * @memberof NDLHMBKHBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('jxjd')) {
@@ -1785,7 +1786,7 @@ export default class NDLHMBKHBase extends Vue implements ControlInterface {
 
     /**
      * 更新默认值
-     * @memberof NDLHMBKH
+     * @memberof NDLHMBKHBase
      */
     public updateDefault(){                    
     }

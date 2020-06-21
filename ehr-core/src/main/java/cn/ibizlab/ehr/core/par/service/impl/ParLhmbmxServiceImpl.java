@@ -54,7 +54,6 @@ public class ParLhmbmxServiceImpl extends ServiceImpl<ParLhmbmxMapper, ParLhmbmx
     public boolean checkKey(ParLhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParlhmbmxid()))&&(!Objects.isNull(this.getById(et.getParlhmbmxid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -192,6 +191,8 @@ public class ParLhmbmxServiceImpl extends ServiceImpl<ParLhmbmxMapper, ParLhmbmx
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -237,5 +238,6 @@ public class ParLhmbmxServiceImpl extends ServiceImpl<ParLhmbmxMapper, ParLhmbmx
     }
 
 }
+
 
 

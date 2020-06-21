@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.trm.logic.trmtrainplanlogic.setyfbzt;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.trm.domain.TrmTrainPlan trmtrainplansetyfbztdefault;
+global cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService trmtrainplanservice;
+global cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService iBzSysTrmtrainplanDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[更新状态]
+rule "deaction1"
+ruleflow-group "trmtrainplansetyfbztdeaction1"
+    when
+    then
+    trmtrainplanservice.update(trmtrainplansetyfbztdefault);
+    update(trmtrainplansetyfbztdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[参数准备]
+rule "prepareparam1"
+ruleflow-group "trmtrainplansetyfbztprepareparam1"
+    when
+    then
+    trmtrainplansetyfbztdefault.set("shfs","20");
+    update(trmtrainplansetyfbztdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "trmtrainplansetyfbztbegin"
+    when
+    then
+    end
+

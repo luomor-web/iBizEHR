@@ -248,7 +248,7 @@ export default class PIMTITLECATALOGUENotPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PIMTITLECATALOGUENotPickupView
+     * @memberof PIMTITLECATALOGUENotPickupViewBase
      */
     public selectedData: string = "";
 

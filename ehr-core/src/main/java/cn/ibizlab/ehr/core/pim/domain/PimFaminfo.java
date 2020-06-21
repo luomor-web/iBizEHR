@@ -196,7 +196,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
      * 家庭情况标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "pimfaminfoid",type=IdType.UUID)
+    @TableId(value= "pimfaminfoid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "pimfaminfoid")
     @JsonProperty("pimfaminfoid")
     private String pimfaminfoid;

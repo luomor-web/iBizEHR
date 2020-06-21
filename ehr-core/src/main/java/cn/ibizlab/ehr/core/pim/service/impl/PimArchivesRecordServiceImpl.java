@@ -122,7 +122,6 @@ public class PimArchivesRecordServiceImpl extends ServiceImpl<PimArchivesRecordM
     public boolean checkKey(PimArchivesRecord et) {
         return (!ObjectUtils.isEmpty(et.getPimarchivesrecordid()))&&(!Objects.isNull(this.getById(et.getPimarchivesrecordid())));
     }
-
     @Override
     @Transactional
     public PimArchivesRecord get(String key) {
@@ -216,6 +215,8 @@ public class PimArchivesRecordServiceImpl extends ServiceImpl<PimArchivesRecordM
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -261,5 +262,6 @@ public class PimArchivesRecordServiceImpl extends ServiceImpl<PimArchivesRecordM
     }
 
 }
+
 
 

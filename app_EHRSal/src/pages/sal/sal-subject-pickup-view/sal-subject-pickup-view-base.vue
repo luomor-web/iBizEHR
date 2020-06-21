@@ -248,7 +248,7 @@ export default class SalSubjectPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof SalSubjectPickupView
+     * @memberof SalSubjectPickupViewBase
      */
     public selectedData: string = "";
 

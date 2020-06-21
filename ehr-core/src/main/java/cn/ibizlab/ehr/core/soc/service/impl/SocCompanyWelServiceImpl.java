@@ -79,7 +79,6 @@ public class SocCompanyWelServiceImpl extends ServiceImpl<SocCompanyWelMapper, S
     public boolean checkKey(SocCompanyWel et) {
         return (!ObjectUtils.isEmpty(et.getSoccompanywelid()))&&(!Objects.isNull(this.getById(et.getSoccompanywelid())));
     }
-
     @Override
     @Transactional
     public boolean save(SocCompanyWel et) {
@@ -266,5 +265,6 @@ public class SocCompanyWelServiceImpl extends ServiceImpl<SocCompanyWelMapper, S
     }
 
 }
+
 
 

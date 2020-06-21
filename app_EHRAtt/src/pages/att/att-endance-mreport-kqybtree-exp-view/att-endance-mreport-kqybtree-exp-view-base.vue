@@ -25,6 +25,7 @@
       </div>
     </template>
   </app-layout>
+
 </template>
 
 <script lang='tsx'>
@@ -267,7 +268,7 @@ export default class AttEndanceMreportKQYBTreeExpViewBase extends TreeExpViewBas
      * 视图唯一标识
      *
      * @type {string}
-     * @memberof AttEndanceMreportKQYBTreeExpView
+     * @memberof AttEndanceMreportKQYBTreeExpViewBase
      */
     public viewUID: string = 'att-att-endance-mreport-kqybtree-exp-view';
 

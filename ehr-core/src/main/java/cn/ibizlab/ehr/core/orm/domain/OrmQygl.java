@@ -67,7 +67,7 @@ public class OrmQygl extends EntityMP implements Serializable {
      * 区域标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "ormqyglid",type=IdType.UUID)
+    @TableId(value= "ormqyglid",type=IdType.ASSIGN_UUID)
     @JSONField(name = "ormqyglid")
     @JsonProperty("ormqyglid")
     private String ormqyglid;

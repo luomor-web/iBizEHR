@@ -248,7 +248,7 @@ export default class ORMORGSECTORYDBMPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ORMORGSECTORYDBMPickupView
+     * @memberof ORMORGSECTORYDBMPickupViewBase
      */
     public selectedData: string = "";
 

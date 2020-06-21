@@ -108,7 +108,6 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
     public boolean checkKey(PimSearchFieldSet et) {
         return (!ObjectUtils.isEmpty(et.getPimsearchfieldsetid()))&&(!Objects.isNull(this.getById(et.getPimsearchfieldsetid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -172,6 +171,8 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -217,5 +218,6 @@ public class PimSearchFieldSetServiceImpl extends ServiceImpl<PimSearchFieldSetM
     }
 
 }
+
 
 

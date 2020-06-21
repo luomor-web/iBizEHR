@@ -51,7 +51,6 @@ public class PimStafftypeServiceImpl extends ServiceImpl<PimStafftypeMapper, Pim
     public boolean checkKey(PimStafftype et) {
         return (!ObjectUtils.isEmpty(et.getPimstafftypeid()))&&(!Objects.isNull(this.getById(et.getPimstafftypeid())));
     }
-
     @Override
     @Transactional
     public PimStafftype get(String key) {
@@ -165,6 +164,8 @@ public class PimStafftypeServiceImpl extends ServiceImpl<PimStafftypeMapper, Pim
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -210,5 +211,6 @@ public class PimStafftypeServiceImpl extends ServiceImpl<PimStafftypeMapper, Pim
     }
 
 }
+
 
 

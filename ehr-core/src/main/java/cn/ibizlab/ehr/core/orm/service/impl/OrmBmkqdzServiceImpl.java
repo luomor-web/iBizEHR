@@ -75,7 +75,6 @@ public class OrmBmkqdzServiceImpl extends ServiceImpl<OrmBmkqdzMapper, OrmBmkqdz
     public boolean checkKey(OrmBmkqdz et) {
         return (!ObjectUtils.isEmpty(et.getOrmbmkqdzid()))&&(!Objects.isNull(this.getById(et.getOrmbmkqdzid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmBmkqdz et) {
@@ -195,6 +194,8 @@ public class OrmBmkqdzServiceImpl extends ServiceImpl<OrmBmkqdzMapper, OrmBmkqdz
     }
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -240,5 +241,6 @@ public class OrmBmkqdzServiceImpl extends ServiceImpl<OrmBmkqdzMapper, OrmBmkqdz
     }
 
 }
+
 
 

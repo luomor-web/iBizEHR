@@ -1,42 +1,42 @@
 
 export default {
   fields: {
-    ormeditionname: '版本对照表名称',
-    ormeditionid: '版本对照表标识',
-    bbh: '版本号',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    createman: '建立人',
-    createdate: '建立时间',
+    ormeditionname: "版本对照表名称",
+    ormeditionid: "版本对照表标识",
+    bbh: "版本号",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    createman: "建立人",
+    createdate: "建立时间",
   },
 	views: {
 		gridview: {
 			caption: "版本对照表",
-      title: '版本对照表表格视图',
+      		title: "版本对照表表格视图",
 		},
 		mpickupview: {
 			caption: "版本对照表",
-      title: '版本对照表数据多项选择视图',
+      		title: "版本对照表数据多项选择视图",
 		},
 		editview2: {
 			caption: "版本对照表",
-      title: '版本对照表编辑视图',
+      		title: "版本对照表编辑视图",
 		},
 		redirectview: {
 			caption: "版本对照表",
-      title: '版本对照表数据重定向视图',
+      		title: "版本对照表数据重定向视图",
 		},
 		editview: {
 			caption: "版本对照表",
-      title: '版本对照表编辑视图',
+      		title: "版本对照表编辑视图",
 		},
 		pickupgridview: {
 			caption: "版本对照表",
-      title: '版本对照表选择表格视图',
+      		title: "版本对照表选择表格视图",
 		},
 		pickupview: {
 			caption: "版本对照表",
-      title: '版本对照表数据选择视图',
+      		title: "版本对照表数据选择视图",
 		},
 	},
 	main_form: {

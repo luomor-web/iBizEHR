@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehrtrm-prod
+  application:
+    name: ehr-ehrtrm

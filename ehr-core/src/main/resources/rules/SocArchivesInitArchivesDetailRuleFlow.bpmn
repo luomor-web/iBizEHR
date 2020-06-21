@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.soc.service.logic.socarchivesinitarchivesdetail" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.soc.service.logic.socarchivesinitarchivesdetail">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="socarchivesinitarchivesdetaildefault" type="cn.ibizlab.ehr.core.soc.domain.SocArchives" />
+        </extensionElements>
+     <startEvent id="D56578BF-FF85-4C93-81B9-CDB420A3D8FF" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="socarchivesinitarchivesdetailrawsqlcall1" id="379047F2-9D42-4774-B376-92353B6470A8" implementation="http://www.jboss.org/drools/rule" name="初始化档案明细"/>
+     <endEvent id="379047F2-9D42-4774-B376-92353B6470A8_End" name="End"/>
+     <sequenceFlow id="379047F2-9D42-4774-B376-92353B6470A8_End_Line" sourceRef="379047F2-9D42-4774-B376-92353B6470A8" targetRef="379047F2-9D42-4774-B376-92353B6470A8_End"/>
+     <sequenceFlow id="0D917A27-F754-4D5F-8871-F77CFC6E30ED" sourceRef="D56578BF-FF85-4C93-81B9-CDB420A3D8FF" targetRef="379047F2-9D42-4774-B376-92353B6470A8">
+     </sequenceFlow>
+    </process>
+</definitions>
+

@@ -96,7 +96,6 @@ public class OrmXmsfhzServiceImpl extends ServiceImpl<OrmXmsfhzMapper, OrmXmsfhz
     public boolean checkKey(OrmXmsfhz et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmsfhzid()))&&(!Objects.isNull(this.getById(et.getOrmxmsfhzid())));
     }
-
     @Override
     @Transactional
     public OrmXmsfhz get(String key) {
@@ -165,6 +164,8 @@ public class OrmXmsfhzServiceImpl extends ServiceImpl<OrmXmsfhzMapper, OrmXmsfhz
 
 
 
+
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
@@ -210,5 +211,6 @@ public class OrmXmsfhzServiceImpl extends ServiceImpl<OrmXmsfhzMapper, OrmXmsfhz
     }
 
 }
+
 
 
