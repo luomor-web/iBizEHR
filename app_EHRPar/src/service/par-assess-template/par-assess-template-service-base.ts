@@ -77,8 +77,8 @@ export default class ParAssessTemplateServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/parassesstemplates/getdraft`,isloading);
         res.data.parassesstemplate = data.parassesstemplate;
-            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             this.tempStorage.setItem(context.srfsessionkey+'_parkhzcmxes',JSON.stringify(res.data.parkhzcmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
         return res;
     }
 
@@ -93,8 +93,8 @@ export default class ParAssessTemplateServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/parassesstemplates/${context.parassesstemplate}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             this.tempStorage.setItem(context.srfsessionkey+'_parkhzcmxes',JSON.stringify(res.data.parkhzcmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             return res;
 
     }
@@ -123,21 +123,6 @@ export default class ParAssessTemplateServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let parjxkhxhzsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
-            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
-            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
-                parjxkhxhzsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parjxkhxhzid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parjxkhxhzs = parjxkhxhzsData;
         let parkhzcmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes'),'undefined')){
             parkhzcmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes') as any);
@@ -153,10 +138,25 @@ export default class ParAssessTemplateServiceBase extends EntityService {
             }
         }
         masterData.parkhzcmxes = parkhzcmxesData;
+        let parjxkhxhzsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
+            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
+            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
+                parjxkhxhzsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxkhxhzid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxkhxhzs = parjxkhxhzsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/parassesstemplates/${context.parassesstemplate}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             this.tempStorage.setItem(context.srfsessionkey+'_parkhzcmxes',JSON.stringify(res.data.parkhzcmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             return res;
     }
 
@@ -171,21 +171,6 @@ export default class ParAssessTemplateServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let parjxkhxhzsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
-            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
-            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
-                parjxkhxhzsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parjxkhxhzid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parjxkhxhzs = parjxkhxhzsData;
         let parkhzcmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes'),'undefined')){
             parkhzcmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes') as any);
@@ -201,10 +186,25 @@ export default class ParAssessTemplateServiceBase extends EntityService {
             }
         }
         masterData.parkhzcmxes = parkhzcmxesData;
+        let parjxkhxhzsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
+            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
+            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
+                parjxkhxhzsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxkhxhzid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxkhxhzs = parjxkhxhzsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/parassesstemplates/${context.parassesstemplate}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             this.tempStorage.setItem(context.srfsessionkey+'_parkhzcmxes',JSON.stringify(res.data.parkhzcmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
             return res;
     }
 
@@ -219,21 +219,6 @@ export default class ParAssessTemplateServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let parjxkhxhzsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
-            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
-            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
-                parjxkhxhzsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parjxkhxhzid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parjxkhxhzs = parjxkhxhzsData;
         let parkhzcmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes'),'undefined')){
             parkhzcmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parkhzcmxes') as any);
@@ -249,6 +234,21 @@ export default class ParAssessTemplateServiceBase extends EntityService {
             }
         }
         masterData.parkhzcmxes = parkhzcmxesData;
+        let parjxkhxhzsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs'),'undefined')){
+            parjxkhxhzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parjxkhxhzs') as any);
+            if(parjxkhxhzsData && parjxkhxhzsData.length && parjxkhxhzsData.length > 0){
+                parjxkhxhzsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parjxkhxhzid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parjxkhxhzs = parjxkhxhzsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -258,8 +258,8 @@ export default class ParAssessTemplateServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/parassesstemplates`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_parkhzcmxes',JSON.stringify(res.data.parkhzcmxes));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_parjxkhxhzs',JSON.stringify(res.data.parjxkhxhzs));
         return res;
     }
 
