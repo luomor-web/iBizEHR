@@ -7,7 +7,7 @@
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <div v-show="detailsModel.grouppanel4.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel4')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
             
     </row>
@@ -15,7 +15,7 @@
 
 </div>
 <div v-show="detailsModel.grouppanel2.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel2')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel2')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.grouppanel6.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel6.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel6')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
@@ -123,7 +123,7 @@
 
 </div>
 <div v-show="detailsModel.grouppanel8.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -270,7 +270,7 @@
 
 </div>
 <div v-show="detailsModel.grouppanel5.visible">
-    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel5.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel5')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel5.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel5')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -359,7 +359,7 @@
 <i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hmd' :itemRules="this.rules.hmd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hmd.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-span name='hmd' :value="data.hmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+<app-span name='hmd' :value="data.hmd" tag='EhrCodeList0401' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -407,11 +407,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import ReadRYInfoFormService from './read-ryinfo-form-form-service';
 
@@ -430,7 +431,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 名称
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public name?: string;
 
@@ -438,7 +439,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -446,7 +447,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 应用上下文
      *
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public context: any;
 
@@ -454,7 +455,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 视图参数
      *
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public viewparams: any;
 
@@ -463,7 +464,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -471,7 +472,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -483,7 +484,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -491,7 +492,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 建构部件服务对象
      *
      * @type {ReadRYInfoFormService}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public service: ReadRYInfoFormService = new ReadRYInfoFormService({ $store: this.$store });
 
@@ -499,7 +500,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -509,7 +510,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 关闭视图
      *
      * @param {any} args
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -519,7 +520,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      *  计数器刷新
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -536,7 +537,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public srfwfmemo:string = "";
     
@@ -544,7 +545,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -554,7 +555,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 获取单项树
      *
      * @returns {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public getData(): any {
         return this.data;
@@ -564,7 +565,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -572,7 +573,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -580,7 +581,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -588,7 +589,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--start
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -596,7 +597,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--update
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public updateAction!: string;
     
@@ -604,7 +605,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public removeAction!: string;
     
@@ -612,7 +613,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -620,7 +621,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--load
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public loadAction!: string;
     
@@ -628,7 +629,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--create
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public createAction!: string;
 
@@ -636,7 +637,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件行为--create
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public searchAction!: string;
 
@@ -644,7 +645,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 视图标识
      *
      * @type {string}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Prop() public viewtag!: string;
 
@@ -652,7 +653,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -660,7 +661,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -669,7 +670,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @type {Subject<any>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -678,7 +679,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -687,7 +688,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public oldData: any = {};
 
@@ -695,7 +696,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 表单数据对象
      *
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -758,7 +759,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof ReadRYInfoForm
+      * @memberof ReadRYInfoFormBase
       */
     public currentAction: string = "";
 
@@ -766,7 +767,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof ReadRYInfoForm
+      * @memberof ReadRYInfoFormBase
       */
     public drcounter: number = 0;
 
@@ -774,7 +775,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof ReadRYInfoForm
+      * @memberof ReadRYInfoFormBase
       */
     public drsaveopt: any = {};
 
@@ -782,7 +783,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof ReadRYInfoForm
+      * @memberof ReadRYInfoFormBase
       */
     public saveState:any ;
 
@@ -790,7 +791,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 属性值规则
      *
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -1117,7 +1118,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 详情模型集合
      *
      * @type {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public detailsModel: any = {
         grouppanel4: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimperson.readryinfoform_form', extractMode: 'ITEM', details: [] } })
@@ -1263,7 +1264,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -1275,7 +1276,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -1287,7 +1288,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -1299,7 +1300,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -1311,7 +1312,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -1323,7 +1324,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -1335,7 +1336,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -1347,7 +1348,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -1359,7 +1360,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfip_pimpersonname')
     onSrfip_pimpersonnameChange(newVal: any, oldVal: any) {
@@ -1371,7 +1372,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfip_zjlx')
     onSrfip_zjlxChange(newVal: any, oldVal: any) {
@@ -1383,7 +1384,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfip_ygbh')
     onSrfip_ygbhChange(newVal: any, oldVal: any) {
@@ -1395,7 +1396,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.srfip_zjhm')
     onSrfip_zjhmChange(newVal: any, oldVal: any) {
@@ -1407,7 +1408,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.orgid')
     onOrgidChange(newVal: any, oldVal: any) {
@@ -1419,7 +1420,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.orgsectorid')
     onOrgsectoridChange(newVal: any, oldVal: any) {
@@ -1431,7 +1432,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -1443,7 +1444,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.zjlx')
     onZjlxChange(newVal: any, oldVal: any) {
@@ -1455,7 +1456,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.csrq')
     onCsrqChange(newVal: any, oldVal: any) {
@@ -1467,7 +1468,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.xb')
     onXbChange(newVal: any, oldVal: any) {
@@ -1479,7 +1480,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.jg')
     onJgChange(newVal: any, oldVal: any) {
@@ -1491,7 +1492,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -1503,7 +1504,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.zjhm')
     onZjhmChange(newVal: any, oldVal: any) {
@@ -1515,7 +1516,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.nj')
     onNjChange(newVal: any, oldVal: any) {
@@ -1527,7 +1528,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.mz')
     onMzChange(newVal: any, oldVal: any) {
@@ -1539,7 +1540,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.hyzk')
     onHyzkChange(newVal: any, oldVal: any) {
@@ -1551,7 +1552,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.zp')
     onZpChange(newVal: any, oldVal: any) {
@@ -1563,7 +1564,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.zzmm')
     onZzmmChange(newVal: any, oldVal: any) {
@@ -1575,7 +1576,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.rank')
     onRankChange(newVal: any, oldVal: any) {
@@ -1587,7 +1588,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.cjgzsj')
     onCjgzsjChange(newVal: any, oldVal: any) {
@@ -1599,7 +1600,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.dbdwsj')
     onDbdwsjChange(newVal: any, oldVal: any) {
@@ -1611,7 +1612,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.lxdh')
     onLxdhChange(newVal: any, oldVal: any) {
@@ -1623,7 +1624,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.dzyx')
     onDzyxChange(newVal: any, oldVal: any) {
@@ -1635,7 +1636,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.hightitle')
     onHightitleChange(newVal: any, oldVal: any) {
@@ -1647,7 +1648,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.higheducation')
     onHigheducationChange(newVal: any, oldVal: any) {
@@ -1659,7 +1660,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.firsteducation')
     onFirsteducationChange(newVal: any, oldVal: any) {
@@ -1671,7 +1672,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.certtificate')
     onCerttificateChange(newVal: any, oldVal: any) {
@@ -1683,7 +1684,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.pcmrcxlid')
     onPcmrcxlidChange(newVal: any, oldVal: any) {
@@ -1695,7 +1696,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.hklx')
     onHklxChange(newVal: any, oldVal: any) {
@@ -1707,7 +1708,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.yglx')
     onYglxChange(newVal: any, oldVal: any) {
@@ -1719,7 +1720,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.hjszd')
     onHjszdChange(newVal: any, oldVal: any) {
@@ -1731,7 +1732,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.csd')
     onCsdChange(newVal: any, oldVal: any) {
@@ -1743,7 +1744,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.jkzk')
     onJkzkChange(newVal: any, oldVal: any) {
@@ -1755,7 +1756,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.ahtc')
     onAhtcChange(newVal: any, oldVal: any) {
@@ -1767,7 +1768,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.xx')
     onXxChange(newVal: any, oldVal: any) {
@@ -1779,7 +1780,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.sfdszn')
     onSfdsznChange(newVal: any, oldVal: any) {
@@ -1791,7 +1792,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.postaladdress')
     onPostaladdressChange(newVal: any, oldVal: any) {
@@ -1803,7 +1804,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.rdsj1')
     onRdsj1Change(newVal: any, oldVal: any) {
@@ -1815,7 +1816,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.rtsj')
     onRtsjChange(newVal: any, oldVal: any) {
@@ -1827,7 +1828,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.rzqd')
     onRzqdChange(newVal: any, oldVal: any) {
@@ -1839,7 +1840,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.ygzt')
     onYgztChange(newVal: any, oldVal: any) {
@@ -1851,7 +1852,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.hmd')
     onHmdChange(newVal: any, oldVal: any) {
@@ -1863,7 +1864,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -1875,7 +1876,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.ormorgsectorid')
     onOrmorgsectoridChange(newVal: any, oldVal: any) {
@@ -1887,7 +1888,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -1900,7 +1901,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1909,7 +1910,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof ReadRYInfoFormBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1926,7 +1927,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -2032,7 +2033,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -2049,7 +2050,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -2070,7 +2071,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -2095,7 +2096,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @param {*} data
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -2111,7 +2112,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 重置草稿表单状态
      *
      * @public
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -2123,7 +2124,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * 重置校验结果
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -2139,7 +2140,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -2157,7 +2158,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -2172,7 +2173,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 获取全部值
      *
      * @returns {*}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public getValues(): any {
         return this.data;
@@ -2183,7 +2184,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -2201,7 +2202,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -2219,7 +2220,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -2231,7 +2232,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public created(): void {
         this.afterCreated();
@@ -2240,7 +2241,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * 执行created后的逻辑
      *
-     *  @memberof ReadRYInfoForm
+     *  @memberof ReadRYInfoFormBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -2297,7 +2298,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * vue 生命周期
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -2306,7 +2307,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -2321,7 +2322,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof ReadRYInfoForm
+     * @memberof @memberof ReadRYInfoFormBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -2339,7 +2340,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 
     /**
      *打印
-     *@memberof @memberof ReadRYInfoForm
+     *@memberof @memberof ReadRYInfoFormBase
      */
     public print(){
         let _this:any = this;
@@ -2350,7 +2351,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -2372,7 +2373,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -2393,7 +2394,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -2428,7 +2429,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -2482,7 +2483,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -2533,7 +2534,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2603,7 +2604,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof ReadRYInfoFormBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2637,7 +2638,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2693,7 +2694,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2769,7 +2770,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -2814,7 +2815,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 回车事件
      *
      * @param {*} $event
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public onEnter($event: any): void {
     }
@@ -2823,7 +2824,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2848,7 +2849,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2871,7 +2872,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2895,31 +2896,30 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof ReadRYInfoForm
+    * @memberof ReadRYInfoFormBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('ormorgid')) {
@@ -2929,7 +2929,7 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 
     /**
      * 更新默认值
-     * @memberof ReadRYInfoForm
+     * @memberof ReadRYInfoFormBase
      */
     public updateDefault(){                    
     }

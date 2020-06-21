@@ -1,47 +1,47 @@
 
 export default {
   fields: {
-    enable: '逻辑有效标志',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    createman: '建立人',
-    seialno: '排序号',
-    pimqualtypeid: '岗位（技能）证书目录ID',
-    createdate: '建立时间',
-    pimqualtypename: '岗位（技能）证书',
+    enable: "逻辑有效标志",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    createman: "建立人",
+    seialno: "排序号",
+    pimqualtypeid: "岗位（技能）证书目录ID",
+    createdate: "建立时间",
+    pimqualtypename: "岗位（技能）证书",
   },
 	views: {
 		pickupview: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别数据选择视图',
+      		title: "执业资格类别数据选择视图",
 		},
 		mpickupview: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别数据多项选择视图',
+      		title: "执业资格类别数据多项选择视图",
 		},
 		editview2: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别编辑视图',
+      		title: "执业资格类别编辑视图",
 		},
 		pickupgridview: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别选择表格视图',
+      		title: "执业资格类别选择表格视图",
 		},
 		redirectview: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别数据重定向视图',
+      		title: "执业资格类别数据重定向视图",
 		},
 		editview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书编辑视图',
+      		title: "岗位（技能）证书编辑视图",
 		},
 		selgridview: {
 			caption: "岗位（技能）证书",
-      title: '执业资格类别表格视图',
+      		title: "执业资格类别表格视图",
 		},
 		gridview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书别表格视图',
+      		title: "岗位（技能）证书别表格视图",
 		},
 	},
 	main_form: {

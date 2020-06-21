@@ -279,23 +279,11 @@ export default class StopRemindGridService extends ControlService {
                     response.data.pimcontractid = Util.createUUID();
                 }
                 this.handleResponse(action, response, true);
-                this.mergeDefaults(response);
                 resolve(response);
             }).catch(response => {
                 reject(response);
             });
         });
-    }
-
-    /**
-     * 合并配置的默认值
-     * @param {*} 
-     * @memberof StopRemindGridService
-     */
-    public mergeDefaults(response:any = {}){ 
-        if(response.data){                    
-            Object.assign(response.data,{'pimpersonid':'srfparentkey'});
-        }
     }
 
 

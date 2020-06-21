@@ -8,6 +8,7 @@
         :height="isEnablePagingBar && items.length > 0 ? 'calc(100% - 36px)' : '100%'"  
         :highlight-current-row ="isSingleSelect"
         :row-class-name="getRowClassName"
+        :cell-class-name="getCellClassName"
         @row-click="rowClick($event)"  
         @select-all="selectAll($event)"  
         @select="select($event)"  
@@ -181,13 +182,12 @@
                       </span>
                     </template>
                     <template slot-scope="scope">
-                        <span>
-                            
+                        <div style="text-align: center;">
                             <a @click="uiAction(scope.row, 'StopContract', $event)">
                               <i class=''></i>
                               {{$t('entities.pimcontract.stopremindgrid_grid.uiactions.stopcontract')}}
                             </a>
-                        </span>
+                        </div>
                     </template>
                 </el-table-column>
             </template>
@@ -233,11 +233,12 @@
 </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimContractService from '@/service/pim-contract/pim-contract-service';
 import StopRemindGridService from './stop-remind-grid-grid-service';
 
@@ -257,7 +258,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 名称
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public name?: string;
 
@@ -265,7 +266,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -273,7 +274,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 应用上下文
      *
      * @type {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public context: any;
 
@@ -281,7 +282,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 视图参数
      *
      * @type {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public viewparams: any;
 
@@ -290,7 +291,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -298,7 +299,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getControlType(): string {
         return 'GRID'
@@ -310,7 +311,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -318,7 +319,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 建构部件服务对象
      *
      * @type {StopRemindGridService}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public service: StopRemindGridService = new StopRemindGridService({ $store: this.$store });
 
@@ -326,7 +327,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 实体服务对象
      *
      * @type {PimContractService}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public appEntityService: PimContractService = new PimContractService({ $store: this.$store });
     
@@ -392,7 +393,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 关闭视图
      *
      * @param {any} args
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -402,7 +403,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      *  计数器刷新
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -420,7 +421,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 代码表服务对象
      *
      * @type {CodeListService}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */  
     public codeListService:CodeListService = new CodeListService({ $store: this.$store });
 
@@ -428,7 +429,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getDatas(): any[] {
         return this.selections;
@@ -438,7 +439,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 获取单项树
      *
      * @returns {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getData(): any {
         return this.selections[0];
@@ -448,7 +449,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 打开编辑数据视图
      *
      * @type {any}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public opendata: any;
 
@@ -456,7 +457,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -464,7 +465,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--update
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public updateAction!: string;
     
@@ -472,7 +473,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--fetch
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public fetchAction!: string;
     
@@ -480,7 +481,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public removeAction!: string;
     
@@ -488,7 +489,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--load
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public loadAction!: string;
     
@@ -496,7 +497,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -504,7 +505,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件行为--create
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public createAction!: string;
 
@@ -512,7 +513,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 当前页
      *
      * @type {number}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public curPage: number = 1;
 
@@ -520,7 +521,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 数据
      *
      * @type {any[]}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public items: any[] = [];
 
@@ -528,7 +529,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否支持分页
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public isEnablePagingBar: boolean = true;
 
@@ -536,7 +537,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否禁用排序
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public isNoSort: boolean = false;
 
@@ -544,7 +545,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 排序方向
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public minorSortDir: string = 'DESC';
 
@@ -552,7 +553,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 排序字段
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public minorSortPSDEF: string = 'qsrq';
 
@@ -560,7 +561,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 分页条数
      *
      * @type {number}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public limit: number = 100;
 
@@ -568,7 +569,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否显示标题
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public isHideHeader: boolean = false;
 
@@ -576,7 +577,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否默认选中第一条数据
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
@@ -584,7 +585,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否单选
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -592,7 +593,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop() public selectedData?: string;
 
@@ -601,7 +602,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof MainTree
+     * @memberof StopRemindGridBase
      */
     @Watch('selectedData')
     public onValueChange(newVal: any, oldVal: any) {
@@ -629,7 +630,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop({default: 2}) public gridRowActiveMode!: number;
 
@@ -637,7 +638,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 是否开启行编辑
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     @Prop({default: false}) public isOpenEdit!: boolean;
 
@@ -645,7 +646,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 实际是否开启行编辑
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public actualIsOpenEdit: boolean = this.isOpenEdit;
 
@@ -653,7 +654,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 总条数
      *
      * @type {number}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public totalrow: number = 0;
 
@@ -680,7 +681,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 表格是否显示
      *
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public isDisplay:boolean = true;
 
@@ -688,7 +689,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public refresh(args: any[]): void {
         this.load();
@@ -714,7 +715,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 所有列成员
      *
      * @type {any[]}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public allColumns: any[] = [
         {
@@ -807,7 +808,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 表格模型集合
      *
      * @type {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public gridItemsModel: any[] = [];
 
@@ -815,7 +816,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 获取表格行模型
      *
      * @type {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getGridRowModel(){
         return {
@@ -833,7 +834,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 属性值规则
      *
      * @type {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public rules: any = {
         ygbh: [
@@ -874,7 +875,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {number} rowIndex 行索引
      * @returns Promise<any>
      * 
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public validate(property:string, data:any, rowIndex:number):Promise<any>{
         return new Promise((resolve, reject) => {
@@ -892,7 +893,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 校验所有修改过的编辑项
      *
      * @returns Promise<any>
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public async validateAll(){
         let validateState = true;
@@ -914,7 +915,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 表格数据加载
      *
      * @param {*} [arg={}]
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
@@ -991,7 +992,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {any[]} datas
      * @returns {Promise<any>}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
@@ -1000,7 +1001,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
         }
         let _datas:any[] = [];
         datas.forEach((record: any, index: number) => {
-            if (!record.srfkey) {
+            if (Object.is(record.srfuf,"0")) {
                 this.items.some((val: any, num: number) =>{
                     if(JSON.stringify(val) == JSON.stringify(record)){
                         this.items.splice(num,1);
@@ -1097,7 +1098,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 批量添加
      *
      * @param {*} [arg={}]
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
@@ -1114,7 +1115,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 数据导入
      *
      * @param {*} data
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
      public importExcel(data:any ={}):void{
         //导入excel
@@ -1143,7 +1144,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 数据导出
      *
      * @param {*} data
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public exportExcel(data: any = {}): void {
         // 导出Excel
@@ -1214,7 +1215,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {*} filterVal
      * @param {*} jsonData
      * @returns {[]}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
@@ -1270,7 +1271,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {any[]} items 代码表数据
      * @param {*} value
      * @returns {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getCodelistValue(items: any[], value: any, codelist: any,){
         if(!value){
@@ -1323,7 +1324,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {any[]} items
      * @param {*} value
      * @returns {*}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getItem(items: any[], value: any, codelist: any): any {
         const arr: Array<any> = items.filter(item => {return item.value == value});
@@ -1340,7 +1341,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 生命周期
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public created(): void {
         this.afterCreated();
@@ -1349,7 +1350,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 执行created后的逻辑
      *
-     *  @memberof StopRemindGrid
+     *  @memberof StopRemindGridBase
      */    
     public afterCreated(){
         this.setColState();
@@ -1374,7 +1375,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * vue 生命周期
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1383,7 +1384,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1395,7 +1396,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 获取选中行胡数据
      *
      * @returns {any[]}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getSelection(): any[] {
         return this.selections;
@@ -1406,7 +1407,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public rowDBLClick($event: any): void {
         if (!$event || this.actualIsOpenEdit || Object.is(this.gridRowActiveMode,0)) {
@@ -1430,7 +1431,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof  StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public select($event: any): void {
         if (!$event) {
@@ -1445,7 +1446,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 复选框数据全部选中
      *
      * @param {*} $event
-     * @memberof  StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public selectAll($event: any): void {
         if (!$event) {
@@ -1462,7 +1463,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public rowClick($event: any, ifAlways: boolean = false): void {
         if (!ifAlways && (!$event || this.actualIsOpenEdit)) {
@@ -1504,7 +1505,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public pageOnChange($event: any): void {
         if (!$event) {
@@ -1522,7 +1523,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public onPageSizeChange($event: any): void {
         if (!$event) {
@@ -1540,7 +1541,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 分页刷新
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public pageRefresh(): void {
         this.load({});
@@ -1550,7 +1551,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * 排序变化
      *
      * @param {{ column: any, prop: any, order: any }} { column, prop, order }
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
         const dir = Object.is(order, 'ascending') ? 'asc' : Object.is(order, 'descending') ? 'desc' : '';
@@ -1567,7 +1568,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {{ row: any, rowIndex: any }} { row, rowIndex }
      * @returns {string}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
         const index = this.selections.findIndex((select: any) => Object.is(select.srfkey, row.srfkey));
@@ -1582,7 +1583,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {*} row
      * @param {*} tag
      * @param {*} $event
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
@@ -1598,7 +1599,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 设置列状态
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public setColState() {
 		const _data: any = localStorage.getItem('pimcontract_stopremindgrid_grid');
@@ -1616,7 +1617,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     /**
      * 列变化
      *
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public onColChange() {
         localStorage.setItem('pimcontract_stopremindgrid_grid', JSON.stringify(this.allColumns));
@@ -1627,7 +1628,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {string} name
      * @returns {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getColumnState(name: string): boolean {
         let column = this.allColumns.find((col: any) =>
@@ -1641,7 +1642,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @readonly
      * @type {boolean}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     get adaptiveState(): boolean {
         return !this.allColumns.find((column: any) => column.show && Object.is(column.util, 'STAR'));
@@ -1652,7 +1653,7 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      *
      * @param {*} $event
      * @returns {Promise<any>}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
@@ -1703,13 +1704,127 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
         return successItems;
     }
 
+    /**
+     * 新建行
+     *
+     * @param {*} $event
+     * @returns {void}
+     * @memberof StopRemindGridBase
+     */
+    public newRow(args: any[], params?: any, $event?: any, xData?: any): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'PIMCONTRACTStopRemindGridView视图表格loaddraftAction参数未配置' });
+            return;
+        }
+        let _this = this;
+        Object.assign(args[0],{viewparams:this.viewparams});
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction, JSON.parse(JSON.stringify(this.context)), args[0], this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.errorMessage) {
+                    this.$Notice.error({ title: '错误', desc: response.errorMessage });
+                }
+                return;
+            }
+            const data = response.data;
+            this.createDefault(data);
+            data.rowDataState = "create";
+            _this.items.push(data);
+            _this.gridItemsModel.push(_this.getGridRowModel());
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 表格编辑项值变更
+     *  
+     * @param row 行数据
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof StopRemindGridBase
+     */
+    public onGridItemValueChange(row: any,$event: { name: string, value: any },rowIndex: number): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !row.hasOwnProperty($event.name)) {
+            return;
+        }
+        row[$event.name] = $event.value;
+        this.gridEditItemChange(row, $event.name, $event.value, rowIndex);
+    }
+
+    /**
+     * 表格编辑项值变化
+     *
+     * @public
+     * @param row 行数据
+     * @param property 列编辑项名
+     * @param row 列编辑项值
+     * @returns {void}
+     * @memberof StopRemindGridBase
+     */
+    public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
+        row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
+        this.validate(property,row,rowIndex);
+    }
+
+    /**
+     * 表格编辑项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof StopRemindGridBase
+     */
+    public updateGridEditItem(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = JSON.parse(JSON.stringify(data));
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const _data: any = response.data;
+            if(!_data){
+                return;
+            }
+            updateDetails.forEach((name: string) => {
+                if (!_data.hasOwnProperty(name)) {
+                    return;
+                }
+                data[name] = _data[name];
+            });
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
 
     /**
      * 获取对应行class
      *
      * @param {*} $args row 行数据，rowIndex 行索引
      * @returns {void}
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public getRowClassName(args:{row: any,rowIndex: number}){
         let isSelected = this.selections.some((item:any)=>{
@@ -1719,9 +1834,34 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
     }
 
     /**
+     * 获取对应列class
+     *
+     * @param {*} $args row 行数据，column 列数据，rowIndex 行索引，列索引
+     * @returns {void}
+     * @memberof StopRemindGridBase
+     */
+    public getCellClassName(args:{row: any, column: any, rowIndex: number, columnIndex:number}){
+        let hasRowEdit:any = {
+          'ygbh':false,
+          'pimpersonname':false,
+          'zzdzs':false,
+          'ygzt':false,
+          'dbdwsj':false,
+          'htbh':false,
+          'signingunit':false,
+          'htlx':false,
+          'contracttype':false,
+          'qsrq':false,
+          'jsrq':false,
+          'uagridcolumn1':false,
+        }
+        return ( hasRowEdit[args.column.property] && this.actualIsOpenEdit ) ? "edit-cell" : "info-cell";
+    }
+
+    /**
      * 新建默认值
      * @param {*}  row 行数据
-     * @memberof StopRemindGrid
+     * @memberof StopRemindGridBase
      */
     public createDefault(row: any){                    
         if (row.hasOwnProperty('pimpersonid')) {

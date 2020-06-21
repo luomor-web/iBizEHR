@@ -159,11 +159,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimContractService from '@/service/pim-contract/pim-contract-service';
 import LabServices_EditGridService from './lab-services-edit-grid-form-service';
 
@@ -182,7 +183,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 名称
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public name?: string;
 
@@ -190,7 +191,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -198,7 +199,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 应用上下文
      *
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public context: any;
 
@@ -206,7 +207,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 视图参数
      *
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public viewparams: any;
 
@@ -215,7 +216,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -223,7 +224,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -235,7 +236,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -243,7 +244,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 建构部件服务对象
      *
      * @type {LabServices_EditGridService}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public service: LabServices_EditGridService = new LabServices_EditGridService({ $store: this.$store });
 
@@ -251,7 +252,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 实体服务对象
      *
      * @type {PimContractService}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public appEntityService: PimContractService = new PimContractService({ $store: this.$store });
     
@@ -261,7 +262,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 关闭视图
      *
      * @param {any} args
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -271,7 +272,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      *  计数器刷新
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -288,7 +289,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public srfwfmemo:string = "";
     
@@ -296,7 +297,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -306,7 +307,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 获取单项树
      *
      * @returns {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public getData(): any {
         return this.data;
@@ -316,7 +317,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -324,7 +325,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -332,7 +333,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -340,7 +341,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--start
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -348,7 +349,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--update
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public updateAction!: string;
     
@@ -356,7 +357,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public removeAction!: string;
     
@@ -364,7 +365,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -372,7 +373,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--load
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public loadAction!: string;
     
@@ -380,7 +381,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--create
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public createAction!: string;
 
@@ -388,7 +389,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件行为--create
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public searchAction!: string;
 
@@ -396,7 +397,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 视图标识
      *
      * @type {string}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Prop() public viewtag!: string;
 
@@ -404,7 +405,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -412,7 +413,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -421,7 +422,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @type {Subject<any>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -430,7 +431,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -439,7 +440,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public oldData: any = {};
 
@@ -447,7 +448,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 表单数据对象
      *
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -480,7 +481,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof LabServices_EditGrid
+      * @memberof LabServices_EditGridBase
       */
     public currentAction: string = "";
 
@@ -488,7 +489,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof LabServices_EditGrid
+      * @memberof LabServices_EditGridBase
       */
     public drcounter: number = 0;
 
@@ -496,7 +497,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof LabServices_EditGrid
+      * @memberof LabServices_EditGridBase
       */
     public drsaveopt: any = {};
 
@@ -504,7 +505,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof LabServices_EditGrid
+      * @memberof LabServices_EditGridBase
       */
     public saveState:any ;
 
@@ -512,7 +513,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 属性值规则
      *
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -659,7 +660,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 详情模型集合
      *
      * @type {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimcontract.labservices_editgrid_form', extractMode: 'ITEM', details: [] } })
@@ -719,7 +720,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -731,7 +732,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -743,7 +744,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -755,7 +756,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -767,7 +768,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -779,7 +780,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -791,7 +792,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -803,7 +804,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -815,7 +816,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -827,7 +828,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -839,7 +840,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.htbh')
     onHtbhChange(newVal: any, oldVal: any) {
@@ -851,7 +852,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.contracttype')
     onContracttypeChange(newVal: any, oldVal: any) {
@@ -863,7 +864,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.qsrq')
     onQsrqChange(newVal: any, oldVal: any) {
@@ -875,7 +876,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.jsrq')
     onJsrqChange(newVal: any, oldVal: any) {
@@ -887,7 +888,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.htzt')
     onHtztChange(newVal: any, oldVal: any) {
@@ -899,7 +900,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -911,7 +912,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.sydqsj')
     onSydqsjChange(newVal: any, oldVal: any) {
@@ -923,7 +924,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.pimlabourcampanyname')
     onPimlabourcampanynameChange(newVal: any, oldVal: any) {
@@ -935,7 +936,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
@@ -947,7 +948,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.orgid')
     onOrgidChange(newVal: any, oldVal: any) {
@@ -959,7 +960,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.personorgid')
     onPersonorgidChange(newVal: any, oldVal: any) {
@@ -971,7 +972,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.pimcontractid')
     onPimcontractidChange(newVal: any, oldVal: any) {
@@ -983,7 +984,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     @Watch('data.pimlabourcampanyid')
     onPimlabourcampanyidChange(newVal: any, oldVal: any) {
@@ -996,7 +997,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1005,7 +1006,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof LabServices_EditGridBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -1022,7 +1023,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -1080,7 +1081,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1097,7 +1098,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1118,7 +1119,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1143,7 +1144,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @param {*} data
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1159,7 +1160,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 重置草稿表单状态
      *
      * @public
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1171,7 +1172,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * 重置校验结果
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1187,7 +1188,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1205,7 +1206,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1220,7 +1221,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 获取全部值
      *
      * @returns {*}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public getValues(): any {
         return this.data;
@@ -1231,7 +1232,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1249,7 +1250,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1267,7 +1268,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1279,7 +1280,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public created(): void {
         this.afterCreated();
@@ -1288,7 +1289,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * 执行created后的逻辑
      *
-     *  @memberof LabServices_EditGrid
+     *  @memberof LabServices_EditGridBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1345,7 +1346,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * vue 生命周期
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1354,7 +1355,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1369,7 +1370,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof LabServices_EditGrid
+     * @memberof @memberof LabServices_EditGridBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1387,7 +1388,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
 
     /**
      *打印
-     *@memberof @memberof LabServices_EditGrid
+     *@memberof @memberof LabServices_EditGridBase
      */
     public print(){
         let _this:any = this;
@@ -1398,7 +1399,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1420,7 +1421,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1441,7 +1442,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1476,7 +1477,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1530,7 +1531,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1581,7 +1582,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1651,7 +1652,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof LabServices_EditGridBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1685,7 +1686,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1741,7 +1742,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1817,7 +1818,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1862,7 +1863,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 回车事件
      *
      * @param {*} $event
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public onEnter($event: any): void {
     }
@@ -1871,7 +1872,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1896,7 +1897,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1919,7 +1920,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1943,31 +1944,30 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof LabServices_EditGrid
+    * @memberof LabServices_EditGridBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public createDefault(){                    
         if (this.data.hasOwnProperty('ormorgname')) {
@@ -1980,7 +1980,7 @@ export default class LabServices_EditGridBase extends Vue implements ControlInte
 
     /**
      * 更新默认值
-     * @memberof LabServices_EditGrid
+     * @memberof LabServices_EditGridBase
      */
     public updateDefault(){                    
     }

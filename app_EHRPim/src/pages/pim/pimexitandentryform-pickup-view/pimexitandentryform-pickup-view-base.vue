@@ -196,7 +196,7 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof PIMEXITANDENTRYFormPickupView
+     * @memberof PIMEXITANDENTRYFormPickupViewBase
      */
     public selectedData: string = "";
 

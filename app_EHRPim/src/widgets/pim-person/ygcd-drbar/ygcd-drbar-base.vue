@@ -27,11 +27,12 @@
 </layout>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import YGCDService from './ygcd-drbar-service';
 
@@ -48,7 +49,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     @Prop() public name?: string;
 
@@ -56,7 +57,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -64,7 +65,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     @Prop() public context: any;
 
@@ -72,7 +73,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     @Prop() public viewparams: any;
 
@@ -81,7 +82,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -89,7 +90,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public getControlType(): string {
         return 'DRBAR'
@@ -101,7 +102,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -109,7 +110,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {YGCDService}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public service: YGCDService = new YGCDService({ $store: this.$store });
 
@@ -117,7 +118,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {PimPersonService}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public appEntityService: PimPersonService = new PimPersonService({ $store: this.$store });
     
@@ -127,7 +128,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -137,7 +138,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -156,7 +157,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public getDatas(): any[] {
         return this.items;
@@ -166,7 +167,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public getData(): any {
         return this.selection;
@@ -176,7 +177,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 加载行为
      *
      * @type {string}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     @Prop() public loadAction?: string;
 
@@ -192,7 +193,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 数据选中项
      *
      * @type {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public selection: any = {};
 
@@ -200,7 +201,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 关系栏数据项
      *
      * @type {any[]}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public items: any[] = [
         {
@@ -398,7 +399,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 默认打开项
      *
      * @type {string[]}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public defaultOpeneds: string[] = [];
 
@@ -407,7 +408,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public parentData: any = {};
 
@@ -415,14 +416,14 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 宽度
      *
      * @type {number}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public width: number = 240;
 
     /**
      * 生命周期
      *
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public created(): void {
         if (this.viewState) {
@@ -445,7 +446,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public destroyed() {
         if (this.viewStateEvent) {
@@ -459,7 +460,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [arg={}]
      * @returns {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public getDRBarItem(arg: any = {}): any {
         let expmode = arg.nodetype;
@@ -564,7 +565,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {any[]} items
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public dataProcess(items: any[]): void {
         items.forEach((_item: any) => {
@@ -585,7 +586,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @param {any[]} items
      * @param {string} id
      * @returns {*}
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public getItem(items: any[], id: string): any {
         const item: any = {};
@@ -640,7 +641,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 节点选中
      *
      * @param {*} $event
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public onSelect($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -670,7 +671,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 子节点打开
      *
      * @param {*} $event
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public onOpen($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -688,7 +689,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * 子节点关闭
      *
      * @param {*} $event
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public onClose($event: any): void {
         const item = this.getItem(this.items, $event);
@@ -707,7 +708,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
      *
      * @param {any[]} items
      * @param {boolean} state
-     * @memberof YGCD
+     * @memberof YGCDBase
      */
     public setItemDisabled(items: any[], state: boolean) {
         items.forEach((item: any) => {

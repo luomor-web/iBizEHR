@@ -180,7 +180,6 @@ export default class PimPersonUIServiceBase extends UIService {
         const parameters: any[] = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
         ];
-            actionContext.closeView(null);
             const openPopupModal = (view: any, data: any) => {
                 let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
                 container.subscribe((result: any) => {
@@ -256,6 +255,9 @@ export default class PimPersonUIServiceBase extends UIService {
                         return;
                     }
                     const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
                     if(window.opener){
                         window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
                         window.close();

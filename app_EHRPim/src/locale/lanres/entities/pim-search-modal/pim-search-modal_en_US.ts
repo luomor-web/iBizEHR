@@ -1,45 +1,45 @@
 
 export default {
   fields: {
-    pimsearchmodalname: '组合查询模版名称',
-    searchfields: '查询列',
-    conditions: '查询条件',
-    contain: '包含下级组织',
-    createman: '建立人',
-    isquick: '是否快速搜素',
-    pimsearchmodalid: '组合查询模版标识',
-    updateman: '更新人',
-    createdate: '建立时间',
-    updatedate: '更新时间',
+    pimsearchmodalname: "组合查询模版名称",
+    searchfields: "查询列",
+    conditions: "查询条件",
+    contain: "包含下级组织",
+    createman: "建立人",
+    isquick: "是否快速搜素",
+    pimsearchmodalid: "组合查询模版标识",
+    updateman: "更新人",
+    createdate: "建立时间",
+    updatedate: "更新时间",
   },
 	views: {
 		mpickupview: {
 			caption: "组合查询记录",
-      title: '组合查询模版数据多项选择视图',
+      		title: "组合查询模版数据多项选择视图",
 		},
 		editview: {
 			caption: "组合查询记录",
-      title: '组合查询模版编辑视图',
+      		title: "组合查询模版编辑视图",
 		},
 		redirectview: {
 			caption: "组合查询记录",
-      title: '组合查询模版数据重定向视图',
+      		title: "组合查询模版数据重定向视图",
 		},
 		editview2: {
 			caption: "组合查询记录",
-      title: '组合查询模版编辑视图',
+      		title: "组合查询模版编辑视图",
 		},
 		gridview: {
 			caption: "组合查询记录",
-      title: '组合查询模版表格视图',
+      		title: "组合查询模版表格视图",
 		},
 		pickupview: {
 			caption: "组合查询记录",
-      title: '组合查询模版数据选择视图',
+      		title: "组合查询模版数据选择视图",
 		},
 		pickupgridview: {
 			caption: "组合查询记录",
-      title: '组合查询模版选择表格视图',
+      		title: "组合查询模版选择表格视图",
 		},
 	},
 	main_form: {

@@ -1,46 +1,46 @@
 
 export default {
   fields: {
-    isorno: '是否允许删除',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    createdate: '建立时间',
-    sortno: '排序号',
-    pimtypecontractid: '合同类型标识',
-    createman: '建立人',
-    contractlife: '合同年限',
-    typecode: '合同类型代码',
-    pimtypecontractname: '合同类型名称',
-    enable: '逻辑有效标志',
+    isorno: "是否允许删除",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    createdate: "建立时间",
+    sortno: "排序号",
+    pimtypecontractid: "合同类型标识",
+    createman: "建立人",
+    contractlife: "合同年限",
+    typecode: "合同类型代码",
+    pimtypecontractname: "合同类型名称",
+    enable: "逻辑有效标志",
   },
 	views: {
 		gridview: {
 			caption: "合同类型",
-      title: '合同类型表格视图',
+      		title: "合同类型表格视图",
 		},
 		redirectview: {
 			caption: "合同类型",
-      title: '合同类型数据重定向视图',
+      		title: "合同类型数据重定向视图",
 		},
 		pickupgridview: {
 			caption: "合同类型",
-      title: '合同类型选择表格视图',
+      		title: "合同类型选择表格视图",
 		},
 		pickupview: {
 			caption: "合同类型",
-      title: '合同类型数据选择视图',
+      		title: "合同类型数据选择视图",
 		},
 		editview2: {
 			caption: "合同类型",
-      title: '合同类型编辑视图',
+      		title: "合同类型编辑视图",
 		},
 		editview: {
 			caption: "合同类型",
-      title: '合同类型编辑视图',
+      		title: "合同类型编辑视图",
 		},
 		mpickupview: {
 			caption: "合同类型",
-      title: '合同类型数据多项选择视图',
+      		title: "合同类型数据多项选择视图",
 		},
 	},
 	main_form: {

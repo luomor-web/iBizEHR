@@ -84,6 +84,35 @@
         ]
     }, 
     {
+        "srfkey": "EhrCodeList0401",
+        "emptytext": "",
+        "codelisttype":"static",
+        "items": [
+             {
+                "id": "10",
+                "label": "计划内",
+                "text": "计划内",
+                "data":"",
+                "codename":"Item_10",
+                "color": "rgba(0, 255, 238, 1)",
+                "value": "10",
+                
+                "disabled": false
+            }
+            , {
+                "id": "20",
+                "label": "计划外",
+                "text": "计划外",
+                "data":"",
+                "codename":"Item_20",
+                "color": "rgba(0, 13, 255, 1)",
+                "value": "20",
+                
+                "disabled": false
+            }
+        ]
+    }, 
+    {
         "srfkey": "EhrCodeList0056",
         "emptytext": "未定义",
         "codelisttype":"static",
@@ -1191,6 +1220,7 @@
                 "text": "有效",
                 "data":"",
                 "codename":"Item_10",
+                "color": "rgba(0, 98, 255, 1)",
                 "value": "10",
                 
                 "disabled": false
@@ -1245,33 +1275,6 @@
                 "data":"",
                 "codename":"Item_20",
                 "value": "20",
-                
-                "disabled": false
-            }
-        ]
-    }, 
-    {
-        "srfkey": "EhrCodeList0400",
-        "emptytext": "未定义",
-        "codelisttype":"static",
-        "items": [
-             {
-                "id": "1",
-                "label": "是",
-                "text": "是",
-                "data":"",
-                "codename":"Item_1",
-                "value": 1,
-                
-                "disabled": false
-            }
-            , {
-                "id": "0",
-                "label": "否",
-                "text": "否",
-                "data":"",
-                "codename":"Item_0",
-                "value": 0,
                 
                 "disabled": false
             }

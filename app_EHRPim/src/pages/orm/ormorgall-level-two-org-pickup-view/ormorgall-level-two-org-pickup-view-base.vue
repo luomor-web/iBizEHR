@@ -248,7 +248,7 @@ export default class ORMORGAllLevelTwoOrgPickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ORMORGAllLevelTwoOrgPickupView
+     * @memberof ORMORGAllLevelTwoOrgPickupViewBase
      */
     public selectedData: string = "";
 

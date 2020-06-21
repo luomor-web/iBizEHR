@@ -1,42 +1,42 @@
 
 export default {
   fields: {
-    pimpersonabilitydetailname: '员工能力明细名称',
-    createman: '建立人',
-    createdate: '建立时间',
-    updateman: '更新人',
-    pimpersonabilitydetailid: '员工能力明细标识',
-    updatedate: '更新时间',
-    pimpersonabilityid: '员工能力标识',
+    pimpersonabilitydetailname: "员工能力明细名称",
+    createman: "建立人",
+    createdate: "建立时间",
+    updateman: "更新人",
+    pimpersonabilitydetailid: "员工能力明细标识",
+    updatedate: "更新时间",
+    pimpersonabilityid: "员工能力标识",
   },
 	views: {
 		editview2: {
 			caption: "员工能力明细",
-      title: '员工能力明细编辑视图',
+      		title: "员工能力明细编辑视图",
 		},
 		mpickupview: {
 			caption: "员工能力明细",
-      title: '员工能力明细数据多项选择视图',
+      		title: "员工能力明细数据多项选择视图",
 		},
 		editview: {
 			caption: "员工能力明细",
-      title: '员工能力明细编辑视图',
+      		title: "员工能力明细编辑视图",
 		},
 		redirectview: {
 			caption: "员工能力明细",
-      title: '员工能力明细数据重定向视图',
+      		title: "员工能力明细数据重定向视图",
 		},
 		gridview: {
 			caption: "员工能力明细",
-      title: '员工能力明细表格视图',
+      		title: "员工能力明细表格视图",
 		},
 		pickupview: {
 			caption: "员工能力明细",
-      title: '员工能力明细数据选择视图',
+      		title: "员工能力明细数据选择视图",
 		},
 		pickupgridview: {
 			caption: "员工能力明细",
-      title: '员工能力明细选择表格视图',
+      		title: "员工能力明细选择表格视图",
 		},
 	},
 	main_form: {

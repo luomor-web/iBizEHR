@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-voc-num-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
+    <div class='portlet org-voc-num-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : getHeight,}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrgVocNumList_list 
@@ -19,11 +19,12 @@
     </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import PimVocationalService from '@/service/pim-vocational/pim-vocational-service';
 import OrgVocNumListService from './org-voc-num-list-portlet-service';
 
@@ -41,7 +42,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 名称
      *
      * @type {string}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public name?: string;
 
@@ -49,7 +50,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -57,7 +58,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 应用上下文
      *
      * @type {*}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public context: any;
 
@@ -65,7 +66,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 视图参数
      *
      * @type {*}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public viewparams: any;
 
@@ -74,7 +75,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -82,7 +83,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public getControlType(): string {
         return 'PORTLET'
@@ -94,7 +95,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -102,7 +103,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 建构部件服务对象
      *
      * @type {OrgVocNumListService}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public service: OrgVocNumListService = new OrgVocNumListService({ $store: this.$store });
 
@@ -110,7 +111,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 实体服务对象
      *
      * @type {PimVocationalService}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public appEntityService: PimVocationalService = new PimVocationalService({ $store: this.$store });
     
@@ -120,7 +121,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 关闭视图
      *
      * @param {any} args
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -130,7 +131,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
     /**
      *  计数器刷新
      *
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -148,7 +149,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 长度
      *
      * @type {number}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public height?: number;
 
@@ -156,7 +157,7 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      * 宽度
      *
      * @type {number}
-     * @memberof OrgVocNumList
+     * @memberof OrgVocNumListBase
      */
     @Prop() public width?: number;
 
@@ -188,6 +189,24 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
      */
     public getData(): any {
         return {};
+    }
+
+    /**
+     * 获取高度
+     *
+     * @returns {any[]}
+     * @memberof OrgVocNumListBase
+     */
+    get getHeight(){
+        if(!this.$util.isEmpty(this.height) && !this.$util.isNumberNaN(this.height)){
+            if(this.height == 0){
+                return 'auto';
+            }else{
+                return this.height+'px';
+            }
+        }else{
+            return '300px';
+        }
     }
 
     /**
