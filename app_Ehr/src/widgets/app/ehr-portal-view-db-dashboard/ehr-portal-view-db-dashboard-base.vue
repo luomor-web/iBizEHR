@@ -12,6 +12,7 @@
               :viewparams="viewparams" 
               :context="context" 
               :height="932"
+              :width="0"
               name="db_sysportlet1"  
               ref='db_sysportlet1' 
               @closeview="closeView($event)">
@@ -27,6 +28,7 @@
               :viewparams="viewparams" 
               :context="context" 
               :height="250"
+              :width="0"
               name="db_sysportlet2"  
               ref='db_sysportlet2' 
               @closeview="closeView($event)">
@@ -42,6 +44,7 @@
               :viewparams="viewparams" 
               :context="context" 
               :height="666"
+              :width="0"
               name="db_sysportlet4"  
               ref='db_sysportlet4' 
               @closeview="closeView($event)">
@@ -57,6 +60,7 @@
               :viewparams="viewparams" 
               :context="context" 
               :height="325"
+              :width="0"
               name="db_sysportlet5"  
               ref='db_sysportlet5' 
               @closeview="closeView($event)">
@@ -72,6 +76,7 @@
               :viewparams="viewparams" 
               :context="context" 
               :height="325"
+              :width="0"
               name="db_sysportlet3"  
               ref='db_sysportlet3' 
               @closeview="closeView($event)">
@@ -92,11 +97,12 @@
   </div>
 </template>
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import EhrPortalView_dbService from './ehr-portal-view-db-dashboard-service';
 
 import UtilService from '@/utilservice/util-service';
@@ -113,7 +119,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 名称
      *
      * @type {string}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     @Prop() public name?: string;
 
@@ -121,7 +127,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -129,7 +135,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 应用上下文
      *
      * @type {*}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     @Prop() public context: any;
 
@@ -137,7 +143,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 视图参数
      *
      * @type {*}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     @Prop() public viewparams: any;
 
@@ -146,7 +152,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -154,7 +160,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public getControlType(): string {
         return 'DASHBOARD'
@@ -166,7 +172,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -174,7 +180,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 建构部件服务对象
      *
      * @type {EhrPortalView_dbService}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public service: EhrPortalView_dbService = new EhrPortalView_dbService({ $store: this.$store });
     
@@ -184,7 +190,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 关闭视图
      *
      * @param {any} args
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -194,7 +200,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      *  计数器刷新
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -212,7 +218,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @public
      * @type {(boolean)}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     @Prop() public isEnableCustomized!:boolean;
 
@@ -221,7 +227,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @public
      * @type {(boolean)}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public isHasCustomized:boolean = false;
 
@@ -230,7 +236,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      *
      * @public
      * @type {(*)}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public modelDta:any;
 
@@ -238,7 +244,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * modleId
      *
      * @type {string}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public modelId:string = "dashboard_app_ehrportalview_db";
 
@@ -246,7 +252,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 建构功能服务对象
      *
      * @type {UtilService}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public utilService:UtilService = new UtilService();
 
@@ -254,7 +260,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 功能服务名称
      *
      * @type {string}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public utilServiceName:string = "dynadashboard";
 
@@ -262,7 +268,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public getDatas(): any[] {
         return [];
@@ -272,7 +278,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * 获取单项树
      *
      * @returns {*}
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public getData(): any {
         return {};
@@ -281,7 +287,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * vue 生命周期
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public created() {
         this.afterCreated();
@@ -290,7 +296,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 执行created后的逻辑
      *
-     *  @memberof EhrPortalView_db
+     *  @memberof EhrPortalView_dbBase
      */    
     public afterCreated(){
       if (this.viewState) {
@@ -308,21 +314,21 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 动态设计水平列数
      *
-     *  @memberof EhrPortalView_db
+     *  @memberof EhrPortalView_dbBase
      */   
     public layoutColNum:number = 12;
 
     /**
      * 动态设计单元格高度，80px
      *
-     *  @memberof EhrPortalView_db
+     *  @memberof EhrPortalView_dbBase
      */ 
     public layoutRowH:number = 80;
 
     /**
      *  通知状态
      *
-     *  @memberof EhrPortalView_db
+     *  @memberof EhrPortalView_dbBase
      */    
     public notifyState(){
       this.$nextTick(() =>{
@@ -354,7 +360,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 加载布局与数据模型
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public loadModel(){
         if(this.isEnableCustomized){
@@ -390,7 +396,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 处理私人定制按钮
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public handleClick(){
       const view:any ={
@@ -415,7 +421,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * vue 生命周期
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -424,7 +430,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof EhrPortalView_db
+     * @memberof EhrPortalView_dbBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {

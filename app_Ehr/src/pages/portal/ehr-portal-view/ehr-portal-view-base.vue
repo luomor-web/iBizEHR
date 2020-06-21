@@ -151,7 +151,7 @@ export default class EhrPortalViewBase extends PortalViewBase {
      * 应用起始页面
      *
      * @type {boolean}
-     * @memberof EhrPortalView
+     * @memberof EhrPortalViewBase
      */
     public isDefaultPage: boolean = false;
     
