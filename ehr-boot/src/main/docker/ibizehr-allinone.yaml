@@ -1,0 +1,103 @@
+version: "3.2"
+services:
+  ehr-app-ehrpim:
+    image: ibizlab/ehr-app-ehrpim:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"    
+    ports:
+      - "8091:8091"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8091
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - SPRING_DATASOURCE_isSyncDBSchema=true   
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-provider-webapi      
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+  ehr-provider-webapi:
+    image: ibizlab/ehr-provider-webapi:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"    
+    ports:
+      - "8090:8090"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8090
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - SPRING_DATASOURCE_isSyncDBSchema=true 
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-db
+      - nacos
+    deploy:
+      resources:
+           limits:
+               memory: 2048M
+           reservations:
+               memory: 1024M
+
+  ehr-db:
+    image: mysql:5.7.20
+    volumes:
+      - $PWD/ehr_data/:/var/lib/mysql/
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ehr
+    ports:
+      - 3306:3306
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+  nacos:
+    image: nacos/nacos-server:latest
+    volumes:
+      - $PWD/standalone-logs/:/home/nacos/logs
+      - $PWD/init.d/custom.properties:/home/nacos/init.d/custom.properties
+    container_name: nacos-standalone
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+    ports:
+      - "8848:8848"
+    networks:
+      - agent_network
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+networks:
+  agent_network:
+    attachable: true
