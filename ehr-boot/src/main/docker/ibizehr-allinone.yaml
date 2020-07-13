@@ -17,7 +17,6 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
       - SPRING_DATASOURCE_defaultSchema=ehr
-      - SPRING_DATASOURCE_isSyncDBSchema=true   
       - IBIZ_SLEEP=30
     depends_on:
       - ehr-provider-webapi      
@@ -45,7 +44,6 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
       - SPRING_DATASOURCE_defaultSchema=ehr
-      - SPRING_DATASOURCE_isSyncDBSchema=true 
       - IBIZ_SLEEP=30
     depends_on:
       - ehr-db
