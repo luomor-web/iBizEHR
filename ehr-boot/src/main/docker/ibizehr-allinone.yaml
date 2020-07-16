@@ -27,6 +27,114 @@ services:
            reservations:
                memory: 512M
 
+  ehr-app-ehratt:
+    image: ibizlab/ehr-app-ehratt:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"
+    ports:
+      - "8092:8092"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8092
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-provider-webapi
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+  ehr-app-ehrhelp:
+    image: ibizlab/ehr-app-ehrhelp:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"
+    ports:
+      - "8093:8093"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8093
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-provider-webapi
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+  ehr-app-ehrorm:
+    image: ibizlab/ehr-app-ehrorm:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"
+    ports:
+      - "8094:8094"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8094
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-provider-webapi
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
+  ehr-app-ehrpar:
+    image: ibizlab/ehr-app-ehrpar:v1
+    volumes:
+      - "$PWD/ehr_file/:/app/file/"
+    ports:
+      - "8095:8095"
+    networks:
+      - agent_network
+    environment:
+      - TZ=Asia/Shanghai
+      - SERVER_PORT=8095
+      - SPRING_CLOUD_NACOS_DISCOVERY_IP=$IP
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=$IP:8848
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ehr-db:3306/ehr?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SPRING_DATASOURCE_defaultSchema=ehr
+      - IBIZ_SLEEP=30
+    depends_on:
+      - ehr-provider-webapi
+    deploy:
+      resources:
+           limits:
+               memory: 1024M
+           reservations:
+               memory: 512M
+
   ehr-provider-webapi:
     image: ibizlab/ehr-provider-webapi:v1
     volumes:
