@@ -54,8 +54,8 @@ services:
            reservations:
                memory: 512M
 
-  ehr-app-ehrhelp:
-    image: ibizlab/ehr-app-ehrhelp:v1
+  ehr-app-ehrpcm:
+    image: ibizlab/ehr-app-ehrpcm:v1
     volumes:
       - "$PWD/ehr_file/:/app/file/"
     ports:
