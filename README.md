@@ -29,7 +29,7 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 
 * **[更多开源项目](https://gitee.com/ibizlab)**
 
-iBizHumanResources区别于iBizEHR：iBizEHR为针对企业人力资源管理的独立运行的业务管理系统；iBizHumanResources为iBiz商业套件重要组成部分，基于iBiz商业套件针对企业人力资源管理的业务管理系统。
+iBizHumanResources区别于iBizEHR：iBizHumanResources为iBiz商业套件重要组成部分，基于iBiz商业套件针对企业人力资源管理的业务管理系统；iBizEHR为针对企业人力资源管理的独立运行的业务管理系统。
 * **[iBizHumanResources（人力资源管理）](https://gitee.com/ibizlab/iBizHumanResources)**
 
 
