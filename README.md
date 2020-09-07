@@ -28,8 +28,6 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * **[iBizEHR配置平台](http://mos.ibizlab.cn/mos/#/common_mosindex/srfkeys=C3D0D486-94AD-402E-A7DF-2E7D431D7C4E)**
 
 * **[更多开源项目](https://gitee.com/ibizlab)**
-* **[商业套件EHR在线演示](http://ehr.ebs.ibizlab.cn)**
-
 * **欢迎加入iBizEHR交流QQ群：1056401976**
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0520/135506_3a2bca15_7580957.png "iBizEHR_QQ.png")
