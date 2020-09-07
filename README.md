@@ -28,6 +28,11 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * **[iBizEHR配置平台](http://mos.ibizlab.cn/mos/#/common_mosindex/srfkeys=C3D0D486-94AD-402E-A7DF-2E7D431D7C4E)**
 
 * **[更多开源项目](https://gitee.com/ibizlab)**
+
+iBizHumanResources区别于iBizEHR：iBizEHR为针对企业人力资源管理的独立运行的业务管理系统；iBizHumanResources为iBiz商业套件重要组成部分，基于iBiz商业套件针对企业人力资源管理的业务管理系统。
+* **[iBizHumanResources（人力资源管理）](https://gitee.com/ibizlab/iBizHumanResources)**
+
+
 * **欢迎加入iBizEHR交流QQ群：1056401976**
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0520/135506_3a2bca15_7580957.png "iBizEHR_QQ.png")
