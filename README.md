@@ -31,6 +31,7 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 
 
 **建模平台内测申请：[iBiz建模平台内测申请通道](https://gitee.com/ibizlab/iBizEHR/wikis/%E5%BB%BA%E6%A8%A1%E5%B9%B3%E5%8F%B0%E5%86%85%E6%B5%8B%E9%A1%BB%E7%9F%A5?sort_id=2992220)**
+
 **我们给您更多的EHR系统选择：[iBizHumanResources（人力资源管理）](https://gitee.com/ibizlab/iBizHumanResources)**
 
 iBizHumanResources区别于iBizEHR：iBizHumanResources为iBiz商业套件重要组成部分，基于iBiz商业套件针对企业人力资源管理的业务管理系统；iBizEHR为针对企业人力资源管理的独立运行的业务管理系统。
