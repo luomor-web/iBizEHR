@@ -12,3 +12,5 @@
 **.iml
 *.jar
 *.log
+
+.DS_Store
